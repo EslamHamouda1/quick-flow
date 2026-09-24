@@ -1,0 +1,99 @@
+# QuickFlow's project config (see project.config.example.yaml for what each key means).
+# Versions checked against the registries on 2026-09-23/24.
+
+project:
+  name: QuickFlow
+
+features:
+  Task_PRD.md: quickflow
+
+app:
+  timezone: Africa/Cairo            # from /etc/localtime on the dev machine; change it if yours differs
+
+claude:
+  model: claude-opus-5-5
+  max_turns: 200
+  timeout: 45m
+  max_run_cost_usd: 150
+  extra_args: []
+
+unit_timeout: 20m
+server_timeout: 240
+
+orchestrator:
+  max_fix_rounds: 3
+
+stack:
+  backend:
+    java: "JDK 25 (LTS)"
+    spring_boot: "4.1.1"
+    springdoc_openapi_starter_webmvc_ui: "3.1.1"
+    springdoc_openapi_maven_plugin: "latest release at setup (pin it in pom.xml)"
+    jacoco_maven_plugin: "latest release at setup that supports Java 25 (pin it in pom.xml)"
+    build: "Maven wrapper from start.spring.io"
+    db: "H2 (Boot-managed): default = file ./data/quickflow, test = file ./data/test, openapi = in-memory"
+    unit_tests: "spring-boot-starter-test + spring-boot-starter-webmvc-test + spring-boot-starter-data-jpa-test; @MockitoBean, MockMvcTester"
+  frontend:
+    node: "24.x LTS (>= 24.15)"
+    angular: "22.2.0 (standalone + signals, zoneless)"
+    api_client: "@openapitools/openapi-generator-cli 2.41.0 (typescript-angular)"
+  testing:
+    playwright_mcp: "@playwright/mcp 0.0.82 (headless, chromium)"
+  planning:
+    spec_kit: "v1.0.11"
+
+testing:
+  trace_globs: []                   # @playwright/mcp 0.0.82 has no --save-trace (dry-run check #7): screenshots only
+
+guard:
+  extra_plan_paths: []
+
+layers:
+  backend:
+    loop: backend-dev
+    dir: backend
+    scaffold: >-
+      z=$(mktemp --suffix=.zip) &&
+      curl -fsSL -o "$z" "https://start.spring.io/starter.zip?type=maven-project&language=java&bootVersion=4.1.1&javaVersion=25&groupId=com.quickflow&artifactId=quickflow&name=quickflow&packageName=com.quickflow&dependencies=web,data-jpa,h2,validation&baseDir=backend" &&
+      unzip -q "$z" && rm -f "$z" && chmod +x backend/mvnw
+    build: "cd backend && ./mvnw -q -DskipTests package"
+    test: "cd backend && ./mvnw -q verify -Dmaven.test.failure.ignore=true"
+    run: "cd backend && ./mvnw spring-boot:run"
+    run_test: "cd backend && ./mvnw -q spring-boot:run -Dspring-boot.run.profiles=test"
+    base_url: http://localhost:8080
+    health: /v3/api-docs
+    ready_url: http://localhost:8080/v3/api-docs
+    test_db_glob: "backend/data/test*"
+    openapi_output: backend/target/openapi.json
+    openapi_copy: loops/backend-dev/outputs/openapi.json
+    app_wide_files: [loops/backend-dev/outputs/openapi.json]
+    reports:
+      junit_glob: "backend/target/surefire-reports/TEST-*.xml"
+      coverage_xml: backend/target/site/jacoco/jacoco.xml
+      coverage_html: backend/target/site/jacoco
+    coverage:
+      package: com/quickflow/domain
+      min_line: 0.80
+    compile_error_patterns: ["COMPILATION ERROR", "maven-compiler-plugin"]
+    harness_error_patterns: ["Could not resolve dependencies", "Could not transfer artifact", "Non-resolvable parent POM", "Unknown host"]
+    allow_commands: ["cd", "./mvnw"]
+    test_commands: []
+  frontend:
+    loop: frontend-dev
+    dir: frontend
+    needs: [backend]
+    contract_from: backend
+    scaffold: "npx -y @angular/cli@22.2.0 new frontend --defaults --skip-git --routing --style=css --ssr=false --zoneless --ai-config=none"
+    build: "cd frontend && npm run build"
+    test: ""
+    run: "cd frontend && npm start"
+    run_test: "cd frontend && npm start"
+    url: http://localhost:4200
+    ready_url: http://localhost:4200
+    generate_client: "cd frontend && npx -y @openapitools/openapi-generator-cli@2.41.0 generate -i ../loops/backend-dev/outputs/openapi.json -g typescript-angular -o src/app/api"
+    ui_url_file: loops/frontend-dev/outputs/ui-url.md
+    app_wide_files: [loops/frontend-dev/outputs/ui-url.md]
+    compile_error_patterns: ["error TS", "✘ [ERROR]"]
+    harness_error_patterns: ["npm ERR! network", "ENOTFOUND", "EAI_AGAIN"]
+    allow_commands: ["cd", "npm", "npx -y @openapitools/openapi-generator-cli@2.41.0", "npx @openapitools/openapi-generator-cli@2.41.0"]
+    test_commands: []

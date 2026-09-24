@@ -1,0 +1,26 @@
+# build output
+target/
+node_modules/
+dist/
+.angular/
+frontend/src/app/api/.openapi-generator/
+
+# databases
+data/
+*.mv.db
+*.trace.db
+
+# runner internals
+loops/.run.lock
+loops/testing/runs/current
+*.tmp
+
+# Playwright: raw session files are deleted or zipped into trace.zip by the runner
+loops/testing/runs/**/*.trace
+loops/testing/runs/**/traces/
+
+# local only: your design-notes checklist, never committed
+notes/
+
+# python
+__pycache__/

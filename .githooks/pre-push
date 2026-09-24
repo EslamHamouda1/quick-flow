@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Refuses every push that doesn't come from scripts/review-commits.sh (which sets REVIEWED=1
+# only after you have approved every unpushed commit).
+if [[ "${REVIEWED:-}" != 1 ]]; then
+  echo "pre-push: refused. Review and push with scripts/review-commits.sh." >&2
+  exit 1
+fi
+exit 0
