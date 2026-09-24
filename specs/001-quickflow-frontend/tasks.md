@@ -71,15 +71,15 @@ Playwright MCP checks, written from the acceptance criteria against the selector
 
 ### Tests for User Story 1 (contract first) ⚠️
 
-- [ ] T015 [US1] Check that the generated `TasksService` has `listTasks` (all 8 query parameters), `listOverdueTasks`, `createTask`, `updateTask`, `completeTask`, `archiveTask`, `restoreTask`, `deleteTask` and that the Tasks section of specs/001-quickflow-frontend/contracts/ui-contract.md covers AC-US1-1..12; raise a question for anything missing
+- [X] T015 [US1] Check that the generated `TasksService` has `listTasks` (all 8 query parameters), `listOverdueTasks`, `createTask`, `updateTask`, `completeTask`, `archiveTask`, `restoreTask`, `deleteTask` and that the Tasks section of specs/001-quickflow-frontend/contracts/ui-contract.md covers AC-US1-1..12; raise a question for anything missing
 
 ### Implementation for User Story 1
 
-- [ ] T016 [P] [US1] Create the task form component (create + edit, fields title/description/priority/due date, status when editing, no client-side length checks, shows `fieldErrors` via `field-error`) in frontend/src/app/pages/tasks/task-form.ts (AC-US1-1..5)
-- [ ] T017 [US1] Implement the Tasks page list with search box, status/priority/due-from/due-to/archived filters and sort field/direction bound to `listTasks` parameters (defaults as in the contract), rows with overdue badge, in frontend/src/app/pages/tasks/tasks.page.ts (FR-02, AC-US1-9, AC-US1-10)
-- [ ] T018 [US1] Add create/edit flow (open `task-form` from `task-add`, from `task-edit-<id>` and from `?add=1`; on 400 keep the form open with field errors; on success re-read the list and show a notice) in frontend/src/app/pages/tasks/tasks.page.ts (AC-US1-1..5)
-- [ ] T019 [US1] Add row actions complete, archive, restore (archived rows), delete, each re-reading the list, in frontend/src/app/pages/tasks/tasks.page.ts (AC-US1-6, AC-US1-7, AC-US1-8)
-- [ ] T020 [US1] Add the overdue view toggle (`task-view-overdue` → `listOverdueTasks`) and the empty state pointing to Add Task, in frontend/src/app/pages/tasks/tasks.page.ts (AC-US1-11, AC-US1-12)
+- [X] T016 [P] [US1] Create the task form component (create + edit, fields title/description/priority/due date, status when editing, no client-side length checks, shows `fieldErrors` via `field-error`) in frontend/src/app/pages/tasks/task-form.ts (AC-US1-1..5)
+- [X] T017 [US1] Implement the Tasks page list with search box, status/priority/due-from/due-to/archived filters and sort field/direction bound to `listTasks` parameters (defaults as in the contract), rows with overdue badge, in frontend/src/app/pages/tasks/tasks.page.ts (FR-02, AC-US1-9, AC-US1-10)
+- [X] T018 [US1] Add create/edit flow (open `task-form` from `task-add`, from `task-edit-<id>` and from `?add=1`; on 400 keep the form open with field errors; on success re-read the list and show a notice) in frontend/src/app/pages/tasks/tasks.page.ts (AC-US1-1..5)
+- [X] T019 [US1] Add row actions complete, archive, restore (archived rows), delete, each re-reading the list, in frontend/src/app/pages/tasks/tasks.page.ts (AC-US1-6, AC-US1-7, AC-US1-8)
+- [X] T020 [US1] Add the overdue view toggle (`task-view-overdue` → `listOverdueTasks`) and the empty state pointing to Add Task, in frontend/src/app/pages/tasks/tasks.page.ts (AC-US1-11, AC-US1-12)
 
 **Checkpoint**: US1 works on its own
 

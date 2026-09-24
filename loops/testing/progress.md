@@ -10,7 +10,8 @@
 | testing:001-quickflow:test:frontend-dev:phase-01 | 2026-09-24T21:11:25+03:00 | 2026-09-24T21:13:05+03:00 | 0h01m40s | 0h01m36s | 1 | 1 | 36 | 873782 | 6941 | 0.5823 | 2d63136f-1067-4dd8-acc3-f9f9b2883344 | 2d63136f-1067-4dd8-acc3-f9f9b2883344 |  | success |
 | testing:001-quickflow:test:frontend-dev:phase-02 | 2026-09-24T21:18:22+03:00 | 2026-09-24T21:25:43+03:00 | 0h07m21s | 0h05m34s | 2 | 2 | 162 | 4814624 | 25415 | 2.3008 | fb0efe85-73a4-40b3-a70c-6a7301bf9140 642ca420-711e-4d3c-8e59-db81d75ec35a | 642ca420-711e-4d3c-8e59-db81d75ec35a |  | success |
 | testing:001-quickflow:test:backend-dev:phase-03 | 2026-09-24T21:49:49+03:00 | 2026-09-24T21:58:53+03:00 | 0h09m04s | 0h08m59s | 1 | 1 | 90 | 4309805 | 57003 | 2.9658 | 5279a56e-ed6d-41ed-a635-7a9211ba22a2 | 5279a56e-ed6d-41ed-a635-7a9211ba22a2 |  | success |
-| **Total** |  |  |  | 0h21m16s | 6 |  | 368 | 12163360 | 118583 | 7.5677 |  |  |  |  |
+| testing:001-quickflow:test:frontend-dev:phase-03 | 2026-09-24T22:05:29+03:00 | 2026-09-24T22:09:57+03:00 | 0h04m28s | 0h04m24s | 1 | 1 | 62 | 2178538 | 21691 | 1.4537 | 6b8917af-d3f7-4f88-b415-285f8904c22e | 6b8917af-d3f7-4f88-b415-285f8904c22e |  | success |
+| **Total** |  |  |  | 0h25m40s | 7 |  | 430 | 14341898 | 140274 | 9.0214 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -20,3 +21,4 @@
 - 2026-09-24 phase frontend-dev/phase-02 attempt 1: wrote test plan C1–C9 (AC-US5-7 + review planned checks); Playwright MCP headless: six nav links reachable from every page (page-title + active class match), nav-main on every route, / → /dashboard, app-info 200, 0 console errors; unknown path (/nope) ends on / with empty outlet instead of /dashboard; 8/9 pass, unit none → verdict fail (C8)
 - 2026-09-24 phase frontend-dev/phase-02 attempt 2: reused test plan C1–C9 (criteria unchanged); Playwright MCP headless: six nav links reachable with page-title + active class, nav-main on every route, / and unknown paths (/nope, /some/unknown/path) → /dashboard, app-info 200, 0 console errors; 9/9 pass, unit none → verdict pass
 - 2026-09-24 phase backend-dev/phase-03 attempt 1: wrote test plan C1–C12 (AC-US1-1..11 + swagger) + verify.sh; verify.sh blocked by permission check, same checks run as direct curl calls (labelled by URL fragment in curl.log); 12/12 pass, unit 62/62 pass, domain coverage 155/160 = 96.9% from jacoco.csv (runner reported skipped: exact-package match) → verdict pass
+- 2026-09-24 phase frontend-dev/phase-03 attempt 1: wrote test plan C1–C13 (AC-US1-1..12); Playwright MCP headless on /tasks: empty state, create (Todo, notice, ?add=1), title/description 400s shown in error-title/error-description, only valid status/priority options, edit (updatedAt changes), complete, archive/restore, delete (gone from list/search/archived/overdue), case-insensitive search, filters+sort match API order, overdue view only due-before-today not Done not archived; 13/13 pass, unit none → verdict pass

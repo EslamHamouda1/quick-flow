@@ -1,0 +1,1 @@
+{"url":"http://localhost:4200/tasks","apiBefore":"GET /api/tasks -> []","emptyVisible":true,"emptyText":"No tasks yet\n\nAdd Task","actionText":"Add Task","formOpenAfterAction":true,"statusFieldInCreate":0}

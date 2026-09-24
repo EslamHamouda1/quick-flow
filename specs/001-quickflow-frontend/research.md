@@ -41,6 +41,21 @@ becomes a `## Questions` entry if the check fails.
   - not generated yet (backend stories pending): `getSettings` / `SettingsService`, the other tag services
     (`TasksService`, `HabitsService`, `LearningService`, `PlansService`, `DashboardService`), the enum models and the
     `Problem` / `FieldError` models. Each story phase re-checks its names after `generate_client`.
+- **Checked at implement (T015, 2026-09-24)**, client regenerated after backend US1:
+  - `TasksService` (`api/tasks.service.ts`, `providedIn: 'root'`), positional arguments (no request-parameter
+    objects): `listTasks(q?, status?: TaskStatus, priority?: TaskPriority, dueFrom?: string, dueTo?: string,
+    archived?: boolean, sort?: 'createdAt' | 'dueDate', direction?: 'asc' | 'desc')` → `Observable<Task[]>`;
+    `listOverdueTasks()` → `Observable<Task[]>`; `createTask(TaskCreate)`, `updateTask(id, TaskUpdate)`,
+    `completeTask(id)`, `archiveTask(id)`, `restoreTask(id)` → `Observable<Task>`; `deleteTask(id)` →
+    `Observable<any>`; `getTask(id)` (unused).
+  - models: `Task { id: number; title; description?: string | null; status; priority; dueDate?: string | null;
+    createdAt; updatedAt; completedAt?: string | null; archived: boolean; overdue: boolean }`, `TaskCreate { title;
+    description?; status?; priority?; dueDate? }`, `TaskUpdate { title; description?; status; priority; dueDate? }`.
+  - enums are `as const` objects plus a union type: `TaskStatus = {Todo: 'TODO', InProgress: 'IN_PROGRESS', Done:
+    'DONE'}`, `TaskPriority = {Low: 'LOW', Medium: 'MEDIUM', High: 'HIGH'}`.
+  - still no `Problem` / `FieldError` model (errors not declared in the swagger): `core/problem.ts` stays.
+  - ui-contract "Tasks `/tasks` (US1)" lists a selector for every AC-US1-1..12 action (form, search, filters, sort,
+    overdue toggle, rows, row actions, empty state from the Shell section): nothing missing.
 
 ## R-3 Time zone handling
 - **Decision**: `ClockService` loads `/api/app-info` at start-up (`provideAppInitializer`), stores `timeZone` and

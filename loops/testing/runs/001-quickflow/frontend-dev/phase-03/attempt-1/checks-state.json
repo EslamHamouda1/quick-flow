@@ -1,0 +1,21 @@
+{
+  "app_date_Africa_Cairo": "2026-09-24",
+  "C1": {"url":"http://localhost:4200/tasks","apiBefore":[],"emptyText":"No tasks yet\n\nAdd Task","actionText":"Add Task","formOpenAfterAction":true,"statusFieldInCreate":0},
+  "C2": {"priorityDefault":"MEDIUM","formOpenAfterSave":0,"notices":["Task created"],"rows":[{"id":"task-row-1","title":"First task","status":"Todo","priority":"High","due":"Oct 1, 2026","overdue":0}],
+         "api":{"id":1,"title":"First task","description":"Some description","status":"TODO","priority":"HIGH","dueDate":"2026-10-01","createdAt":"2026-09-24T22:06:31.542318+03:00","updatedAt":"2026-09-24T22:06:31.542318+03:00","completedAt":null,"archived":false,"overdue":false},
+         "addParam":{"url":"http://localhost:4200/tasks?add=1","formOpen":true,"afterCancelUrl":"http://localhost:4200/tasks","formAfterCancel":0}},
+  "C3": {"emptyTitle":{"formOpen":true,"errorTitle":["size must be between 1 and 200"]},"title201":{"formOpen":true,"errorTitle":["size must be between 1 and 200"],"titleLen":201},"apiCount":1},
+  "C4": {"formOpen":true,"errorDescription":["size must be between 0 and 2000"],"shownUnderLabel":"Description","errorTitle":[],"apiCount":1},
+  "C5": {"statusOptions":["Todo","In Progress","Done"],"statusValues":["TODO","IN_PROGRESS","DONE"],"priorityOptions":["Low","Medium","High"],"priorityValues":["LOW","MEDIUM","HIGH"],"prefill":{"title":"First task","description":"Some description","status":"TODO","priority":"HIGH","due":"2026-10-01"}},
+  "C6": {"formOpenAfterSave":0,"notices":["Task updated"],"row":{"title":"First task edited","status":"In Progress","priority":"Low","due":"Oct 5, 2026"},
+         "apiBefore":{"updatedAt":"2026-09-24T22:06:31.542318+03:00"},"apiAfter":{"title":"First task edited","description":"Changed description","status":"IN_PROGRESS","priority":"LOW","dueDate":"2026-10-05","updatedAt":"2026-09-24T22:07:17.598653+03:00"}},
+  "C7": {"notices":["Task completed"],"rowStatus":"Done","completeButtonAfter":0,"api":{"status":"DONE","completedAt":"2026-09-24T22:07:23.906411+03:00"}},
+  "C8": {"afterArchive":{"notices":["Task archived"],"defaultRows":[]},"archivedView":{"rows":["task-row-1"],"restoreBtn":1,"archiveBtn":0},"afterRestore":{"notices":["Task restored"],"archivedViewRows":[],"defaultRows":["task-row-1"],"apiArchived":false}},
+  "seeded_via_api": [{"id":2,"title":"Delete me"},{"id":3,"title":"Alpha abc","priority":"HIGH","dueDate":"2026-10-10"},{"id":4,"title":"xABCy","priority":"LOW","dueDate":"2026-10-03"},{"id":5,"title":"Other","priority":"HIGH","dueDate":"2026-10-20"},{"id":6,"title":"Overdue yesterday","dueDate":"2026-09-23"},{"id":7,"title":"Due today","dueDate":"2026-09-24"},{"id":8,"title":"Done yesterday","dueDate":"2026-09-23","then":"complete"},{"id":9,"title":"Archived yesterday","dueDate":"2026-09-23","then":"archive"}],
+  "C9": {"before":["task-row-8","task-row-7","task-row-6","task-row-5","task-row-4","task-row-3","task-row-2","task-row-1"],"confirmDialog":false,"notices":["Task deleted"],"defaultAfter":["task-row-8","task-row-7","task-row-6","task-row-5","task-row-4","task-row-3","task-row-1"],"searchDeleteMe":[],"searchEmpty":"No tasks match\n\nAdd Task","archivedView":["task-row-9"],"overdueView":["task-row-6"],"apiGetTask2":404},
+  "C10": {"search_abc":["xABCy","Alpha abc"],"search_ABC":["xABCy","Alpha abc"],"typed_slowly_abc":["xABCy","Alpha abc"]},
+  "C11": {"priorityHigh":[5,3],"statusDone":[8,1],"dueFrom20261001_to20261010_createdDesc":[4,3,1],"sameRange_sortDueAsc":[4,1,3],"all_sortDueAsc":[6,8,7,4,1,3,5],"api_sortDueAsc":[6,8,7,4,1,3,5],"all_sortDueDesc":[5,3,1,4,7,8,6],"api_sortDueDesc":[5,3,1,4,7,8,6],"all_sortCreatedAsc":[1,3,4,5,6,7,8],"todo_medium_createdAsc":[6,7],"api_todo_medium_createdAsc":[6,7]},
+  "C12": {"defaultListBadges":{"6":"Overdue","others":null},"overdueView":[{"id":6,"title":"Overdue yesterday","badge":"Overdue"}],"absent":[7,8,9],"ariaPressed":"true","searchDisabled":true,"apiOverdue":[6]},
+  "C13": {"search":"zzz-no-match","empty":"No tasks match\n\nAdd Task","rows":0,"actionOpensForm":true,"formHeading":"Add Task"},
+  "console": "console-warnings-errors.txt: only 3 x 400 on POST /api/tasks (the C3/C4 rejected submits)"
+}
