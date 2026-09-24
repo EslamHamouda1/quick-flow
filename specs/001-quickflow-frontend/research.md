@@ -69,6 +69,23 @@ becomes a `## Questions` entry if the check fails.
   - ui-contract "Habits `/habits` (US2)" has selectors for the form, cards (frequency label, period done, streak,
     inactive badge), the today toggle and every card action; the empty state comes from the Shell section: AC-US2-1..9
     covered, nothing missing.
+- **Checked at implement (T026, 2026-09-24)**, client regenerated after backend US3:
+  - `LearningService` (`api/learning.service.ts`, `providedIn: 'root'`), positional arguments: `listLearningCards()` →
+    `Observable<LearningCard[]>`; `createLearningCard(LearningCardCreate)`, `updateLearningCard(id,
+    LearningCardUpdate)` → `Observable<LearningCard>`; `addMilestone(id, MilestoneCreate)`, `updateMilestone(id,
+    milestoneId, MilestoneUpdate)` → `Observable<Milestone>`; `addNote(id, NoteCreate)` → `Observable<Note>`;
+    `deleteLearningCard(id)`, `deleteMilestone(id, milestoneId)`, `deleteNote(id, noteId)` → `Observable<any>`;
+    `getLearningCard(id)` (unused).
+  - models: `LearningCard { id: number; title; description?: string | null; status: LearningStatus; createdAt;
+    milestones: Milestone[]; notes: Note[]; milestonesDone: number; milestonesTotal: number }`, `LearningCardCreate
+    { title; description? }`, `LearningCardUpdate { title; description?; status }`, `Milestone { id; cardId; title;
+    done: boolean; targetDate?: string | null }`, `MilestoneCreate { title; targetDate? }`, `MilestoneUpdate { title;
+    targetDate?; done }`, `Note { id; cardId; text; createdAt }`, `NoteCreate { text }`, `LearningStatus =
+    {NotStarted: 'NOT_STARTED', InProgress: 'IN_PROGRESS', Completed: 'COMPLETED'}` (`as const`).
+  - still no `Problem` model: `core/problem.ts` stays.
+  - ui-contract "Learning Resources `/learning` (US3)" has selectors for the form, cards (title, status select,
+    milestone count), expand, edit/delete, the milestone and note add rows and rows; the empty state comes from the
+    Shell section: AC-US3-1..9 covered, nothing missing.
 
 ## R-3 Time zone handling
 - **Decision**: `ClockService` loads `/api/app-info` at start-up (`provideAppInitializer`), stores `timeZone` and

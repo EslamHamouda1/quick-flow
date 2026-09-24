@@ -2,5 +2,5 @@
   "feature_dir": "specs/001-quickflow-frontend",
   "current_phase": "phase-00",
   "loop_status": "running",
-  "stop_reason": "until_reached: US2"
+  "stop_reason": "usage_limit: You've hit your session limit \u00b7 resets 2am (Africa/Cairo) (rerun the same command after the reset; state is kept)"
 }

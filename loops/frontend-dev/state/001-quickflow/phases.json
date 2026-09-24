@@ -143,8 +143,12 @@
         "backend-dev:US3"
       ],
       "attempt": 1,
-      "status": "planned",
-      "approval": null,
+      "status": "in_progress",
+      "approval": {
+        "decision": "auto",
+        "at": "2026-09-24T23:18:00+03:00",
+        "notes": ""
+      },
       "block_reason": null
     },
     {
