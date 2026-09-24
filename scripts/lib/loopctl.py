@@ -932,7 +932,9 @@ def cmd_flags(args):
                 ".specify/memory/constitution.md"]:
         protected += [f"Edit({pat})", f"Write({pat})"]
     deny = protected + ["Bash(git:*)", "Bash(kill:*)", "Bash(pkill:*)"]
-    allow = ["Skill"]
+    # read-only helpers (dry run: sessions were refused grep/sed -n/unzip -l and worked around it)
+    allow = ["Skill", "Bash(grep:*)", "Bash(head:*)", "Bash(tail:*)", "Bash(wc:*)", "Bash(sed -n:*)",
+             "Bash(unzip -l:*)", "Bash(java -version)", "Bash(javac -version)", "Bash(date:*)"]
     if loop in DEV_LOOPS:
         _, lcfg = layer_of(loop)
         allow += ["Agent", "Bash(.specify/scripts/bash/*:*)", "Bash(mkdir:*)", "Bash(cp:*)",
