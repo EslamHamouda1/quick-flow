@@ -1,0 +1,37 @@
+{
+  "url": "/habits",
+  "navMain": true,
+  "links": [
+    {
+      "id": "nav-dashboard",
+      "text": "Dashboard",
+      "href": "/dashboard"
+    },
+    {
+      "id": "nav-tasks",
+      "text": "Tasks",
+      "href": "/tasks"
+    },
+    {
+      "id": "nav-habits",
+      "text": "Habits",
+      "href": "/habits"
+    },
+    {
+      "id": "nav-learning",
+      "text": "Learning Resources",
+      "href": "/learning"
+    },
+    {
+      "id": "nav-plans",
+      "text": "Todo Plans",
+      "href": "/plans"
+    },
+    {
+      "id": "nav-settings",
+      "text": "Settings",
+      "href": "/settings"
+    }
+  ],
+  "title": "Habits"
+}

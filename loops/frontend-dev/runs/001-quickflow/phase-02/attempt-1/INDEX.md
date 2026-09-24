@@ -1,0 +1,52 @@
+# frontend-dev 001-quickflow phase-02 attempt 1
+
+Verdict: **fail**
+
+Failed checks:
+- C8: an unknown path (/nope, /some/unknown/path) should end on /dashboard (review planned checks; T013 '**' -> '' -> /dashboard) but ends on / with no page rendered (page-title absent)
+
+## Copied into this loop's outputs
+- [phase-02-test.md](../../../../outputs/001-quickflow/phase-02-test.md)
+- [phase-02-report.md](../../../../outputs/001-quickflow/phase-02-report.md)
+
+## Evidence in the testing loop's run folder
+- [C1-state.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C1-state.json)
+- [C2-state.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C2-state.json)
+- [C3-state.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C3-state.json)
+- [C4-state.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C4-state.json)
+- [C5-state.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C5-state.json)
+- [C6-state.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C6-state.json)
+- [C7-nav-every-route.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C7-nav-every-route.json)
+- [C8-root.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C8-root.json)
+- [C8-unknown-2.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C8-unknown-2.json)
+- [C8-unknown.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C8-unknown.json)
+- [C9-console-errors.txt](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C9-console-errors.txt)
+- [C9-network.txt](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/C9-network.txt)
+- [console-2026-09-24T18-19-00-129Z.log](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/console-2026-09-24T18-19-00-129Z.log)
+- [console-2026-09-24T18-20-12-299Z.log](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/console-2026-09-24T18-20-12-299Z.log)
+- [console-2026-09-24T18-20-17-620Z.log](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/console-2026-09-24T18-20-17-620Z.log)
+- [console-2026-09-24T18-20-34-517Z.log](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/console-2026-09-24T18-20-34-517Z.log)
+- [console-2026-09-24T18-20-40-717Z.log](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/console-2026-09-24T18-20-40-717Z.log)
+- [page-2026-09-24T18-19-00-285Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-19-00-285Z.yml)
+- [page-2026-09-24T18-19-03-997Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-19-03-997Z.yml)
+- [page-2026-09-24T18-19-20-074Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-19-20-074Z.yml)
+- [page-2026-09-24T18-19-28-458Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-19-28-458Z.yml)
+- [page-2026-09-24T18-19-36-478Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-19-36-478Z.yml)
+- [page-2026-09-24T18-19-44-858Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-19-44-858Z.yml)
+- [page-2026-09-24T18-19-52-543Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-19-52-543Z.yml)
+- [page-2026-09-24T18-20-12-343Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-20-12-343Z.yml)
+- [page-2026-09-24T18-20-17-659Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-20-17-659Z.yml)
+- [page-2026-09-24T18-20-34-555Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-20-34-555Z.yml)
+- [page-2026-09-24T18-20-40-758Z.yml](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/page-2026-09-24T18-20-40-758Z.yml)
+- [server-backend.log](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/server-backend.log)
+- [server-frontend.log](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/server-frontend.log)
+- [shot-01-C1.png](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/shot-01-C1.png)
+- [shot-02-C2.png](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/shot-02-C2.png)
+- [shot-03-C3.png](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/shot-03-C3.png)
+- [shot-04-C4.png](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/shot-04-C4.png)
+- [shot-05-C5.png](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/shot-05-C5.png)
+- [shot-06-C6.png](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/shot-06-C6.png)
+- [shot-07-C7.png](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/shot-07-C7.png)
+- [shot-08-C8.png](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/shot-08-C8.png)
+- [shot-09-C9.png](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/shot-09-C9.png)
+- [unit/unit-result.json](../../../../../testing/runs/001-quickflow/frontend-dev/phase-02/attempt-1/unit/unit-result.json)

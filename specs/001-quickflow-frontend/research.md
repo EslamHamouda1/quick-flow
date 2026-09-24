@@ -30,6 +30,17 @@ becomes a `## Questions` entry if the check fails.
 - **Risk**: the generator CLI downloads its jar on first run (network) and needs Java (JDK 25 present). The
   generated code must compile with Angular 22.2.0; a compile error there is reported as a question, not patched in
   the generated files.
+- **Checked at implement (T005, 2026-09-24)**, client generated from the current
+  `loops/backend-dev/outputs/openapi.json` (only `/api/app-info` so far):
+  - services: `InfoService` (`api/info.service.ts`, `providedIn: 'root'`) with `getAppInfo()` →
+    `Observable<AppInfo>`. Exported from `frontend/src/app/api` (`index.ts`).
+  - models: `AppInfo { timeZone: string; now: string }` (both required). No enum models yet.
+  - provider: `provideApi(configOrBasePath: string | ConfigurationParameters)` (`provide-api.ts`); a string sets
+    `BASE_PATH`. Without it the base path defaults to the swagger server URL (`http://localhost:18080`), so the app
+    calls `provideApi('')`. A `Configuration` class also exists (`configuration.ts`).
+  - not generated yet (backend stories pending): `getSettings` / `SettingsService`, the other tag services
+    (`TasksService`, `HabitsService`, `LearningService`, `PlansService`, `DashboardService`), the enum models and the
+    `Problem` / `FieldError` models. Each story phase re-checks its names after `generate_client`.
 
 ## R-3 Time zone handling
 - **Decision**: `ClockService` loads `/api/app-info` at start-up (`provideAppInitializer`), stores `timeZone` and

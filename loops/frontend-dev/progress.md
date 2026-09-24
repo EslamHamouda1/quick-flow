@@ -6,8 +6,9 @@
 | milestone | start | end | wall time | active time | sessions | attempts | input tokens | cache tokens | output tokens | cost USD | session_ids | verified_by | commit | result |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | frontend-dev:001-quickflow:phase-00-plan | 2026-09-24T17:15:21+03:00 | 2026-09-24T17:26:59+03:00 | 0h11m38s | 0h10m00s | 2 | 1 | 88 | 3874128 | 62862 | 3.3789 | a83ecfd4-47bc-4ff8-a10f-ae39939c3318 273f7f15-acef-4cb7-905e-2e6f2d2ef918 |  | a990c9d | success |
-| frontend-dev:001-quickflow:phase-01 | 2026-09-24T19:46:08+03:00 | 2026-09-24T21:13:49+03:00 | 1h27m41s | 0h11m25s | 7 | 1 | 126 | 3107039 | 25668 | 2.2056 | fdc04068-ab10-445f-b00e-76a9377af3ce 418061f6-dd2d-494d-9660-70a423212b00 e3b89fc3-ce48-4a60-a548-1a77e53da29e 5ccaf165-0b2b-40c9-8499-f2660889bb0f 8546c486-0e4f-465e-b440-3a8629ca04e3 2d63136f-1067-4dd8-acc3-f9f9b2883344 1e8e5276-68ac-4937-8f38-16878ae40449 | 2d63136f-1067-4dd8-acc3-f9f9b2883344 |  | success |
-| **Total** |  |  |  | 0h21m26s | 9 |  | 214 | 6981167 | 88530 | 5.5845 |  |  |  |  |
+| frontend-dev:001-quickflow:phase-01 | 2026-09-24T19:46:08+03:00 | 2026-09-24T21:13:49+03:00 | 1h27m41s | 0h11m25s | 7 | 1 | 126 | 3107039 | 25668 | 2.2056 | fdc04068-ab10-445f-b00e-76a9377af3ce 418061f6-dd2d-494d-9660-70a423212b00 e3b89fc3-ce48-4a60-a548-1a77e53da29e 5ccaf165-0b2b-40c9-8499-f2660889bb0f 8546c486-0e4f-465e-b440-3a8629ca04e3 2d63136f-1067-4dd8-acc3-f9f9b2883344 1e8e5276-68ac-4937-8f38-16878ae40449 | 2d63136f-1067-4dd8-acc3-f9f9b2883344 | 434b220 | success |
+| frontend-dev:001-quickflow:phase-02 | 2026-09-24T21:13:50+03:00 | 2026-09-24T21:38:52+03:00 | 0h25m02s | 0h13m13s | 6 | 2 | 300 | 8948976 | 57966 | 5.8937 | 310c03df-bd9c-4264-906b-a38eb53a11a2 32e8f7a6-395e-467b-9168-dc56e48069e8 fb0efe85-73a4-40b3-a70c-6a7301bf9140 9d5f214b-a6c1-4ee5-957a-97d1a4ba4b49 642ca420-711e-4d3c-8e59-db81d75ec35a 1eced14b-213f-4269-a35e-441c6e787cf5 | 642ca420-711e-4d3c-8e59-db81d75ec35a |  | success |
+| **Total** |  |  |  | 0h34m39s | 15 |  | 514 | 15930143 | 146496 | 11.4782 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -34,3 +35,19 @@
 - 2026-09-24T21:10:45+03:00 001-quickflow phase-01: npm run build OK (RUNS/phase-01-build.log); status ready_for_test
 - 2026-09-24T21:13:06+03:00 test 001-quickflow phase-01 attempt 1: pass (verified_by 2d63136f-1067-4dd8-acc3-f9f9b2883344)
 - 2026-09-24T21:13:40+03:00 001-quickflow phase-01: close check OK (T001–T004 [X] in tasks.md, verdict pass attempt 1); T001–T004 [~] → [x] in phase-01.md and tasks.json; status done
+- 2026-09-24T21:16:00+03:00 001-quickflow phase-02: wrote OUT/phase-02-review.md (new assumption FA-12: app-info failure fallback; contract differences: Problem/FieldError and /api/settings not yet in generated swagger); status planned → awaiting_approval
+- 2026-09-24T21:15:17+03:00 gate 001-quickflow phase-02: approved (auto)
+- 2026-09-24T21:18:02+03:00 001-quickflow phase-02: tasks.md Phase 2 matches OUT/phase-02.md (no sync changes); no reviewer notes (FA-12 approved via auto gate); status in_progress
+- 2026-09-24T21:18:02+03:00 001-quickflow phase-02: generate_client ran (frontend/src/app/api: InfoService + AppInfo only)
+- 2026-09-24T21:18:02+03:00 001-quickflow phase-02: T005 [~] generated client names recorded in research.md R-2 (InfoService.getAppInfo, AppInfo, provideApi; settings/other services not generated yet)
+- 2026-09-24T21:18:02+03:00 001-quickflow phase-02: T006 [~] app.config.ts: provideHttpClient(withFetch()), provideApi(''), ClockService app initializer
+- 2026-09-24T21:18:02+03:00 001-quickflow phase-02: T007 [~] core/clock.service.ts (FA-12 fallback); T008 [~] core/date-format.ts; T009 [~] core/problem.ts; T010 [~] core/notice.service.ts; T011 [~] shared/empty-state.ts, shared/field-error.ts; T012 [~] six placeholder pages (parallel subagents)
+- 2026-09-24T21:18:02+03:00 001-quickflow phase-02: T013 [~] app.routes.ts lazy routes; T014 [~] shell app.ts/app.html/app.css (nav-main, nav-*, notice area, router-outlet)
+- 2026-09-24T21:18:02+03:00 001-quickflow phase-02: ui-url.md unchanged (already current); npm run build OK (RUNS/phase-02-build.log); status ready_for_test
+- 2026-09-24T21:21:24+03:00 test 001-quickflow phase-02 attempt 1: fail -> in_progress
+- 2026-09-24T21:22:45+03:00 001-quickflow phase-02: attempt 2, fixing report C8: tasks.md Phase 2 already in sync, no reviewer notes, no unchecked checklist items
+- 2026-09-24T21:22:45+03:00 001-quickflow phase-02: T013 [~] app.routes.ts `**` now redirects to absolute '/' (the installed router re-matches after a relative redirect with redirects disabled, so '' → dashboard never applied; absolute redirects restart matching from the root)
+- 2026-09-24T21:22:45+03:00 001-quickflow phase-02: generate_client re-run; npm run build OK (RUNS/phase-02-build.log); ui-url.md unchanged; status ready_for_test
+- 2026-09-24T21:25:44+03:00 test 001-quickflow phase-02 attempt 2: pass (verified_by 642ca420-711e-4d3c-8e59-db81d75ec35a)
+- 2026-09-24T21:38:44+03:00 001-quickflow phase-02: close check OK (T005–T014 [X] in tasks.md; verdict pass for attempt 2)
+- 2026-09-24T21:38:44+03:00 001-quickflow phase-02: T005–T014 [~] → [x] in phase-02.md and tasks.json; status done

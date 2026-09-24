@@ -1,0 +1,48 @@
+
+> frontend@0.0.0 build
+> ng build
+
+❯ Building...
+✔ Building...
+Initial chunk files | Names          |  Raw size | Estimated transfer size
+main-YML3PATV.js    | main           | 259.45 kB |                70.54 kB
+styles-MNYWPIBD.css | styles         |   2.53 kB |               729 bytes
+
+                    | Initial total  | 261.98 kB |                71.27 kB
+
+Lazy chunk files    | Names          |  Raw size | Estimated transfer size
+chunk-CT1GHXYw.js   | learning-page  | 348 bytes |               348 bytes
+chunk-CkgOqavY.js   | dashboard-page | 340 bytes |               340 bytes
+chunk-DQnW5six.js   | settings-page  | 338 bytes |               338 bytes
+chunk-HwrdErM4.js   | plans-page     | 337 bytes |               337 bytes
+chunk-CwwAJ88g.js   | habits-page    | 334 bytes |               334 bytes
+chunk-DgZb-tO1.js   | tasks-page     | 332 bytes |               332 bytes
+
+Application bundle generation complete. [1.199 seconds] - 2026-09-24T18:22:26.968Z
+
+Output location: /home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/dist/frontend
+
+
+> frontend@0.0.0 build
+> ng build
+
+❯ Building...
+✔ Building...
+Initial chunk files | Names          |  Raw size | Estimated transfer size
+main-YML3PATV.js    | main           | 259.45 kB |                70.54 kB
+styles-MNYWPIBD.css | styles         |   2.53 kB |               729 bytes
+
+                    | Initial total  | 261.98 kB |                71.27 kB
+
+Lazy chunk files    | Names          |  Raw size | Estimated transfer size
+chunk-CT1GHXYw.js   | learning-page  | 348 bytes |               348 bytes
+chunk-CkgOqavY.js   | dashboard-page | 340 bytes |               340 bytes
+chunk-DQnW5six.js   | settings-page  | 338 bytes |               338 bytes
+chunk-HwrdErM4.js   | plans-page     | 337 bytes |               337 bytes
+chunk-CwwAJ88g.js   | habits-page    | 334 bytes |               334 bytes
+chunk-DgZb-tO1.js   | tasks-page     | 332 bytes |               332 bytes
+
+Application bundle generation complete. [1.204 seconds] - 2026-09-24T18:22:41.217Z
+
+Output location: /home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/dist/frontend
+

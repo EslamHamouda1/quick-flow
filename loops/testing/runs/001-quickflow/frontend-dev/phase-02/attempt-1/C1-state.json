@@ -1,0 +1,8 @@
+{
+  "url": "/dashboard",
+  "title": "Dashboard",
+  "titleTag": "H1",
+  "active": [
+    "nav-dashboard class=active"
+  ]
+}

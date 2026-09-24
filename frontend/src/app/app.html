@@ -1,1 +1,20 @@
-<router-outlet />
+<div class="layout">
+  <nav class="sidebar" data-testid="nav-main" aria-label="Main">
+    <div class="brand">QuickFlow</div>
+    @for (item of nav; track item.id) {
+      <a [routerLink]="item.path" routerLinkActive="active" [attr.data-testid]="'nav-' + item.id">{{ item.label }}</a>
+    }
+  </nav>
+  <main class="content">
+    <div class="notices" aria-live="polite">
+      @for (n of notices.notices(); track n.id) {
+        <!-- every notice is `notice`; an error's text also carries `notice-error` (ui-contract Shell) -->
+        <div class="notice notice-{{ n.kind }}" role="status" data-testid="notice">
+          <span [attr.data-testid]="n.kind === 'error' ? 'notice-error' : null">{{ n.text }}</span>
+          <button type="button" class="notice-close" aria-label="Dismiss" (click)="notices.dismiss(n.id)">×</button>
+        </div>
+      }
+    </div>
+    <router-outlet />
+  </main>
+</div>

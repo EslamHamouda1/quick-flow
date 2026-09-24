@@ -1,0 +1,26 @@
+
+> frontend@0.0.0 start
+> ng serve
+
+❯ Building...
+✔ Building...
+Initial chunk files | Names          |  Raw size
+main.js             | main           |  25.69 kB | 
+styles.css          | styles         |   3.22 kB | 
+chunk-VUJOFXKG.js   | -              | 987 bytes | 
+
+                    | Initial total  |  29.91 kB
+
+Lazy chunk files    | Names          |  Raw size
+chunk-UINAKQ6F.js   | dashboard-page |   2.12 kB | 
+chunk-A3GZ733L.js   | learning-page  |   2.11 kB | 
+chunk-LF2C22V7.js   | settings-page  |   2.09 kB | 
+chunk-RUN44QSX.js   | habits-page    |   2.04 kB | 
+chunk-AE6IPKG3.js   | plans-page     |   2.03 kB | 
+chunk-LJQG74XV.js   | tasks-page     |   2.02 kB | 
+
+Application bundle generation complete. [0.931 seconds] - 2026-09-24T18:23:01.292Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://localhost:4200/

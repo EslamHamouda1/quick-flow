@@ -1,0 +1,230 @@
+[
+  {
+    "route": "/dashboard",
+    "finalPath": "/dashboard",
+    "navMain": true,
+    "pageTitle": "Dashboard",
+    "links": [
+      {
+        "id": "nav-dashboard",
+        "text": "Dashboard",
+        "href": "/dashboard"
+      },
+      {
+        "id": "nav-tasks",
+        "text": "Tasks",
+        "href": "/tasks"
+      },
+      {
+        "id": "nav-habits",
+        "text": "Habits",
+        "href": "/habits"
+      },
+      {
+        "id": "nav-learning",
+        "text": "Learning Resources",
+        "href": "/learning"
+      },
+      {
+        "id": "nav-plans",
+        "text": "Todo Plans",
+        "href": "/plans"
+      },
+      {
+        "id": "nav-settings",
+        "text": "Settings",
+        "href": "/settings"
+      }
+    ]
+  },
+  {
+    "route": "/tasks",
+    "finalPath": "/tasks",
+    "navMain": true,
+    "pageTitle": "Tasks",
+    "links": [
+      {
+        "id": "nav-dashboard",
+        "text": "Dashboard",
+        "href": "/dashboard"
+      },
+      {
+        "id": "nav-tasks",
+        "text": "Tasks",
+        "href": "/tasks"
+      },
+      {
+        "id": "nav-habits",
+        "text": "Habits",
+        "href": "/habits"
+      },
+      {
+        "id": "nav-learning",
+        "text": "Learning Resources",
+        "href": "/learning"
+      },
+      {
+        "id": "nav-plans",
+        "text": "Todo Plans",
+        "href": "/plans"
+      },
+      {
+        "id": "nav-settings",
+        "text": "Settings",
+        "href": "/settings"
+      }
+    ]
+  },
+  {
+    "route": "/habits",
+    "finalPath": "/habits",
+    "navMain": true,
+    "pageTitle": "Habits",
+    "links": [
+      {
+        "id": "nav-dashboard",
+        "text": "Dashboard",
+        "href": "/dashboard"
+      },
+      {
+        "id": "nav-tasks",
+        "text": "Tasks",
+        "href": "/tasks"
+      },
+      {
+        "id": "nav-habits",
+        "text": "Habits",
+        "href": "/habits"
+      },
+      {
+        "id": "nav-learning",
+        "text": "Learning Resources",
+        "href": "/learning"
+      },
+      {
+        "id": "nav-plans",
+        "text": "Todo Plans",
+        "href": "/plans"
+      },
+      {
+        "id": "nav-settings",
+        "text": "Settings",
+        "href": "/settings"
+      }
+    ]
+  },
+  {
+    "route": "/learning",
+    "finalPath": "/learning",
+    "navMain": true,
+    "pageTitle": "Learning Resources",
+    "links": [
+      {
+        "id": "nav-dashboard",
+        "text": "Dashboard",
+        "href": "/dashboard"
+      },
+      {
+        "id": "nav-tasks",
+        "text": "Tasks",
+        "href": "/tasks"
+      },
+      {
+        "id": "nav-habits",
+        "text": "Habits",
+        "href": "/habits"
+      },
+      {
+        "id": "nav-learning",
+        "text": "Learning Resources",
+        "href": "/learning"
+      },
+      {
+        "id": "nav-plans",
+        "text": "Todo Plans",
+        "href": "/plans"
+      },
+      {
+        "id": "nav-settings",
+        "text": "Settings",
+        "href": "/settings"
+      }
+    ]
+  },
+  {
+    "route": "/plans",
+    "finalPath": "/plans",
+    "navMain": true,
+    "pageTitle": "Todo Plans",
+    "links": [
+      {
+        "id": "nav-dashboard",
+        "text": "Dashboard",
+        "href": "/dashboard"
+      },
+      {
+        "id": "nav-tasks",
+        "text": "Tasks",
+        "href": "/tasks"
+      },
+      {
+        "id": "nav-habits",
+        "text": "Habits",
+        "href": "/habits"
+      },
+      {
+        "id": "nav-learning",
+        "text": "Learning Resources",
+        "href": "/learning"
+      },
+      {
+        "id": "nav-plans",
+        "text": "Todo Plans",
+        "href": "/plans"
+      },
+      {
+        "id": "nav-settings",
+        "text": "Settings",
+        "href": "/settings"
+      }
+    ]
+  },
+  {
+    "route": "/settings",
+    "finalPath": "/settings",
+    "navMain": true,
+    "pageTitle": "Settings",
+    "links": [
+      {
+        "id": "nav-dashboard",
+        "text": "Dashboard",
+        "href": "/dashboard"
+      },
+      {
+        "id": "nav-tasks",
+        "text": "Tasks",
+        "href": "/tasks"
+      },
+      {
+        "id": "nav-habits",
+        "text": "Habits",
+        "href": "/habits"
+      },
+      {
+        "id": "nav-learning",
+        "text": "Learning Resources",
+        "href": "/learning"
+      },
+      {
+        "id": "nav-plans",
+        "text": "Todo Plans",
+        "href": "/plans"
+      },
+      {
+        "id": "nav-settings",
+        "text": "Settings",
+        "href": "/settings"
+      }
+    ]
+  }
+]

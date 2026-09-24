@@ -1,0 +1,8 @@
+{
+  "url": "/habits",
+  "title": "Habits",
+  "titleTag": "H1",
+  "active": [
+    "nav-habits class=active"
+  ]
+}

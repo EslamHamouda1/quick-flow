@@ -1,0 +1,8 @@
+{
+  "url": "/settings",
+  "title": "Settings",
+  "titleTag": "H1",
+  "active": [
+    "nav-settings class=active"
+  ]
+}

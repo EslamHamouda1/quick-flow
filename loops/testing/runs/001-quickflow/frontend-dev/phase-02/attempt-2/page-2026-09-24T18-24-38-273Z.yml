@@ -1,0 +1,17 @@
+- generic [ref=f5e3]:
+  - navigation "Main" [ref=f5e4]:
+    - generic [ref=f5e5]: QuickFlow
+    - link "Dashboard" [ref=f5e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f5e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f5e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f5e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f5e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f5e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f5e12]:
+    - heading "Todo Plans" [level=1] [ref=f5e14]

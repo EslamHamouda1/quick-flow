@@ -1,0 +1,3 @@
+17. [GET] http://localhost:4200/api/app-info => [200] OK
+
+Note: 18 static requests not shown, run with "static" option to see them.
