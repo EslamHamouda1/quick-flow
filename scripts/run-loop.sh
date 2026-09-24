@@ -249,8 +249,12 @@ run_session() {
   [[ -s "$err" ]] && cp "$err" "loops/$loop/runs/sessions/${sid:-nosid-$(date +%s)}.stderr.log"
   ctl human-read-by "$loop" "$milestone" "$sid"
   python3 scripts/progress-table.py >/dev/null || say "progress-table.py failed (see its output)"
+  local limit_msg
+  limit_msg=$(jq -r 'select(.is_error == true) | .result // empty' "$out" 2>/dev/null | grep -iE 'session limit|usage limit|rate limit' | head -1 || true)
   rm -rf "$snap" "$out" "$err"
   LAST_SESSION_ID="$sid"
+  # the account's usage limit is not the loop's fault: stop cleanly, rerun after the reset
+  [[ -n "$limit_msg" ]] && finish "usage_limit: $limit_msg (rerun the same command after the reset; state is kept)" 15
   if [[ "$result" == violation* ]]; then
     echo "$viol" >&2
     finish "violation: $loop $stage session $sid (restored: $(tr '\n' ';' <<<"$viol"))" 13
