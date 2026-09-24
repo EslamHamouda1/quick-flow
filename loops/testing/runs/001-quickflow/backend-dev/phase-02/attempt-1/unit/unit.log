@@ -1,7 +1,7 @@
-17:44:39.265 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.quickflow.web.info.AppInfoControllerTest]: AppInfoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-17:44:39.533 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.info.AppInfoControllerTest
-17:44:39.537 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.quickflow.web.info.AppInfoControllerTest]: AppInfoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-17:44:39.551 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.info.AppInfoControllerTest
+19:42:27.931 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.quickflow.web.info.AppInfoControllerTest]: AppInfoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:42:28.094 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.info.AppInfoControllerTest
+19:42:28.096 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.quickflow.web.info.AppInfoControllerTest]: AppInfoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:42:28.102 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.info.AppInfoControllerTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -12,22 +12,22 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-09-24T17:44:40.206+03:00  INFO 147919 --- [quickflow] [           main] c.q.web.info.AppInfoControllerTest       : Starting AppInfoControllerTest using Java 25.0.4.1 with PID 147919 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
-2026-09-24T17:44:40.208+03:00  INFO 147919 --- [quickflow] [           main] c.q.web.info.AppInfoControllerTest       : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T19:42:28.583+03:00  INFO 10112 --- [quickflow] [           main] c.q.web.info.AppInfoControllerTest       : Starting AppInfoControllerTest using Java 25.0.4.1 with PID 10112 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T19:42:28.584+03:00  INFO 10112 --- [quickflow] [           main] c.q.web.info.AppInfoControllerTest       : No active profile set, falling back to 1 default profile: "default"
 Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
 WARNING: A Java agent has been loaded dynamically (/home/eslam/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
-OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
-2026-09-24T17:44:41.832+03:00  INFO 147919 --- [quickflow] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-09-24T17:44:41.832+03:00  INFO 147919 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-09-24T17:44:41.834+03:00  INFO 147919 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
-2026-09-24T17:44:41.859+03:00  INFO 147919 --- [quickflow] [           main] c.q.web.info.AppInfoControllerTest       : Started AppInfoControllerTest in 2.203 seconds (process running for 5.196)
-2026-09-24T17:44:42.067+03:00  INFO 147919 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.web.ApiExceptionHandlerTest]: ApiExceptionHandlerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-09-24T17:44:42.083+03:00  INFO 147919 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.ApiExceptionHandlerTest
-2026-09-24T17:44:42.084+03:00  INFO 147919 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.web.ApiExceptionHandlerTest]: ApiExceptionHandlerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-09-24T17:44:42.089+03:00  INFO 147919 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.ApiExceptionHandlerTest
+2026-09-24T19:42:30.240+03:00  INFO 10112 --- [quickflow] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T19:42:30.241+03:00  INFO 10112 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T19:42:30.243+03:00  INFO 10112 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-24T19:42:30.271+03:00  INFO 10112 --- [quickflow] [           main] c.q.web.info.AppInfoControllerTest       : Started AppInfoControllerTest in 2.096 seconds (process running for 3.671)
+2026-09-24T19:42:30.491+03:00  INFO 10112 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.web.ApiExceptionHandlerTest]: ApiExceptionHandlerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T19:42:30.504+03:00  INFO 10112 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.ApiExceptionHandlerTest
+2026-09-24T19:42:30.504+03:00  INFO 10112 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.web.ApiExceptionHandlerTest]: ApiExceptionHandlerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T19:42:30.508+03:00  INFO 10112 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.ApiExceptionHandlerTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -38,16 +38,16 @@ OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader clas
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-09-24T17:44:42.111+03:00  INFO 147919 --- [quickflow] [           main] c.quickflow.web.ApiExceptionHandlerTest  : Starting ApiExceptionHandlerTest using Java 25.0.4.1 with PID 147919 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
-2026-09-24T17:44:42.111+03:00  INFO 147919 --- [quickflow] [           main] c.quickflow.web.ApiExceptionHandlerTest  : No active profile set, falling back to 1 default profile: "default"
-2026-09-24T17:44:42.263+03:00  INFO 147919 --- [quickflow] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-09-24T17:44:42.263+03:00  INFO 147919 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-09-24T17:44:42.263+03:00  INFO 147919 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-09-24T17:44:42.270+03:00  INFO 147919 --- [quickflow] [           main] c.quickflow.web.ApiExceptionHandlerTest  : Started ApiExceptionHandlerTest in 0.177 seconds (process running for 5.607)
-2026-09-24T17:44:42.461+03:00  INFO 147919 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.QuickflowApplicationTests]: QuickflowApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-09-24T17:44:42.464+03:00  INFO 147919 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.QuickflowApplicationTests
-2026-09-24T17:44:42.467+03:00  INFO 147919 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.QuickflowApplicationTests]: QuickflowApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-09-24T17:44:42.468+03:00  INFO 147919 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.QuickflowApplicationTests
+2026-09-24T19:42:30.528+03:00  INFO 10112 --- [quickflow] [           main] c.quickflow.web.ApiExceptionHandlerTest  : Starting ApiExceptionHandlerTest using Java 25.0.4.1 with PID 10112 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T19:42:30.528+03:00  INFO 10112 --- [quickflow] [           main] c.quickflow.web.ApiExceptionHandlerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T19:42:30.670+03:00  INFO 10112 --- [quickflow] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T19:42:30.670+03:00  INFO 10112 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T19:42:30.670+03:00  INFO 10112 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-24T19:42:30.676+03:00  INFO 10112 --- [quickflow] [           main] c.quickflow.web.ApiExceptionHandlerTest  : Started ApiExceptionHandlerTest in 0.164 seconds (process running for 4.077)
+2026-09-24T19:42:30.897+03:00  INFO 10112 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.QuickflowApplicationTests]: QuickflowApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T19:42:30.902+03:00  INFO 10112 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.QuickflowApplicationTests
+2026-09-24T19:42:30.905+03:00  INFO 10112 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.QuickflowApplicationTests]: QuickflowApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T19:42:30.906+03:00  INFO 10112 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.QuickflowApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -58,17 +58,17 @@ OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader clas
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-09-24T17:44:42.483+03:00  INFO 147919 --- [quickflow] [           main] c.quickflow.QuickflowApplicationTests    : Starting QuickflowApplicationTests using Java 25.0.4.1 with PID 147919 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
-2026-09-24T17:44:42.483+03:00  INFO 147919 --- [quickflow] [           main] c.quickflow.QuickflowApplicationTests    : No active profile set, falling back to 1 default profile: "default"
-2026-09-24T17:44:42.785+03:00  INFO 147919 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-09-24T17:44:42.797+03:00  INFO 147919 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
-2026-09-24T17:44:43.033+03:00  INFO 147919 --- [quickflow] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-09-24T17:44:43.087+03:00  INFO 147919 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
-2026-09-24T17:44:43.325+03:00  INFO 147919 --- [quickflow] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-09-24T17:44:43.358+03:00  INFO 147919 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-09-24T17:44:43.600+03:00  INFO 147919 --- [quickflow] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/quickflow user=
-2026-09-24T17:44:43.601+03:00  INFO 147919 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-09-24T17:44:43.672+03:00  INFO 147919 --- [quickflow] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-09-24T19:42:30.935+03:00  INFO 10112 --- [quickflow] [           main] c.quickflow.QuickflowApplicationTests    : Starting QuickflowApplicationTests using Java 25.0.4.1 with PID 10112 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T19:42:30.935+03:00  INFO 10112 --- [quickflow] [           main] c.quickflow.QuickflowApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T19:42:31.252+03:00  INFO 10112 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-24T19:42:31.264+03:00  INFO 10112 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
+2026-09-24T19:42:31.511+03:00  INFO 10112 --- [quickflow] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-24T19:42:31.572+03:00  INFO 10112 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-09-24T19:42:31.803+03:00  INFO 10112 --- [quickflow] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-24T19:42:31.831+03:00  INFO 10112 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-24T19:42:32.093+03:00  INFO 10112 --- [quickflow] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/quickflow user=
+2026-09-24T19:42:32.095+03:00  INFO 10112 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-24T19:42:32.169+03:00  INFO 10112 --- [quickflow] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [jdbc:h2:file:./data/quickflow]
 	Database driver: H2 JDBC Driver
 	Database dialect: H2Dialect
@@ -80,11 +80,11 @@ OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader clas
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-09-24T17:44:44.034+03:00  INFO 147919 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-09-24T17:44:44.091+03:00  INFO 147919 --- [quickflow] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-09-24T17:44:44.404+03:00  INFO 147919 --- [quickflow] [           main] c.quickflow.QuickflowApplicationTests    : Started QuickflowApplicationTests in 1.933 seconds (process running for 7.741)
-2026-09-24T17:44:44.405+03:00  WARN 147919 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
-2026-09-24T17:44:44.405+03:00  WARN 147919 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-09-24T19:42:32.522+03:00  INFO 10112 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-24T19:42:32.583+03:00  INFO 10112 --- [quickflow] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T19:42:32.916+03:00  INFO 10112 --- [quickflow] [           main] c.quickflow.QuickflowApplicationTests    : Started QuickflowApplicationTests in 2.007 seconds (process running for 6.316)
+2026-09-24T19:42:32.917+03:00  WARN 10112 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-09-24T19:42:32.917+03:00  WARN 10112 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -95,21 +95,21 @@ OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader clas
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-09-24T17:44:45.237+03:00  INFO 148056 --- [quickflow] [           main] com.quickflow.QuickflowApplication       : Starting QuickflowApplication using Java 25.0.4.1 with PID 148056 (/home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend/target/classes started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
-2026-09-24T17:44:45.240+03:00  INFO 148056 --- [quickflow] [           main] com.quickflow.QuickflowApplication       : The following 1 profile is active: "openapi"
-2026-09-24T17:44:45.701+03:00  INFO 148056 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-09-24T17:44:45.712+03:00  INFO 148056 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
-2026-09-24T17:44:46.015+03:00  INFO 148056 --- [quickflow] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 18080 (http)
-2026-09-24T17:44:46.023+03:00  INFO 148056 --- [quickflow] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-09-24T17:44:46.024+03:00  INFO 148056 --- [quickflow] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
-2026-09-24T17:44:46.048+03:00  INFO 148056 --- [quickflow] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 782 ms
-2026-09-24T17:44:46.155+03:00  INFO 148056 --- [quickflow] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-09-24T17:44:46.180+03:00  INFO 148056 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
-2026-09-24T17:44:46.382+03:00  INFO 148056 --- [quickflow] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-09-24T17:44:46.399+03:00  INFO 148056 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-09-24T17:44:46.489+03:00  INFO 148056 --- [quickflow] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:openapi user=SA
-2026-09-24T17:44:46.489+03:00  INFO 148056 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-09-24T17:44:46.518+03:00  INFO 148056 --- [quickflow] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-09-24T19:42:33.894+03:00  INFO 10227 --- [quickflow] [           main] com.quickflow.QuickflowApplication       : Starting QuickflowApplication using Java 25.0.4.1 with PID 10227 (/home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend/target/classes started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T19:42:33.897+03:00  INFO 10227 --- [quickflow] [           main] com.quickflow.QuickflowApplication       : The following 1 profile is active: "openapi"
+2026-09-24T19:42:34.381+03:00  INFO 10227 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-24T19:42:34.393+03:00  INFO 10227 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+2026-09-24T19:42:34.704+03:00  INFO 10227 --- [quickflow] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 18080 (http)
+2026-09-24T19:42:34.712+03:00  INFO 10227 --- [quickflow] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-24T19:42:34.712+03:00  INFO 10227 --- [quickflow] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-24T19:42:34.736+03:00  INFO 10227 --- [quickflow] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 805 ms
+2026-09-24T19:42:34.846+03:00  INFO 10227 --- [quickflow] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-24T19:42:34.874+03:00  INFO 10227 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-09-24T19:42:35.084+03:00  INFO 10227 --- [quickflow] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-24T19:42:35.100+03:00  INFO 10227 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-24T19:42:35.191+03:00  INFO 10227 --- [quickflow] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:openapi user=SA
+2026-09-24T19:42:35.192+03:00  INFO 10227 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-24T19:42:35.221+03:00  INFO 10227 --- [quickflow] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [jdbc:h2:mem:openapi]
 	Database driver: H2 JDBC Driver
 	Database dialect: H2Dialect
@@ -121,19 +121,19 @@ OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader clas
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-09-24T17:44:46.708+03:00  INFO 148056 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-09-24T17:44:46.720+03:00  INFO 148056 --- [quickflow] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-09-24T17:44:47.069+03:00  INFO 148056 --- [quickflow] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 18080 (http) with context path '/'
-2026-09-24T17:44:47.074+03:00  INFO 148056 --- [quickflow] [           main] com.quickflow.QuickflowApplication       : Started QuickflowApplication in 2.048 seconds (process running for 2.345)
-2026-09-24T17:44:47.076+03:00  WARN 148056 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
-2026-09-24T17:44:47.077+03:00  WARN 148056 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
-2026-09-24T17:44:47.355+03:00  INFO 148056 --- [quickflow] [io-18080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-09-24T17:44:47.356+03:00  INFO 148056 --- [quickflow] [io-18080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-09-24T17:44:47.357+03:00  INFO 148056 --- [quickflow] [io-18080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-09-24T17:44:47.595+03:00  INFO 148056 --- [quickflow] [io-18080-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 207 ms
-2026-09-24T17:44:47.632+03:00  INFO 148056 --- [quickflow] [on(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2026-09-24T17:44:47.637+03:00  INFO 148056 --- [quickflow] [on(2)-127.0.0.1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
-2026-09-24T17:44:47.643+03:00  INFO 148056 --- [quickflow] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
-2026-09-24T17:44:47.647+03:00  INFO 148056 --- [quickflow] [on(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-09-24T17:44:47.649+03:00  INFO 148056 --- [quickflow] [on(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-09-24T17:44:47.652+03:00  INFO 148056 --- [quickflow] [on(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-09-24T19:42:35.413+03:00  INFO 10227 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-24T19:42:35.425+03:00  INFO 10227 --- [quickflow] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T19:42:35.809+03:00  INFO 10227 --- [quickflow] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 18080 (http) with context path '/'
+2026-09-24T19:42:35.814+03:00  INFO 10227 --- [quickflow] [           main] com.quickflow.QuickflowApplication       : Started QuickflowApplication in 2.159 seconds (process running for 2.475)
+2026-09-24T19:42:35.817+03:00  WARN 10227 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-09-24T19:42:35.817+03:00  WARN 10227 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-09-24T19:42:35.970+03:00  INFO 10227 --- [quickflow] [io-18080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-24T19:42:35.970+03:00  INFO 10227 --- [quickflow] [io-18080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-24T19:42:35.972+03:00  INFO 10227 --- [quickflow] [io-18080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-09-24T19:42:36.159+03:00  INFO 10227 --- [quickflow] [io-18080-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 161 ms
+2026-09-24T19:42:36.186+03:00  INFO 10227 --- [quickflow] [on(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2026-09-24T19:42:36.188+03:00  INFO 10227 --- [quickflow] [on(2)-127.0.0.1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-24T19:42:36.192+03:00  INFO 10227 --- [quickflow] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-24T19:42:36.195+03:00  INFO 10227 --- [quickflow] [on(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T19:42:36.196+03:00  INFO 10227 --- [quickflow] [on(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-09-24T19:42:36.198+03:00  INFO 10227 --- [quickflow] [on(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

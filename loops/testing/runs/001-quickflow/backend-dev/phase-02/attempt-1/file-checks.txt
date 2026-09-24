@@ -1,0 +1,17 @@
+## C6 / C7: surefire reports from the runner's unit run (unit/surefire/)
+com.quickflow.QuickflowApplicationTests         tests=1 failures=0 errors=0 skipped=0 (contextLoads)
+com.quickflow.web.ApiExceptionHandlerTest       tests=6 failures=0 errors=0 skipped=0
+  validationExceptionIs400ProblemWithErrors, notFoundIs404Problem, conflictIs409Problem,
+  malformedJsonIs400Problem, unknownEnumValueIs400ProblemWithField, beanValidationIs400ProblemWithErrors
+com.quickflow.domain.common.TimeServiceTest     tests=5 failures=0 errors=0 skipped=0
+  todayIsCairoDate, todayIsNextDayAt2330Utc, nowHasCairoOffset, zoneIsAfricaCairo, toOffsetRendersInstantInCairo
+com.quickflow.web.info.AppInfoControllerTest    tests=1 failures=0 errors=0 skipped=0
+  getAppInfoReturnsZoneAndNow
+<failure>/<error> elements in all four files: 0
+
+## Domain coverage (unit/coverage/jacoco.csv, package com.quickflow.domain.common = the only package under com/quickflow/domain)
+FieldError 0 missed / 1 covered, TimeService 0/7, ValidationException 0/6, NotFoundException 0/2, ConflictException 0/2
+=> 18/18 lines = 1.00 (threshold min_line 0.80)
+unit-result.json says "coverage skipped: no classes in com/quickflow/domain": the runner looks for a
+jacoco <package> named exactly com/quickflow/domain (scripts/lib/loopctl.py:656) and does not
+count sub-packages such as com/quickflow/domain/common.

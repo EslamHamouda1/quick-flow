@@ -65,13 +65,14 @@
         "phase-01"
       ],
       "attempt": 1,
-      "status": "ready_for_test",
+      "status": "done",
       "approval": {
         "decision": "auto",
         "at": "2026-09-24T17:39:08+03:00",
         "notes": ""
       },
-      "block_reason": null
+      "block_reason": null,
+      "verified_by": "6a218858-e904-4e53-ae49-132477a91b2c"
     },
     {
       "phase": "phase-03",
