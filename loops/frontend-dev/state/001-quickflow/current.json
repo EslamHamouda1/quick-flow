@@ -2,5 +2,5 @@
   "feature_dir": "specs/001-quickflow-frontend",
   "current_phase": "phase-00",
   "loop_status": "running",
-  "stop_reason": "harness: 3 sessions in a row ended in error (last: 5ccaf165-0b2b-40c9-8499-f2660889bb0f)"
+  "stop_reason": "until_reached: phase-00"
 }
