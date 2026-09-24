@@ -129,7 +129,7 @@ start_servers() {
   for l in "$@"; do
     cmd=$(ctl cfg "layers.$l.run_test" "")
     [[ -n "$cmd" ]] || continue
-    setsid bash -c "$cmd" >"$dir/server-$l.log" 2>&1 &
+    setsid bash -c "$cmd" >"$dir/server-$l.log" 2>&1 </dev/null &
     SERVER_PIDS+=($!)
   done
   for l in "$@"; do
@@ -163,7 +163,7 @@ unit_tests() {
     echo none; return
   fi
   set +e
-  timeout "$UNIT_TIMEOUT" bash -c "$cmd" >"$out/unit-run.log" 2>&1
+  timeout "$UNIT_TIMEOUT" bash -c "$cmd" >"$out/unit-run.log" 2>&1 </dev/null
   ec=$?
   set -e
   ((ec == 124)) && to=1
@@ -223,7 +223,9 @@ run_session() {
   say "session: $loop $stage $milestone (attempt $attempt)"
   started=$(date -Iseconds)
   set +e
-  timeout "$SESSION_TIMEOUT" claude -p "$prompt" \
+  # --foreground keeps claude in the runner's process group: without it, claude touching the
+  # terminal makes job control stop the whole runner (seen in the first dry run)
+  timeout --foreground "$SESSION_TIMEOUT" claude -p "$prompt" \
     --output-format json --permission-mode acceptEdits \
     --model "$MODEL" --max-turns "$MAX_TURNS" \
     --allowedTools "$allow" --disallowedTools "$deny" "${EXTRA_ARGS[@]}" \
@@ -432,7 +434,7 @@ maybe_scaffold() {
   if [[ ! -d "$dir" && -n "$cmd" ]]; then
     say "scaffolding $dir (runner-run: $cmd)"
     mkdir -p "loops/$LOOP/runs/$FEATURE"
-    bash -c "$cmd" >"loops/$LOOP/runs/$FEATURE/scaffold.log" 2>&1 || harness_fail "scaffold failed, see loops/$LOOP/runs/$FEATURE/scaffold.log"
+    bash -c "$cmd" >"loops/$LOOP/runs/$FEATURE/scaffold.log" 2>&1 </dev/null || harness_fail "scaffold failed, see loops/$LOOP/runs/$FEATURE/scaffold.log"
     ctl log-action "$LOOP" "runner scaffolded $dir"
   fi
 }
