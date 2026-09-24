@@ -1,0 +1,14 @@
+{"feature": "001-quickflow", "steps": [
+  {"loop": "backend-dev", "story_id": "US1", "goal": "Manage tasks"},
+  {"loop": "frontend-dev", "story_id": "US1", "goal": "Manage tasks"},
+  {"loop": "backend-dev", "story_id": "US2", "goal": "Track recurring habits"},
+  {"loop": "frontend-dev", "story_id": "US2", "goal": "Track recurring habits"},
+  {"loop": "backend-dev", "story_id": "US3", "goal": "Track learning resources with milestones and notes"},
+  {"loop": "frontend-dev", "story_id": "US3", "goal": "Track learning resources with milestones and notes"},
+  {"loop": "backend-dev", "story_id": "US4", "goal": "Build and follow Todo Plans"},
+  {"loop": "frontend-dev", "story_id": "US4", "goal": "Build and follow Todo Plans"},
+  {"loop": "backend-dev", "story_id": "US5", "goal": "See everything on the Dashboard"},
+  {"loop": "frontend-dev", "story_id": "US5", "goal": "See everything on the Dashboard"},
+  {"loop": "backend-dev", "story_id": "US6", "goal": "Adjust settings"},
+  {"loop": "frontend-dev", "story_id": "US6", "goal": "Adjust settings"}
+]}
