@@ -9,7 +9,8 @@
 | backend-dev:001-quickflow:phase-01 | 2026-09-24T17:28:15+03:00 | 2026-09-24T17:37:22+03:00 | 0h09m07s | 0h08m24s | 4 | 1 | 142 | 3788375 | 38402 | 2.7964 | 3678da3d-8b4f-417b-82a7-a139dcacfe6f 10a107ef-342c-4a23-85d9-f4fc1d6fdd7f 52275b8d-3ef0-4889-a687-3438ac1031be e21e79b4-f64d-4b30-9692-88f460702b84 | 52275b8d-3ef0-4889-a687-3438ac1031be | d8e5e83 | success |
 | backend-dev:001-quickflow:phase-02 | 2026-09-24T17:37:25+03:00 | 2026-09-24T19:46:03+03:00 | 2h08m38s | 0h07m49s | 4 | 1 | 118 | 3792025 | 43469 | 4.2047 | c0539463-469b-45f5-9b58-bd0ce255dce5 9b6e834a-137f-4416-9c43-f7684b718331 6a218858-e904-4e53-ae49-132477a91b2c e3053691-bbe0-4aae-b96d-4a4590781dd1 | 6a218858-e904-4e53-ae49-132477a91b2c | 9d022c0 | success |
 | backend-dev:001-quickflow:phase-03 | 2026-09-24T21:38:54+03:00 | 2026-09-24T21:59:34+03:00 | 0h20m40s | 0h15m37s | 4 | 1 | 180 | 8096490 | 95485 | 7.9252 | 2b7f38a4-f149-49c3-b47f-0ebbb94fd66d 6970c308-dac6-4961-b16e-54d699153a31 5279a56e-ed6d-41ed-a635-7a9211ba22a2 14afc922-fd61-4f6f-9756-589ef006ca04 | 5279a56e-ed6d-41ed-a635-7a9211ba22a2 | 4f731ba | success |
-| **Total** |  |  |  | 0h49m24s | 14 |  | 600 | 23314708 | 289941 | 20.7707 |  |  |  |  |
+| backend-dev:001-quickflow:phase-04 | 2026-09-24T22:10:49+03:00 | 2026-09-24T22:28:51+03:00 | 0h18m02s | 0h17m31s | 4 | 1 | 256 | 12697288 | 105514 | 8.9016 | a86b8a4b-2523-4d2e-8b40-200ca1150256 245fac4e-3a3b-4d90-bd21-7936f90f697e 20927e47-47a3-4f69-b1bb-43be78dd92e3 d7f5cf05-dcc2-48dd-9bff-690cb3194c15 | 20927e47-47a3-4f69-b1bb-43be78dd92e3 |  | success |
+| **Total** |  |  |  | 1h06m55s | 18 |  | 856 | 36011996 | 395455 | 29.6723 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -91,3 +92,16 @@
 - 2026-09-24T21:50:20+03:00 001-quickflow phase-03: marked T018-T028 [~] in phase-03.md and tasks.json, [X] in tasks.md; set phase-03 ready_for_test
 - 2026-09-24T21:58:54+03:00 test 001-quickflow phase-03 attempt 1: pass (verified_by 5279a56e-ed6d-41ed-a635-7a9211ba22a2)
 - 2026-09-24T22:00:00+03:00 001-quickflow phase-03: close check ok (T018-T028 [X] in tasks.md, verdict pass for attempt 1); marked T018-T028 [x] in phase-03.md and tasks.json; set phase-03 done
+- 2026-09-24T22:12:50+03:00 001-quickflow phase-04: wrote outputs/001-quickflow/phase-04-review.md (13 tasks T029-T041, tasks.md Phase 4 matches phase-04.md, assumptions A-1..A-10, no open questions); set phase-04 awaiting_approval
+- 2026-09-24T22:13:02+03:00 gate 001-quickflow phase-04: approved (auto)
+- 2026-09-24T22:14:30+03:00 001-quickflow phase-04: tasks.md Phase 4 already matches phase-04.md (no sync changes); no reviewer notes or questions; checklists all checked; set phase-04 in_progress
+- 2026-09-24T22:16:30+03:00 001-quickflow phase-04: T029-T033 wrote HabitTest (9), HabitProgressCalculatorTest (13), HabitServiceTest (23), persistence/HabitRepositoryTest (5), web/habit/HabitControllerTest (14) (parallel subagents, before the code they test)
+- 2026-09-24T22:17:00+03:00 001-quickflow phase-04: T034 wrote domain/habit/HabitFrequency.java (@Schema(enumAsRef)); T035 Habit.java (BR-6, FR-03.1/3.3, A-1, A-2, A-3); written by the parent (single-task groups)
+- 2026-09-24T22:17:10+03:00 001-quickflow phase-04: T038 wrote HabitProgress.java and HabitProgressCalculator.java (FR-04.5, A-6, A-7); T036 HabitCompletion.java (unique habit_id+completion_date); T037 HabitRepository.java, HabitCompletionRepository.java
+- 2026-09-24T22:17:20+03:00 001-quickflow phase-04: T039 wrote HabitView.java and HabitService.java (A-4 check order, saveAndFlush + DataIntegrityViolationException -> ConflictException, A-5, A-8); T040 web/habit request/response records; T041 HabitController.java (10 operations, optional body on completeHabit)
+- 2026-09-24T22:18:00+03:00 001-quickflow phase-04: L.test run 1: 126 tests, 2 errors in HabitRepositoryTest (derived query path HabitId resolved to HabitCompletion.getHabitId() instead of habit.id); fixed with explicit @Query JPQL in HabitCompletionRepository
+- 2026-09-24T22:18:40+03:00 001-quickflow phase-04: L.test run 2 (includes L.build package): 126 tests, 0 failures, 0 errors; jacoco check met (report lines 373/388); log in runs/001-quickflow/phase-04-build.log
+- 2026-09-24T22:19:00+03:00 001-quickflow phase-04: openapi vs contract: 10 habit operations, params, codes, schemas Habit/HabitWrite/HabitFrequency/HabitCompletion/HabitCompletionCreate match; known differences (no 4xx responses, description minLength 0, currentStreak format int32, servers url) logged; task operations unchanged; copied backend/target/openapi.json to loops/backend-dev/outputs/openapi.json
+- 2026-09-24T22:19:30+03:00 001-quickflow phase-04: marked T029-T041 [~] in phase-04.md and tasks.json, [X] in tasks.md; set phase-04 ready_for_test
+- 2026-09-24T22:28:10+03:00 test 001-quickflow phase-04 attempt 1: pass (verified_by 20927e47-47a3-4f69-b1bb-43be78dd92e3)
+- 2026-09-24T22:28:44+03:00 001-quickflow phase-04: close check ok (T029-T041 [X] in tasks.md, verdict pass attempt 1); turned [~] into [x] in phase-04.md and tasks.json; set phase-04 done

@@ -6,14 +6,14 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **feature:** 001-quickflow
 - **loop:** backend-dev
 - **mode:** dev
-- **stops_at:** US1
+- **stops_at:** US2
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260924T210302-19822
-- **runner_nonce:** 9c5d9619612612e66e23963a
-- **orchestrator_step:** backend-dev:US1
-- **current_step:** close phase-03
+- **runner_nonce:** 9d6eec326528f21515ba8c18
+- **orchestrator_step:** backend-dev:US2
+- **current_step:** close phase-04
 
 ## Current orchestrator step
 - loop: backend-dev
-- story: US1
-- goal: Manage tasks
+- story: US2
+- goal: Track recurring habits

@@ -1,0 +1,137 @@
+phase-04 (backend-dev) attempt 1: curl evidence.
+phase-04-verify.sh could not be executed (the session's permission check asked for approval), so its
+checks were run as direct curl calls against the same URLs with the same inputs.
+Each request's full raw response (status line, headers, body) is in `http/<name>.http`; long request
+bodies are in `req/*.json` (C2-150.json 181 bytes = 150-char name, C2-151.json 182 bytes = 151-char
+name, C3-2000.json 2055 bytes = 2000-char description, C3-2001.json 2056 bytes = 2001-char description).
+Every request is labelled by its URL fragment (#C<n>-...). The live swagger is `C13-api-docs.json`.
+Today (app time zone, GET /api/app-info): 2026-09-24 (Thursday), run 22:22–22:27 +03:00.
+Week start (Monday, A-12) = 2026-09-21. Habit ids: C1 = 1, 2; C2-150 = 3; C3-2000 = 4; C4 = 5, 6, 7;
+C5 = 8; C6 = 9; C7 = 10 (daily), 11 (gap); C8 = 12 (weekly), 13 (last Sunday); C9 = 14; C10 = 15;
+C11 = 16; C12 = 17.
+
+=== GET http://localhost:8080/api/app-info
+{"timeZone":"Africa/Cairo","now":"2026-09-24T22:22:41.81958723+03:00"}
+
+--- C1 (printed to the session, not saved to http/)
+HTTP/1.1 201
+Content-Type: application/json
+Content-Length: 207
+Date: Thu, 24 Sep 2026 19:23:00 GMT
+
+{"id":1,"name":"C1 Read H1","description":"20 pages","frequency":"DAILY","createdAt":"2026-09-24T22:23:00.495642872+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+=== POST http://localhost:8080/api/habits#C1 -> status 201 (sent 66 bytes)
+
+HTTP/1.1 200
+Content-Type: application/json
+Content-Length: 204
+Date: Thu, 24 Sep 2026 19:23:00 GMT
+
+{"id":1,"name":"C1 Read H1","description":"20 pages","frequency":"DAILY","createdAt":"2026-09-24T22:23:00.495643+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+=== GET http://localhost:8080/api/habits/1#C1-get -> status 200 (sent 0 bytes)
+
+HTTP/1.1 201
+Content-Type: application/json
+Content-Length: 204
+Date: Thu, 24 Sep 2026 19:23:00 GMT
+
+{"id":2,"name":"C1 Weekly H1","description":null,"frequency":"WEEKLY","createdAt":"2026-09-24T22:23:00.624975519+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+=== POST http://localhost:8080/api/habits#C1-weekly -> status 201 (sent 44 bytes)
+
+HTTP/1.1 200
+Content-Type: application/json
+Content-Length: 201
+Date: Thu, 24 Sep 2026 19:23:00 GMT
+
+{"id":2,"name":"C1 Weekly H1","description":null,"frequency":"WEEKLY","createdAt":"2026-09-24T22:23:00.624976+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+=== GET http://localhost:8080/api/habits/2#C1-weekly-get -> status 200 (sent 0 bytes)
+
+--- C4 creates (printed to the session): POST /api/habits #C4-new-nobody -> 201 id 5, #C4-new-empty -> 201 id 6,
+#C4-new-dated -> 201 id 7, #C5-new -> 201 id 8, #C6-new -> 201 id 9 (each active, streak 0).
+
+--- status lines of every other request (curl -w), in order
+=== POST http://localhost:8080/api/habits#C2-empty -> status 400 (sent 31 bytes)
+=== POST http://localhost:8080/api/habits#C2-blank -> status 400 (sent 34 bytes)
+=== POST http://localhost:8080/api/habits#C2-missing -> status 400 (sent 39 bytes)
+=== POST http://localhost:8080/api/habits#C2-151 -> status 400 (sent 182 bytes)
+=== POST http://localhost:8080/api/habits#C2-150 -> status 201 (sent 181 bytes)
+=== PUT http://localhost:8080/api/habits/1#C2-put-empty -> status 400 (sent 31 bytes)
+=== PUT http://localhost:8080/api/habits/1#C2-put-151 -> status 400 (sent 182 bytes)
+=== POST http://localhost:8080/api/habits#C3-2001 -> status 400 (sent 2056 bytes)
+=== POST http://localhost:8080/api/habits#C3-2000 -> status 201 (sent 2055 bytes)
+=== POST http://localhost:8080/api/habits#C3-nofreq -> status 400 (sent 21 bytes)
+=== POST http://localhost:8080/api/habits#C3-monthly -> status 400 (sent 43 bytes)
+=== GET http://localhost:8080/api/habits/1#C2-get-unchanged -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/5/completions#C4-nobody -> status 201 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/6/completions#C4-empty -> status 201 (sent 2 bytes)
+=== POST http://localhost:8080/api/habits/7/completions#C4-dated -> status 201 (sent 21 bytes)
+=== GET http://localhost:8080/api/habits/5/completions#C4-list5 -> status 200 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits/6/completions#C4-list6 -> status 200 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits/7/completions#C4-list7 -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/8/completions#C5-first-today -> status 201 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/8/completions#C5-second-today-nobody -> status 409 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/8/completions#C5-second-today-dated -> status 409 (sent 21 bytes)
+=== POST http://localhost:8080/api/habits/8/completions#C5-yesterday-first -> status 201 (sent 21 bytes)
+=== POST http://localhost:8080/api/habits/8/completions#C5-yesterday-second -> status 409 (sent 21 bytes)
+=== GET http://localhost:8080/api/habits/8/completions#C5-list -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/9/completions#C6-tomorrow -> status 400 (sent 21 bytes)
+=== GET http://localhost:8080/api/habits/9/completions#C6-list -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits#C7-new -> status 201 (sent 42 bytes)
+=== POST http://localhost:8080/api/habits#C7-gap-new -> status 201 (sent 40 bytes)
+=== POST http://localhost:8080/api/habits#C8-new -> status 201 (sent 44 bytes)
+=== POST http://localhost:8080/api/habits#C8b-new -> status 201 (sent 44 bytes)
+=== POST http://localhost:8080/api/habits/10/completions#C7-yesterday -> status 201 (sent 21 bytes)
+=== POST http://localhost:8080/api/habits/10/completions#C7-2-days-ago -> status 201 (sent 21 bytes)
+=== GET http://localhost:8080/api/habits/10#C7-get-yesterday-and-2-days-ago -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/10/completions#C7-today -> status 201 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits/10#C7-get-after-today -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/11/completions#C7-gap-yesterday -> status 201 (sent 21 bytes)
+=== POST http://localhost:8080/api/habits/11/completions#C7-gap-3-days-ago -> status 201 (sent 21 bytes)
+=== GET http://localhost:8080/api/habits/11#C7-get-gap -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/12/completions#C8-this-monday -> status 201 (sent 21 bytes)
+=== POST http://localhost:8080/api/habits/12/completions#C8-last-monday -> status 201 (sent 21 bytes)
+=== POST http://localhost:8080/api/habits/12/completions#C8-monday-2-weeks-ago -> status 201 (sent 21 bytes)
+=== GET http://localhost:8080/api/habits/12#C8-get -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/13/completions#C8b-last-sunday -> status 201 (sent 21 bytes)
+=== GET http://localhost:8080/api/habits/13#C8b-get -> status 200 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits#C7-C8-list -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits#C9-new -> status 201 (sent 59 bytes)
+=== POST http://localhost:8080/api/habits#C10-new -> status 201 (sent 43 bytes)
+=== POST http://localhost:8080/api/habits#C11-new -> status 201 (sent 44 bytes)
+=== POST http://localhost:8080/api/habits#C12-new -> status 201 (sent 42 bytes)
+=== PUT http://localhost:8080/api/habits/14#C9-put -> status 200 (sent 69 bytes)
+=== GET http://localhost:8080/api/habits/14#C9-get -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/15/completions#C10-yesterday -> status 201 (sent 21 bytes)
+=== POST http://localhost:8080/api/habits/15/deactivate#C10-deactivate -> status 200 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits?active=true#C10-active-true -> status 200 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits?active=false#C10-active-false -> status 200 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits#C10-all -> status 200 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits/15/completions#C10-history -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/15/completions#C10-complete-inactive -> status 409 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/15/completions#C10-complete-inactive-past -> status 409 (sent 21 bytes)
+=== GET http://localhost:8080/api/habits/15/completions#C10-history-after -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/15/activate#C10-activate -> status 200 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits?active=true#C10-active-true-after -> status 200 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/15/completions#C10-complete-after-activate -> status 201 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/16/completions#C11-today -> status 201 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/16/completions#C11-yesterday -> status 201 (sent 21 bytes)
+=== GET http://localhost:8080/api/habits/16/completions#C11-precondition -> status 200 (sent 0 bytes)
+=== DELETE http://localhost:8080/api/habits/16#C11-delete -> status 204 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits/16#C11-get-after -> status 404 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits/16/completions#C11-completions-after -> status 404 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits#C11-list-all -> status 200 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits?active=true#C11-list-active -> status 200 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits?active=false#C11-list-inactive -> status 200 (sent 0 bytes)
+=== PUT http://localhost:8080/api/habits/16#C11-put -> status 404 (sent 32 bytes)
+=== POST http://localhost:8080/api/habits/16/deactivate#C11-deactivate -> status 404 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/16/activate#C11-activate -> status 404 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/16/completions#C11-complete -> status 404 (sent 0 bytes)
+=== DELETE http://localhost:8080/api/habits/16/completions/2026-09-24#C11-undo -> status 404 (sent 0 bytes)
+=== DELETE http://localhost:8080/api/habits/16#C11-delete-again -> status 404 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits/999999#C11-unknown -> status 404 (sent 0 bytes)
+=== POST http://localhost:8080/api/habits/17/completions#C12-today -> status 201 (sent 0 bytes)
+=== DELETE http://localhost:8080/api/habits/17/completions/2026-09-24#C12-undo -> status 204 (sent 0 bytes)
+=== GET http://localhost:8080/api/habits/17/completions#C12-list-after -> status 200 (sent 0 bytes)
+=== DELETE http://localhost:8080/api/habits/17/completions/2026-09-24#C12-undo-again -> status 404 (sent 0 bytes)
+=== GET http://localhost:8080/v3/api-docs -> status 200   (saved as C13-api-docs.json)
+=== cmp backend/target/openapi.json loops/backend-dev/outputs/openapi.json -> identical

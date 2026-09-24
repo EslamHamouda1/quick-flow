@@ -1,0 +1,35 @@
+# phase-04 build log (summary; the session couldn't redirect Maven output to a file)
+# commands: cd backend && ./mvnw -q verify -Dmaven.test.failure.ignore=true   (L.test, includes package = L.build)
+
+## run 1 (2026-09-24T22:17+03:00)
+compile: ok (main + test)
+Tests run: 126, Failures: 0, Errors: 2, Skipped: 0
+[ERROR] HabitRepositoryTest.br14_deletingHabitDeletesCompletions:95 » BadJpqlGrammar UnknownPathException:
+        Could not resolve attribute 'habitId' of 'com.quickflow.domain.habit.HabitCompletion'
+        [SELECT h FROM HabitCompletion h WHERE h.habitId = :habitId ORDER BY h.completionDate desc]
+[ERROR] HabitRepositoryTest.fr04_5_completionDatesOfOneHabitOnly:137 » same cause
+cause: the derived query name `HabitId` resolved to the getter HabitCompletion.getHabitId() instead of habit.id.
+fix: explicit @Query JPQL (c.habit.id) for existsByHabitIdAndCompletionDate, findByHabitIdOrderByCompletionDateDesc,
+     findByHabitIdAndCompletionDate in HabitCompletionRepository.
+
+## run 2 (2026-09-24T22:18+03:00)
+compile: ok
+Tests run: 126, Failures: 0, Errors: 0, Skipped: 0
+  HabitTest 9, HabitProgressCalculatorTest 13, HabitServiceTest 23, HabitRepositoryTest 5, HabitControllerTest 14,
+  TaskTest 15, TaskServiceTest 12, TaskRepositoryTest 10, TaskControllerTest 12, TimeServiceTest 5,
+  ApiExceptionHandlerTest 6, AppInfoControllerTest 1, QuickflowApplicationTests 1
+jacoco check (domain bundle, LINE >= 0.80): passed (build did not fail); jacoco.xml report total LINE missed=15 covered=373
+openapi: backend/target/openapi.json generated (10950 bytes) and copied to loops/backend-dev/outputs/openapi.json
+
+## openapi vs contracts/openapi.yaml (habit operations)
+same: 10 operationIds (listHabits, createHabit, getHabit, updateHabit, deleteHabit, deactivateHabit, activateHabit,
+      listHabitCompletions, completeHabit, undoHabitCompletion), paths, `active` boolean query param, `date` path param
+      (string/date), 201 for createHabit/completeHabit, 204 for deleteHabit/undoHabitCompletion, schemas Habit, HabitWrite,
+      HabitFrequency ($ref), HabitCompletion, HabitCompletionCreate with the contract's required lists and nullable types.
+differences (known kind, logged, not changed):
+- 400/404/409 responses are not generated (they come from ApiExceptionHandler), as in phase-03.
+- HabitWrite.description has minLength 0 (from @Size), as for tasks.
+- Habit.currentStreak has format int32 (contract: integer, minimum 0 without format).
+- completeHabit requestBody has no `required` key (OpenAPI default false = contract's required: false).
+- servers url is the openapi profile's http://localhost:18080.
+task operations: unchanged.

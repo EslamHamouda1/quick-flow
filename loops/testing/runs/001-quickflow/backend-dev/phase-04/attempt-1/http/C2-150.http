@@ -1,0 +1,6 @@
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 341
+Date: Thu, 24 Sep 2026 19:24:45 GMT
+
+{"id":3,"name":"nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn","description":null,"frequency":"DAILY","createdAt":"2026-09-24T22:24:45.104266135+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}

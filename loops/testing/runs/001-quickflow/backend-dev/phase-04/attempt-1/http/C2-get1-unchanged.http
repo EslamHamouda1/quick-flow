@@ -1,0 +1,6 @@
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 204
+Date: Thu, 24 Sep 2026 19:24:45 GMT
+
+{"id":1,"name":"C1 Read H1","description":"20 pages","frequency":"DAILY","createdAt":"2026-09-24T22:23:00.495643+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}

@@ -1,0 +1,6 @@
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 198
+Date: Thu, 24 Sep 2026 19:25:27 GMT
+
+{"id":11,"name":"C7 gap H1","description":null,"frequency":"DAILY","createdAt":"2026-09-24T22:25:18.539723+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":1}

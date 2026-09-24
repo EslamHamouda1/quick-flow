@@ -1,0 +1,6 @@
+HTTP/1.1 409 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 19:25:11 GMT
+
+{"detail":"Habit 8 is already complete for 2026-09-23","instance":"/api/habits/8/completions","status":409,"title":"Conflict"}

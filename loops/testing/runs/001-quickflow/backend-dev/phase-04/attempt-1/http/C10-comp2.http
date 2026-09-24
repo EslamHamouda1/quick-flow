@@ -1,0 +1,6 @@
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 102
+Date: Thu, 24 Sep 2026 19:25:43 GMT
+
+{"id":16,"habitId":15,"completionDate":"2026-09-24","createdAt":"2026-09-24T22:25:43.530055643+03:00"}
