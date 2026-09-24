@@ -506,7 +506,8 @@ def cmd_questions(args):
     out = []
     for h in ("Questions", "Open questions"):
         s = section(text, h)
-        if s and not re.fullmatch(r"(?:[-*]\s*)?(none\.?|n/a|-)?", s.strip(), re.I):
+        # "None", "- none.", "None. <explanation>", "N/A" all mean nothing is asked
+        if s and not re.match(r"(?:[-*]\s*)?(?:\*\*)?(none|n/a|-)(?:\*\*)?(?:[.:,;!]|\s*$)", s.strip(), re.I):
             out.append(f"## {h}\n{s}")
     print("\n\n".join(out))
 
