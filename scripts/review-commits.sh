@@ -46,7 +46,7 @@ for c in "${COMMITS[@]}"; do
   fi
   while true; do
     git show --stat --format='%n%C(bold)%h %s%C(reset)%n%b' "$c" | cat
-    git show "$c" | ${PAGER:-less -R}
+    git show "$c" | ${PAGER:-less -R} || true   # quitting the pager early is not an error
     verified=0; [[ "$subject" =~ \(verified\)$ ]] && verified=1
     opts="[a]pprove / [q]uit"; ((verified)) && opts="[a]pprove / [x] reject / [q]uit"
     read -r -p "$short $subject — $opts: " choice </dev/tty

@@ -94,8 +94,10 @@ say "3. setup and foundational phases"
 for l in "$BACK" ${FRONT:+"$FRONT"}; do
   args=("$l" "$REQ")
   [[ "$l" == "$FRONT" ]] && args+=("$swagger_json")
+  pj="loops/$l/state/$FEATURE/phases.json"
+  [[ -f "$pj" ]] || stop "$l has no plan for $FEATURE (phase-00 not done)" 12
   last_base=$(jq -r '.phases | (map(.story_id != null) | index(true)) as $i
-    | if $i == null or $i <= 1 then empty else .[$i-1].phase end' "loops/$l/state/$FEATURE/phases.json")
+    | if $i == null or $i <= 1 then empty else .[$i-1].phase end' "$pj")
   [[ -n "$last_base" ]] && { rl "${args[@]}" --until "$last_base" || true; }
 done
 

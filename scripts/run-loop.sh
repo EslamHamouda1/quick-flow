@@ -55,7 +55,7 @@ ctl check-config >/dev/null
 FEATURE=$(ctl feature "$REQ")
 export FEATURE SPECIFY_FEATURE_NO_PERSIST=1
 
-ENGINE_PATHS=(.claude/skills .claude/settings.json CLAUDE.md .mcp.json scripts .githooks)
+ENGINE_PATHS=(.claude/skills .claude/settings.json CLAUDE.md .mcp.json scripts .githooks .specify)
 for f in loops/*/Loop-instructions.md; do ENGINE_PATHS+=("$f"); done
 ENGINE_HASH=$(git log -1 --format=%h -- "${ENGINE_PATHS[@]}" 2>/dev/null || true)
 if [[ -n "$(git status --porcelain -- "${ENGINE_PATHS[@]}")" || -z "$ENGINE_HASH" ]]; then
@@ -551,6 +551,7 @@ suite_cycle() {
     fi
     run="loops/testing/runs/$FEATURE/suite/$tp/attempt-$attempt"
     mkdir -p "$run"
+    write_task "current_step=$tp" "run_dir=$run"
     if [[ "$tp" == test-phase-regression ]]; then
       for l in $(ctl cfg layers | jq -r 'keys[]'); do
         outcome=$(unit_tests "$l" "$run/unit/$l")

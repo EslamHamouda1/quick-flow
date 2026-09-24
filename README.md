@@ -295,14 +295,19 @@ Skills and `Loop-instructions.md` contain no project, entity, port or stack term
 | mcp.directory | Context7 MCP (library docs) | Considered: would let dev sessions check Spring Boot 4.1 / Angular 22 APIs |
 | mattpocock/skills | tdd, code-review, diagnosing-bugs, git-guardrails-claude-code, grill-me, to-prd | Mostly left: spec-kit already writes tests first; the guard and pre-push hook already block git |
 | skills.sh | webapp-testing, playwright-cli, test-driven-development | Left: the task asks for Playwright **MCP**; spec-kit covers test-first |
-| mcpservers.org | (returns HTTP 403 to automated fetches; browse it yourself) | _to fill in_ |
+| mcpservers.org (its list: github.com/wong2/awesome-mcp-servers; the site itself returns HTTP 403 to automated fetches) | Playwright | **Taken** (same server as above) |
+| mcpservers.org | OpenAPI Schema Explorer, APIMatic (OpenAPI validation) | Left: the runner already hands sessions the generated `openapi.json`; reading the file is enough |
+| mcpservers.org | Git, GitHub MCP servers | Left on purpose: no loop session may run git; only the runner commits and you push |
+| mcpservers.org | Ref, Augments (up-to-date docs) | Considered, like Context7: would help the no-guessing rule check library APIs |
+| mcpservers.org | Currents (fix Playwright test failures), Skyvern (browser agent) | Left: our UI checks are Playwright MCP steps, not a Playwright test suite |
 
 ## Dry-run checks
 Assumptions confirmed while building the engine (the rest are confirmed in the dry-run worktree):
 
 | # | Check | Status |
 |---|---|---|
-| 7 | Playwright MCP 0.0.82 flags | `--headless`, `--output-dir`, `--browser` exist; **`--save-trace` does not** → screenshots only (`testing.trace_globs: []`) |
+| 7 | Playwright MCP 0.0.82 flags | `--headless`, `--output-dir`, `--browser` exist; **`--save-trace` does not** → screenshots only (`testing.trace_globs: []`). Snapshots and console logs go to `--output-dir`, but **a screenshot `filename` is relative to the repo root**, so the testing loop passes the full attempt-folder path |
+| 11 | headless chromium | confirmed: `.mcp.json`'s exact command opened a page, took a snapshot and a screenshot; the one Chromium process ran with `--headless --ozone-platform=headless` |
 | 8 | Boot 4.1.1 test modules | start.spring.io generates `spring-boot-starter-webmvc-test`, `-data-jpa-test`, `-validation-test` for 4.1.1 / Java 25 |
 | 3 (partly) | spec-kit v1.0.11 write paths | no skill writes `CLAUDE.md`; `.specify/scripts/bash/common.sh` honors `SPECIFY_FEATURE_DIRECTORY` and `SPECIFY_FEATURE_NO_PERSIST`. `/speckit-specify` auto-numbers a new `specs/NNN-name` unless it's given the directory explicitly, so the runner pre-creates `specs/<feature>-<layer>` and the plan step passes it. It writes `.specify/feature.json` anyway (git-ignored by spec-kit, harmless: the env var wins) |
-| 1, 2, 4–6, 9–11 | Skill tool in `claude -p`, implement scope, permission patterns, subagents, JSON field names, JaCoCo/springdoc on Java 25, `.mcp.json` loading, headless chromium | in the dry run |
+| 1, 2, 4–6, 9, 10 | Skill tool in `claude -p`, implement scope, permission patterns, subagents, JSON field names, JaCoCo/springdoc on Java 25, `.mcp.json` loading by `claude -p` | in the dry run |

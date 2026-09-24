@@ -54,8 +54,10 @@ comes from), `## Reviewer notes` in `loops/<dev-loop>/outputs/<FEATURE>/<phase>-
    show. `none` means no unit tests are configured for that layer.
 4. Run the checks:
    - API: `bash T_OUT/<dev-loop>/<phase>-verify.sh <run_dir>`.
-   - UI: the Playwright MCP steps against the layer's `url`. Save a screenshot for every check as
-     `shot-<NN>-<check id>.png` (it lands in `run_dir`); keep every screenshot.
+   - UI: the Playwright MCP steps against the layer's `url`. Save a screenshot for every check with
+     `browser_take_screenshot` and `filename` set to the **full path** `<run_dir>/shot-<NN>-<check id>.png`
+     (a bare file name is saved in the repo root, not in `run_dir`, and counts as a violation).
+     Keep every screenshot. Page snapshots and console logs land in `run_dir` by themselves.
 5. Write `T_OUT/<dev-loop>/<phase>-report.md`: a table `check | criterion | result (pass/fail/unclear)
    | evidence`, a `## Unit tests` section copied from `unit_result` (passed, failed, coverage),
    a `## Requirement coverage` table (every FR and business-rule id of this phase → the unit tests
@@ -94,8 +96,8 @@ Write `suite.json` (all new phases `planned`, `attempt: 1`, `status: running`). 
 
 ### S1. Run one test phase (`current_step` = its id)
 1. Set it `in_progress`. Run its checks; evidence goes to
-   `T_RUNS/suite/<test-phase>/attempt-<attempt>/` (curl logs; screenshots land there through
-   `runs/current`).
+   `T_RUNS/suite/<test-phase>/attempt-<attempt>/` (curl logs, and screenshots saved with `filename`
+   set to the full path of that folder, as in phase mode).
 2. For every failed check write `T_OUT/suite/bugs/BUG-NNN.md` (next free number) with front matter
    `id, title, status: open, target_loop, story_id, phase, test_phase, opened_at` and sections
    `## Steps to reproduce`, `## Expected` (quoted from the criterion), `## Actual`, `## Evidence`.
