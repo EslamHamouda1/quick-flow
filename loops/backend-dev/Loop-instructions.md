@@ -157,7 +157,10 @@ rewrite the rest. Set status `awaiting_approval`. Stop.
      state files, never run git/curl/servers. Tasks without `[P]` run one after another. You (the
      parent) mark every task yourself.
    - When your layer has `coverage` in the config, write the unit tests **before** the code they test.
-6. Mark each finished task `- [~]` in `OUT/<phase>.md` and `STATE/tasks.json`.
+6. Mark each finished task `- [~]` in `OUT/<phase>.md` and `STATE/tasks.json`, **and** `[X]` in
+   `tasks.md` (spec-kit's "code written" mark, which `/speckit-implement` normally sets; check it
+   did, and set it yourself for any task finished outside it, e.g. across sessions). The close
+   step refuses a phase whose tasks aren't all `[X]` in `tasks.md`.
 7. Run `L.build` and, if `L.test` is set, `L.test` for quick feedback (save output to
    `RUNS/<phase>-build.log`). Fix compile errors and failing tests you caused.
 8. App-wide outputs:
