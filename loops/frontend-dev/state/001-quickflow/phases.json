@@ -1,0 +1,222 @@
+{
+  "phases": [
+    {
+      "phase": "phase-00",
+      "title": "Plan",
+      "story_id": null,
+      "layer": "frontend",
+      "spec_phase": null,
+      "task_ids": [],
+      "depends_on": [],
+      "attempt": 1,
+      "status": "awaiting_approval",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-01",
+      "title": "Setup",
+      "story_id": null,
+      "layer": "frontend",
+      "spec_phase": 1,
+      "task_ids": [
+        "T001",
+        "T002",
+        "T003",
+        "T004"
+      ],
+      "depends_on": [],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-02",
+      "title": "Foundational",
+      "story_id": null,
+      "layer": "frontend",
+      "spec_phase": 2,
+      "task_ids": [
+        "T005",
+        "T006",
+        "T007",
+        "T008",
+        "T009",
+        "T010",
+        "T011",
+        "T012",
+        "T013",
+        "T014"
+      ],
+      "depends_on": [
+        "phase-01"
+      ],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-03",
+      "title": "US1 Manage tasks",
+      "story_id": "US1",
+      "layer": "frontend",
+      "spec_phase": 3,
+      "task_ids": [
+        "T015",
+        "T016",
+        "T017",
+        "T018",
+        "T019",
+        "T020"
+      ],
+      "depends_on": [
+        "phase-02",
+        "backend-dev:US1"
+      ],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-04",
+      "title": "US2 Track recurring habits",
+      "story_id": "US2",
+      "layer": "frontend",
+      "spec_phase": 4,
+      "task_ids": [
+        "T021",
+        "T022",
+        "T023",
+        "T024",
+        "T025"
+      ],
+      "depends_on": [
+        "phase-02",
+        "backend-dev:US2"
+      ],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-05",
+      "title": "US3 Track learning resources with milestones and notes",
+      "story_id": "US3",
+      "layer": "frontend",
+      "spec_phase": 5,
+      "task_ids": [
+        "T026",
+        "T027",
+        "T028",
+        "T029"
+      ],
+      "depends_on": [
+        "phase-02",
+        "backend-dev:US3"
+      ],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-06",
+      "title": "US4 Build and follow Todo Plans",
+      "story_id": "US4",
+      "layer": "frontend",
+      "spec_phase": 6,
+      "task_ids": [
+        "T030",
+        "T031",
+        "T032",
+        "T033",
+        "T034",
+        "T035"
+      ],
+      "depends_on": [
+        "phase-02",
+        "phase-03",
+        "phase-04",
+        "phase-05",
+        "backend-dev:US4"
+      ],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-07",
+      "title": "US5 See everything on the Dashboard",
+      "story_id": "US5",
+      "layer": "frontend",
+      "spec_phase": 7,
+      "task_ids": [
+        "T036",
+        "T037",
+        "T038",
+        "T039"
+      ],
+      "depends_on": [
+        "phase-02",
+        "phase-03",
+        "phase-04",
+        "phase-05",
+        "phase-06",
+        "backend-dev:US5"
+      ],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-08",
+      "title": "US6 Adjust settings",
+      "story_id": "US6",
+      "layer": "frontend",
+      "spec_phase": 8,
+      "task_ids": [
+        "T040",
+        "T041",
+        "T042"
+      ],
+      "depends_on": [
+        "phase-02",
+        "backend-dev:US6"
+      ],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-09",
+      "title": "Polish",
+      "story_id": null,
+      "layer": "frontend",
+      "spec_phase": 9,
+      "task_ids": [
+        "T043",
+        "T044",
+        "T045"
+      ],
+      "depends_on": [
+        "phase-03",
+        "phase-04",
+        "phase-05",
+        "phase-06",
+        "phase-07",
+        "phase-08"
+      ],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    }
+  ]
+}
