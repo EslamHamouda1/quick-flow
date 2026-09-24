@@ -117,9 +117,14 @@
         "backend-dev:US2"
       ],
       "attempt": 1,
-      "status": "planned",
-      "approval": null,
-      "block_reason": null
+      "status": "done",
+      "approval": {
+        "decision": "auto",
+        "at": "2026-09-24T22:31:09+03:00",
+        "notes": ""
+      },
+      "block_reason": null,
+      "verified_by": "939d5c41-e2c7-4f94-9a1a-ec2a3cf6cc88"
     },
     {
       "phase": "phase-05",

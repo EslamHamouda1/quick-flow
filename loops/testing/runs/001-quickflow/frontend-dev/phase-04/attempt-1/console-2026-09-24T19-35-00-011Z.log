@@ -1,0 +1,7 @@
+[      54ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[   33005ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/habits:0
+[   40588ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/habits:0
+[   64437ms] [ERROR] Failed to load resource: the server responded with a status of 409 (Conflict) @ http://localhost:4200/api/habits/2/completions:0
+[   89625ms] [ERROR] Failed to load resource: the server responded with a status of 409 (Conflict) @ http://localhost:4200/api/habits/2/completions:0
+[  100574ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4200/api/habits/2:0
+[  100578ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4200/api/habits/2/completions:0

@@ -9,7 +9,8 @@
 | frontend-dev:001-quickflow:phase-01 | 2026-09-24T19:46:08+03:00 | 2026-09-24T21:13:49+03:00 | 1h27m41s | 0h11m25s | 7 | 1 | 126 | 3107039 | 25668 | 2.2056 | fdc04068-ab10-445f-b00e-76a9377af3ce 418061f6-dd2d-494d-9660-70a423212b00 e3b89fc3-ce48-4a60-a548-1a77e53da29e 5ccaf165-0b2b-40c9-8499-f2660889bb0f 8546c486-0e4f-465e-b440-3a8629ca04e3 2d63136f-1067-4dd8-acc3-f9f9b2883344 1e8e5276-68ac-4937-8f38-16878ae40449 | 2d63136f-1067-4dd8-acc3-f9f9b2883344 | 434b220 | success |
 | frontend-dev:001-quickflow:phase-02 | 2026-09-24T21:13:50+03:00 | 2026-09-24T21:38:52+03:00 | 0h25m02s | 0h13m13s | 6 | 2 | 300 | 8948976 | 57966 | 5.8937 | 310c03df-bd9c-4264-906b-a38eb53a11a2 32e8f7a6-395e-467b-9168-dc56e48069e8 fb0efe85-73a4-40b3-a70c-6a7301bf9140 9d5f214b-a6c1-4ee5-957a-97d1a4ba4b49 642ca420-711e-4d3c-8e59-db81d75ec35a 1eced14b-213f-4269-a35e-441c6e787cf5 | 642ca420-711e-4d3c-8e59-db81d75ec35a | 363039c | success |
 | frontend-dev:001-quickflow:phase-03 | 2026-09-24T21:59:36+03:00 | 2026-09-24T22:10:48+03:00 | 0h11m12s | 0h10m52s | 4 | 1 | 172 | 5803342 | 59105 | 4.2636 | 939faff4-63d2-4d1c-a494-eb746fcb8cbd 52a702ec-6d1e-4fe9-bde5-02c58e71b2ae 6b8917af-d3f7-4f88-b415-285f8904c22e 7a602e34-6d82-4d66-a645-167c6bf3dbdb | 6b8917af-d3f7-4f88-b415-285f8904c22e | 9a21140 | success |
-| **Total** |  |  |  | 0h45m32s | 19 |  | 686 | 21733485 | 205601 | 15.7418 |  |  |  |  |
+| frontend-dev:001-quickflow:phase-04 | 2026-09-24T22:28:53+03:00 | 2026-09-24T22:38:17+03:00 | 0h09m24s | 0h09m06s | 4 | 1 | 182 | 5902181 | 50791 | 3.9513 | a124cacf-1e84-4fb5-a5df-4d18276abc9c c284576f-d920-425b-adcc-d3ed4c04242d 939d5c41-e2c7-4f94-9a1a-ec2a3cf6cc88 00fbb766-5bd4-417f-9f49-0b075c3ace2d | 939d5c41-e2c7-4f94-9a1a-ec2a3cf6cc88 |  | success |
+| **Total** |  |  |  | 0h54m39s | 23 |  | 868 | 27635666 | 256392 | 19.6931 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -63,3 +64,14 @@
 - 2026-09-24T22:09:58+03:00 test 001-quickflow phase-03 attempt 1: pass (verified_by 6b8917af-d3f7-4f88-b415-285f8904c22e)
 - 2026-09-24T22:11:00+03:00 001-quickflow phase-03: close check OK (T015–T020 [X] in tasks.md; verdict pass for attempt 1)
 - 2026-09-24T22:11:00+03:00 001-quickflow phase-03: T015–T020 [~] → [x] in phase-03.md and tasks.json; status done
+- 2026-09-24T22:30:09+03:00 001-quickflow phase-04: wrote OUT/phase-04-review.md (files, planned checks, risks, assumptions FA-20..FA-24, contract differences: only undeclared error responses); no open questions; status planned → awaiting_approval
+- 2026-09-24T22:31:09+03:00 gate 001-quickflow phase-04: approved (auto)
+- 2026-09-24T22:33:11+03:00 001-quickflow phase-04: tasks.md Phase 4 already matches phase-04.md (no sync changes); status approved → in_progress
+- 2026-09-24T22:33:11+03:00 001-quickflow phase-04: ran generate_client (adds HabitsService, Habit, HabitWrite, HabitFrequency, HabitCompletion, HabitCompletionCreate)
+- 2026-09-24T22:33:11+03:00 001-quickflow phase-04: T021 checked generated HabitsService/Habit and ui-contract Habits section, nothing missing; recorded in research.md R-2
+- 2026-09-24T22:33:11+03:00 001-quickflow phase-04: T022 wrote frontend/src/app/pages/habits/habit-form.ts
+- 2026-09-24T22:33:11+03:00 001-quickflow phase-04: T023–T025 wrote frontend/src/app/pages/habits/habits.page.ts (cards, add/edit + ?add=1, empty state, today toggle, deactivate/activate, delete)
+- 2026-09-24T22:33:11+03:00 001-quickflow phase-04: build OK (runs/001-quickflow/phase-04-build.log); ui-url.md unchanged
+- 2026-09-24T22:33:11+03:00 001-quickflow phase-04: T021–T025 [~] in phase-04.md and tasks.json, [X] in tasks.md; status in_progress → ready_for_test
+- 2026-09-24T22:37:39+03:00 test 001-quickflow phase-04 attempt 1: pass (verified_by 939d5c41-e2c7-4f94-9a1a-ec2a3cf6cc88)
+- 2026-09-24T22:38:09+03:00 001-quickflow phase-04: close check OK (T021–T025 [X] in tasks.md, verdict pass attempt 1); T021–T025 [~] → [x] in phase-04.md and tasks.json; status passed → done

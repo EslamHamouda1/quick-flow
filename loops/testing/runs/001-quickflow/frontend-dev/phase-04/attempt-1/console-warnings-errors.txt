@@ -1,0 +1,11 @@
+Total messages: 9 (Errors: 6, Warnings: 0)
+Returning 8 messages for level "warning"
+
+[ERROR] Access to fetch at 'http://localhost:8080/api/habits' from origin 'http://localhost:4200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:4200/habits:0
+[ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:8080/api/habits:0
+[ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/habits:0
+[ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/habits:0
+[ERROR] Failed to load resource: the server responded with a status of 409 (Conflict) @ http://localhost:4200/api/habits/2/completions:0
+[ERROR] Failed to load resource: the server responded with a status of 409 (Conflict) @ http://localhost:4200/api/habits/2/completions:0
+[ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4200/api/habits/2:0
+[ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4200/api/habits/2/completions:0

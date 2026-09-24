@@ -1,0 +1,3 @@
+[     155ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[    3275ms] [ERROR] Access to fetch at 'http://localhost:8080/api/habits' from origin 'http://localhost:4200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:4200/habits:0
+[    3275ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:8080/api/habits:0

@@ -93,14 +93,14 @@ Playwright MCP checks, written from the acceptance criteria against the selector
 
 ### Tests for User Story 2 (contract first) ⚠️
 
-- [ ] T021 [US2] Check that the generated `HabitsService` has `listHabits`, `createHabit`, `updateHabit`, `deleteHabit`, `deactivateHabit`, `activateHabit`, `completeHabit`, `undoHabitCompletion` and that `Habit` has `completedToday`, `doneForCurrentPeriod`, `currentStreak`; check the Habits section of contracts/ui-contract.md covers AC-US2-1..9; raise a question for anything missing
+- [X] T021 [US2] Check that the generated `HabitsService` has `listHabits`, `createHabit`, `updateHabit`, `deleteHabit`, `deactivateHabit`, `activateHabit`, `completeHabit`, `undoHabitCompletion` and that `Habit` has `completedToday`, `doneForCurrentPeriod`, `currentStreak`; check the Habits section of contracts/ui-contract.md covers AC-US2-1..9; raise a question for anything missing
 
 ### Implementation for User Story 2
 
-- [ ] T022 [P] [US2] Create the habit form component (name, description, frequency Daily/Weekly, field errors) in frontend/src/app/pages/habits/habit-form.ts (AC-US2-1, AC-US2-2, AC-US2-6)
-- [ ] T023 [US2] Implement the Habits page with habit cards (frequency label, period done text, streak, inactive badge), add/edit flow (also `?add=1`) and empty state in frontend/src/app/pages/habits/habits.page.ts (AC-US2-1, AC-US2-5, AC-US2-6, AC-US2-9)
-- [ ] T024 [US2] Add the completion toggle (`completeHabit(id)` / `undoHabitCompletion(id, clock.today())`, disabled when inactive, 409 `detail` shown as a notice and the list re-read) in frontend/src/app/pages/habits/habits.page.ts (AC-US2-3, AC-US2-4, research R-9)
-- [ ] T025 [US2] Add deactivate/activate and delete actions, each re-reading the list, in frontend/src/app/pages/habits/habits.page.ts (AC-US2-7, AC-US2-8)
+- [X] T022 [P] [US2] Create the habit form component (name, description, frequency Daily/Weekly, field errors) in frontend/src/app/pages/habits/habit-form.ts (AC-US2-1, AC-US2-2, AC-US2-6)
+- [X] T023 [US2] Implement the Habits page with habit cards (frequency label, period done text, streak, inactive badge), add/edit flow (also `?add=1`) and empty state in frontend/src/app/pages/habits/habits.page.ts (AC-US2-1, AC-US2-5, AC-US2-6, AC-US2-9)
+- [X] T024 [US2] Add the completion toggle (`completeHabit(id)` / `undoHabitCompletion(id, clock.today())`, disabled when inactive, 409 `detail` shown as a notice and the list re-read) in frontend/src/app/pages/habits/habits.page.ts (AC-US2-3, AC-US2-4, research R-9)
+- [X] T025 [US2] Add deactivate/activate and delete actions, each re-reading the list, in frontend/src/app/pages/habits/habits.page.ts (AC-US2-7, AC-US2-8)
 
 **Checkpoint**: US2 works on its own
 

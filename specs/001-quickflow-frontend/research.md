@@ -56,6 +56,19 @@ becomes a `## Questions` entry if the check fails.
   - still no `Problem` / `FieldError` model (errors not declared in the swagger): `core/problem.ts` stays.
   - ui-contract "Tasks `/tasks` (US1)" lists a selector for every AC-US1-1..12 action (form, search, filters, sort,
     overdue toggle, rows, row actions, empty state from the Shell section): nothing missing.
+- **Checked at implement (T021, 2026-09-24)**, client regenerated after backend US2:
+  - `HabitsService` (`api/habits.service.ts`, `providedIn: 'root'`), positional arguments: `listHabits(active?:
+    boolean)` → `Observable<Habit[]>`; `createHabit(HabitWrite)`, `updateHabit(id, HabitWrite)`, `deactivateHabit(id)`,
+    `activateHabit(id)` → `Observable<Habit>`; `completeHabit(id, habitCompletionCreate?: HabitCompletionCreate)` →
+    `Observable<HabitCompletion>` (body optional; the page passes none); `undoHabitCompletion(id, date: string)` and
+    `deleteHabit(id)` → `Observable<any>`; `getHabit(id)`, `listHabitCompletions(id)` (unused).
+  - models: `Habit { id: number; name; description?: string | null; frequency: HabitFrequency; createdAt; active:
+    boolean; completedToday: boolean; doneForCurrentPeriod: boolean; currentStreak: number }`, `HabitWrite { name;
+    description?: string | null; frequency }`, `HabitFrequency = {Daily: 'DAILY', Weekly: 'WEEKLY'}` (`as const`).
+  - still no `Problem` model: `core/problem.ts` stays.
+  - ui-contract "Habits `/habits` (US2)" has selectors for the form, cards (frequency label, period done, streak,
+    inactive badge), the today toggle and every card action; the empty state comes from the Shell section: AC-US2-1..9
+    covered, nothing missing.
 
 ## R-3 Time zone handling
 - **Decision**: `ClockService` loads `/api/app-info` at start-up (`provideAppInitializer`), stores `timeZone` and
