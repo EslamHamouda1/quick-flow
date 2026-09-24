@@ -12,6 +12,15 @@ Ids used in this spec: user stories `US1..US6`; acceptance criteria `AC-USn-k`; 
 `FR-01..FR-10` (FR-01..FR-09 are the PRD's §6 ids, FR-10 comes from PRD §4/§8); business rules
 `BR-1..BR-14` (PRD §7 rules 1–14, same numbering); non-functional requirements `NFR-1..NFR-5` (PRD §10).
 
+## Clarifications
+
+### Session 2026-09-24
+
+- Q: Which plan items change their source (BR-13), and is it reverted on un-tick? → A: Only TASK items, one way: done sets the task to Done (with completedAt); un-ticking never changes the source; HABIT and LEARNING_RESOURCE items never change their source (FR-07.5).
+- Q: When is a plan Completed? → A: Computed on read: NOT_STARTED while now < start; COMPLETED once now ≥ end, or now ≥ start and all items done; otherwise IN_PROGRESS (FR-08.4).
+- Q: What does Settings hold? → A: `displayName` (optional, ≤ 100), `planStartNotifications` (default on), `defaultPage` (default Dashboard), stored on the server; time zone shown read-only from `GET /api/app-info` (FR-10.2).
+- Q: Which plugin versions are pinned? → A: `org.jacoco:jacoco-maven-plugin` 0.8.15, `org.springdoc:springdoc-openapi-maven-plugin` 1.5 (looked up on Maven Central by the reviewer on 2026-09-24).
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Manage tasks (Priority: P1)
@@ -114,7 +123,7 @@ them, tick items, watch status and rest time change across start and end, remove
 4. **AC-US4-4**: **Given** a plan, **When** the user marks an item done or not done, **Then** the item's done flag is saved and the plan's progress percentage becomes (items done) / (total items), shown immediately on the plan and on the Dashboard (FR-08).
 5. **AC-US4-5**: **Given** a plan item that references a task, habit or learning card, **When** the user marks it done, **Then** the original entity's completion state changes only as stated in FR-07.5 (BR-13).
 6. **AC-US4-6**: **Given** a plan whose start date-time is in the future, **When** the plan is read, **Then** its status is Not Started and no rest time is shown (BR-12).
-7. **AC-US4-7**: **Given** a plan whose start date-time has passed and whose end date-time has not, **When** the plan is read, **Then** its status is In Progress (unless FR-08.4 makes it Completed) and its rest time is the time left until its end date-time, updating continuously.
+7. **AC-US4-7**: **Given** a plan whose start date-time has passed and whose end date-time has not, **When** the plan is read, **Then** its status is In Progress (unless all its items are done, which makes it Completed per FR-08.4) and its rest time is the time left until its end date-time, updating continuously.
 8. **AC-US4-8**: **Given** a plan whose status follows FR-08.4, **When** the app is closed and reopened, **Then** the same status is shown, computed from the stored times, the item flags and the current time (NFR-4).
 9. **AC-US4-9**: **Given** the Todo Plans page is open, **When** a plan's start date-time is reached, **Then** the user sees an in-app notification/highlight for that plan.
 10. **AC-US4-10**: **Given** several plans, **When** the user opens the Todo Plans page, **Then** plans are grouped into active/upcoming and completed, each showing its progress, rest time (when active), items with done toggles and a remove action; active/upcoming plans are ordered by priority order.
@@ -223,14 +232,14 @@ behavior, default view) on the Settings page.
 - **FR-07.2**: Each plan item MUST reference one existing task, habit or learning card by type and id and carry its own done flag (default not done); an entity appears at most once in the same plan.
 - **FR-07.3**: The user MUST be able to create a plan by selecting one or more existing, non-deleted tasks, habits and/or learning cards (BR-10), set its title, estimated duration, start and end date-time and priority order, edit those fields later, mark an item done or not done, and remove the plan.
 - **FR-07.4**: A plan's end date-time MUST be after its start date-time (BR-11).
-- **FR-07.5**: Marking a plan item done MUST NOT change the original task, habit or learning card, except where the item represents that entity's own completion action: marking a task-type item done MUST set the underlying task's status to Done (BR-13). [NEEDS CLARIFICATION: BR-13 names only the task case. Should a habit-type item marked done also record the habit's completion for today, and a learning-type item set the card to Completed? And when an item is set back to not done, should the underlying task/habit/card be reverted? Recommended: only task-type items propagate, one way (done → task Done); un-ticking an item never changes the source; habit and learning items never propagate.]
+- **FR-07.5**: Marking a plan item done MUST NOT change the original task, habit or learning card, except where the item represents that entity's own completion action: marking a task-type item done MUST set the underlying task's status to Done (BR-13), with its completion time recorded (FR-01.4). Only task-type items propagate, and only one way: setting an item back to not done never changes the source; habit-type and learning-type items never change their source (reviewer answer Q1, 2026-09-24).
 - **FR-07.6**: When a task, habit or learning card used by a plan item is deleted, the plan item MUST remain in the plan with its done flag, marked as referring to a removed item, and still count toward the plan's progress; the deleted entity itself is never returned (BR-14).
 
 **FR-08 Plan Progress and Rest Time**
 - **FR-08.1**: The system MUST notify the user in the app when a plan's start date-time is reached.
 - **FR-08.2**: Between a plan's start date-time and end date-time the system MUST show its rest time (end date-time minus now), updating continuously; outside that window no rest time is shown (BR-12).
 - **FR-08.3**: A plan's completion percentage MUST be (items marked done) / (total items), shown as a whole percentage.
-- **FR-08.4**: A plan's status MUST be computed when read from its stored start/end date-times, its item flags and the current time: Not Started before the start date-time; In Progress from the start date-time until it becomes Completed; Completed [NEEDS CLARIFICATION: when does a plan become Completed? (a) when the end date-time has passed, whatever its items; (b) when all its items are done, even before the end; (c) whichever comes first. And can a plan whose items are all done before its start be Completed before it started? Recommended: (c), but never before the start date-time — Not Started until start; Completed once all items are done or the end has passed; history shows the percentage done at that moment.]
+- **FR-08.4**: A plan's status MUST be computed when read from its stored start/end date-times, its item flags and the current time: Not Started before the start date-time; Not Started while now is before the start date-time; Completed once now is at or after the end date-time, or once now is at or after the start date-time and all items are done; otherwise In Progress. A plan is never Completed before its start date-time. Because the status is computed on read, setting an item back to not done before the end date-time moves the plan back to In Progress (reviewer answer Q2, 2026-09-24).
 - **FR-08.5**: Item-level completion changes MUST be reflected immediately in the owning plan's progress and in the Dashboard summary.
 
 **FR-09 Dashboard**
@@ -239,7 +248,7 @@ behavior, default view) on the Settings page.
 
 **FR-10 Navigation and Settings** (PRD §4, §8, §13)
 - **FR-10.1**: The app MUST offer persistent navigation to six pages: Dashboard, Tasks, Habits, Learning Resources, Todo Plans, Settings.
-- **FR-10.2**: The Settings page MUST show user/profile information and application preferences and keep changed preferences between sessions. [NEEDS CLARIFICATION: which profile fields and preferences exist, and what do they do? The PRD names only "user/profile information" and "e.g. notification behavior, default view" for a single user with no accounts. Recommended: profile = display name (used in the Dashboard greeting); preferences = plan-start notifications on/off and default start page (one of the six pages); all stored on the server; the app time zone is shown read-only.]
+- **FR-10.2**: The Settings page MUST show user/profile information and application preferences and keep changed preferences between sessions. Settings are: `displayName` (optional, at most 100 characters, used in the Dashboard greeting, read via `GET /api/settings`); `planStartNotifications` (on/off, default on; the frontend shows plan-start notifications (FR-08.1) only when it is on); `defaultPage` (one of the six pages of FR-10.1, default Dashboard; the page the app opens on). All are stored on the server. The app time zone is shown read-only, from `GET /api/app-info` (reviewer answer Q3, 2026-09-24).
 
 ### Business Rules
 

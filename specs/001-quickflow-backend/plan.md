@@ -23,7 +23,8 @@ H2 for the `openapi` profile that generates `target/openapi.json` during `./mvnw
 
 **Primary Dependencies**: Spring Boot 4.1.1 (scaffolded by the runner from start.spring.io with `web, data-jpa, h2, validation`),
 springdoc-openapi-starter-webmvc-ui 3.1.1, springdoc-openapi-maven-plugin and jacoco-maven-plugin
-(latest release at setup, pinned in `pom.xml`: exact versions are Open question Q4 in the phase-00 review)
+(latest release at setup, pinned in `pom.xml`: jacoco-maven-plugin 0.8.15 and springdoc-openapi-maven-plugin 1.5,
+reviewer answer Q4, looked up on Maven Central on 2026-09-24)
 
 **Storage**: H2, Boot-managed version. Profiles: default `jdbc:h2:file:./data/quickflow`; `test` `jdbc:h2:file:./data/test`;
 `openapi` in-memory, server port 18080. Schema by Hibernate `ddl-auto=update` (default/test) and `create-drop` (openapi)
@@ -49,11 +50,11 @@ deleted rows never returned (BR-14); no authentication (single user, spec A-1)
 
 | Principle | Gate | Status |
 |---|---|---|
-| I. Pinned Stack | Only versions from the stack table; the two "latest at setup" plugins are looked up once and pinned (Q4) | PASS (pending Q4 answer for the two plugin versions) |
+| I. Pinned Stack | Only versions from the stack table; the two "latest at setup" plugins are looked up once and pinned (Q4) | PASS (Q4 answered: jacoco-maven-plugin 0.8.15, springdoc-openapi-maven-plugin 1.5) |
 | II. Independent Verification | Dev loop writes no verdicts, runs no curl/Playwright; the testing loop checks every phase | PASS |
 | III. Backend Unit Tests First | tasks.md puts tests before code in every story phase; one named test per BR-1..BR-14 and per FR; three test kinds; JaCoCo ≥ 80% on `com.quickflow.domain` enforced by `jacoco:check` in `verify` | PASS |
 | IV. Domain Separate, Time from a Clock | Rules in `com.quickflow.domain`; controllers map DTOs only; one `Clock` bean in `app.timezone`; status/rest time/overdue/streak computed on read; `/api/app-info` exposes the zone | PASS |
-| V. No Guessing | Three spec clarifications (BR-13 scope, plan Completed rule, Settings content) and plugin versions are open questions; design defaults follow the recommended answers and are isolated in one class each | PASS |
+| V. No Guessing | Three spec clarifications (BR-13 scope, plan Completed rule, Settings content) and plugin versions were open questions, answered by the reviewer on 2026-09-24 (as recommended); the answers are isolated in one class each | PASS |
 | Technical Constraints | `/api`, JPA+H2, three profiles, springdoc at `/swagger-ui` and `/v3/api-docs`, `target/openapi.json` via `verify`, `contracts/openapi.yaml` written before code | PASS |
 
 Post-design re-check (after Phase 1): PASS, no violations; Complexity Tracking not needed.
@@ -112,7 +113,7 @@ Domain services depend on repositories and `Clock` only; controllers depend on d
 
 - **Clarification-sensitive code is isolated**: `PlanStatusPolicy` (FR-08.4 / Q2), `PlanService.setItemDone`
   propagation (FR-07.5 / BR-13 / Q1) and the `settings` package (FR-10.2 / Q3) are the only places the
-  open answers touch. Defaults follow the recommended answers.
+  answers touch. They follow the reviewer's answers (spec.md Clarifications, 2026-09-24).
 - **Deletes are hard deletes** (BR-14 holds by construction); habit completions and card milestones/notes
   cascade. Plan items have no foreign key to their source (polymorphic); they keep a `sourceTitle`
   snapshot so an item whose source was deleted is shown as removed (FR-07.6).

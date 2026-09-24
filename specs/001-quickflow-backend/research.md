@@ -15,8 +15,8 @@ library sources, a small compile) before code relies on it (Constitution V).
 
 ## R-2 Plugin versions ("latest release at setup")
 - **Decision**: pin `springdoc-openapi-maven-plugin` and `jacoco-maven-plugin` to exact versions in `pom.xml`.
-  The versions are not written in any project file and this session can't look them up, so they are
-  **Open question Q4** in the phase-00 review.
+  Answered by the reviewer (Q4, looked up on Maven Central on 2026-09-24 and built with Java 25):
+  `org.jacoco:jacoco-maven-plugin` **0.8.15**, `org.springdoc:springdoc-openapi-maven-plugin` **1.5**.
 - **Rationale**: Constitution I forbids picking a version from memory.
 
 ## R-3 OpenAPI generation during `verify`
@@ -43,15 +43,15 @@ library sources, a small compile) before code relies on it (Constitution V).
 - **Rationale**: simplest way to guarantee deleted rows never come back; no filter to forget in custom queries.
 - **Alternatives**: soft delete with `@SQLRestriction` (rejected: more code, every native query must remember it).
 
-## R-6 Plan status and rest time (FR-08, BR-12) — depends on Q2
-- **Decision (recommended answer, pending Q2)**: `PlanStatusPolicy.statusAt(plan, now)`:
+## R-6 Plan status and rest time (FR-08, BR-12)
+- **Decision (Q2 answered as recommended)**: `PlanStatusPolicy.statusAt(plan, now)`:
   `now < start` → NOT_STARTED; else if `now >= end` or all items done → COMPLETED; else IN_PROGRESS.
   `restSeconds` = seconds from `now` to `end` when `start <= now < end`, else `null` (BR-12), independent of status.
   `progressPercent = floor(100 * done / total)`.
 - **Rationale**: pure function of stored values and the clock (NFR-4); one class to change if Q2's answer differs.
 
-## R-7 BR-13 propagation — depends on Q1
-- **Decision (recommended answer, pending Q1)**: `PlanService.setItemDone(planId, itemId, true)` on a TASK item
+## R-7 BR-13 propagation
+- **Decision (Q1 answered as recommended)**: `PlanService.setItemDone(planId, itemId, true)` on a TASK item
   calls `TaskService.complete(taskId)` (status Done, `completedAt` set) when the task still exists. Un-ticking
   never changes the source. HABIT and LEARNING_RESOURCE items never change their source.
 
@@ -68,8 +68,8 @@ library sources, a small compile) before code relies on it (Constitution V).
   JSON / unknown enum values → 400 with the offending field when known (BR-3).
 - **Checked at implement**: Jackson 3 (Boot 4) exception types for unknown enum values.
 
-## R-10 Settings — depends on Q3
-- **Decision (recommended answer, pending Q3)**: one `AppSettings` row (id 1, created on first read) with
+## R-10 Settings
+- **Decision (Q3 answered as recommended)**: one `AppSettings` row (id 1, created on first read) with
   `displayName` (optional, ≤ 100), `planStartNotifications` (boolean, default true) and `defaultPage`
   (DASHBOARD | TASKS | HABITS | LEARNING | PLANS | SETTINGS, default DASHBOARD). `GET/PUT /api/settings`.
 

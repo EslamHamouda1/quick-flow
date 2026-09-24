@@ -6,7 +6,7 @@ info:
     Single-user productivity API (tasks, habits, learning cards, Todo Plans, dashboard, settings).
     Date-times are ISO-8601 with offset, rendered in the app time zone (GET /api/app-info).
     Dates are ISO calendar dates in the app time zone. Errors are RFC 9457 problem details.
-    Parts marked "pending Qn" follow the recommended answer of an open question in the phase-00 review.
+    Parts marked "Qn" follow the reviewer's answer to that question (spec.md Clarifications, 2026-09-24).
 servers:
   - url: http://localhost:8080
 tags:
@@ -503,7 +503,7 @@ paths:
     put:
       tags: [plans]
       operationId: setPlanItemDone
-      summary: Mark a plan item done or not done; a TASK item marked done also completes the task (BR-13, pending Q1)
+      summary: Mark a plan item done or not done; a TASK item marked done also completes the task; un-ticking and HABIT/LEARNING_RESOURCE items change no source (BR-13, Q1)
       requestBody:
         required: true
         content:
@@ -530,7 +530,7 @@ paths:
             application/json:
               schema: { $ref: '#/components/schemas/Dashboard' }
 
-  # ---------------------------------------------------------------- settings (US6, pending Q3)
+  # ---------------------------------------------------------------- settings (US6, Q3)
   /api/settings:
     get:
       tags: [settings]
@@ -801,7 +801,7 @@ components:
         startDateTime: { type: string, format: date-time }
         endDateTime: { type: string, format: date-time }
         priorityOrder: { type: integer }
-        status: { $ref: '#/components/schemas/PlanStatus', description: Computed on read (FR-08.4, pending Q2) }
+        status: { $ref: '#/components/schemas/PlanStatus', description: Computed on read (FR-08.4, Q2) }
         createdAt: { type: string, format: date-time }
         doneItems: { type: integer }
         totalItems: { type: integer }
@@ -859,7 +859,7 @@ components:
     DefaultPage: { type: string, enum: [DASHBOARD, TASKS, HABITS, LEARNING, PLANS, SETTINGS] }
     Settings:
       type: object
-      description: Pending Q3 (recommended answer)
+      description: Profile and preferences of the single user (FR-10.2, Q3)
       required: [planStartNotifications, defaultPage]
       properties:
         displayName: { type: [string, 'null'], maxLength: 100 }

@@ -90,7 +90,7 @@ A milestone is addressed only through its card (`/learning-cards/{cardId}/milest
 | createdAt | Instant | set on create |
 | items | List<PlanItem> | ≥ 1 (BR-10), cascade ALL, orphan removal |
 
-Computed (`PlanStatusPolicy`, R-6, pending Q2): `status` NOT_STARTED / IN_PROGRESS / COMPLETED; `progressPercent`;
+Computed (`PlanStatusPolicy`, R-6, Q2): `status` NOT_STARTED / IN_PROGRESS / COMPLETED; `progressPercent`;
 `restSeconds` (only when `start <= now < end`, BR-12); `doneItems`, `totalItems`.
 Lifecycle: NOT_STARTED --(now reaches start)--> IN_PROGRESS --(all items done or now reaches end)--> COMPLETED.
 Un-ticking an item of a plan before its end can move it back to IN_PROGRESS (status is computed, not stored).
@@ -108,9 +108,10 @@ Ordering: active/upcoming (not COMPLETED) by `priorityOrder` asc, then `startDat
 
 Unique per plan: `(plan_id, source_type, source_id)` (FR-07.2).
 Computed: `sourceRemoved` = the source no longer exists (FR-07.6).
-Side effect (pending Q1): setting `done=true` on a TASK item completes the task (BR-13).
+Side effect (Q1): setting `done=true` on a TASK item completes the task (BR-13); un-ticking and HABIT /
+LEARNING_RESOURCE items change no source.
 
-## AppSettings (`app_settings`) — pending Q3
+## AppSettings (`app_settings`) (Q3)
 | Field | Type | Rules |
 |---|---|---|
 | id | Long | always 1 (single row, created on first read) |
