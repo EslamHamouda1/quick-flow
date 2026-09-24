@@ -2,5 +2,5 @@
   "feature_dir": "specs/001-quickflow-frontend",
   "current_phase": "phase-00",
   "loop_status": "running",
-  "stop_reason": "needs_input: frontend-dev phase-00 has open questions and --auto-approve has nobody to answer them"
+  "stop_reason": "until_reached: phase-00"
 }
