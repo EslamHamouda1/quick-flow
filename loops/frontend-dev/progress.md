@@ -18,3 +18,4 @@
 - 2026-09-24T17:17:44+03:00 001-quickflow phase-00: analyze: 2 HIGH findings (Foundational needs backend openapi.json; generated client vs Angular 22.2.0 unchecked); fixed US6 editing US4/US5 files
 - 2026-09-24T17:17:44+03:00 001-quickflow phase-00: wrote OUT/phase-01.md..phase-09.md and phases.json entries (planned), tasks.json
 - 2026-09-24T17:17:44+03:00 001-quickflow phase-00: wrote OUT/phase-00-review.md (no open questions, assumptions FA-1..FA-11); phase-00 awaiting_approval, current.json running
+- 2026-09-24T17:25:43+03:00 gate 001-quickflow phase-00: approved — notes: All frontend assumptions FA-1..FA-11 approved as listed (including FA-7 deletes without confirmation and FA-3 server-side validation messages only). No open questions.

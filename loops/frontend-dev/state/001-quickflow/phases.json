@@ -9,8 +9,12 @@
       "task_ids": [],
       "depends_on": [],
       "attempt": 1,
-      "status": "awaiting_approval",
-      "approval": null,
+      "status": "approved",
+      "approval": {
+        "decision": "approve",
+        "at": "2026-09-24T17:25:43+03:00",
+        "notes": "All frontend assumptions FA-1..FA-11 approved as listed (including FA-7 deletes without confirmation and FA-3 server-side validation messages only). No open questions."
+      },
       "block_reason": null
     },
     {

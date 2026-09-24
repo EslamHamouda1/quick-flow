@@ -72,3 +72,6 @@ None (`checklists/requirements.md`: all items checked).
   as in `data-model.md`; time zone handling with `Intl` (research R-3).
 - **FA-11 Invalid enum values** (AC-US1-4, "any other value is rejected" in AC-US3-3): enforced by the API; the UI
   offers only the valid values in selects, so the UI part of these ACs is that only valid values are offered.
+
+## Reviewer notes
+- 2026-09-24T17:25:43+03:00: All frontend assumptions FA-1..FA-11 approved as listed (including FA-7 deletes without confirmation and FA-3 server-side validation messages only). No open questions.
