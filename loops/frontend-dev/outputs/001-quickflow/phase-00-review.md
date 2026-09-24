@@ -27,7 +27,7 @@ generated from `loops/backend-dev/outputs/openapi.json` by `layers.frontend.gene
 | phase-08 | US6 Adjust settings | US6 | T040–T042 | phase-02, backend-dev:US6 |
 | phase-09 | Polish | – | T043–T045 | phase-03..phase-08 |
 
-## Open questions
+## Answered questions
 None. `spec.md` has no `[NEEDS CLARIFICATION]` marker left (the backend gate answered Q1–Q4). The UI choices the
 spec leaves open are listed under Assumptions.
 
@@ -75,3 +75,9 @@ None (`checklists/requirements.md`: all items checked).
 
 ## Reviewer notes
 - 2026-09-24T17:25:43+03:00: All frontend assumptions FA-1..FA-11 approved as listed (including FA-7 deletes without confirmation and FA-3 server-side validation messages only). No open questions.
+
+## Plan apply
+- 2026-09-24T17:26:41+03:00: No answers to write back (spec.md has no `[NEEDS CLARIFICATION]` marker; `requirements.json`
+  unchanged). No reviewer edits to phase files (phase-01..09 task lists match `tasks.md`, 45 tasks; `task_ids`
+  unchanged). `checklists/requirements.md`: all items already checked. Analyze re-check (by hand, as in planning;
+  artifacts unchanged since): no CRITICAL finding; the two HIGH findings above stand as notes. phase-00 `done`.
