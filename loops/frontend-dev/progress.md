@@ -6,7 +6,8 @@
 | milestone | start | end | wall time | active time | sessions | attempts | input tokens | cache tokens | output tokens | cost USD | session_ids | verified_by | commit | result |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | frontend-dev:001-quickflow:phase-00-plan | 2026-09-24T17:15:21+03:00 | 2026-09-24T17:26:59+03:00 | 0h11m38s | 0h10m00s | 2 | 1 | 88 | 3874128 | 62862 | 3.3789 | a83ecfd4-47bc-4ff8-a10f-ae39939c3318 273f7f15-acef-4cb7-905e-2e6f2d2ef918 |  | a990c9d | success |
-| **Total** |  |  |  | 0h10m00s | 2 |  | 88 | 3874128 | 62862 | 3.3789 |  |  |  |  |
+| frontend-dev:001-quickflow:phase-01 | 2026-09-24T19:46:08+03:00 | 2026-09-24T19:53:07+03:00 | 0h06m59s | 0h00m57s | 4 | 1 | 24 | 526162 | 5142 | 0.4372 | fdc04068-ab10-445f-b00e-76a9377af3ce 418061f6-dd2d-494d-9660-70a423212b00 e3b89fc3-ce48-4a60-a548-1a77e53da29e 5ccaf165-0b2b-40c9-8499-f2660889bb0f |  |  | error:success |
+| **Total** |  |  |  | 0h10m58s | 6 |  | 112 | 4400290 | 68004 | 3.8161 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -21,3 +22,6 @@
 - 2026-09-24T17:25:43+03:00 gate 001-quickflow phase-00: approved — notes: All frontend assumptions FA-1..FA-11 approved as listed (including FA-7 deletes without confirmation and FA-3 server-side validation messages only). No open questions.
 - 2026-09-24T17:26:41+03:00 001-quickflow phase-00: plan_apply — no answers or phase-file edits to apply (tasks.md unchanged, checklists all checked); renamed Open questions → Answered questions
 - 2026-09-24T17:26:41+03:00 001-quickflow phase-00: analyze re-check: no CRITICAL finding; phase-00 done
+- 2026-09-24T19:46:56+03:00 001-quickflow phase-01: wrote OUT/phase-01-review.md (no open questions, no new assumptions, no contract differences); phase-01 awaiting_approval
+- 2026-09-24T19:47:08+03:00 gate 001-quickflow phase-01: approved (auto)
+- 2026-09-24T19:52:48+03:00 runner scaffolded frontend

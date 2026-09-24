@@ -31,8 +31,12 @@
       ],
       "depends_on": [],
       "attempt": 1,
-      "status": "planned",
-      "approval": null,
+      "status": "approved",
+      "approval": {
+        "decision": "auto",
+        "at": "2026-09-24T19:47:08+03:00",
+        "notes": ""
+      },
       "block_reason": null
     },
     {
