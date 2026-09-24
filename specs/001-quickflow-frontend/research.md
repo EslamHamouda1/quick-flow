@@ -9,6 +9,14 @@ becomes a `## Questions` entry if the check fails.
   and adds nothing but `proxy.conf.json` and the `proxyConfig` serve option.
 - **Rationale**: Constitution I; the stack table pins only Angular, Node and the generator CLI.
 - **Alternatives**: adding Angular Material / a date library: rejected (no pinned version).
+- **Checked at implement (T001, 2026-09-24)**: differences from the above, versions left unchanged:
+  - `package.json` lists `@angular/*` (incl. `@angular/cli`, `@angular/build`) as caret ranges `^22.2.0`, not exact
+    pins; the installed packages (`node_modules/@angular/core`, `@angular/cli`) are 22.2.0 and `package-lock.json`
+    locks them. Scripts match: `start` = `ng serve`, `build` = `ng build`.
+  - `app.config.ts` has no zoneless provider call: it provides `provideBrowserGlobalErrorListeners()` and
+    `provideRouter(routes)` only. The app is zoneless because Angular 22 needs an explicit
+    `provideZoneChangeDetection()` plus `zone.js` for zone-based change detection, and neither is present
+    (no `zone.js` package, no `polyfills` in `angular.json`).
 
 ## R-2 Generated API client
 - **Decision**: `generate_client` (from `project.config.yaml`) writes `frontend/src/app/api` from

@@ -1,0 +1,6 @@
+{
+  "url": "http://localhost:4200/api/app-info",
+  "status": 200,
+  "contentType": "application/json",
+  "body": "{\"timeZone\":\"Africa/Cairo\",\"now\":\"2026-09-24T21:12:34.144666857+03:00\"}"
+}

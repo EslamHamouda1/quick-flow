@@ -1,1 +1,215 @@
-/* You can add global styles to this file, and also import other style files */
+/* QuickFlow base styles: layout (sidebar + content), form rows, badges, buttons. Plain CSS (FA-10). */
+
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #1f2430;
+  --muted: #5f6675;
+  --border: #d9dde4;
+  --primary: #2f6fed;
+  --primary-text: #ffffff;
+  --danger: #c62828;
+  --success: #2e7d32;
+  --warning: #b26a00;
+  --radius: 6px;
+  --gap: 12px;
+  --sidebar-width: 220px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--gap);
+  line-height: 1.2;
+}
+
+/* Layout: sidebar + content */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  flex: 0 0 var(--sidebar-width);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: var(--gap);
+}
+
+.sidebar a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background: var(--bg);
+}
+
+.sidebar a.active {
+  background: var(--primary);
+  color: var(--primary-text);
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: calc(var(--gap) * 2);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--gap);
+  margin-bottom: var(--gap);
+}
+
+@media (max-width: 720px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex-basis: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* Form rows */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-row label {
+  font-weight: 600;
+}
+
+.form-row.inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+}
+
+input[type="checkbox"] {
+  padding: 0;
+}
+
+textarea {
+  min-height: 72px;
+  resize: vertical;
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 0.9em;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.8em;
+  font-weight: 600;
+  background: var(--border);
+  color: var(--text);
+}
+
+.badge-danger {
+  background: var(--danger);
+  color: #ffffff;
+}
+
+.badge-success {
+  background: var(--success);
+  color: #ffffff;
+}
+
+.badge-warning {
+  background: var(--warning);
+  color: #ffffff;
+}
+
+.badge-muted {
+  background: var(--bg);
+  color: var(--muted);
+}
+
+/* Buttons */
+button {
+  font: inherit;
+  cursor: pointer;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--primary);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+button.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-text);
+}
+
+button.danger {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+button.danger:hover:not(:disabled) {
+  background: var(--danger);
+  color: #ffffff;
+}

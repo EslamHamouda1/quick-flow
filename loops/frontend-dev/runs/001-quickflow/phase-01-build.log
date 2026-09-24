@@ -1,0 +1,16 @@
+
+> frontend@0.0.0 build
+> ng build
+
+❯ Building...
+✔ Building...
+Initial chunk files | Names         |  Raw size | Estimated transfer size
+main-56IEHOOY.js    | main          | 190.73 kB |                52.05 kB
+styles-MNYWPIBD.css | styles        |   2.53 kB |               729 bytes
+
+                    | Initial total | 193.26 kB |                52.78 kB
+
+Application bundle generation complete. [1.379 seconds] - 2026-09-24T18:10:42.375Z
+
+Output location: /home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/dist/frontend
+

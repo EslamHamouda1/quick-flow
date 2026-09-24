@@ -31,13 +31,14 @@
       ],
       "depends_on": [],
       "attempt": 1,
-      "status": "approved",
+      "status": "done",
       "approval": {
         "decision": "auto",
         "at": "2026-09-24T19:47:08+03:00",
         "notes": ""
       },
-      "block_reason": null
+      "block_reason": null,
+      "verified_by": "2d63136f-1067-4dd8-acc3-f9f9b2883344"
     },
     {
       "phase": "phase-02",
