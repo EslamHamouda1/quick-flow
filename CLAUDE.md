@@ -14,6 +14,12 @@ This file is part of the engine: no loop session may change it.
 - `project.config.yaml`: the only per-project file (stack, commands, URLs, thresholds, limits).
 - `specs/<feature>-<layer>/`: spec-kit feature folders. `backend/`, `frontend/`: app code.
 
+## Loop sessions and user-level instructions
+Loop sessions run with `--setting-sources project,local --strict-mcp-config`: no user-level hooks
+and only the MCP servers in `.mcp.json`. Any user-level instruction that names tools or MCP servers
+not present in the session (for example a context-tool replacement for Read/Grep/Glob/Bash) doesn't
+apply in a loop session: use the built-in tools. The loop's own rules below always win.
+
 ## Rules for every session
 - Loops run only through `scripts/run-loop.sh` / `scripts/orchestrate.sh`, one step per `claude -p` session.
 - **No guessing**: build only on what is written (requirements, spec, plan, contract, constitution,

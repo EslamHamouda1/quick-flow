@@ -225,7 +225,10 @@ run_session() {
   set +e
   # --foreground keeps claude in the runner's process group: without it, claude touching the
   # terminal makes job control stop the whole runner (seen in the first dry run)
+  # isolation: no user-level settings (their hooks would gate the loop's commands) and only the
+  # project's MCP servers, so every machine runs the same session
   timeout --foreground "$SESSION_TIMEOUT" claude -p "$prompt" \
+    --setting-sources project,local --strict-mcp-config --mcp-config .mcp.json \
     --output-format json --permission-mode acceptEdits \
     --model "$MODEL" --max-turns "$MAX_TURNS" \
     --allowedTools "$allow" --disallowedTools "$deny" "${EXTRA_ARGS[@]}" \
