@@ -1,0 +1,91 @@
+phase-05 (US3) API checks, attempt 1, 2026-09-24 23:10–23:14 +03:00 (Africa/Cairo), base http://localhost:8080
+phase-05-verify.sh needed approval in this session, so its checks were run as direct curl calls with
+the same inputs. Each response (status line, headers, body) is in http/<name>.http; long request
+bodies are in req/ (built with jq: C3-t201 214 B, C3-t200 213 B, C3-d2001 2035 B, C3-d2000 2034 B,
+C5-m201 214 B, C7-5001 5013 B, C7-5000 5012 B). Live swagger: C10-api-docs.json.
+
+Ids created: cards 1 (C1), 2 (C1 title only), 3 (C3 200-char title), 4 (C3 2000-char description),
+5 (C4), 6 (card A), 7 (card B), 8 (C8, deleted); milestones 1, 2 on card 6 (1 deleted in C6), 3, 4 on
+card 8; notes 1, 2 on card 6 (1 deleted in C7), 3, 4 on card 8.
+
+Status codes in call order:
+C1              POST   /api/learning-cards                         201
+C1-get          GET    /api/learning-cards/1                       200
+C1-title-only   POST   /api/learning-cards                         201
+C2-empty        POST   /api/learning-cards {"title":""}             400
+C2-blank        POST   /api/learning-cards {"title":"   "}          400
+C2-missing      POST   /api/learning-cards {"description":"x"}      400
+C2-put-empty    PUT    /api/learning-cards/1 {"title":""}           400
+C2-get1         GET    /api/learning-cards/1                       200
+C3-t201         POST   /api/learning-cards                         400
+C3-t200         POST   /api/learning-cards                         201
+C3-d2001        POST   /api/learning-cards                         400
+C3-d2000        POST   /api/learning-cards                         201
+C4-new          POST   /api/learning-cards                         201
+C4-IN_PROGRESS  PUT    /api/learning-cards/5                       200
+C4-IN_PROGRESS-get GET /api/learning-cards/5                       200
+C4-COMPLETED    PUT    /api/learning-cards/5                       200
+C4-COMPLETED-get GET   /api/learning-cards/5                       200
+C4-NOT_STARTED  PUT    /api/learning-cards/5                       200
+C4-NOT_STARTED-get GET /api/learning-cards/5                       200
+C4-done         PUT    /api/learning-cards/5 {"status":"DONE"}      400
+C4-nostatus     PUT    /api/learning-cards/5 (no status)           400
+C4-after        GET    /api/learning-cards/5                       200
+C4-unk          PUT    /api/learning-cards/999999                  404
+C5-a            POST   /api/learning-cards                         201
+C5-b            POST   /api/learning-cards                         201
+C5-m1           POST   /api/learning-cards/6/milestones            201
+C5-m2           POST   /api/learning-cards/6/milestones            201
+C5-ga           GET    /api/learning-cards/6                       200
+C5-gb           GET    /api/learning-cards/7                       200
+C5-blank        POST   /api/learning-cards/6/milestones            400
+C5-m201         POST   /api/learning-cards/6/milestones            400
+C5-unk          POST   /api/learning-cards/999999/milestones       404
+C5-ga2          GET    /api/learning-cards/6                       200
+C6-done         PUT    /api/learning-cards/6/milestones/1          200
+C6-g1           GET    /api/learning-cards/6                       200
+C6-undone       PUT    /api/learning-cards/6/milestones/1          200
+C6-g2           GET    /api/learning-cards/6                       200
+C6-otherput     PUT    /api/learning-cards/7/milestones/1          404
+C6-otherdel     DELETE /api/learning-cards/7/milestones/1          404
+C6-g3           GET    /api/learning-cards/6                       200
+C6-del          DELETE /api/learning-cards/6/milestones/1          204
+C6-g4           GET    /api/learning-cards/6                       200
+C6-del2         DELETE /api/learning-cards/6/milestones/1          404
+C6-put-gone     PUT    /api/learning-cards/6/milestones/1          404
+C7-n1           POST   /api/learning-cards/6/notes                 201
+C7-g1           GET    /api/learning-cards/6                       200
+C7-gb           GET    /api/learning-cards/7                       200
+C7-blank        POST   /api/learning-cards/6/notes                 400
+C7-missing      POST   /api/learning-cards/6/notes {}              400
+C7-5001         POST   /api/learning-cards/6/notes                 400
+C7-5000         POST   /api/learning-cards/6/notes                 201
+C7-unk          POST   /api/learning-cards/999999/notes            404
+C7-other        DELETE /api/learning-cards/7/notes/1               404
+C7-g-after-other GET   /api/learning-cards/6                       200
+C7-del          DELETE /api/learning-cards/6/notes/1               204
+C7-g2           GET    /api/learning-cards/6                       200
+C7-del2         DELETE /api/learning-cards/6/notes/1               404
+C8-new          POST   /api/learning-cards                         201
+C8-m1           POST   /api/learning-cards/8/milestones            201
+C8-m2           POST   /api/learning-cards/8/milestones            201
+C8-n1           POST   /api/learning-cards/8/notes                 201
+C8-n2           POST   /api/learning-cards/8/notes                 201
+C8-pre          GET    /api/learning-cards/8                       200
+C8-del          DELETE /api/learning-cards/8                       204
+C8-get          GET    /api/learning-cards/8                       404
+C8-list         GET    /api/learning-cards                         200
+C8-mput         PUT    /api/learning-cards/8/milestones/3          404
+C8-mdel         DELETE /api/learning-cards/8/milestones/4          404
+C8-ndel         DELETE /api/learning-cards/8/notes/3               404
+C8-madd         POST   /api/learning-cards/8/milestones            404
+C8-nadd         POST   /api/learning-cards/8/notes                 404
+C8-put          PUT    /api/learning-cards/8                       404
+C8-del2         DELETE /api/learning-cards/8                       404
+C9-get          GET    /api/learning-cards/6                       200
+C9-list         GET    /api/learning-cards                         200
+C10             GET    /v3/api-docs                                200
+
+C10 file checks: live api-docs, backend/target/openapi.json and loops/backend-dev/outputs/openapi.json
+have the same learning paths/schemas (jq -cS extract md5 4531d29e74b30f64623b16b2172661bb for all
+three); target and copy are byte-identical (cmp).

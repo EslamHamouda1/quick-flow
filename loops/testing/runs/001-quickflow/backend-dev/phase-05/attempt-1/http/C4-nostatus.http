@@ -1,0 +1,7 @@
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 20:12:02 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards/5","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must not be null"}]}

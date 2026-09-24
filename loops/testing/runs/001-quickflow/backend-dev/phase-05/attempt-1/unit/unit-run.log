@@ -1,0 +1,417 @@
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/eslam/.m2/repository/net/bytebuddy/byte-buddy-agent/1.18.11/byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+23:07:46.787 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.quickflow.web.info.AppInfoControllerTest]: AppInfoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:07:46.908 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.info.AppInfoControllerTest
+23:07:46.910 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.quickflow.web.info.AppInfoControllerTest]: AppInfoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:07:46.915 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.info.AppInfoControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-24T23:07:47.248+03:00  INFO 94065 --- [quickflow] [           main] c.q.web.info.AppInfoControllerTest       : Starting AppInfoControllerTest using Java 25.0.4.1 with PID 94065 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T23:07:47.249+03:00  INFO 94065 --- [quickflow] [           main] c.q.web.info.AppInfoControllerTest       : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T23:07:48.174+03:00  INFO 94065 --- [quickflow] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T23:07:48.174+03:00  INFO 94065 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T23:07:48.175+03:00  INFO 94065 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-24T23:07:48.200+03:00  INFO 94065 --- [quickflow] [           main] c.q.web.info.AppInfoControllerTest       : Started AppInfoControllerTest in 1.235 seconds (process running for 3.549)
+2026-09-24T23:07:48.404+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.task.TaskControllerTest
+2026-09-24T23:07:48.407+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.task.TaskControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-24T23:07:48.425+03:00  INFO 94065 --- [quickflow] [           main] c.quickflow.web.task.TaskControllerTest  : Starting TaskControllerTest using Java 25.0.4.1 with PID 94065 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T23:07:48.425+03:00  INFO 94065 --- [quickflow] [           main] c.quickflow.web.task.TaskControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T23:07:48.659+03:00  INFO 94065 --- [quickflow] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T23:07:48.660+03:00  INFO 94065 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T23:07:48.660+03:00  INFO 94065 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-24T23:07:48.665+03:00  INFO 94065 --- [quickflow] [           main] c.quickflow.web.task.TaskControllerTest  : Started TaskControllerTest in 0.254 seconds (process running for 4.014)
+2026-09-24T23:07:48.977+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.habit.HabitControllerTest
+2026-09-24T23:07:48.980+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.habit.HabitControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-24T23:07:48.995+03:00  INFO 94065 --- [quickflow] [           main] c.q.web.habit.HabitControllerTest        : Starting HabitControllerTest using Java 25.0.4.1 with PID 94065 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T23:07:48.996+03:00  INFO 94065 --- [quickflow] [           main] c.q.web.habit.HabitControllerTest        : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T23:07:49.154+03:00  INFO 94065 --- [quickflow] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T23:07:49.154+03:00  INFO 94065 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T23:07:49.155+03:00  INFO 94065 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-24T23:07:49.160+03:00  INFO 94065 --- [quickflow] [           main] c.q.web.habit.HabitControllerTest        : Started HabitControllerTest in 0.177 seconds (process running for 4.508)
+2026-09-24T23:07:49.256+03:00  INFO 94065 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.web.ApiExceptionHandlerTest]: ApiExceptionHandlerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T23:07:49.262+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.ApiExceptionHandlerTest
+2026-09-24T23:07:49.262+03:00  INFO 94065 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.web.ApiExceptionHandlerTest]: ApiExceptionHandlerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T23:07:49.265+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.ApiExceptionHandlerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-24T23:07:49.277+03:00  INFO 94065 --- [quickflow] [           main] c.quickflow.web.ApiExceptionHandlerTest  : Starting ApiExceptionHandlerTest using Java 25.0.4.1 with PID 94065 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T23:07:49.278+03:00  INFO 94065 --- [quickflow] [           main] c.quickflow.web.ApiExceptionHandlerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T23:07:49.369+03:00  INFO 94065 --- [quickflow] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T23:07:49.369+03:00  INFO 94065 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T23:07:49.370+03:00  INFO 94065 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-09-24T23:07:49.374+03:00  INFO 94065 --- [quickflow] [           main] c.quickflow.web.ApiExceptionHandlerTest  : Started ApiExceptionHandlerTest in 0.107 seconds (process running for 4.722)
+2026-09-24T23:07:49.417+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.learning.LearningCardControllerTest
+2026-09-24T23:07:49.420+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.web.learning.LearningCardControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-24T23:07:49.430+03:00  INFO 94065 --- [quickflow] [           main] c.q.w.l.LearningCardControllerTest       : Starting LearningCardControllerTest using Java 25.0.4.1 with PID 94065 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T23:07:49.431+03:00  INFO 94065 --- [quickflow] [           main] c.q.w.l.LearningCardControllerTest       : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T23:07:49.562+03:00  INFO 94065 --- [quickflow] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-09-24T23:07:49.562+03:00  INFO 94065 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-09-24T23:07:49.563+03:00  INFO 94065 --- [quickflow] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-09-24T23:07:49.567+03:00  INFO 94065 --- [quickflow] [           main] c.q.w.l.LearningCardControllerTest       : Started LearningCardControllerTest in 0.144 seconds (process running for 4.915)
+2026-09-24T23:07:49.678+03:00  INFO 94065 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.persistence.HabitRepositoryTest]: HabitRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T23:07:49.687+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.persistence.HabitRepositoryTest
+2026-09-24T23:07:49.688+03:00  INFO 94065 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.persistence.HabitRepositoryTest]: HabitRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T23:07:49.691+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.persistence.HabitRepositoryTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-24T23:07:49.705+03:00  INFO 94065 --- [quickflow] [           main] c.q.persistence.HabitRepositoryTest      : Starting HabitRepositoryTest using Java 25.0.4.1 with PID 94065 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T23:07:49.705+03:00  INFO 94065 --- [quickflow] [           main] c.q.persistence.HabitRepositoryTest      : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T23:07:49.816+03:00  INFO 94065 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-24T23:07:49.850+03:00  INFO 94065 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 6 JPA repository interfaces.
+2026-09-24T23:07:49.886+03:00  INFO 94065 --- [quickflow] [           main] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2026-09-24T23:07:49.919+03:00  INFO 94065 --- [quickflow] [           main] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:af930eeb-223b-40d2-be27-467311215a45;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-09-24T23:07:50.174+03:00  INFO 94065 --- [quickflow] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-24T23:07:50.224+03:00  INFO 94065 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-09-24T23:07:50.439+03:00  INFO 94065 --- [quickflow] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-24T23:07:50.514+03:00  INFO 94065 --- [quickflow] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:af930eeb-223b-40d2-be27-467311215a45]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: AF930EEB-223B-40D2-BE27-467311215A45/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-24T23:07:51.234+03:00  INFO 94065 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table habit (id bigint generated by default as identity, active boolean not null, created_at timestamp(6) with time zone not null, description varchar(2000), frequency enum ('DAILY','WEEKLY') not null, name varchar(150) not null, primary key (id))
+Hibernate: create table habit_completion (id bigint generated by default as identity, completion_date date not null, created_at timestamp(6) with time zone not null, habit_id bigint not null, primary key (id))
+Hibernate: create table learning_card (id bigint generated by default as identity, created_at timestamp(6) with time zone not null, description varchar(2000), status enum ('COMPLETED','IN_PROGRESS','NOT_STARTED') not null, title varchar(200) not null, primary key (id))
+Hibernate: create table learning_milestone (id bigint generated by default as identity, done boolean not null, target_date date, title varchar(200) not null, learning_card_id bigint not null, primary key (id))
+Hibernate: create table learning_note (id bigint generated by default as identity, created_at timestamp(6) with time zone not null, text varchar(5000) not null, learning_card_id bigint not null, primary key (id))
+Hibernate: create table task (id bigint generated by default as identity, archived boolean not null, completed_at timestamp(6) with time zone, created_at timestamp(6) with time zone not null, description varchar(2000), due_date date, priority enum ('HIGH','LOW','MEDIUM') not null, status enum ('DONE','IN_PROGRESS','TODO') not null, title varchar(200) not null, updated_at timestamp(6) with time zone not null, primary key (id))
+Hibernate: alter table if exists habit_completion drop constraint if exists UKc9p9mgjtyhqkkkpaygbhd4tx4
+Hibernate: alter table if exists habit_completion add constraint UKc9p9mgjtyhqkkkpaygbhd4tx4 unique (habit_id, completion_date)
+Hibernate: alter table if exists habit_completion add constraint FKo2ih4756v3toyuwbwjtumjf72 foreign key (habit_id) references habit
+Hibernate: alter table if exists learning_milestone add constraint FKcpd7l1wv6l88jrcjtgjon01li foreign key (learning_card_id) references learning_card
+Hibernate: alter table if exists learning_note add constraint FKb0h5u7420vgnpw11knb47nc4m foreign key (learning_card_id) references learning_card
+2026-09-24T23:07:51.296+03:00  INFO 94065 --- [quickflow] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T23:07:51.364+03:00  INFO 94065 --- [quickflow] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-24T23:07:51.902+03:00  INFO 94065 --- [quickflow] [           main] c.q.persistence.HabitRepositoryTest      : Started HabitRepositoryTest in 2.209 seconds (process running for 7.251)
+Hibernate: insert into habit (active,created_at,description,frequency,name,id) values (?,?,?,?,?,default)
+Hibernate: insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default)
+Hibernate: insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default)
+2026-09-24T23:07:51.973+03:00  WARN 94065 --- [quickflow] [           main] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 23505, SQLState: 23505
+2026-09-24T23:07:51.973+03:00  WARN 94065 --- [quickflow] [           main] org.hibernate.orm.jdbc.error             : Unique index or primary key violation: "PUBLIC.UKC9P9MGJTYHQKKKPAYGBHD4TX4 INDEX PUBLIC.UKC9P9MGJTYHQKKKPAYGBHD4TX4_INDEX_4 ON PUBLIC.HABIT_COMPLETION(HABIT_ID NULLS FIRST, COMPLETION_DATE NULLS FIRST) VALUES ( /* key:1 */ CAST(1 AS BIGINT), DATE '2026-09-24')"; SQL statement:
+insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default) [23505-240]
+Hibernate: insert into habit (active,created_at,description,frequency,name,id) values (?,?,?,?,?,default)
+Hibernate: insert into habit (active,created_at,description,frequency,name,id) values (?,?,?,?,?,default)
+Hibernate: insert into habit (active,created_at,description,frequency,name,id) values (?,?,?,?,?,default)
+Hibernate: insert into habit (active,created_at,description,frequency,name,id) values (?,?,?,?,?,default)
+Hibernate: update habit set active=?,created_at=?,description=?,frequency=?,name=? where id=?
+Hibernate: update habit set active=?,created_at=?,description=?,frequency=?,name=? where id=?
+Hibernate: select h1_0.id,h1_0.active,h1_0.created_at,h1_0.description,h1_0.frequency,h1_0.name from habit h1_0 where h1_0.active=? order by h1_0.created_at,h1_0.id
+Hibernate: select h1_0.id,h1_0.active,h1_0.created_at,h1_0.description,h1_0.frequency,h1_0.name from habit h1_0 where h1_0.active=? order by h1_0.created_at,h1_0.id
+Hibernate: select h1_0.id,h1_0.active,h1_0.created_at,h1_0.description,h1_0.frequency,h1_0.name from habit h1_0 order by h1_0.created_at,h1_0.id
+Hibernate: insert into habit (active,created_at,description,frequency,name,id) values (?,?,?,?,?,default)
+Hibernate: insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default)
+Hibernate: insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default)
+Hibernate: select h1_0.id,h1_0.active,h1_0.created_at,h1_0.description,h1_0.frequency,h1_0.name from habit h1_0 where h1_0.id=?
+Hibernate: select c1_0.habit_id,c1_0.id,c1_0.completion_date,c1_0.created_at from habit_completion c1_0 where c1_0.habit_id=?
+Hibernate: delete from habit_completion where id=?
+Hibernate: delete from habit_completion where id=?
+Hibernate: delete from habit where id=?
+Hibernate: select h1_0.id,h1_0.active,h1_0.created_at,h1_0.description,h1_0.frequency,h1_0.name from habit h1_0 where h1_0.id=?
+Hibernate: select hc1_0.id,hc1_0.completion_date,hc1_0.created_at,hc1_0.habit_id from habit_completion hc1_0 where hc1_0.habit_id=? order by hc1_0.completion_date desc
+Hibernate: select hc1_0.completion_date from habit_completion hc1_0 where hc1_0.habit_id=?
+Hibernate: select count(*) from habit_completion hc1_0
+Hibernate: insert into habit (active,created_at,description,frequency,name,id) values (?,?,?,?,?,default)
+Hibernate: insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default)
+Hibernate: insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default)
+Hibernate: select hc1_0.completion_date from habit_completion hc1_0 where hc1_0.habit_id=?
+Hibernate: insert into habit (active,created_at,description,frequency,name,id) values (?,?,?,?,?,default)
+Hibernate: insert into habit (active,created_at,description,frequency,name,id) values (?,?,?,?,?,default)
+Hibernate: insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default)
+Hibernate: insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default)
+Hibernate: insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default)
+Hibernate: insert into habit_completion (completion_date,created_at,habit_id,id) values (?,?,?,default)
+Hibernate: select hc1_0.completion_date from habit_completion hc1_0 where hc1_0.habit_id=?
+Hibernate: select hc1_0.completion_date from habit_completion hc1_0 where hc1_0.habit_id=?
+Hibernate: select hc1_0.id,hc1_0.completion_date,hc1_0.created_at,hc1_0.habit_id from habit_completion hc1_0 where hc1_0.habit_id=? order by hc1_0.completion_date desc
+Hibernate: select count(hc1_0.id)>0 from habit_completion hc1_0 where hc1_0.habit_id=? and hc1_0.completion_date=?
+Hibernate: select count(hc1_0.id)>0 from habit_completion hc1_0 where hc1_0.habit_id=? and hc1_0.completion_date=?
+Hibernate: select count(hc1_0.id)>0 from habit_completion hc1_0 where hc1_0.habit_id=? and hc1_0.completion_date=?
+Hibernate: select hc1_0.id,hc1_0.completion_date,hc1_0.created_at,hc1_0.habit_id from habit_completion hc1_0 where hc1_0.habit_id=? and hc1_0.completion_date=?
+Hibernate: select hc1_0.id,hc1_0.completion_date,hc1_0.created_at,hc1_0.habit_id from habit_completion hc1_0 where hc1_0.habit_id=? and hc1_0.completion_date=?
+2026-09-24T23:07:52.125+03:00  INFO 94065 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.persistence.LearningCardRepositoryTest]: LearningCardRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T23:07:52.129+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.persistence.LearningCardRepositoryTest
+2026-09-24T23:07:52.130+03:00  INFO 94065 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.persistence.LearningCardRepositoryTest]: LearningCardRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T23:07:52.132+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.persistence.LearningCardRepositoryTest
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+2026-09-24T23:07:52.138+03:00  WARN 94065 --- [quickflow] [           main] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 23502, SQLState: 23502
+2026-09-24T23:07:52.138+03:00  WARN 94065 --- [quickflow] [           main] org.hibernate.orm.jdbc.error             : NULL not allowed for column "LEARNING_CARD_ID"; SQL statement:
+insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default) [23502-240]
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_note (learning_card_id,created_at,text,id) values (?,?,?,default)
+Hibernate: insert into learning_note (learning_card_id,created_at,text,id) values (?,?,?,default)
+Hibernate: insert into learning_note (learning_card_id,created_at,text,id) values (?,?,?,default)
+Hibernate: select lc1_0.id,lc1_0.created_at,lc1_0.description,lc1_0.status,lc1_0.title from learning_card lc1_0 where lc1_0.id=?
+Hibernate: select n1_0.learning_card_id,n1_0.id,n1_0.created_at,n1_0.text from learning_note n1_0 where n1_0.learning_card_id=? order by n1_0.created_at,n1_0.id
+Hibernate: select m1_0.learning_card_id,m1_0.id,m1_0.done,m1_0.target_date,m1_0.title from learning_milestone m1_0 where m1_0.learning_card_id=? order by m1_0.id
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_note (learning_card_id,created_at,text,id) values (?,?,?,default)
+Hibernate: select lm1_0.id,lm1_0.learning_card_id,lm1_0.done,lm1_0.target_date,lm1_0.title from learning_milestone lm1_0 where lm1_0.id=? and lm1_0.learning_card_id=?
+Hibernate: select lm1_0.id,lm1_0.learning_card_id,lm1_0.done,lm1_0.target_date,lm1_0.title from learning_milestone lm1_0 where lm1_0.id=? and lm1_0.learning_card_id=?
+Hibernate: select ln1_0.id,ln1_0.learning_card_id,ln1_0.created_at,ln1_0.text from learning_note ln1_0 where ln1_0.id=? and ln1_0.learning_card_id=?
+Hibernate: select ln1_0.id,ln1_0.learning_card_id,ln1_0.created_at,ln1_0.text from learning_note ln1_0 where ln1_0.id=? and ln1_0.learning_card_id=?
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: select lc1_0.id,lc1_0.created_at,lc1_0.description,lc1_0.status,lc1_0.title from learning_card lc1_0 order by lc1_0.created_at desc,lc1_0.id desc
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: select lc1_0.id,lc1_0.created_at,lc1_0.description,lc1_0.status,lc1_0.title from learning_card lc1_0 where lc1_0.id=?
+Hibernate: select m1_0.learning_card_id,m1_0.id,m1_0.done,m1_0.target_date,m1_0.title from learning_milestone m1_0 where m1_0.learning_card_id=? order by m1_0.id
+Hibernate: delete from learning_milestone where id=?
+Hibernate: select lm1_0.id,lm1_0.learning_card_id,lm1_0.done,lm1_0.target_date,lm1_0.title from learning_milestone lm1_0 where lm1_0.id=?
+Hibernate: select count(*) from learning_milestone lm1_0
+Hibernate: select lc1_0.id,lc1_0.created_at,lc1_0.description,lc1_0.status,lc1_0.title from learning_card lc1_0 where lc1_0.id=?
+Hibernate: select m1_0.learning_card_id,m1_0.id,m1_0.done,m1_0.target_date,m1_0.title from learning_milestone m1_0 where m1_0.learning_card_id=? order by m1_0.id
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_note (learning_card_id,created_at,text,id) values (?,?,?,default)
+Hibernate: insert into learning_note (learning_card_id,created_at,text,id) values (?,?,?,default)
+Hibernate: select lc1_0.id,lc1_0.created_at,lc1_0.description,lc1_0.status,lc1_0.title from learning_card lc1_0 where lc1_0.id=?
+Hibernate: select m1_0.learning_card_id,m1_0.id,m1_0.done,m1_0.target_date,m1_0.title from learning_milestone m1_0 where m1_0.learning_card_id=? order by m1_0.id
+Hibernate: select n1_0.learning_card_id,n1_0.id,n1_0.created_at,n1_0.text from learning_note n1_0 where n1_0.learning_card_id=? order by n1_0.created_at,n1_0.id
+Hibernate: delete from learning_milestone where id=?
+Hibernate: delete from learning_milestone where id=?
+Hibernate: delete from learning_note where id=?
+Hibernate: delete from learning_note where id=?
+Hibernate: delete from learning_card where id=?
+Hibernate: select lc1_0.id,lc1_0.created_at,lc1_0.description,lc1_0.status,lc1_0.title from learning_card lc1_0 where lc1_0.id=?
+Hibernate: select lm1_0.id,lm1_0.learning_card_id,lm1_0.done,lm1_0.target_date,lm1_0.title from learning_milestone lm1_0 where lm1_0.id=?
+Hibernate: select lm1_0.id,lm1_0.learning_card_id,lm1_0.done,lm1_0.target_date,lm1_0.title from learning_milestone lm1_0 where lm1_0.id=?
+Hibernate: select ln1_0.id,ln1_0.learning_card_id,ln1_0.created_at,ln1_0.text from learning_note ln1_0 where ln1_0.id=?
+Hibernate: select ln1_0.id,ln1_0.learning_card_id,ln1_0.created_at,ln1_0.text from learning_note ln1_0 where ln1_0.id=?
+Hibernate: select count(*) from learning_card lc1_0
+Hibernate: select count(*) from learning_milestone lm1_0
+Hibernate: select count(*) from learning_note ln1_0
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: insert into learning_milestone (learning_card_id,done,target_date,title,id) values (?,?,?,?,default)
+Hibernate: select lc1_0.id,lc1_0.created_at,lc1_0.description,lc1_0.status,lc1_0.title from learning_card lc1_0 where lc1_0.id=?
+Hibernate: select m1_0.learning_card_id,m1_0.id,m1_0.done,m1_0.target_date,m1_0.title from learning_milestone m1_0 where m1_0.learning_card_id=? order by m1_0.id
+Hibernate: insert into learning_card (created_at,description,status,title,id) values (?,?,?,?,default)
+Hibernate: select lc1_0.id,lc1_0.created_at,lc1_0.description,lc1_0.status,lc1_0.title from learning_card lc1_0 where lc1_0.id=?
+Hibernate: select m1_0.learning_card_id,m1_0.id,m1_0.done,m1_0.target_date,m1_0.title from learning_milestone m1_0 where m1_0.learning_card_id=? order by m1_0.id
+2026-09-24T23:07:52.232+03:00  INFO 94065 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.persistence.TaskRepositoryTest]: TaskRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T23:07:52.237+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.persistence.TaskRepositoryTest
+2026-09-24T23:07:52.237+03:00  INFO 94065 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.persistence.TaskRepositoryTest]: TaskRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T23:07:52.241+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.persistence.TaskRepositoryTest
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.archived=? order by case when t1_0.due_date is null then ? else ? end,t1_0.due_date,t1_0.id
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.archived=? order by t1_0.created_at desc,t1_0.id desc
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.status=? and t1_0.priority=? and t1_0.archived=? order by t1_0.created_at desc,t1_0.id desc
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.due_date>=? and t1_0.due_date<=? and t1_0.archived=? order by t1_0.created_at desc,t1_0.id desc
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.archived=? order by t1_0.created_at desc,t1_0.id desc
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.archived=? order by t1_0.created_at desc,t1_0.id desc
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.archived=? order by t1_0.created_at,t1_0.id
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where lower(t1_0.title) like ? escape '\' and t1_0.archived=? order by t1_0.created_at desc,t1_0.id desc
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where lower(t1_0.title) like ? escape '\' and t1_0.archived=? order by t1_0.created_at desc,t1_0.id desc
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.due_date<? and t1_0.status<>'DONE' and t1_0.archived=false order by t1_0.due_date,t1_0.id
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: delete from task where id=?
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.archived=? order by t1_0.created_at desc,t1_0.id desc
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.due_date<? and t1_0.status<>'DONE' and t1_0.archived=false order by t1_0.due_date,t1_0.id
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.id=?
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into task (archived,completed_at,created_at,description,due_date,priority,status,title,updated_at,id) values (?,?,?,?,?,?,?,?,?,default)
+Hibernate: select t1_0.id,t1_0.archived,t1_0.completed_at,t1_0.created_at,t1_0.description,t1_0.due_date,t1_0.priority,t1_0.status,t1_0.title,t1_0.updated_at from task t1_0 where t1_0.archived=? order by case when t1_0.due_date is null then ? else ? end,t1_0.due_date desc,t1_0.id desc
+2026-09-24T23:07:52.357+03:00  INFO 94065 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.QuickflowApplicationTests]: QuickflowApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T23:07:52.359+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.QuickflowApplicationTests
+2026-09-24T23:07:52.361+03:00  INFO 94065 --- [quickflow] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.quickflow.QuickflowApplicationTests]: QuickflowApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-09-24T23:07:52.361+03:00  INFO 94065 --- [quickflow] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.quickflow.QuickflowApplication for test class com.quickflow.QuickflowApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-24T23:07:52.373+03:00  INFO 94065 --- [quickflow] [           main] c.quickflow.QuickflowApplicationTests    : Starting QuickflowApplicationTests using Java 25.0.4.1 with PID 94065 (started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T23:07:52.373+03:00  INFO 94065 --- [quickflow] [           main] c.quickflow.QuickflowApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2026-09-24T23:07:52.528+03:00  INFO 94065 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-24T23:07:52.534+03:00  INFO 94065 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 6 JPA repository interfaces.
+2026-09-24T23:07:52.608+03:00  INFO 94065 --- [quickflow] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-24T23:07:52.616+03:00  INFO 94065 --- [quickflow] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-24T23:07:52.617+03:00  INFO 94065 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-24T23:07:52.652+03:00  INFO 94065 --- [quickflow] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn25: url=jdbc:h2:file:./data/quickflow user=
+2026-09-24T23:07:52.653+03:00  INFO 94065 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-24T23:07:52.660+03:00  INFO 94065 --- [quickflow] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/quickflow]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: QUICKFLOW/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-24T23:07:52.695+03:00  INFO 94065 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-24T23:07:52.707+03:00  INFO 94065 --- [quickflow] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T23:07:53.021+03:00  INFO 94065 --- [quickflow] [           main] c.quickflow.QuickflowApplicationTests    : Started QuickflowApplicationTests in 0.656 seconds (process running for 8.369)
+2026-09-24T23:07:53.021+03:00  WARN 94065 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-09-24T23:07:53.021+03:00  WARN 94065 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-24T23:07:53.761+03:00  INFO 94227 --- [quickflow] [           main] com.quickflow.QuickflowApplication       : Starting QuickflowApplication using Java 25.0.4.1 with PID 94227 (/home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend/target/classes started by eslam in /home/eslam/Downloads/TTFolder/quickflow-claude-loops/backend)
+2026-09-24T23:07:53.763+03:00  INFO 94227 --- [quickflow] [           main] com.quickflow.QuickflowApplication       : The following 1 profile is active: "openapi"
+2026-09-24T23:07:54.197+03:00  INFO 94227 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-24T23:07:54.228+03:00  INFO 94227 --- [quickflow] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 6 JPA repository interfaces.
+2026-09-24T23:07:54.511+03:00  INFO 94227 --- [quickflow] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 18080 (http)
+2026-09-24T23:07:54.519+03:00  INFO 94227 --- [quickflow] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-24T23:07:54.519+03:00  INFO 94227 --- [quickflow] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-24T23:07:54.542+03:00  INFO 94227 --- [quickflow] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 756 ms
+2026-09-24T23:07:54.648+03:00  INFO 94227 --- [quickflow] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-24T23:07:54.672+03:00  INFO 94227 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-09-24T23:07:54.854+03:00  INFO 94227 --- [quickflow] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-24T23:07:54.870+03:00  INFO 94227 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-24T23:07:54.959+03:00  INFO 94227 --- [quickflow] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:openapi user=SA
+2026-09-24T23:07:54.960+03:00  INFO 94227 --- [quickflow] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-24T23:07:54.989+03:00  INFO 94227 --- [quickflow] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:openapi]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: OPENAPI/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-24T23:07:55.482+03:00  INFO 94227 --- [quickflow] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-24T23:07:55.509+03:00  INFO 94227 --- [quickflow] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T23:07:55.553+03:00  INFO 94227 --- [quickflow] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-24T23:07:56.250+03:00  INFO 94227 --- [quickflow] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 18080 (http) with context path '/'
+2026-09-24T23:07:56.255+03:00  INFO 94227 --- [quickflow] [           main] com.quickflow.QuickflowApplication       : Started QuickflowApplication in 2.682 seconds (process running for 2.941)
+2026-09-24T23:07:56.257+03:00  WARN 94227 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-09-24T23:07:56.257+03:00  WARN 94227 --- [quickflow] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-09-24T23:07:56.425+03:00  INFO 94227 --- [quickflow] [io-18080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-24T23:07:56.426+03:00  INFO 94227 --- [quickflow] [io-18080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-24T23:07:56.426+03:00  INFO 94227 --- [quickflow] [io-18080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-09-24T23:07:56.761+03:00  INFO 94227 --- [quickflow] [io-18080-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 314 ms
+2026-09-24T23:07:56.792+03:00  INFO 94227 --- [quickflow] [on(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2026-09-24T23:07:56.794+03:00  INFO 94227 --- [quickflow] [on(2)-127.0.0.1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-24T23:07:56.797+03:00  INFO 94227 --- [quickflow] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-24T23:07:56.800+03:00  INFO 94227 --- [quickflow] [on(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-24T23:07:56.804+03:00  INFO 94227 --- [quickflow] [on(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-09-24T23:07:56.805+03:00  INFO 94227 --- [quickflow] [on(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

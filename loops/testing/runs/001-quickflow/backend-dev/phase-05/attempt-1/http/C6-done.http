@@ -1,0 +1,6 @@
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 77
+Date: Thu, 24 Sep 2026 20:12:38 GMT
+
+{"id":1,"cardId":6,"title":"Chapter 1","done":true,"targetDate":"2026-10-15"}

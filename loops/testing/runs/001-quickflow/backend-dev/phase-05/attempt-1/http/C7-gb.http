@@ -1,0 +1,6 @@
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 185
+Date: Thu, 24 Sep 2026 20:12:55 GMT
+
+{"id":7,"title":"C5 card B L5","description":null,"status":"NOT_STARTED","createdAt":"2026-09-24T23:12:24.23753+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}

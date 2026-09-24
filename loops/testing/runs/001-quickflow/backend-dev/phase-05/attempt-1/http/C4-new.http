@@ -1,0 +1,6 @@
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 191
+Date: Thu, 24 Sep 2026 20:12:01 GMT
+
+{"id":5,"title":"C4 status L5","description":"book","status":"NOT_STARTED","createdAt":"2026-09-24T23:12:01.928815784+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}

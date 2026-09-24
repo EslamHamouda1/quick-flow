@@ -1,0 +1,6 @@
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 189
+Date: Thu, 24 Sep 2026 20:13:17 GMT
+
+{"id":8,"title":"C8 delete L5","description":null,"status":"NOT_STARTED","createdAt":"2026-09-24T23:13:17.059663624+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}

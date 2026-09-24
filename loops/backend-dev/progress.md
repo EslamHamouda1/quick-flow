@@ -10,7 +10,8 @@
 | backend-dev:001-quickflow:phase-02 | 2026-09-24T17:37:25+03:00 | 2026-09-24T19:46:03+03:00 | 2h08m38s | 0h07m49s | 4 | 1 | 118 | 3792025 | 43469 | 4.2047 | c0539463-469b-45f5-9b58-bd0ce255dce5 9b6e834a-137f-4416-9c43-f7684b718331 6a218858-e904-4e53-ae49-132477a91b2c e3053691-bbe0-4aae-b96d-4a4590781dd1 | 6a218858-e904-4e53-ae49-132477a91b2c | 9d022c0 | success |
 | backend-dev:001-quickflow:phase-03 | 2026-09-24T21:38:54+03:00 | 2026-09-24T21:59:34+03:00 | 0h20m40s | 0h15m37s | 4 | 1 | 180 | 8096490 | 95485 | 7.9252 | 2b7f38a4-f149-49c3-b47f-0ebbb94fd66d 6970c308-dac6-4961-b16e-54d699153a31 5279a56e-ed6d-41ed-a635-7a9211ba22a2 14afc922-fd61-4f6f-9756-589ef006ca04 | 5279a56e-ed6d-41ed-a635-7a9211ba22a2 | 4f731ba | success |
 | backend-dev:001-quickflow:phase-04 | 2026-09-24T22:10:49+03:00 | 2026-09-24T22:28:51+03:00 | 0h18m02s | 0h17m31s | 4 | 1 | 256 | 12697288 | 105514 | 8.9016 | a86b8a4b-2523-4d2e-8b40-200ca1150256 245fac4e-3a3b-4d90-bd21-7936f90f697e 20927e47-47a3-4f69-b1bb-43be78dd92e3 d7f5cf05-dcc2-48dd-9bff-690cb3194c15 | 20927e47-47a3-4f69-b1bb-43be78dd92e3 | c698b54 | success |
-| **Total** |  |  |  | 1h06m55s | 18 |  | 856 | 36011996 | 395455 | 29.6723 |  |  |  |  |
+| backend-dev:001-quickflow:phase-05 | 2026-09-24T22:38:19+03:00 | 2026-09-24T23:15:41+03:00 | 0h37m22s | 0h14m25s | 4 | 1 | 182 | 7974338 | 78439 | 7.3067 | a1d77c0f-3950-4417-a8d1-950f403b16fb 1adb9098-836c-467b-9bdd-14e7a41e354b d412fe1d-2596-41cf-a795-871768250983 8b33bd6f-fd27-4ebe-82aa-074270cf8075 | d412fe1d-2596-41cf-a795-871768250983 |  | success |
+| **Total** |  |  |  | 1h21m21s | 22 |  | 1038 | 43986334 | 473894 | 36.9790 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -105,3 +106,13 @@
 - 2026-09-24T22:19:30+03:00 001-quickflow phase-04: marked T029-T041 [~] in phase-04.md and tasks.json, [X] in tasks.md; set phase-04 ready_for_test
 - 2026-09-24T22:28:10+03:00 test 001-quickflow phase-04 attempt 1: pass (verified_by 20927e47-47a3-4f69-b1bb-43be78dd92e3)
 - 2026-09-24T22:28:44+03:00 001-quickflow phase-04: close check ok (T029-T041 [X] in tasks.md, verdict pass attempt 1); turned [~] into [x] in phase-04.md and tasks.json; set phase-04 done
+- 2026-09-24T22:40:22+03:00 001-quickflow phase-05: wrote outputs/001-quickflow/phase-05-review.md (12 tasks T042-T053, tasks.md Phase 5 matches phase-05.md, assumptions A-1..A-8, no open questions); set phase-05 awaiting_approval
+- 2026-09-24T22:40:35+03:00 gate 001-quickflow phase-05: approved (auto)
+- 2026-09-24T22:42:00+03:00 001-quickflow phase-05: tasks.md Phase 5 already matches phase-05.md (no sync changes); no reviewer notes or questions; no unchecked checklist items; set phase-05 in_progress
+- 2026-09-24T22:55:00+03:00 001-quickflow phase-05: T042-T045 tests written first by 4 parallel subagents (LearningCardTest, LearningServiceTest, LearningCardRepositoryTest, LearningCardControllerTest)
+- 2026-09-24T23:00:00+03:00 001-quickflow phase-05: T046-T053 written (LearningStatus, LearningCard, LearningMilestone, LearningNote, 3 repositories with explicit JPQL, LearningService loading milestones/notes inside the transaction, 8 web records, LearningCardController with 10 operations)
+- 2026-09-24T23:05:00+03:00 001-quickflow phase-05: L.build and L.test run (log runs/001-quickflow/phase-05-build.log); 68 learning tests, no failures or errors in any suite; domain/learning line coverage 126/127
+- 2026-09-24T23:06:00+03:00 001-quickflow phase-05: copied backend/target/openapi.json to outputs/openapi.json (10 learning operationIds; schemas match contract except the known minLength: 0 on description)
+- 2026-09-24T23:07:27+03:00 001-quickflow phase-05: marked T042-T053 [~] in phase-05.md and tasks.json, [X] in tasks.md; set phase-05 ready_for_test
+- 2026-09-24T23:15:05+03:00 test 001-quickflow phase-05 attempt 1: pass (verified_by d412fe1d-2596-41cf-a795-871768250983)
+- 2026-09-24T23:15:33+03:00 001-quickflow phase-05: close check ok (T042-T053 [X] in tasks.md, verdict pass attempt 1); marked T042-T053 [x] in phase-05.md and tasks.json; set phase-05 done

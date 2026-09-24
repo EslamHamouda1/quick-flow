@@ -1,0 +1,6 @@
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 81
+Date: Thu, 24 Sep 2026 20:13:17 GMT
+
+{"id":3,"cardId":8,"text":"n1","createdAt":"2026-09-24T23:13:17.112672355+03:00"}

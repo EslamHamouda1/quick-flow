@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaskSort.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.task</a> &gt; <span class="el_source">TaskSort.java</span></div><h1>TaskSort.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.task;
+
+import java.util.Arrays;
+
+import com.quickflow.domain.common.ValidationException;
+
+/** Sort keys of the task list, bound from the contract's lower-camel `sort` values (A-9). */
+<span class="fc" id="L8">public enum TaskSort {</span>
+
+<span class="fc" id="L10">	CREATED_AT(&quot;createdAt&quot;), DUE_DATE(&quot;dueDate&quot;);</span>
+
+	private final String param;
+
+<span class="fc" id="L14">	TaskSort(String param) {</span>
+<span class="fc" id="L15">		this.param = param;</span>
+<span class="fc" id="L16">	}</span>
+
+	public String param() {
+<span class="nc" id="L19">		return param;</span>
+	}
+
+	public static TaskSort fromParam(String value) {
+<span class="fc" id="L23">		return Arrays.stream(values())</span>
+<span class="fc" id="L24">				.filter(s -&gt; s.param.equals(value))</span>
+<span class="fc" id="L25">				.findFirst()</span>
+<span class="fc" id="L26">				.orElseThrow(() -&gt; new ValidationException(&quot;sort&quot;, &quot;must be one of [createdAt, dueDate]&quot;));</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

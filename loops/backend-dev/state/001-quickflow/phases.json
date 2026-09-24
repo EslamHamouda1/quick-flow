@@ -164,9 +164,14 @@
         "phase-02"
       ],
       "attempt": 1,
-      "status": "planned",
-      "approval": null,
-      "block_reason": null
+      "status": "done",
+      "approval": {
+        "decision": "auto",
+        "at": "2026-09-24T22:40:35+03:00",
+        "notes": ""
+      },
+      "block_reason": null,
+      "verified_by": "d412fe1d-2596-41cf-a795-871768250983"
     },
     {
       "phase": "phase-06",

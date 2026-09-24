@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LearningNote.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.learning</a> &gt; <span class="el_source">LearningNote.java</span></div><h1>LearningNote.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.learning;
+
+import java.time.Instant;
+
+import com.quickflow.domain.common.ValidationException;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+/** A note on one card (FR-06.2); notes are added and removed, never edited (A-6). */
+@Entity
+@Table(name = &quot;learning_note&quot;)
+public class LearningNote {
+
+	static final int TEXT_MAX = 5000;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = &quot;learning_card_id&quot;, nullable = false)
+	private LearningCard card;
+
+	@Column(nullable = false, length = TEXT_MAX)
+	private String text;
+
+	@Column(nullable = false)
+	private Instant createdAt;
+
+<span class="fc" id="L37">	protected LearningNote() {</span>
+<span class="fc" id="L38">	}</span>
+
+	/** Checked non-blank and at most 5,000 characters, stored as given (A-1). */
+<span class="fc" id="L41">	public LearningNote(LearningCard card, String text, Instant now) {</span>
+<span class="fc bfc" id="L42" title="All 4 branches covered.">		if (text == null || text.isBlank()) {</span>
+<span class="fc" id="L43">			throw new ValidationException(&quot;text&quot;, &quot;must not be blank&quot;);</span>
+		}
+<span class="fc bfc" id="L45" title="All 2 branches covered.">		if (text.length() &gt; TEXT_MAX) {</span>
+<span class="fc" id="L46">			throw new ValidationException(&quot;text&quot;, &quot;must be at most &quot; + TEXT_MAX + &quot; characters&quot;);</span>
+		}
+<span class="fc" id="L48">		this.card = card;</span>
+<span class="fc" id="L49">		this.text = text;</span>
+<span class="fc" id="L50">		this.createdAt = now;</span>
+<span class="fc" id="L51">	}</span>
+
+	public Long getId() {
+<span class="fc" id="L54">		return id;</span>
+	}
+
+	public LearningCard getCard() {
+<span class="fc" id="L58">		return card;</span>
+	}
+
+	public Long getCardId() {
+<span class="fc" id="L62">		return card.getId();</span>
+	}
+
+	public String getText() {
+<span class="fc" id="L66">		return text;</span>
+	}
+
+	public Instant getCreatedAt() {
+<span class="fc" id="L70">		return createdAt;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

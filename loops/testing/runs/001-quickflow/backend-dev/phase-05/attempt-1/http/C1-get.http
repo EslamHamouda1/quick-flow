@@ -1,0 +1,6 @@
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 208
+Date: Thu, 24 Sep 2026 20:11:32 GMT
+
+{"id":1,"title":"C1 Spring L5","description":"https://spring.io/guides","status":"NOT_STARTED","createdAt":"2026-09-24T23:10:51.493838+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}

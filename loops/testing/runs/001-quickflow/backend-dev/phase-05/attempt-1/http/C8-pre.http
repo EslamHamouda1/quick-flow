@@ -1,0 +1,6 @@
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 478
+Date: Thu, 24 Sep 2026 20:13:17 GMT
+
+{"id":8,"title":"C8 delete L5","description":null,"status":"NOT_STARTED","createdAt":"2026-09-24T23:13:17.059664+03:00","milestones":[{"id":3,"cardId":8,"title":"m1","done":false,"targetDate":null},{"id":4,"cardId":8,"title":"m2","done":false,"targetDate":"2026-11-01"}],"notes":[{"id":3,"cardId":8,"text":"n1","createdAt":"2026-09-24T23:13:17.112672+03:00"},{"id":4,"cardId":8,"text":"n2","createdAt":"2026-09-24T23:13:17.130123+03:00"}],"milestonesDone":0,"milestonesTotal":2}

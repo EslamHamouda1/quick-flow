@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HabitProgressCalculator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.habit</a> &gt; <span class="el_source">HabitProgressCalculator.java</span></div><h1>HabitProgressCalculator.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.habit;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+/**
+ * Progress and streak of a habit (FR-04.5). A DAILY period is one date, a WEEKLY period is a Monday–Sunday
+ * week (spec A-12). The streak counts consecutive periods with a completion, back from the current period
+ * if it is done, otherwise from the previous one (A-7).
+ */
+public final class HabitProgressCalculator {
+
+	private HabitProgressCalculator() {
+	}
+
+	public static HabitProgress progress(HabitFrequency frequency, Collection&lt;LocalDate&gt; completionDates,
+			LocalDate today) {
+<span class="fc" id="L22">		Set&lt;LocalDate&gt; periods = completionDates.stream()</span>
+<span class="fc" id="L23">				.map(date -&gt; periodStart(frequency, date))</span>
+<span class="fc" id="L24">				.collect(Collectors.toSet());</span>
+<span class="fc" id="L25">		LocalDate current = periodStart(frequency, today);</span>
+<span class="fc" id="L26">		boolean done = periods.contains(current);</span>
+<span class="fc" id="L27">		int streak = 0;</span>
+<span class="fc bfc" id="L28" title="All 4 branches covered.">		for (LocalDate period = done ? current : previous(frequency, current); periods.contains(period);</span>
+<span class="fc" id="L29">				period = previous(frequency, period)) {</span>
+<span class="fc" id="L30">			streak++;</span>
+		}
+<span class="fc" id="L32">		return new HabitProgress(completionDates.contains(today), done, streak);</span>
+	}
+
+	private static LocalDate periodStart(HabitFrequency frequency, LocalDate date) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">		return switch (frequency) {</span>
+<span class="fc" id="L37">			case DAILY -&gt; date;</span>
+<span class="fc" id="L38">			case WEEKLY -&gt; date.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));</span>
+		};
+	}
+
+	private static LocalDate previous(HabitFrequency frequency, LocalDate periodStart) {
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		return switch (frequency) {</span>
+<span class="fc" id="L44">			case DAILY -&gt; periodStart.minusDays(1);</span>
+<span class="fc" id="L45">			case WEEKLY -&gt; periodStart.minusWeeks(1);</span>
+		};
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
