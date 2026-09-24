@@ -6,8 +6,9 @@
 | milestone | start | end | wall time | active time | sessions | attempts | input tokens | cache tokens | output tokens | cost USD | session_ids | verified_by | commit | result |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | backend-dev:001-quickflow:phase-00-plan | 2026-09-24T16:54:50+03:00 | 2026-09-24T17:15:17+03:00 | 0h20m27s | 0h17m32s | 2 | 1 | 160 | 7637818 | 112585 | 5.8444 | 2c9bcef9-5135-4db0-b8ff-69e966db5ccb 83da841d-851e-468e-b48a-948455f5519e |  | e35f4ce | success |
-| backend-dev:001-quickflow:phase-01 | 2026-09-24T17:28:15+03:00 | 2026-09-24T17:37:22+03:00 | 0h09m07s | 0h08m24s | 4 | 1 | 142 | 3788375 | 38402 | 2.7964 | 3678da3d-8b4f-417b-82a7-a139dcacfe6f 10a107ef-342c-4a23-85d9-f4fc1d6fdd7f 52275b8d-3ef0-4889-a687-3438ac1031be e21e79b4-f64d-4b30-9692-88f460702b84 | 52275b8d-3ef0-4889-a687-3438ac1031be |  | success |
-| **Total** |  |  |  | 0h25m56s | 6 |  | 302 | 11426193 | 150987 | 8.6408 |  |  |  |  |
+| backend-dev:001-quickflow:phase-01 | 2026-09-24T17:28:15+03:00 | 2026-09-24T17:37:22+03:00 | 0h09m07s | 0h08m24s | 4 | 1 | 142 | 3788375 | 38402 | 2.7964 | 3678da3d-8b4f-417b-82a7-a139dcacfe6f 10a107ef-342c-4a23-85d9-f4fc1d6fdd7f 52275b8d-3ef0-4889-a687-3438ac1031be e21e79b4-f64d-4b30-9692-88f460702b84 | 52275b8d-3ef0-4889-a687-3438ac1031be | d8e5e83 | success |
+| backend-dev:001-quickflow:phase-02 | 2026-09-24T17:37:25+03:00 | 2026-09-24T17:44:31+03:00 | 0h07m06s | 0h04m40s | 2 | 1 | 58 | 2241098 | 23572 | 2.9020 | c0539463-469b-45f5-9b58-bd0ce255dce5 9b6e834a-137f-4416-9c43-f7684b718331 |  |  | success |
+| **Total** |  |  |  | 0h30m36s | 8 |  | 360 | 13667291 | 174559 | 11.5428 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -45,3 +46,22 @@
 - 2026-09-24T17:32:50+03:00 001-quickflow phase-01: marked T001-T007 [~] in phase-01.md and tasks.json, [X] in tasks.md; set phase-01 ready_for_test
 - 2026-09-24T17:36:33+03:00 test 001-quickflow phase-01 attempt 1: pass (verified_by 52275b8d-3ef0-4889-a687-3438ac1031be)
 - 2026-09-24T17:37:10+03:00 001-quickflow phase-01: close check ok (T001-T007 [X] in tasks.md, verdict pass for attempt 1); turned [~] into [x] in phase-01.md and tasks.json; set phase-01 done
+- 2026-09-24T17:38:54+03:00 001-quickflow phase-02: wrote outputs/001-quickflow/phase-02-review.md (10 tasks, 15 files, GET /api/app-info, 7 assumptions, no open questions); set phase-02 awaiting_approval
+- 2026-09-24T17:39:08+03:00 gate 001-quickflow phase-02: approved (auto)
+- 2026-09-24T17:41:00+03:00 001-quickflow phase-02: implement: tasks.md Phase 2 already matches phase-02.md (no sync changes); no reviewer notes; no checklist items open; set phase-02 in_progress
+- 2026-09-24T17:41:30+03:00 001-quickflow phase-02: ran /speckit-implement for Phase 2 (T008–T017); no .specify/extensions.yml hooks
+- 2026-09-24T17:42:00+03:00 001-quickflow phase-02: T008 wrote backend/src/test/java/com/quickflow/domain/common/TimeServiceTest.java (5 tests, subagent)
+- 2026-09-24T17:42:00+03:00 001-quickflow phase-02: T009 wrote backend/src/test/java/com/quickflow/web/ApiExceptionHandlerTest.java (6 tests incl. bean validation, nested test controller, subagent)
+- 2026-09-24T17:42:00+03:00 001-quickflow phase-02: T010 wrote backend/src/test/java/com/quickflow/web/info/AppInfoControllerTest.java (1 test, subagent)
+- 2026-09-24T17:42:10+03:00 001-quickflow phase-02: T013 wrote domain/common/FieldError, ValidationException, NotFoundException, ConflictException (subagent)
+- 2026-09-24T17:42:10+03:00 001-quickflow phase-02: T017 wrote config/OpenApiConfig.java (subagent)
+- 2026-09-24T17:42:10+03:00 001-quickflow phase-02: T011 wrote config/AppProperties.java, added @ConfigurationPropertiesScan to QuickflowApplication.java
+- 2026-09-24T17:42:10+03:00 001-quickflow phase-02: T012 wrote config/ClockConfig.java
+- 2026-09-24T17:42:10+03:00 001-quickflow phase-02: T014 wrote domain/common/TimeService.java
+- 2026-09-24T17:42:10+03:00 001-quickflow phase-02: T015 wrote web/ApiExceptionHandler.java (plain @ExceptionHandler methods, no ResponseEntityExceptionHandler); Jackson 3 types tools.jackson.core.JacksonException (getPath) and tools.jackson.databind.exc.InvalidFormatException checked by compiling against the resolved jars and by unknownEnumValueIs400ProblemWithField
+- 2026-09-24T17:42:10+03:00 001-quickflow phase-02: T016 wrote web/info/AppInfoResponse.java and AppInfoController.java (tag info)
+- 2026-09-24T17:42:40+03:00 001-quickflow phase-02: L.build and L.test ran (BUILD SUCCESS, 13 tests 0 failures, jacoco check met); first generated openapi.json differed from contracts/openapi.yaml for /api/app-info (schema AppInfoResponse, media */*, no required list)
+- 2026-09-24T17:44:00+03:00 001-quickflow phase-02: aligned with the contract: @Schema(name = "AppInfo") + required timeZone/now on AppInfoResponse, produces application/json and the contract summary on getAppInfo; re-ran L.test and L.build (BUILD SUCCESS, 13 tests 0 failures); /api/app-info, AppInfo and info now match the contract; log in runs/001-quickflow/phase-02-build.log
+- 2026-09-24T17:44:00+03:00 001-quickflow phase-02: note: no controller-advice error responses were added to operations by springdoc; generated servers url is http://localhost:18080 (openapi profile port) vs the contract's http://localhost:8080 (not changed in this phase)
+- 2026-09-24T17:44:10+03:00 001-quickflow phase-02: copied backend/target/openapi.json to loops/backend-dev/outputs/openapi.json
+- 2026-09-24T17:44:20+03:00 001-quickflow phase-02: marked T008-T017 [~] in phase-02.md and tasks.json, [X] in tasks.md; set phase-02 ready_for_test
