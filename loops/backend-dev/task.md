@@ -6,7 +6,8 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **feature:** 001-quickflow
 - **loop:** backend-dev
 - **mode:** dev
-- **stops_at:** phase-00
+- **stops_at:** phase-02
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260924T172543-135662
-- **runner_nonce:** 9c5d2569dfb6ea293e94f173
+- **runner_nonce:** 63c93f55fb05dc9daa095574
+- **current_step:** close phase-01

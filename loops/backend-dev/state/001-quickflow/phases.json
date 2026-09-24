@@ -34,9 +34,14 @@
       ],
       "depends_on": [],
       "attempt": 1,
-      "status": "planned",
-      "approval": null,
-      "block_reason": null
+      "status": "done",
+      "approval": {
+        "decision": "auto",
+        "at": "2026-09-24T17:29:39+03:00",
+        "notes": ""
+      },
+      "block_reason": null,
+      "verified_by": "52275b8d-3ef0-4889-a687-3438ac1031be"
     },
     {
       "phase": "phase-02",

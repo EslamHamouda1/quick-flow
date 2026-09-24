@@ -1,0 +1,12 @@
+{
+  "layer": "backend",
+  "exit_code": 0,
+  "passed": 1,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "coverage": null,
+  "coverage_skipped": true,
+  "outcome": "pass",
+  "reason": "coverage skipped: no classes in com/quickflow/domain"
+}

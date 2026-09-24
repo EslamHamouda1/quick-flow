@@ -1,0 +1,21 @@
+## C4 (unit/unit-result.json, unit/unit-run.log)
+unit-result.json: exit_code 0, passed 1, failed 0, errors 0, outcome pass, coverage skipped (no classes in com/quickflow/domain)
+unit-run.log: ":: Spring Boot ::                (v4.1.1)" ... "Starting QuickflowApplicationTests using Java 25.0.4.1"
+unit-run.log: openapi profile start: 'The following 1 profile is active: "openapi"', url=jdbc:h2:mem:openapi, served on io-18080
+
+## C5
+unit/coverage/jacoco.xml  2198 bytes  Sep 24 17:33   (jacoco:report output copied by the runner)
+backend/pom.xml:139-143  <execution><id>jacoco-check</id><phase>verify</phase><goals><goal>check</goal></goals>
+                         includes com/quickflow/domain/**, BUNDLE LINE COVEREDRATIO minimum 0.80
+verify exit 0 (C4)
+
+## C6
+backend/target/openapi.json              181 bytes  Sep 24 17:33
+loops/backend-dev/outputs/openapi.json   181 bytes  Sep 24 17:32
+both: {"openapi":"3.1.0","info":{"title":"OpenAPI definition","version":"v0"},"servers":[{"url":"http://localhost:18080","description":"Generated server url"}],"paths":{},"components":{}}
+
+## C7
+backend/data/test.mv.db   16384 bytes  Sep 24 17:33   (matches test_db_glob backend/data/test*)
+server-backend.log: 'The following 1 profile is active: "test"'
+server-backend.log: 'HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/test'
+server-backend.log: 'Tomcat started on port 8080 (http)'
