@@ -19,7 +19,7 @@ Angular 22.2 frontend.
 
 ## Quick start
 
-Prerequisites: JDK 25, Node 24 (≥ 24.15), Claude Code (`claude`), `uv`, `git`, `jq`, `flock`,
+Prerequisites: JDK 25 with the compiler (`javac`; on Fedora `java-25-openjdk-devel`, not only the runtime), Node 24 (≥ 24.15), Claude Code (`claude`), `uv`, `git`, `jq`, `flock`,
 Python 3 with `pyyaml` (and `openpyxl` for the Excel export).
 
 ```bash
