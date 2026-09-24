@@ -1,0 +1,33 @@
+phase-03 attempt-1: checks on files (read only)
+
+== Unit coverage (unit/coverage/jacoco.csv, LINE_MISSED / LINE_COVERED per class)
+com.quickflow.domain.task:   TaskSort 1/9, Task 0/72, TaskQuery 0/1, TaskSpecifications 0/32,
+                             TaskStatus 0/2, TaskService 4/19, TaskPriority 0/2
+com.quickflow.domain.common: FieldError 0/1, TimeService 0/7, NotFoundException 0/2,
+                             ValidationException 0/6, ConflictException 0/2
+domain total: missed 5, covered 155 -> 155/160 = 96.9% line coverage (min_line 0.80)
+unit-result.json reports coverage as skipped ("no classes in com/quickflow/domain"): the runner
+matches only a JaCoCo package named exactly com/quickflow/domain, not its sub-packages.
+
+== Surefire (unit/surefire/*.xml), task-related suites
+TaskTest 15 tests, 0 failures, 0 errors
+TaskServiceTest 12 tests, 0 failures, 0 errors
+TaskRepositoryTest 10 tests, 0 failures, 0 errors
+TaskControllerTest 12 tests, 0 failures, 0 errors
+ApiExceptionHandlerTest 6 tests, 0 failures, 0 errors
+
+== C12 swagger
+GET /v3/api-docs -> 200 application/json (body saved as C12-api-docs.json)
+9 task operationIds at the contract's paths/methods: listTasks GET /api/tasks, createTask POST /api/tasks,
+listOverdueTasks GET /api/tasks/overdue, getTask/updateTask/deleteTask GET/PUT/DELETE /api/tasks/{id},
+completeTask/archiveTask/restoreTask POST /api/tasks/{id}/complete|archive|restore
+createTask "201": Created, deleteTask "204": No Content
+schemas Task, TaskCreate, TaskUpdate (object), TaskStatus [TODO, IN_PROGRESS, DONE], TaskPriority [LOW, MEDIUM, HIGH]
+cmp backend/target/openapi.json loops/backend-dev/outputs/openapi.json -> byte-identical
+(same task paths/schemas as the live docs; only servers[0].url differs: 18080 in the file, see phase-02 report)
+
+== Request body files (sizes from wc -c)
+req-t200.json 212 bytes = 12 + 200-char title; req-t201.json 213 = 12 + 201
+req-put-t201.json 247 = 46 + 201
+req-d2000.json 2031 = 31 + 2000-char description; req-d2001.json 2032 = 31 + 2001
+req-put-d2001.json 2075 = 74 + 2001

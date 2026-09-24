@@ -1,0 +1,80 @@
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 261
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":22,"title":"C11 n3 archived","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.054721+03:00","updatedAt":"2026-09-24T21:57:22.312402717+03:00","completedAt":null,"archived":true,"overdue":false}
+=== POST http://localhost:8080/api/tasks/22/archive#C11-archive-n3 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 529
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+[{"id":19,"title":"C11 o2 inprogress","description":null,"status":"IN_PROGRESS","priority":"MEDIUM","dueDate":"2026-09-20","createdAt":"2026-09-24T21:57:15.050719+03:00","updatedAt":"2026-09-24T21:57:15.050719+03:00","completedAt":null,"archived":false,"overdue":true},{"id":18,"title":"C11 o1 yesterday","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.047592+03:00","updatedAt":"2026-09-24T21:57:15.047592+03:00","completedAt":null,"archived":false,"overdue":true}]
+=== GET http://localhost:8080/api/tasks/overdue#C11-overdue-list -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 259
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":18,"title":"C11 o1 yesterday","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.047592+03:00","updatedAt":"2026-09-24T21:57:15.047592+03:00","completedAt":null,"archived":false,"overdue":true}
+=== GET http://localhost:8080/api/tasks/18#C11-get-o1 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 267
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":19,"title":"C11 o2 inprogress","description":null,"status":"IN_PROGRESS","priority":"MEDIUM","dueDate":"2026-09-20","createdAt":"2026-09-24T21:57:15.050719+03:00","updatedAt":"2026-09-24T21:57:15.050719+03:00","completedAt":null,"archived":false,"overdue":true}
+=== GET http://localhost:8080/api/tasks/19#C11-get-o2 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 256
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":20,"title":"C11 n1 today","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-24","createdAt":"2026-09-24T21:57:15.052345+03:00","updatedAt":"2026-09-24T21:57:15.052345+03:00","completedAt":null,"archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/20#C11-get-n1 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 285
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":21,"title":"C11 n2 done","description":null,"status":"DONE","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.053607+03:00","updatedAt":"2026-09-24T21:57:15.053607+03:00","completedAt":"2026-09-24T21:57:15.053607+03:00","archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/21#C11-get-n2 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 258
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":22,"title":"C11 n3 archived","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.054721+03:00","updatedAt":"2026-09-24T21:57:22.312403+03:00","completedAt":null,"archived":true,"overdue":false}
+=== GET http://localhost:8080/api/tasks/22#C11-get-n3 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 249
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":23,"title":"C11 n4 no due","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:57:15.055812+03:00","updatedAt":"2026-09-24T21:57:15.055812+03:00","completedAt":null,"archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/23#C11-get-n4 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 259
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":24,"title":"C11 n5 tomorrow","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-24T21:57:15.056939+03:00","updatedAt":"2026-09-24T21:57:15.056939+03:00","completedAt":null,"archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/24#C11-get-n5 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 70
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"timeZone":"Africa/Cairo","now":"2026-09-24T21:57:22.32178988+03:00"}
+=== GET http://localhost:8080/api/app-info#C11-today-check -> status 200
+

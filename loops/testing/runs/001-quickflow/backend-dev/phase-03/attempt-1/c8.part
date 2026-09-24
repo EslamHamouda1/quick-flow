@@ -1,0 +1,110 @@
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 265
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"id":7,"title":"C8 delete DELQ me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:56:36.359914887+03:00","updatedAt":"2026-09-24T21:56:36.359914887+03:00","completedAt":null,"archived":false,"overdue":true}
+=== POST http://localhost:8080/api/tasks#C8-create -> status 201 (sent 52 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 261
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+[{"id":7,"title":"C8 delete DELQ me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:56:36.359915+03:00","updatedAt":"2026-09-24T21:56:36.359915+03:00","completedAt":null,"archived":false,"overdue":true}]
+=== GET http://localhost:8080/api/tasks/overdue#C8-precondition-overdue -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 261
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+[{"id":7,"title":"C8 delete DELQ me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:56:36.359915+03:00","updatedAt":"2026-09-24T21:56:36.359915+03:00","completedAt":null,"archived":false,"overdue":true}]
+=== GET http://localhost:8080/api/tasks?q=delq#C8-precondition-search -> status 200 (sent 0 bytes)
+
+HTTP/1.1 204 
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+
+=== DELETE http://localhost:8080/api/tasks/7#C8-delete -> status 204 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7","status":404,"title":"Not Found"}
+=== GET http://localhost:8080/api/tasks/7#C8-get-after-delete -> status 404 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 2
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+[]
+=== GET http://localhost:8080/api/tasks?q=DELQ#C8-search-after-delete -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 2
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+[]
+=== GET http://localhost:8080/api/tasks/overdue#C8-overdue-after-delete -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 2
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+[]
+=== GET http://localhost:8080/api/tasks?archived=true#C8-archived-after-delete -> status 200 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7","status":404,"title":"Not Found"}
+=== PUT http://localhost:8080/api/tasks/7#C8-put-after-delete -> status 404 (sent 46 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7/complete","status":404,"title":"Not Found"}
+=== POST http://localhost:8080/api/tasks/7/complete#C8-complete-after-delete -> status 404 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7/archive","status":404,"title":"Not Found"}
+=== POST http://localhost:8080/api/tasks/7/archive#C8-archive-after-delete -> status 404 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7/restore","status":404,"title":"Not Found"}
+=== POST http://localhost:8080/api/tasks/7/restore#C8-restore-after-delete -> status 404 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7","status":404,"title":"Not Found"}
+=== DELETE http://localhost:8080/api/tasks/7#C8-delete-again -> status 404 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 999999 not found","instance":"/api/tasks/999999","status":404,"title":"Not Found"}
+=== GET http://localhost:8080/api/tasks/999999#C8-get-unknown -> status 404 (sent 0 bytes)
+

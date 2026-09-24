@@ -8,7 +8,8 @@
 | backend-dev:001-quickflow:phase-00-plan | 2026-09-24T16:54:50+03:00 | 2026-09-24T17:15:17+03:00 | 0h20m27s | 0h17m32s | 2 | 1 | 160 | 7637818 | 112585 | 5.8444 | 2c9bcef9-5135-4db0-b8ff-69e966db5ccb 83da841d-851e-468e-b48a-948455f5519e |  | e35f4ce | success |
 | backend-dev:001-quickflow:phase-01 | 2026-09-24T17:28:15+03:00 | 2026-09-24T17:37:22+03:00 | 0h09m07s | 0h08m24s | 4 | 1 | 142 | 3788375 | 38402 | 2.7964 | 3678da3d-8b4f-417b-82a7-a139dcacfe6f 10a107ef-342c-4a23-85d9-f4fc1d6fdd7f 52275b8d-3ef0-4889-a687-3438ac1031be e21e79b4-f64d-4b30-9692-88f460702b84 | 52275b8d-3ef0-4889-a687-3438ac1031be | d8e5e83 | success |
 | backend-dev:001-quickflow:phase-02 | 2026-09-24T17:37:25+03:00 | 2026-09-24T19:46:03+03:00 | 2h08m38s | 0h07m49s | 4 | 1 | 118 | 3792025 | 43469 | 4.2047 | c0539463-469b-45f5-9b58-bd0ce255dce5 9b6e834a-137f-4416-9c43-f7684b718331 6a218858-e904-4e53-ae49-132477a91b2c e3053691-bbe0-4aae-b96d-4a4590781dd1 | 6a218858-e904-4e53-ae49-132477a91b2c | 9d022c0 | success |
-| **Total** |  |  |  | 0h33m46s | 10 |  | 420 | 15218218 | 194456 | 12.8455 |  |  |  |  |
+| backend-dev:001-quickflow:phase-03 | 2026-09-24T21:38:54+03:00 | 2026-09-24T21:59:34+03:00 | 0h20m40s | 0h15m37s | 4 | 1 | 180 | 8096490 | 95485 | 7.9252 | 2b7f38a4-f149-49c3-b47f-0ebbb94fd66d 6970c308-dac6-4961-b16e-54d699153a31 5279a56e-ed6d-41ed-a635-7a9211ba22a2 14afc922-fd61-4f6f-9756-589ef006ca04 | 5279a56e-ed6d-41ed-a635-7a9211ba22a2 |  | success |
+| **Total** |  |  |  | 0h49m24s | 14 |  | 600 | 23314708 | 289941 | 20.7707 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -67,3 +68,26 @@
 - 2026-09-24T17:44:20+03:00 001-quickflow phase-02: marked T008-T017 [~] in phase-02.md and tasks.json, [X] in tasks.md; set phase-02 ready_for_test
 - 2026-09-24T19:45:12+03:00 test 001-quickflow phase-02 attempt 1: pass (verified_by 6a218858-e904-4e53-ae49-132477a91b2c)
 - 2026-09-24T19:45:52+03:00 001-quickflow phase-02: close check ok (T008-T017 [X] in tasks.md, verdict pass attempt 1); marked T008-T017 [x] in phase-02.md and tasks.json; set phase-02 done
+- 2026-09-24T21:41:02+03:00 001-quickflow phase-03: wrote outputs/001-quickflow/phase-03-review.md (11 tasks T018-T028, assumptions A-1..A-12 incl. A-10 extra ApiExceptionHandler handler for query-param type errors, no open questions); set phase-03 awaiting_approval
+- 2026-09-24T21:41:16+03:00 gate 001-quickflow phase-03: approved (auto)
+- 2026-09-24T21:43:00+03:00 001-quickflow phase-03: tasks.md Phase 3 already matches phase-03.md (no sync changes); no reviewer notes or questions; checklists all checked; set phase-03 in_progress
+- 2026-09-24T21:43:30+03:00 001-quickflow phase-03: checked in the resolved jars (spring-data-jpa 4.1.1, hibernate-core 7.4.5.Final): Specification.toPredicate(Root, CriteriaQuery, CriteriaBuilder); SimpleJpaRepository.findAll(spec) passes Sort.unsorted() and only sets orderBy when sorted, so TaskSpecifications sets the order itself (case-when nulls last, no provider null precedence)
+- 2026-09-24T21:45:00+03:00 001-quickflow phase-03: T018 wrote backend/src/test/java/com/quickflow/domain/task/TaskTest.java (15 tests, subagent)
+- 2026-09-24T21:45:00+03:00 001-quickflow phase-03: T019 wrote backend/src/test/java/com/quickflow/domain/task/TaskServiceTest.java (12 tests, subagent)
+- 2026-09-24T21:45:00+03:00 001-quickflow phase-03: T020 wrote backend/src/test/java/com/quickflow/persistence/TaskRepositoryTest.java (10 tests, subagent)
+- 2026-09-24T21:45:30+03:00 001-quickflow phase-03: T021 wrote backend/src/test/java/com/quickflow/web/task/TaskControllerTest.java (12 tests, subagent)
+- 2026-09-24T21:46:00+03:00 001-quickflow phase-03: T022 wrote domain/task/TaskStatus.java, TaskPriority.java (@Schema(enumAsRef) so the swagger uses the contract's $ref schemas); written by the parent, not a subagent (small files sharing types)
+- 2026-09-24T21:46:00+03:00 001-quickflow phase-03: T024 wrote domain/task/TaskQuery.java and TaskSort.java (A-9; parent)
+- 2026-09-24T21:46:10+03:00 001-quickflow phase-03: T023 wrote domain/task/Task.java (BR-1/2/3/5, FR-01.3/4/7, A-1, A-5, A-6)
+- 2026-09-24T21:46:20+03:00 001-quickflow phase-03: T025 wrote domain/task/TaskRepository.java (findOverdue @Query, A-11) and TaskSpecifications.java (A-7, A-8, A-9)
+- 2026-09-24T21:46:30+03:00 001-quickflow phase-03: T026 wrote domain/task/TaskService.java
+- 2026-09-24T21:46:40+03:00 001-quickflow phase-03: T027 wrote web/task/TaskCreateRequest.java, TaskUpdateRequest.java, TaskResponse.java (A-4; parent)
+- 2026-09-24T21:46:50+03:00 001-quickflow phase-03: T028 wrote web/task/TaskController.java (9 operations; sort/direction bound as strings and parsed, unknown -> 400 field sort/direction)
+- 2026-09-24T21:46:50+03:00 001-quickflow phase-03: A-10 added MethodArgumentTypeMismatchException handler to web/ApiExceptionHandler.java (400 problem, errors[{field: param name}])
+- 2026-09-24T21:47:45+03:00 001-quickflow phase-03: L.test and L.build ran (BUILD SUCCESS, 62 tests 0 failures 0 errors, jacoco check met, bundle lines 225/235); openapi diff vs contract: title minLength 0 instead of 1
+- 2026-09-24T21:50:00+03:00 001-quickflow phase-03: title now @Size(min = 1, max = 200) in TaskCreateRequest/TaskUpdateRequest; re-ran L.test and L.build (BUILD SUCCESS, 62 tests 0 failures); log in runs/001-quickflow/phase-03-build.log
+- 2026-09-24T21:50:00+03:00 001-quickflow phase-03: openapi vs contract for the 9 task operations: paths, operationIds, parameters (enums, defaults, int64 id), 201/204 codes, Task/TaskCreate/TaskUpdate properties, required lists, nullable types and TaskStatus/TaskPriority $refs match; remaining differences: description has an extra minLength 0 (from @Size), no 400/404 responses listed (springdoc adds none from the advice, as in phase-02), servers url http://localhost:18080 (openapi profile)
+- 2026-09-24T21:50:10+03:00 001-quickflow phase-03: copied backend/target/openapi.json to loops/backend-dev/outputs/openapi.json
+- 2026-09-24T21:50:20+03:00 001-quickflow phase-03: marked T018-T028 [~] in phase-03.md and tasks.json, [X] in tasks.md; set phase-03 ready_for_test
+- 2026-09-24T21:58:54+03:00 test 001-quickflow phase-03 attempt 1: pass (verified_by 5279a56e-ed6d-41ed-a635-7a9211ba22a2)
+- 2026-09-24T22:00:00+03:00 001-quickflow phase-03: close check ok (T018-T028 [X] in tasks.md, verdict pass for attempt 1); marked T018-T028 [x] in phase-03.md and tasks.json; set phase-03 done

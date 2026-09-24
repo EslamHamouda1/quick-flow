@@ -1,0 +1,747 @@
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 264
+Date: Thu, 24 Sep 2026 18:53:41 GMT
+
+{"id":1,"title":"C1 Buy milk","description":"2 litres","status":"TODO","priority":"HIGH","dueDate":"2026-09-29","createdAt":"2026-09-24T21:53:41.562222553+03:00","updatedAt":"2026-09-24T21:53:41.562222553+03:00","completedAt":null,"archived":false,"overdue":false}HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 258
+Date: Thu, 24 Sep 2026 18:55:18 GMT
+
+{"id":1,"title":"C1 Buy milk","description":"2 litres","status":"TODO","priority":"HIGH","dueDate":"2026-09-29","createdAt":"2026-09-24T21:53:41.562223+03:00","updatedAt":"2026-09-24T21:53:41.562223+03:00","completedAt":null,"archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/1#C1-get -> status 200 (sent 0 bytes)
+
+
+=== POST http://localhost:8080/api/tasks#C1-def "title":"C1 defaults" -> status 000 (sent 0 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 252
+Date: Thu, 24 Sep 2026 18:55:30 GMT
+
+{"id":2,"title":"C1 defaults","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.698119434+03:00","updatedAt":"2026-09-24T21:55:30.698119434+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C1-def -> status 201 (sent 23 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:55:30 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"},{"field":"title","message":"must not be blank"}]}
+=== POST http://localhost:8080/api/tasks#C2-empty -> status 400 (sent 12 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:55:30 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+=== POST http://localhost:8080/api/tasks#C2-blank -> status 400 (sent 15 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:55:30 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+=== POST http://localhost:8080/api/tasks#C2-missing-title -> status 400 (sent 19 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:55:30 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"}]}
+=== POST http://localhost:8080/api/tasks#C2-title-201-chars -> status 400 (sent 213 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 441
+Date: Thu, 24 Sep 2026 18:55:30 GMT
+
+{"id":3,"title":"tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.718219543+03:00","updatedAt":"2026-09-24T21:55:30.718219543+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C2-title-200-chars -> status 201 (sent 212 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:55:30 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"},{"field":"title","message":"size must be between 1 and 200"}]}
+=== PUT http://localhost:8080/api/tasks/1#C2-put-empty-title -> status 400 (sent 46 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 2241
+Date: Thu, 24 Sep 2026 18:55:30 GMT
+
+{"id":4,"title":"C3","description":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.725569378+03:00","updatedAt":"2026-09-24T21:55:30.725569378+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C3-desc-2000-chars -> status 201 (sent 2031 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:01 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"}]}
+=== PUT http://localhost:8080/api/tasks/1#C2-put-title-201-chars -> status 400 (sent 247 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:01 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"description","message":"size must be between 0 and 2000"}]}
+=== POST http://localhost:8080/api/tasks#C3-desc-2001-chars -> status 400 (sent 2032 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:01 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"description","message":"size must be between 0 and 2000"}]}
+=== PUT http://localhost:8080/api/tasks/1#C3-put-desc-2001-chars -> status 400 (sent 2075 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:01 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must be one of [TODO, IN_PROGRESS, DONE]"}]}
+=== POST http://localhost:8080/api/tasks#C4-post-status-FOO -> status 400 (sent 40 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:01 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"priority","message":"must be one of [LOW, MEDIUM, HIGH]"}]}
+=== POST http://localhost:8080/api/tasks#C4-post-priority-FOO -> status 400 (sent 44 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:01 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must be one of [TODO, IN_PROGRESS, DONE]"}]}
+=== PUT http://localhost:8080/api/tasks/1#C4-put-status-FOO -> status 400 (sent 54 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:01 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"priority","message":"must be one of [LOW, MEDIUM, HIGH]"}]}
+=== PUT http://localhost:8080/api/tasks/1#C4-put-priority-URGENT -> status 400 (sent 58 bytes)
+
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:01 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must not be null"}]}
+=== PUT http://localhost:8080/api/tasks/1#C4-put-status-null -> status 400 (sent 53 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 258
+Date: Thu, 24 Sep 2026 18:56:01 GMT
+
+{"id":1,"title":"C1 Buy milk","description":"2 litres","status":"TODO","priority":"HIGH","dueDate":"2026-09-29","createdAt":"2026-09-24T21:53:41.562223+03:00","updatedAt":"2026-09-24T21:53:41.562223+03:00","completedAt":null,"archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/1#C4-get-unchanged -> status 200 (sent 0 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 252
+Date: Thu, 24 Sep 2026 18:56:07 GMT
+
+{"id":5,"title":"C5 orig","description":"d","status":"TODO","priority":"LOW","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:07.037979535+03:00","updatedAt":"2026-09-24T21:56:07.037979535+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C5-create -> status 201 (sent 77 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 244
+Date: Thu, 24 Sep 2026 18:56:07 GMT
+
+{"id":5,"title":"C5 orig","description":"d","status":"TODO","priority":"LOW","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:07.03798+03:00","completedAt":null,"archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/5#C5-get-before -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 265
+Date: Thu, 24 Sep 2026 18:56:13 GMT
+
+{"id":5,"title":"C5 edited","description":"new desc","status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-10-01","createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:13.720894696+03:00","completedAt":null,"archived":false,"overdue":false}
+=== PUT http://localhost:8080/api/tasks/5#C5-put -> status 200 (sent 110 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 262
+Date: Thu, 24 Sep 2026 18:56:13 GMT
+
+{"id":5,"title":"C5 edited","description":"new desc","status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-10-01","createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:13.720895+03:00","completedAt":null,"archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/5#C5-get-after -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 291
+Date: Thu, 24 Sep 2026 18:56:13 GMT
+
+{"id":5,"title":"C5 edited","description":"new desc","status":"DONE","priority":"HIGH","dueDate":"2026-10-01","createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:13.738020482+03:00","completedAt":"2026-09-24T21:56:13.738020482+03:00","archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks/5/complete#C6-complete -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 283
+Date: Thu, 24 Sep 2026 18:56:13 GMT
+
+{"id":5,"title":"C5 edited","description":"new desc","status":"DONE","priority":"HIGH","dueDate":"2026-10-01","createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:13.73802+03:00","completedAt":"2026-09-24T21:56:13.73802+03:00","archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/5#C6-get -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 244
+Date: Thu, 24 Sep 2026 18:56:13 GMT
+
+{"id":5,"title":"C5 edited","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:13.742602186+03:00","completedAt":null,"archived":false,"overdue":false}
+=== PUT http://localhost:8080/api/tasks/5#C6-back-to-TODO -> status 200 (sent 55 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:13 GMT
+
+{"detail":"Task 999999 not found","instance":"/api/tasks/999999/complete","status":404,"title":"Not Found"}
+=== POST http://localhost:8080/api/tasks/999999/complete#C6-complete-unknown -> status 404 (sent 0 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 254
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.271860056+03:00","updatedAt":"2026-09-24T21:56:21.271860056+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C7-create -> status 201 (sent 25 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 249
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.27186+03:00","updatedAt":"2026-09-24T21:56:21.274884045+03:00","completedAt":null,"archived":true,"overdue":false}
+=== POST http://localhost:8080/api/tasks/6/archive#C7-archive -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 3419
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+[{"id":5,"title":"C5 edited","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:13.742602+03:00","completedAt":null,"archived":false,"overdue":false},{"id":4,"title":"C3","description":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.725569+03:00","updatedAt":"2026-09-24T21:55:30.725569+03:00","completedAt":null,"archived":false,"overdue":false},{"id":3,"title":"tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.71822+03:00","updatedAt":"2026-09-24T21:55:30.71822+03:00","completedAt":null,"archived":false,"overdue":false},{"id":2,"title":"C1 defaults","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.698119+03:00","updatedAt":"2026-09-24T21:55:30.698119+03:00","completedAt":null,"archived":false,"overdue":false},{"id":1,"title":"C1 Buy milk","description":"2 litres","status":"TODO","priority":"HIGH","dueDate":"2026-09-29","createdAt":"2026-09-24T21:53:41.562223+03:00","updatedAt":"2026-09-24T21:53:41.562223+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks#C7-default-list-after-archive -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 248
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+[{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.27186+03:00","updatedAt":"2026-09-24T21:56:21.274884+03:00","completedAt":null,"archived":true,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?archived=true#C7-archived-list-after-archive -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 250
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.27186+03:00","updatedAt":"2026-09-24T21:56:21.310263459+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks/6/restore#C7-restore -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 3667
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+[{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.27186+03:00","updatedAt":"2026-09-24T21:56:21.310263+03:00","completedAt":null,"archived":false,"overdue":false},{"id":5,"title":"C5 edited","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:13.742602+03:00","completedAt":null,"archived":false,"overdue":false},{"id":4,"title":"C3","description":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.725569+03:00","updatedAt":"2026-09-24T21:55:30.725569+03:00","completedAt":null,"archived":false,"overdue":false},{"id":3,"title":"tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.71822+03:00","updatedAt":"2026-09-24T21:55:30.71822+03:00","completedAt":null,"archived":false,"overdue":false},{"id":2,"title":"C1 defaults","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.698119+03:00","updatedAt":"2026-09-24T21:55:30.698119+03:00","completedAt":null,"archived":false,"overdue":false},{"id":1,"title":"C1 Buy milk","description":"2 litres","status":"TODO","priority":"HIGH","dueDate":"2026-09-29","createdAt":"2026-09-24T21:53:41.562223+03:00","updatedAt":"2026-09-24T21:53:41.562223+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks#C7-default-list-after-restore -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 2
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+[]
+=== GET http://localhost:8080/api/tasks?archived=true#C7-archived-list-after-restore -> status 200 (sent 0 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 265
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"id":7,"title":"C8 delete DELQ me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:56:36.359914887+03:00","updatedAt":"2026-09-24T21:56:36.359914887+03:00","completedAt":null,"archived":false,"overdue":true}
+=== POST http://localhost:8080/api/tasks#C8-create -> status 201 (sent 52 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 261
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+[{"id":7,"title":"C8 delete DELQ me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:56:36.359915+03:00","updatedAt":"2026-09-24T21:56:36.359915+03:00","completedAt":null,"archived":false,"overdue":true}]
+=== GET http://localhost:8080/api/tasks/overdue#C8-precondition-overdue -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 261
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+[{"id":7,"title":"C8 delete DELQ me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:56:36.359915+03:00","updatedAt":"2026-09-24T21:56:36.359915+03:00","completedAt":null,"archived":false,"overdue":true}]
+=== GET http://localhost:8080/api/tasks?q=delq#C8-precondition-search -> status 200 (sent 0 bytes)
+
+HTTP/1.1 204 
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+
+=== DELETE http://localhost:8080/api/tasks/7#C8-delete -> status 204 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7","status":404,"title":"Not Found"}
+=== GET http://localhost:8080/api/tasks/7#C8-get-after-delete -> status 404 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 2
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+[]
+=== GET http://localhost:8080/api/tasks?q=DELQ#C8-search-after-delete -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 2
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+[]
+=== GET http://localhost:8080/api/tasks/overdue#C8-overdue-after-delete -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 2
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+[]
+=== GET http://localhost:8080/api/tasks?archived=true#C8-archived-after-delete -> status 200 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7","status":404,"title":"Not Found"}
+=== PUT http://localhost:8080/api/tasks/7#C8-put-after-delete -> status 404 (sent 46 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7/complete","status":404,"title":"Not Found"}
+=== POST http://localhost:8080/api/tasks/7/complete#C8-complete-after-delete -> status 404 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7/archive","status":404,"title":"Not Found"}
+=== POST http://localhost:8080/api/tasks/7/archive#C8-archive-after-delete -> status 404 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7/restore","status":404,"title":"Not Found"}
+=== POST http://localhost:8080/api/tasks/7/restore#C8-restore-after-delete -> status 404 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 7 not found","instance":"/api/tasks/7","status":404,"title":"Not Found"}
+=== DELETE http://localhost:8080/api/tasks/7#C8-delete-again -> status 404 (sent 0 bytes)
+
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Thu, 24 Sep 2026 18:56:36 GMT
+
+{"detail":"Task 999999 not found","instance":"/api/tasks/999999","status":404,"title":"Not Found"}
+=== GET http://localhost:8080/api/tasks/999999#C8-get-unknown -> status 404 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 3667
+Date: Thu, 24 Sep 2026 18:56:45 GMT
+
+[{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.27186+03:00","updatedAt":"2026-09-24T21:56:21.310263+03:00","completedAt":null,"archived":false,"overdue":false},{"id":5,"title":"C5 edited","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:13.742602+03:00","completedAt":null,"archived":false,"overdue":false},{"id":4,"title":"C3","description":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.725569+03:00","updatedAt":"2026-09-24T21:55:30.725569+03:00","completedAt":null,"archived":false,"overdue":false},{"id":3,"title":"tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.71822+03:00","updatedAt":"2026-09-24T21:55:30.71822+03:00","completedAt":null,"archived":false,"overdue":false},{"id":2,"title":"C1 defaults","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.698119+03:00","updatedAt":"2026-09-24T21:55:30.698119+03:00","completedAt":null,"archived":false,"overdue":false},{"id":1,"title":"C1 Buy milk","description":"2 litres","status":"TODO","priority":"HIGH","dueDate":"2026-09-29","createdAt":"2026-09-24T21:53:41.562223+03:00","updatedAt":"2026-09-24T21:53:41.562223+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks#C8-default-list-after-delete -> status 200 (sent 0 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 260
+Date: Thu, 24 Sep 2026 18:56:45 GMT
+
+{"id":8,"title":"Report ZYXQ42 alpha","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.569843837+03:00","updatedAt":"2026-09-24T21:56:45.569843837+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C9-create-a -> status 201 (sent 31 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 253
+Date: Thu, 24 Sep 2026 18:56:45 GMT
+
+{"id":9,"title":"zyxq42 lower","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.571793945+03:00","updatedAt":"2026-09-24T21:56:45.571793945+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C9-create-b -> status 201 (sent 24 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 259
+Date: Thu, 24 Sep 2026 18:56:45 GMT
+
+{"id":10,"title":"Mixed ZyXq42 case","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.573157403+03:00","updatedAt":"2026-09-24T21:56:45.573157403+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C9-create-c -> status 201 (sent 29 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 274
+Date: Thu, 24 Sep 2026 18:56:45 GMT
+
+{"id":11,"title":"Other 42","description":"zyxq42 only in description","status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.574608327+03:00","updatedAt":"2026-09-24T21:56:45.574608327+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C9-create-other -> status 201 (sent 63 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 758
+Date: Thu, 24 Sep 2026 18:56:45 GMT
+
+[{"id":10,"title":"Mixed ZyXq42 case","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.573157+03:00","updatedAt":"2026-09-24T21:56:45.573157+03:00","completedAt":null,"archived":false,"overdue":false},{"id":9,"title":"zyxq42 lower","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.571794+03:00","updatedAt":"2026-09-24T21:56:45.571794+03:00","completedAt":null,"archived":false,"overdue":false},{"id":8,"title":"Report ZYXQ42 alpha","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.569844+03:00","updatedAt":"2026-09-24T21:56:45.569844+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=zyxq42#C9-q-lower -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 758
+Date: Thu, 24 Sep 2026 18:56:45 GMT
+
+[{"id":10,"title":"Mixed ZyXq42 case","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.573157+03:00","updatedAt":"2026-09-24T21:56:45.573157+03:00","completedAt":null,"archived":false,"overdue":false},{"id":9,"title":"zyxq42 lower","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.571794+03:00","updatedAt":"2026-09-24T21:56:45.571794+03:00","completedAt":null,"archived":false,"overdue":false},{"id":8,"title":"Report ZYXQ42 alpha","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.569844+03:00","updatedAt":"2026-09-24T21:56:45.569844+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=ZYXQ42#C9-q-upper -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 758
+Date: Thu, 24 Sep 2026 18:56:45 GMT
+
+[{"id":10,"title":"Mixed ZyXq42 case","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.573157+03:00","updatedAt":"2026-09-24T21:56:45.573157+03:00","completedAt":null,"archived":false,"overdue":false},{"id":9,"title":"zyxq42 lower","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.571794+03:00","updatedAt":"2026-09-24T21:56:45.571794+03:00","completedAt":null,"archived":false,"overdue":false},{"id":8,"title":"Report ZYXQ42 alpha","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:45.569844+03:00","updatedAt":"2026-09-24T21:56:45.569844+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=yXq4#C9-q-inner-mixed -> status 200 (sent 0 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 255
+Date: Thu, 24 Sep 2026 18:56:54 GMT
+
+{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887926972+03:00","updatedAt":"2026-09-24T21:56:54.887926972+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C10-create-a -> status 201 (sent 76 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 262
+Date: Thu, 24 Sep 2026 18:56:54 GMT
+
+{"id":13,"title":"flt42 b","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.890590679+03:00","updatedAt":"2026-09-24T21:56:54.890590679+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C10-create-b -> status 201 (sent 83 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 254
+Date: Thu, 24 Sep 2026 18:56:54 GMT
+
+{"id":14,"title":"flt42 c","description":null,"status":"TODO","priority":"LOW","dueDate":"2026-09-29","createdAt":"2026-09-24T21:56:54.892192288+03:00","updatedAt":"2026-09-24T21:56:54.892192288+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C10-create-c -> status 201 (sent 75 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 288
+Date: Thu, 24 Sep 2026 18:56:54 GMT
+
+{"id":15,"title":"flt42 d","description":null,"status":"DONE","priority":"HIGH","dueDate":"2026-09-26","createdAt":"2026-09-24T21:56:54.893527933+03:00","updatedAt":"2026-09-24T21:56:54.893527933+03:00","completedAt":"2026-09-24T21:56:54.893527933+03:00","archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C10-create-d -> status 201 (sent 76 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 247
+Date: Thu, 24 Sep 2026 18:56:54 GMT
+
+{"id":16,"title":"flt42 e","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:54.896056014+03:00","updatedAt":"2026-09-24T21:56:54.896056014+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C10-create-e -> status 201 (sent 53 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 257
+Date: Thu, 24 Sep 2026 18:56:54 GMT
+
+{"id":17,"title":"flt42 f","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.897584304+03:00","updatedAt":"2026-09-24T21:56:54.897584304+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C10-create-f -> status 201 (sent 78 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 994
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":17,"title":"flt42 f","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.897584+03:00","updatedAt":"2026-09-24T21:56:54.897584+03:00","completedAt":null,"archived":false,"overdue":false},{"id":16,"title":"flt42 e","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:54.896056+03:00","updatedAt":"2026-09-24T21:56:54.896056+03:00","completedAt":null,"archived":false,"overdue":false},{"id":14,"title":"flt42 c","description":null,"status":"TODO","priority":"LOW","dueDate":"2026-09-29","createdAt":"2026-09-24T21:56:54.892192+03:00","updatedAt":"2026-09-24T21:56:54.892192+03:00","completedAt":null,"archived":false,"overdue":false},{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887927+03:00","updatedAt":"2026-09-24T21:56:54.887927+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&status=TODO#C10-status -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 1030
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":16,"title":"flt42 e","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:54.896056+03:00","updatedAt":"2026-09-24T21:56:54.896056+03:00","completedAt":null,"archived":false,"overdue":false},{"id":15,"title":"flt42 d","description":null,"status":"DONE","priority":"HIGH","dueDate":"2026-09-26","createdAt":"2026-09-24T21:56:54.893528+03:00","updatedAt":"2026-09-24T21:56:54.893528+03:00","completedAt":"2026-09-24T21:56:54.893528+03:00","archived":false,"overdue":false},{"id":13,"title":"flt42 b","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.890591+03:00","updatedAt":"2026-09-24T21:56:54.890591+03:00","completedAt":null,"archived":false,"overdue":false},{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887927+03:00","updatedAt":"2026-09-24T21:56:54.887927+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&priority=HIGH#C10-priority -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 493
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":16,"title":"flt42 e","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:54.896056+03:00","updatedAt":"2026-09-24T21:56:54.896056+03:00","completedAt":null,"archived":false,"overdue":false},{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887927+03:00","updatedAt":"2026-09-24T21:56:54.887927+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&status=TODO&priority=HIGH#C10-both -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 790
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":17,"title":"flt42 f","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.897584+03:00","updatedAt":"2026-09-24T21:56:54.897584+03:00","completedAt":null,"archived":false,"overdue":false},{"id":15,"title":"flt42 d","description":null,"status":"DONE","priority":"HIGH","dueDate":"2026-09-26","createdAt":"2026-09-24T21:56:54.893528+03:00","updatedAt":"2026-09-24T21:56:54.893528+03:00","completedAt":"2026-09-24T21:56:54.893528+03:00","archived":false,"overdue":false},{"id":13,"title":"flt42 b","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.890591+03:00","updatedAt":"2026-09-24T21:56:54.890591+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&dueFrom=2026-09-26&dueTo=2026-09-27#C10-range -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 759
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":17,"title":"flt42 f","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.897584+03:00","updatedAt":"2026-09-24T21:56:54.897584+03:00","completedAt":null,"archived":false,"overdue":false},{"id":14,"title":"flt42 c","description":null,"status":"TODO","priority":"LOW","dueDate":"2026-09-29","createdAt":"2026-09-24T21:56:54.892192+03:00","updatedAt":"2026-09-24T21:56:54.892192+03:00","completedAt":null,"archived":false,"overdue":false},{"id":13,"title":"flt42 b","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.890591+03:00","updatedAt":"2026-09-24T21:56:54.890591+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&dueFrom=2026-09-27#C10-from -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 531
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":15,"title":"flt42 d","description":null,"status":"DONE","priority":"HIGH","dueDate":"2026-09-26","createdAt":"2026-09-24T21:56:54.893528+03:00","updatedAt":"2026-09-24T21:56:54.893528+03:00","completedAt":"2026-09-24T21:56:54.893528+03:00","archived":false,"overdue":false},{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887927+03:00","updatedAt":"2026-09-24T21:56:54.887927+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&dueTo=2026-09-26#C10-to -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 538
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":15,"title":"flt42 d","description":null,"status":"DONE","priority":"HIGH","dueDate":"2026-09-26","createdAt":"2026-09-24T21:56:54.893528+03:00","updatedAt":"2026-09-24T21:56:54.893528+03:00","completedAt":"2026-09-24T21:56:54.893528+03:00","archived":false,"overdue":false},{"id":13,"title":"flt42 b","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.890591+03:00","updatedAt":"2026-09-24T21:56:54.890591+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&priority=HIGH&dueFrom=2026-09-26#C10-high-from -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 1531
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887927+03:00","updatedAt":"2026-09-24T21:56:54.887927+03:00","completedAt":null,"archived":false,"overdue":false},{"id":13,"title":"flt42 b","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.890591+03:00","updatedAt":"2026-09-24T21:56:54.890591+03:00","completedAt":null,"archived":false,"overdue":false},{"id":14,"title":"flt42 c","description":null,"status":"TODO","priority":"LOW","dueDate":"2026-09-29","createdAt":"2026-09-24T21:56:54.892192+03:00","updatedAt":"2026-09-24T21:56:54.892192+03:00","completedAt":null,"archived":false,"overdue":false},{"id":15,"title":"flt42 d","description":null,"status":"DONE","priority":"HIGH","dueDate":"2026-09-26","createdAt":"2026-09-24T21:56:54.893528+03:00","updatedAt":"2026-09-24T21:56:54.893528+03:00","completedAt":"2026-09-24T21:56:54.893528+03:00","archived":false,"overdue":false},{"id":16,"title":"flt42 e","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:54.896056+03:00","updatedAt":"2026-09-24T21:56:54.896056+03:00","completedAt":null,"archived":false,"overdue":false},{"id":17,"title":"flt42 f","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.897584+03:00","updatedAt":"2026-09-24T21:56:54.897584+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&sort=createdAt&direction=asc#C10-created-asc -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 1531
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":17,"title":"flt42 f","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.897584+03:00","updatedAt":"2026-09-24T21:56:54.897584+03:00","completedAt":null,"archived":false,"overdue":false},{"id":16,"title":"flt42 e","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:54.896056+03:00","updatedAt":"2026-09-24T21:56:54.896056+03:00","completedAt":null,"archived":false,"overdue":false},{"id":15,"title":"flt42 d","description":null,"status":"DONE","priority":"HIGH","dueDate":"2026-09-26","createdAt":"2026-09-24T21:56:54.893528+03:00","updatedAt":"2026-09-24T21:56:54.893528+03:00","completedAt":"2026-09-24T21:56:54.893528+03:00","archived":false,"overdue":false},{"id":14,"title":"flt42 c","description":null,"status":"TODO","priority":"LOW","dueDate":"2026-09-29","createdAt":"2026-09-24T21:56:54.892192+03:00","updatedAt":"2026-09-24T21:56:54.892192+03:00","completedAt":null,"archived":false,"overdue":false},{"id":13,"title":"flt42 b","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.890591+03:00","updatedAt":"2026-09-24T21:56:54.890591+03:00","completedAt":null,"archived":false,"overdue":false},{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887927+03:00","updatedAt":"2026-09-24T21:56:54.887927+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&sort=createdAt&direction=desc#C10-created-desc -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 1531
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":17,"title":"flt42 f","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.897584+03:00","updatedAt":"2026-09-24T21:56:54.897584+03:00","completedAt":null,"archived":false,"overdue":false},{"id":16,"title":"flt42 e","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:54.896056+03:00","updatedAt":"2026-09-24T21:56:54.896056+03:00","completedAt":null,"archived":false,"overdue":false},{"id":15,"title":"flt42 d","description":null,"status":"DONE","priority":"HIGH","dueDate":"2026-09-26","createdAt":"2026-09-24T21:56:54.893528+03:00","updatedAt":"2026-09-24T21:56:54.893528+03:00","completedAt":"2026-09-24T21:56:54.893528+03:00","archived":false,"overdue":false},{"id":14,"title":"flt42 c","description":null,"status":"TODO","priority":"LOW","dueDate":"2026-09-29","createdAt":"2026-09-24T21:56:54.892192+03:00","updatedAt":"2026-09-24T21:56:54.892192+03:00","completedAt":null,"archived":false,"overdue":false},{"id":13,"title":"flt42 b","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.890591+03:00","updatedAt":"2026-09-24T21:56:54.890591+03:00","completedAt":null,"archived":false,"overdue":false},{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887927+03:00","updatedAt":"2026-09-24T21:56:54.887927+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42#C10-default-order -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 1531
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887927+03:00","updatedAt":"2026-09-24T21:56:54.887927+03:00","completedAt":null,"archived":false,"overdue":false},{"id":15,"title":"flt42 d","description":null,"status":"DONE","priority":"HIGH","dueDate":"2026-09-26","createdAt":"2026-09-24T21:56:54.893528+03:00","updatedAt":"2026-09-24T21:56:54.893528+03:00","completedAt":"2026-09-24T21:56:54.893528+03:00","archived":false,"overdue":false},{"id":13,"title":"flt42 b","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.890591+03:00","updatedAt":"2026-09-24T21:56:54.890591+03:00","completedAt":null,"archived":false,"overdue":false},{"id":17,"title":"flt42 f","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.897584+03:00","updatedAt":"2026-09-24T21:56:54.897584+03:00","completedAt":null,"archived":false,"overdue":false},{"id":14,"title":"flt42 c","description":null,"status":"TODO","priority":"LOW","dueDate":"2026-09-29","createdAt":"2026-09-24T21:56:54.892192+03:00","updatedAt":"2026-09-24T21:56:54.892192+03:00","completedAt":null,"archived":false,"overdue":false},{"id":16,"title":"flt42 e","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:54.896056+03:00","updatedAt":"2026-09-24T21:56:54.896056+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&sort=dueDate&direction=asc#C10-due-asc -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 1531
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":14,"title":"flt42 c","description":null,"status":"TODO","priority":"LOW","dueDate":"2026-09-29","createdAt":"2026-09-24T21:56:54.892192+03:00","updatedAt":"2026-09-24T21:56:54.892192+03:00","completedAt":null,"archived":false,"overdue":false},{"id":17,"title":"flt42 f","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.897584+03:00","updatedAt":"2026-09-24T21:56:54.897584+03:00","completedAt":null,"archived":false,"overdue":false},{"id":13,"title":"flt42 b","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.890591+03:00","updatedAt":"2026-09-24T21:56:54.890591+03:00","completedAt":null,"archived":false,"overdue":false},{"id":15,"title":"flt42 d","description":null,"status":"DONE","priority":"HIGH","dueDate":"2026-09-26","createdAt":"2026-09-24T21:56:54.893528+03:00","updatedAt":"2026-09-24T21:56:54.893528+03:00","completedAt":"2026-09-24T21:56:54.893528+03:00","archived":false,"overdue":false},{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887927+03:00","updatedAt":"2026-09-24T21:56:54.887927+03:00","completedAt":null,"archived":false,"overdue":false},{"id":16,"title":"flt42 e","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:54.896056+03:00","updatedAt":"2026-09-24T21:56:54.896056+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&sort=dueDate&direction=desc#C10-due-desc -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 994
+Date: Thu, 24 Sep 2026 18:57:04 GMT
+
+[{"id":12,"title":"flt42 a","description":null,"status":"TODO","priority":"HIGH","dueDate":"2026-09-25","createdAt":"2026-09-24T21:56:54.887927+03:00","updatedAt":"2026-09-24T21:56:54.887927+03:00","completedAt":null,"archived":false,"overdue":false},{"id":17,"title":"flt42 f","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-24T21:56:54.897584+03:00","updatedAt":"2026-09-24T21:56:54.897584+03:00","completedAt":null,"archived":false,"overdue":false},{"id":14,"title":"flt42 c","description":null,"status":"TODO","priority":"LOW","dueDate":"2026-09-29","createdAt":"2026-09-24T21:56:54.892192+03:00","updatedAt":"2026-09-24T21:56:54.892192+03:00","completedAt":null,"archived":false,"overdue":false},{"id":16,"title":"flt42 e","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:54.896056+03:00","updatedAt":"2026-09-24T21:56:54.896056+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?q=flt42&status=TODO&sort=dueDate&direction=asc#C10-todo-due-asc -> status 200
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 265
+Date: Thu, 24 Sep 2026 18:57:15 GMT
+
+{"id":18,"title":"C11 o1 yesterday","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.047592406+03:00","updatedAt":"2026-09-24T21:57:15.047592406+03:00","completedAt":null,"archived":false,"overdue":true}
+=== POST http://localhost:8080/api/tasks#C11-create-o1 -> status 201 (sent 51 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 273
+Date: Thu, 24 Sep 2026 18:57:15 GMT
+
+{"id":19,"title":"C11 o2 inprogress","description":null,"status":"IN_PROGRESS","priority":"MEDIUM","dueDate":"2026-09-20","createdAt":"2026-09-24T21:57:15.050718595+03:00","updatedAt":"2026-09-24T21:57:15.050718595+03:00","completedAt":null,"archived":false,"overdue":true}
+=== POST http://localhost:8080/api/tasks#C11-create-o2 -> status 201 (sent 75 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 262
+Date: Thu, 24 Sep 2026 18:57:15 GMT
+
+{"id":20,"title":"C11 n1 today","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-24","createdAt":"2026-09-24T21:57:15.052345438+03:00","updatedAt":"2026-09-24T21:57:15.052345438+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C11-create-n1 -> status 201 (sent 47 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 294
+Date: Thu, 24 Sep 2026 18:57:15 GMT
+
+{"id":21,"title":"C11 n2 done","description":null,"status":"DONE","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.053606828+03:00","updatedAt":"2026-09-24T21:57:15.053606828+03:00","completedAt":"2026-09-24T21:57:15.053606828+03:00","archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C11-create-n2 -> status 201 (sent 62 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 264
+Date: Thu, 24 Sep 2026 18:57:15 GMT
+
+{"id":22,"title":"C11 n3 archived","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.054721403+03:00","updatedAt":"2026-09-24T21:57:15.054721403+03:00","completedAt":null,"archived":false,"overdue":true}
+=== POST http://localhost:8080/api/tasks#C11-create-n3 -> status 201 (sent 50 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 255
+Date: Thu, 24 Sep 2026 18:57:15 GMT
+
+{"id":23,"title":"C11 n4 no due","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:57:15.055812014+03:00","updatedAt":"2026-09-24T21:57:15.055812014+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C11-create-n4 -> status 201 (sent 25 bytes)
+
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 265
+Date: Thu, 24 Sep 2026 18:57:15 GMT
+
+{"id":24,"title":"C11 n5 tomorrow","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-24T21:57:15.056939123+03:00","updatedAt":"2026-09-24T21:57:15.056939123+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C11-create-n5 -> status 201 (sent 50 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 261
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":22,"title":"C11 n3 archived","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.054721+03:00","updatedAt":"2026-09-24T21:57:22.312402717+03:00","completedAt":null,"archived":true,"overdue":false}
+=== POST http://localhost:8080/api/tasks/22/archive#C11-archive-n3 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 529
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+[{"id":19,"title":"C11 o2 inprogress","description":null,"status":"IN_PROGRESS","priority":"MEDIUM","dueDate":"2026-09-20","createdAt":"2026-09-24T21:57:15.050719+03:00","updatedAt":"2026-09-24T21:57:15.050719+03:00","completedAt":null,"archived":false,"overdue":true},{"id":18,"title":"C11 o1 yesterday","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.047592+03:00","updatedAt":"2026-09-24T21:57:15.047592+03:00","completedAt":null,"archived":false,"overdue":true}]
+=== GET http://localhost:8080/api/tasks/overdue#C11-overdue-list -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 259
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":18,"title":"C11 o1 yesterday","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.047592+03:00","updatedAt":"2026-09-24T21:57:15.047592+03:00","completedAt":null,"archived":false,"overdue":true}
+=== GET http://localhost:8080/api/tasks/18#C11-get-o1 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 267
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":19,"title":"C11 o2 inprogress","description":null,"status":"IN_PROGRESS","priority":"MEDIUM","dueDate":"2026-09-20","createdAt":"2026-09-24T21:57:15.050719+03:00","updatedAt":"2026-09-24T21:57:15.050719+03:00","completedAt":null,"archived":false,"overdue":true}
+=== GET http://localhost:8080/api/tasks/19#C11-get-o2 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 256
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":20,"title":"C11 n1 today","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-24","createdAt":"2026-09-24T21:57:15.052345+03:00","updatedAt":"2026-09-24T21:57:15.052345+03:00","completedAt":null,"archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/20#C11-get-n1 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 285
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":21,"title":"C11 n2 done","description":null,"status":"DONE","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.053607+03:00","updatedAt":"2026-09-24T21:57:15.053607+03:00","completedAt":"2026-09-24T21:57:15.053607+03:00","archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/21#C11-get-n2 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 258
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":22,"title":"C11 n3 archived","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-23","createdAt":"2026-09-24T21:57:15.054721+03:00","updatedAt":"2026-09-24T21:57:22.312403+03:00","completedAt":null,"archived":true,"overdue":false}
+=== GET http://localhost:8080/api/tasks/22#C11-get-n3 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 249
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":23,"title":"C11 n4 no due","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:57:15.055812+03:00","updatedAt":"2026-09-24T21:57:15.055812+03:00","completedAt":null,"archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/23#C11-get-n4 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 259
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"id":24,"title":"C11 n5 tomorrow","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-24T21:57:15.056939+03:00","updatedAt":"2026-09-24T21:57:15.056939+03:00","completedAt":null,"archived":false,"overdue":false}
+=== GET http://localhost:8080/api/tasks/24#C11-get-n5 -> status 200
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 70
+Date: Thu, 24 Sep 2026 18:57:22 GMT
+
+{"timeZone":"Africa/Cairo","now":"2026-09-24T21:57:22.32178988+03:00"}
+=== GET http://localhost:8080/api/app-info#C11-today-check -> status 200
+

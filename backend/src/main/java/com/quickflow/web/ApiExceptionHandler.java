@@ -17,6 +17,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 /** Maps domain and request errors to RFC 9457 problem details (research R-9). */
 @RestControllerAdvice
@@ -45,6 +46,16 @@ public class ApiExceptionHandler {
 			return badRequest("Malformed request body", List.of(new FieldError(field, message(je))));
 		}
 		return badRequest("Malformed request body", List.of());
+	}
+
+	/** A query or path parameter that doesn't convert (bad enum, date, boolean or id), A-10. */
+	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
+	ProblemDetail typeMismatch(MethodArgumentTypeMismatchException ex) {
+		Class<?> type = ex.getRequiredType();
+		String message = type != null && type.isEnum()
+				? "must be one of " + Arrays.toString(type.getEnumConstants())
+				: "invalid value";
+		return badRequest("Invalid parameter", List.of(new FieldError(ex.getName(), message)));
 	}
 
 	@ExceptionHandler(NotFoundException.class)

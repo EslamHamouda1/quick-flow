@@ -1,0 +1,56 @@
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 254
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.271860056+03:00","updatedAt":"2026-09-24T21:56:21.271860056+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks#C7-create -> status 201 (sent 25 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 249
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.27186+03:00","updatedAt":"2026-09-24T21:56:21.274884045+03:00","completedAt":null,"archived":true,"overdue":false}
+=== POST http://localhost:8080/api/tasks/6/archive#C7-archive -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 3419
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+[{"id":5,"title":"C5 edited","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:13.742602+03:00","completedAt":null,"archived":false,"overdue":false},{"id":4,"title":"C3","description":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.725569+03:00","updatedAt":"2026-09-24T21:55:30.725569+03:00","completedAt":null,"archived":false,"overdue":false},{"id":3,"title":"tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.71822+03:00","updatedAt":"2026-09-24T21:55:30.71822+03:00","completedAt":null,"archived":false,"overdue":false},{"id":2,"title":"C1 defaults","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.698119+03:00","updatedAt":"2026-09-24T21:55:30.698119+03:00","completedAt":null,"archived":false,"overdue":false},{"id":1,"title":"C1 Buy milk","description":"2 litres","status":"TODO","priority":"HIGH","dueDate":"2026-09-29","createdAt":"2026-09-24T21:53:41.562223+03:00","updatedAt":"2026-09-24T21:53:41.562223+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks#C7-default-list-after-archive -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 248
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+[{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.27186+03:00","updatedAt":"2026-09-24T21:56:21.274884+03:00","completedAt":null,"archived":true,"overdue":false}]
+=== GET http://localhost:8080/api/tasks?archived=true#C7-archived-list-after-archive -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 250
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.27186+03:00","updatedAt":"2026-09-24T21:56:21.310263459+03:00","completedAt":null,"archived":false,"overdue":false}
+=== POST http://localhost:8080/api/tasks/6/restore#C7-restore -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 3667
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+[{"id":6,"title":"C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:56:21.27186+03:00","updatedAt":"2026-09-24T21:56:21.310263+03:00","completedAt":null,"archived":false,"overdue":false},{"id":5,"title":"C5 edited","description":null,"status":"TODO","priority":"HIGH","dueDate":null,"createdAt":"2026-09-24T21:56:07.03798+03:00","updatedAt":"2026-09-24T21:56:13.742602+03:00","completedAt":null,"archived":false,"overdue":false},{"id":4,"title":"C3","description":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.725569+03:00","updatedAt":"2026-09-24T21:55:30.725569+03:00","completedAt":null,"archived":false,"overdue":false},{"id":3,"title":"tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.71822+03:00","updatedAt":"2026-09-24T21:55:30.71822+03:00","completedAt":null,"archived":false,"overdue":false},{"id":2,"title":"C1 defaults","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-24T21:55:30.698119+03:00","updatedAt":"2026-09-24T21:55:30.698119+03:00","completedAt":null,"archived":false,"overdue":false},{"id":1,"title":"C1 Buy milk","description":"2 litres","status":"TODO","priority":"HIGH","dueDate":"2026-09-29","createdAt":"2026-09-24T21:53:41.562223+03:00","updatedAt":"2026-09-24T21:53:41.562223+03:00","completedAt":null,"archived":false,"overdue":false}]
+=== GET http://localhost:8080/api/tasks#C7-default-list-after-restore -> status 200 (sent 0 bytes)
+
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 2
+Date: Thu, 24 Sep 2026 18:56:21 GMT
+
+[]
+=== GET http://localhost:8080/api/tasks?archived=true#C7-archived-list-after-restore -> status 200 (sent 0 bytes)
+
