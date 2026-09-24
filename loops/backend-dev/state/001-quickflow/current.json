@@ -2,5 +2,5 @@
   "feature_dir": "specs/001-quickflow-backend",
   "current_phase": "phase-00",
   "loop_status": "running",
-  "stop_reason": "until_reached: phase-02"
+  "stop_reason": "until_reached: phase-00"
 }

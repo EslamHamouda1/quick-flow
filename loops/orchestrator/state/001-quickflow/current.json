@@ -1,4 +1,4 @@
 {
-  "stop_reason": "until_reached: orchestrator plan",
+  "stop_reason": "harness",
   "loop_status": "stopped"
 }
