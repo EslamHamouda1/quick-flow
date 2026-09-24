@@ -119,7 +119,9 @@ nothing, log the mismatch and stop.
 
 ### A. `plan_apply phase-00` (phase-00 `approved`) — never write code here
 1. Read `## Reviewer notes` in `OUT/phase-00-review.md`. Write each answer into `spec.md`, replacing
-   its `[NEEDS CLARIFICATION]` marker. Update `STATE/requirements.json` to match.
+   its `[NEEDS CLARIFICATION]` marker. Update `STATE/requirements.json` to match. Rename the
+   answered `## Open questions` heading to `## Answered questions` (the runner treats any
+   remaining `## Open questions` / `## Questions` section as unanswered).
 2. Apply any edits the reviewer made to the phase files back to `tasks.md` (removed tasks deleted,
    new tasks added with new T-ids, changed wording copied), then refresh `phases.json`'s `task_ids`.
 3. Tick the items in `FEATURE_DIR/checklists/` that are now satisfied.
@@ -141,7 +143,8 @@ rewrite the rest. Set status `awaiting_approval`. Stop.
 1. **Sync review edits into tasks.md first**: compare the task list in `OUT/<phase>.md` with the
    `## Phase <spec_phase>` section of `tasks.md` and make `tasks.md` match (removed, added with new
    T-ids, reworded). Log each change. `/speckit-implement` only reads `tasks.md`.
-2. Read `## Reviewer notes` (and `## Questions` answers) in the review file. On a retry
+2. Read `## Reviewer notes` (and `## Questions` answers) in the review file. Rename an answered
+   `## Questions` heading to `## Answered questions`, so the runner doesn't ask it again. On a retry
    (`attempt ≥ 2`, or a reopened phase) read the failing report
    `loops/testing/outputs/<FEATURE>/backend-dev/<phase>-report.md` and fix what it names.
 3. Set status `in_progress`.
