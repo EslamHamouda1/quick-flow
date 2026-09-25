@@ -1,0 +1,27 @@
+phase-07 build/test (L.test: cd backend && ./mvnw -q verify -Dmaven.test.failure.ignore=true; it runs package first)
+The raw console output (80 KB, Spring/Hibernate INFO logs) was not captured into this file because shell redirection was not permitted in this session; the summary below is taken from target/surefire-reports and target/site/jacoco/jacoco.xml right after the run.
+
+Exit: success (no COMPILATION ERROR)
+
+Surefire (25 suites, 306 tests, 0 failures, 0 errors):
+  domain.dashboard.DashboardServiceTest        17  0 failures 0 errors   (new, T068)
+  persistence.DashboardQueriesTest             10  0 failures 0 errors   (new, T069)
+  web.dashboard.DashboardControllerTest         3  0 failures 0 errors   (new, T070)
+  domain.habit.HabitTest 9, HabitProgressCalculatorTest 13, HabitServiceTest 23
+  domain.learning.LearningServiceTest 21, LearningCardTest 24
+  domain.common.TimeServiceTest 5
+  domain.plan.PlanServiceTest 24, PlanTest 19, PlanStatusPolicyTest 19
+  domain.task.TaskTest 15, TaskServiceTest 12
+  persistence.PlanRepositoryTest 5, HabitRepositoryTest 5, TaskRepositoryTest 10, LearningCardRepositoryTest 7
+  web.ApiExceptionHandlerTest 6, PlanControllerTest 15, HabitControllerTest 14, LearningCardControllerTest 16,
+  TaskControllerTest 12, info.AppInfoControllerTest 1
+  QuickflowApplicationTests 1
+  (all 0 failures, 0 errors)
+
+JaCoCo line coverage, new files:
+  domain/dashboard/DashboardService.java   missed 0
+  domain/dashboard/DashboardSummary.java   missed 0
+  web/dashboard/DashboardResponse.java     missed 0
+
+OpenAPI (backend/target/openapi.json): getDashboard, tag dashboard, 200 -> Dashboard; schemas Dashboard (11 required),
+TaskCounts, HabitCounts, PlanCounts, LearningSnapshot match contracts/openapi.yaml; known difference: int32 formats.

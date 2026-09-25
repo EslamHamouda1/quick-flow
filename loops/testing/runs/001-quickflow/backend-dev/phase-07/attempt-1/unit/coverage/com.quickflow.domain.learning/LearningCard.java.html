@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LearningCard.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.learning</a> &gt; <span class="el_source">LearningCard.java</span></div><h1>LearningCard.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.learning;
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.quickflow.domain.common.FieldError;
+import com.quickflow.domain.common.ValidationException;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = &quot;learning_card&quot;)
+public class LearningCard {
+
+	static final int TITLE_MAX = 200;
+
+	static final int DESCRIPTION_MAX = 2000;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(nullable = false, length = TITLE_MAX)
+	private String title;
+
+	@Column(length = DESCRIPTION_MAX)
+	private String description;
+
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private LearningStatus status;
+
+	@Column(nullable = false)
+	private Instant createdAt;
+
+	/** Removed together with the card (BR-14); creation order (A-5). */
+<span class="fc" id="L49">	@OneToMany(mappedBy = &quot;card&quot;, cascade = CascadeType.ALL, orphanRemoval = true)</span>
+	@OrderBy(&quot;id&quot;)
+	private List&lt;LearningMilestone&gt; milestones = new ArrayList&lt;&gt;();
+
+	/** Removed together with the card (BR-14); oldest first (A-5). */
+<span class="fc" id="L54">	@OneToMany(mappedBy = &quot;card&quot;, cascade = CascadeType.ALL, orphanRemoval = true)</span>
+	@OrderBy(&quot;createdAt, id&quot;)
+	private List&lt;LearningNote&gt; notes = new ArrayList&lt;&gt;();
+
+<span class="fc" id="L58">	protected LearningCard() {</span>
+<span class="fc" id="L59">	}</span>
+
+	/** A new card, Not Started (FR-05.1). */
+<span class="fc" id="L62">	public LearningCard(String title, String description, Instant now) {</span>
+<span class="fc" id="L63">		apply(title, description, LearningStatus.NOT_STARTED);</span>
+<span class="fc" id="L64">		this.createdAt = now;</span>
+<span class="fc" id="L65">	}</span>
+
+	/** Replaces the editable fields; never changes {@code createdAt}, milestones or notes (A-2). */
+	public void update(String title, String description, LearningStatus status) {
+<span class="fc" id="L69">		apply(title, description, status);</span>
+<span class="fc" id="L70">	}</span>
+
+	public LearningMilestone addMilestone(String title, LocalDate targetDate) {
+<span class="fc" id="L73">		LearningMilestone milestone = new LearningMilestone(this, title, targetDate);</span>
+<span class="fc" id="L74">		milestones.add(milestone);</span>
+<span class="fc" id="L75">		return milestone;</span>
+	}
+
+	public LearningNote addNote(String text, Instant now) {
+<span class="fc" id="L79">		LearningNote note = new LearningNote(this, text, now);</span>
+<span class="fc" id="L80">		notes.add(note);</span>
+<span class="fc" id="L81">		return note;</span>
+	}
+
+	/** The row is deleted by orphan removal. */
+	public void removeMilestone(LearningMilestone milestone) {
+<span class="fc" id="L86">		milestones.remove(milestone);</span>
+<span class="fc" id="L87">	}</span>
+
+	/** The row is deleted by orphan removal. */
+	public void removeNote(LearningNote note) {
+<span class="fc" id="L91">		notes.remove(note);</span>
+<span class="fc" id="L92">	}</span>
+
+	public int milestonesDone() {
+<span class="fc" id="L95">		return (int) milestones.stream().filter(LearningMilestone::isDone).count();</span>
+	}
+
+	public int milestonesTotal() {
+<span class="fc" id="L99">		return milestones.size();</span>
+	}
+
+	private void apply(String title, String description, LearningStatus status) {
+<span class="fc" id="L103">		List&lt;FieldError&gt; errors = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L104">		String cleanTitle = checkTitle(title, errors);</span>
+<span class="fc" id="L105">		String cleanDescription = checkDescription(description, errors);</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">		if (status == null) {</span>
+<span class="fc" id="L107">			errors.add(new FieldError(&quot;status&quot;, &quot;must not be null&quot;));</span>
+		}
+<span class="fc bfc" id="L109" title="All 2 branches covered.">		if (!errors.isEmpty()) {</span>
+<span class="fc" id="L110">			throw new ValidationException(errors);</span>
+		}
+<span class="fc" id="L112">		this.title = cleanTitle;</span>
+<span class="fc" id="L113">		this.description = cleanDescription;</span>
+<span class="fc" id="L114">		this.status = status;</span>
+<span class="fc" id="L115">	}</span>
+
+	/** Trimmed, non-blank (BR-8), at most 200 characters (A-1); shared with milestone titles. */
+	static String checkTitle(String title, List&lt;FieldError&gt; errors) {
+<span class="fc bfc" id="L119" title="All 2 branches covered.">		String trimmed = title == null ? &quot;&quot; : title.trim();</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">		if (trimmed.isEmpty()) {</span>
+<span class="fc" id="L121">			errors.add(new FieldError(&quot;title&quot;, &quot;must not be blank&quot;));</span>
+		}
+<span class="fc bfc" id="L123" title="All 2 branches covered.">		else if (trimmed.length() &gt; TITLE_MAX) {</span>
+<span class="fc" id="L124">			errors.add(new FieldError(&quot;title&quot;, &quot;must be at most &quot; + TITLE_MAX + &quot; characters&quot;));</span>
+		}
+<span class="fc" id="L126">		return trimmed;</span>
+	}
+
+	private static String checkDescription(String description, List&lt;FieldError&gt; errors) {
+<span class="fc bfc" id="L130" title="All 4 branches covered.">		if (description == null || description.isEmpty()) {</span>
+<span class="fc" id="L131">			return null;</span>
+		}
+<span class="fc bfc" id="L133" title="All 2 branches covered.">		if (description.length() &gt; DESCRIPTION_MAX) {</span>
+<span class="fc" id="L134">			errors.add(new FieldError(&quot;description&quot;, &quot;must be at most &quot; + DESCRIPTION_MAX + &quot; characters&quot;));</span>
+		}
+<span class="fc" id="L136">		return description;</span>
+	}
+
+	public Long getId() {
+<span class="fc" id="L140">		return id;</span>
+	}
+
+	public String getTitle() {
+<span class="fc" id="L144">		return title;</span>
+	}
+
+	public String getDescription() {
+<span class="fc" id="L148">		return description;</span>
+	}
+
+	public LearningStatus getStatus() {
+<span class="fc" id="L152">		return status;</span>
+	}
+
+	public Instant getCreatedAt() {
+<span class="fc" id="L156">		return createdAt;</span>
+	}
+
+	public List&lt;LearningMilestone&gt; getMilestones() {
+<span class="fc" id="L160">		return Collections.unmodifiableList(milestones);</span>
+	}
+
+	public List&lt;LearningNote&gt; getNotes() {
+<span class="fc" id="L164">		return Collections.unmodifiableList(notes);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

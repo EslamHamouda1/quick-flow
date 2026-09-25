@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlanController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.web.plan</a> &gt; <span class="el_source">PlanController.java</span></div><h1>PlanController.java</h1><pre class="source lang-java linenums">package com.quickflow.web.plan;
+
+import java.util.List;
+
+import com.quickflow.domain.common.TimeService;
+import com.quickflow.domain.plan.PlanGroup;
+import com.quickflow.domain.plan.PlanService;
+import com.quickflow.domain.plan.PlanView;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(&quot;/api/plans&quot;)
+@Tag(name = &quot;plans&quot;)
+public class PlanController {
+
+	private final PlanService planService;
+
+	private final TimeService timeService;
+
+<span class="fc" id="L37">	public PlanController(PlanService planService, TimeService timeService) {</span>
+<span class="fc" id="L38">		this.planService = planService;</span>
+<span class="fc" id="L39">		this.timeService = timeService;</span>
+<span class="fc" id="L40">	}</span>
+
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = &quot;Plans with computed status, progress and rest time&quot;)
+	public List&lt;PlanResponse&gt; listPlans(
+			@Parameter(description = &quot;active = NOT_STARTED or IN_PROGRESS (priorityOrder asc, then start asc); &quot;
+					+ &quot;completed = COMPLETED (end desc); all = active then completed&quot;,
+					schema = @Schema(allowableValues = {&quot;active&quot;, &quot;completed&quot;, &quot;all&quot;}, defaultValue = &quot;all&quot;))
+			@RequestParam(defaultValue = &quot;all&quot;) String group) {
+<span class="fc" id="L49">		return planService.list(PlanGroup.fromParam(group)).stream().map(this::response).toList();</span>
+	}
+
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.CREATED)
+	public PlanResponse createPlan(@Valid @RequestBody PlanCreateRequest request) {
+<span class="fc" id="L55">		return response(planService.create(request.title(), request.estimatedDurationMinutes(),</span>
+<span class="fc" id="L56">				request.startDateTime().toInstant(), request.endDateTime().toInstant(), request.priorityOrder(),</span>
+<span class="fc" id="L57">				request.items().stream().map(PlanItemRefRequest::toRef).toList()));</span>
+	}
+
+	@GetMapping(path = &quot;/{id}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+	public PlanResponse getPlan(@PathVariable long id) {
+<span class="nc" id="L62">		return response(planService.get(id));</span>
+	}
+
+	@PutMapping(path = &quot;/{id}&quot;, consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = &quot;Edit title, estimated duration, start/end and priority order (items are unchanged)&quot;)
+	public PlanResponse updatePlan(@PathVariable long id, @Valid @RequestBody PlanUpdateRequest request) {
+<span class="fc" id="L69">		return response(planService.update(id, request.title(), request.estimatedDurationMinutes(),</span>
+<span class="fc" id="L70">				request.startDateTime().toInstant(), request.endDateTime().toInstant(), request.priorityOrder()));</span>
+	}
+
+	@DeleteMapping(&quot;/{id}&quot;)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@Operation(summary = &quot;Delete the plan and its items; referenced sources are unchanged (BR-14)&quot;)
+	public void deletePlan(@PathVariable long id) {
+<span class="fc" id="L77">		planService.delete(id);</span>
+<span class="fc" id="L78">	}</span>
+
+	@PutMapping(path = &quot;/{id}/items/{itemId}&quot;, consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = &quot;Mark a plan item done or not done; a TASK item marked done also completes the task; &quot;
+			+ &quot;un-ticking and HABIT/LEARNING_RESOURCE items change no source (BR-13, Q1)&quot;)
+	public PlanResponse setPlanItemDone(@PathVariable long id, @PathVariable long itemId,
+			@Valid @RequestBody PlanItemUpdateRequest request) {
+<span class="fc" id="L86">		return response(planService.setItemDone(id, itemId, request.done()));</span>
+	}
+
+	private PlanResponse response(PlanView view) {
+<span class="fc" id="L90">		return PlanResponse.from(view, timeService);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

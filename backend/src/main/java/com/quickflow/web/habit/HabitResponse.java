@@ -24,7 +24,7 @@ public record HabitResponse(
 		@Schema(requiredMode = RequiredMode.REQUIRED, minimum = "0",
 				description = "Consecutive periods with a completion") int currentStreak) {
 
-	static HabitResponse from(HabitView view, TimeService time) {
+	public static HabitResponse from(HabitView view, TimeService time) {
 		Habit habit = view.habit();
 		HabitProgress progress = view.progress();
 		return new HabitResponse(habit.getId(), habit.getName(), habit.getDescription(), habit.getFrequency(),

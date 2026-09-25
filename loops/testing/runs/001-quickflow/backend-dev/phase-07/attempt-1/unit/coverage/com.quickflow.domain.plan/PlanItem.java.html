@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlanItem.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.plan</a> &gt; <span class="el_source">PlanItem.java</span></div><h1>PlanItem.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.plan;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+
+/**
+ * One source of a plan. No foreign key to the source tables: a source can be deleted while the item stays, showing
+ * its last title (FR-07.6).
+ */
+@Entity
+@Table(name = &quot;plan_item&quot;,
+		uniqueConstraints = @UniqueConstraint(columnNames = {&quot;plan_id&quot;, &quot;source_type&quot;, &quot;source_id&quot;}))
+public class PlanItem {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = &quot;plan_id&quot;, nullable = false)
+	private Plan plan;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = &quot;source_type&quot;, nullable = false)
+	private PlanSourceType sourceType;
+
+	@Column(name = &quot;source_id&quot;, nullable = false)
+	private Long sourceId;
+
+	@Column(name = &quot;source_title&quot;, nullable = false, length = Plan.TITLE_MAX)
+	private String sourceTitle;
+
+	/** Independent of the plan status (data model). */
+	@Column(nullable = false)
+	private boolean done;
+
+<span class="fc" id="L47">	protected PlanItem() {</span>
+<span class="fc" id="L48">	}</span>
+
+	/** A new item, not done (FR-07.2); the service stores the source title before saving. */
+<span class="fc" id="L51">	PlanItem(Plan plan, PlanSourceType sourceType, Long sourceId) {</span>
+<span class="fc" id="L52">		this.plan = plan;</span>
+<span class="fc" id="L53">		this.sourceType = sourceType;</span>
+<span class="fc" id="L54">		this.sourceId = sourceId;</span>
+<span class="fc" id="L55">		this.done = false;</span>
+<span class="fc" id="L56">	}</span>
+
+	public void setDone(boolean done) {
+<span class="fc" id="L59">		this.done = done;</span>
+<span class="fc" id="L60">	}</span>
+
+	/** Stores the source's current title as the snapshot shown once the source is deleted (A-4). */
+	public void refreshTitle(String title) {
+<span class="fc" id="L64">		this.sourceTitle = title;</span>
+<span class="fc" id="L65">	}</span>
+
+	public Long getId() {
+<span class="fc" id="L68">		return id;</span>
+	}
+
+	public Plan getPlan() {
+<span class="fc" id="L72">		return plan;</span>
+	}
+
+	public Long getPlanId() {
+<span class="fc" id="L76">		return plan.getId();</span>
+	}
+
+	public PlanSourceType getSourceType() {
+<span class="fc" id="L80">		return sourceType;</span>
+	}
+
+	public Long getSourceId() {
+<span class="fc" id="L84">		return sourceId;</span>
+	}
+
+	public String getSourceTitle() {
+<span class="fc" id="L88">		return sourceTitle;</span>
+	}
+
+	public boolean isDone() {
+<span class="fc" id="L92">		return done;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

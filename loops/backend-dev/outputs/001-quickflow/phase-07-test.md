@@ -1,0 +1,18 @@
+# phase-07-test: US5 See everything on the Dashboard (backend-dev)
+
+Criteria (from `loops/backend-dev/outputs/001-quickflow/phase-07.md`): AC-US5-1 … AC-US5-5 (backend);
+AC-US5-6, AC-US5-7 are frontend-layer and not checked here.
+Sources of expected results: spec.md US5 + FR-01.7, FR-08.5, FR-09.1, FR-09.2, BR-4, BR-14, SC-003;
+data-model.md `## Dashboard` (floor rule, dueToday/completedToday definitions); swagger `getDashboard`,
+schemas `Dashboard`, `TaskCounts`, `HabitCounts`, `PlanCounts`, `LearningSnapshot`.
+Script: `phase-07-verify.sh <attempt-folder>` (curl against `http://localhost:8080`, fresh test database).
+"today" = the app zone (Africa/Cairo) date of the run.
+
+| check | criterion | steps | expected |
+|---|---|---|---|
+| C1 | swagger, AC-US5-3 (0 %) | GET `/api/dashboard` on the fresh database; GET `/v3/api-docs` | 200 `application/json`; all 11 required fields of `Dashboard` present (`now`, `dueToday`, `overdue`, `completedToday`, `taskCompletionPercent`, `taskCounts{total,done}`, `habits`, `habitCounts{active,completedToday}`, `activePlans`, `planCounts{notStarted,inProgress,completed}`, `learning{notStarted,inProgress,completed,milestonesDone,milestonesTotal}`); arrays empty, counts 0, `taskCompletionPercent` 0 ("0% when there are none"); `now` a date-time with offset near the current time; api-docs list `getDashboard` (tag `dashboard`) and the 5 schemas |
+| C2 | AC-US5-1, FR-01.7, BR-4, BR-14 | create tasks: A due today TODO; B due yesterday TODO; C due yesterday DONE; D no due date, then `POST /complete`; E due today, then `PUT` status DONE; F due today archived; G due yesterday archived; H completed then archived; I due today then deleted | `dueToday` = exactly {A, E} (non-archived, dueDate = today); `overdue` = exactly {B} (before today, not Done, not archived) with `overdue: true`, B not in `dueToday`; `completedToday` = exactly {D, E}; F, G, H, I in no list; each listed task equals `GET /api/tasks/{id}` |
+| C3 | AC-US5-3, SC-003 | after C2, GET dashboard; compare with `GET /api/tasks` (default: not archived) and `?status=DONE`; add 1 TODO task, GET; add 1 more, GET | `taskCounts.total` = non-archived tasks (5: A–E), `done` = non-archived DONE (3: C, D, E), both equal to the list counts; `taskCompletionPercent` = floor(100·3/5) = 60; then 3/6 → 50; then 3/7 → 42 (floor, data-model.md); the archived DONE task H is never counted |
+| C4 | AC-US5-2 | habits: H1 active DAILY completed today; H2 active DAILY not completed; H3 completed today then deactivated; then undo H1's completion | `habits` = exactly {H1, H2}, `completedToday` true for H1, false for H2; `habitCounts {active: 2, completedToday: 1}`; each entry equals `GET /api/habits/{id}`; after undo: `completedToday` 0 on the next GET |
+| C5 | AC-US5-5, BR-14 | cards: L1 NOT_STARTED with milestones m1 done, m2 not; L2 IN_PROGRESS with m3 done; L3 COMPLETED with m4 not done; L4 IN_PROGRESS with m5 done; then DELETE L4 | `learning {notStarted 1, inProgress 2, completed 1, milestonesDone 3, milestonesTotal 5}`; after delete: `{1, 1, 1, 2, 4}` |
+| C6 | AC-US5-4, FR-08.5, FR-09.2 | plans (items = habit H2 + card L1): P1 in window prio 2; P2 in window prio 1; P3 future; P4 past; GET twice 2 s apart; tick one item of P2; tick the other | `activePlans` ids = [P2, P1] (IN_PROGRESS, by priority), each with `progressPercent` and `restSeconds` not null, `restSeconds` lower on the second GET; `planCounts {notStarted 1, inProgress 2, completed 1}`; entries equal `GET /api/plans/{id}` apart from `restSeconds`; after 1 of 2 ticked: P2 `progressPercent` 50 on the next GET; after 2 of 2: P2 not in `activePlans`, `planCounts {1, 1, 2}` |

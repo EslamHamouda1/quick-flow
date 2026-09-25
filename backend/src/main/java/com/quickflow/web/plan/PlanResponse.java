@@ -30,7 +30,7 @@ public record PlanResponse(
 				description = "Seconds until endDateTime while start <= now < end, otherwise null (BR-12)")
 		Long restSeconds) {
 
-	static PlanResponse from(PlanView view, TimeService time) {
+	public static PlanResponse from(PlanView view, TimeService time) {
 		Plan plan = view.plan();
 		PlanProgress progress = view.progress();
 		return new PlanResponse(plan.getId(), plan.getTitle(),

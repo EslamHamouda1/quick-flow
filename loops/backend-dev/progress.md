@@ -12,7 +12,8 @@
 | backend-dev:001-quickflow:phase-04 | 2026-09-24T22:10:49+03:00 | 2026-09-24T22:28:51+03:00 | 0h18m02s | 0h17m31s | 4 | 1 | 256 | 12697288 | 105514 | 8.9016 | a86b8a4b-2523-4d2e-8b40-200ca1150256 245fac4e-3a3b-4d90-bd21-7936f90f697e 20927e47-47a3-4f69-b1bb-43be78dd92e3 d7f5cf05-dcc2-48dd-9bff-690cb3194c15 | 20927e47-47a3-4f69-b1bb-43be78dd92e3 | c698b54 | success |
 | backend-dev:001-quickflow:phase-05 | 2026-09-24T22:38:19+03:00 | 2026-09-24T23:15:41+03:00 | 0h37m22s | 0h14m25s | 4 | 1 | 182 | 7974338 | 78439 | 7.3067 | a1d77c0f-3950-4417-a8d1-950f403b16fb 1adb9098-836c-467b-9bdd-14e7a41e354b d412fe1d-2596-41cf-a795-871768250983 8b33bd6f-fd27-4ebe-82aa-074270cf8075 | d412fe1d-2596-41cf-a795-871768250983 | 633253a | success |
 | backend-dev:001-quickflow:phase-06 | 2026-09-25T23:23:41+03:00 | 2026-09-25T23:45:46+03:00 | 0h22m05s | 0h16m21s | 4 | 1 | 208 | 9748524 | 101225 | 9.4148 | 220bfbb4-b97c-4c47-ae33-5e267e5831c9 0268db9b-e680-466b-8b54-bf34991b01e9 ba0e3b29-4ddc-42ea-a99f-68ae962745ce 19f1e531-117d-42a9-9e46-822fad896843 | ba0e3b29-4ddc-42ea-a99f-68ae962745ce | 126addf | success |
-| **Total** |  |  |  | 1h37m42s | 26 |  | 1246 | 53734858 | 575119 | 46.3938 |  |  |  |  |
+| backend-dev:001-quickflow:phase-07 | 2026-09-26T00:20:42+03:00 | 2026-09-26T00:59:42+03:00 | 0h39m00s | 0h13m02s | 5 | 1 | 222 | 8702138 | 77442 | 8.1618 | a179dff8-2927-473d-a32e-23057de42010 0d17c0dd-e014-4982-b64e-9718b8775736 d0241dc8-dec3-456b-bf7f-143c67bd0b34 0befc91c-e612-4319-ba25-1c34fae2af70 c0289276-5b57-4a81-a4ad-6ba95b83c3d4 | 0befc91c-e612-4319-ba25-1c34fae2af70 |  | success |
+| **Total** |  |  |  | 1h50m45s | 31 |  | 1468 | 62436996 | 652561 | 54.5556 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -129,3 +130,14 @@
 - 2026-09-25T23:35:00+03:00 001-quickflow phase-06: marked T054-T067 [~] in phase-06.md and tasks.json, [X] in tasks.md; set phase-06 ready_for_test
 - 2026-09-25T23:44:29+03:00 test 001-quickflow phase-06 attempt 1: pass (verified_by ba0e3b29-4ddc-42ea-a99f-68ae962745ce)
 - 2026-09-25T23:46:00+03:00 001-quickflow phase-06: close check ok (T054-T067 [X] in tasks.md, verdict pass for attempt 1); marked T054-T067 [x] in phase-06.md and tasks.json; set phase-06 done
+- 2026-09-26T00:24:00+03:00 001-quickflow phase-07: wrote phase-07-review.md (T068-T074, named rule tests, 9 assumptions, no open questions); set phase-07 awaiting_approval
+- 2026-09-26T00:22:58+03:00 gate 001-quickflow phase-07: approved (auto)
+- 2026-09-26T00:45:00+03:00 001-quickflow phase-07: implement resumed with status already in_progress (no phase-07 code on disk); tasks.md Phase 7 matches phase-07.md (T068-T074, no sync change); no reviewer notes or questions; checklists all ticked
+- 2026-09-26T00:48:00+03:00 001-quickflow phase-07: T068-T070 tests written first by 3 parallel subagents (DashboardServiceTest 17, DashboardQueriesTest 10, DashboardControllerTest 3)
+- 2026-09-26T00:50:00+03:00 001-quickflow phase-07: T071 added TaskRepository findByDueDateAndArchivedFalseOrderByIdAsc, findCompletedBetween (JPQL), countByArchivedFalse, countByArchivedFalseAndStatus; LearningCardRepository countByStatus; LearningMilestoneRepository countByDoneTrue (derived, works)
+- 2026-09-26T00:50:00+03:00 001-quickflow phase-07: T072-T074 wrote DashboardSummary, DashboardService, DashboardResponse, DashboardController; made TaskResponse/HabitResponse/PlanResponse.from public (visibility only)
+- 2026-09-26T00:52:00+03:00 001-quickflow phase-07: L.test (includes package) 25 suites, 306 tests, 0 failures/errors; domain.dashboard lines missed 0; summary in runs/001-quickflow/phase-07-build.log
+- 2026-09-26T00:53:00+03:00 001-quickflow phase-07: openapi getDashboard + Dashboard/TaskCounts/HabitCounts/PlanCounts/LearningSnapshot match contract (known int32 formats); copied backend/target/openapi.json to outputs/openapi.json
+- 2026-09-26T00:54:00+03:00 001-quickflow phase-07: marked T068-T074 [~] in phase-07.md and tasks.json, [X] in tasks.md; set phase-07 ready_for_test
+- 2026-09-26T00:58:57+03:00 test 001-quickflow phase-07 attempt 1: pass (verified_by 0befc91c-e612-4319-ba25-1c34fae2af70)
+- 2026-09-26T00:59:31+03:00 001-quickflow phase-07: close check ok (T068-T074 [X] in tasks.md, verdict pass attempt 1); marked T068-T074 [x] in phase-07.md and tasks.json; set phase-07 done

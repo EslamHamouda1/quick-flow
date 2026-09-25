@@ -16,4 +16,6 @@ public interface LearningMilestoneRepository extends JpaRepository<LearningMiles
 	@Query("select m from LearningMilestone m where m.id = :id and m.card.id = :cardId")
 	Optional<LearningMilestone> findByIdAndCardId(@Param("id") Long id, @Param("cardId") Long cardId);
 
+	long countByDoneTrue();
+
 }

@@ -24,7 +24,7 @@ public record TaskResponse(
 		@Schema(requiredMode = RequiredMode.REQUIRED) boolean archived,
 		@Schema(requiredMode = RequiredMode.REQUIRED, description = "Computed on read (FR-01.7)") boolean overdue) {
 
-	static TaskResponse from(Task task, TimeService time) {
+	public static TaskResponse from(Task task, TimeService time) {
 		return new TaskResponse(task.getId(), task.getTitle(), task.getDescription(), task.getStatus(),
 				task.getPriority(), task.getDueDate(), time.toOffset(task.getCreatedAt()),
 				time.toOffset(task.getUpdatedAt()),

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HabitResponse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.web.habit</a> &gt; <span class="el_source">HabitResponse.java</span></div><h1>HabitResponse.java</h1><pre class="source lang-java linenums">package com.quickflow.web.habit;
+
+import java.time.OffsetDateTime;
+
+import com.quickflow.domain.common.TimeService;
+import com.quickflow.domain.habit.Habit;
+import com.quickflow.domain.habit.HabitFrequency;
+import com.quickflow.domain.habit.HabitProgress;
+import com.quickflow.domain.habit.HabitView;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
+
+@Schema(name = &quot;Habit&quot;)
+<span class="fc" id="L14">public record HabitResponse(</span>
+		@Schema(requiredMode = RequiredMode.REQUIRED) Long id,
+		@Schema(requiredMode = RequiredMode.REQUIRED) String name,
+		@Schema(types = {&quot;string&quot;, &quot;null&quot;}) String description,
+		@Schema(requiredMode = RequiredMode.REQUIRED) HabitFrequency frequency,
+		@Schema(requiredMode = RequiredMode.REQUIRED) OffsetDateTime createdAt,
+		@Schema(requiredMode = RequiredMode.REQUIRED) boolean active,
+		@Schema(requiredMode = RequiredMode.REQUIRED) boolean completedToday,
+		@Schema(requiredMode = RequiredMode.REQUIRED,
+				description = &quot;Today (DAILY) or current Monday-Sunday week (WEEKLY)&quot;) boolean doneForCurrentPeriod,
+		@Schema(requiredMode = RequiredMode.REQUIRED, minimum = &quot;0&quot;,
+				description = &quot;Consecutive periods with a completion&quot;) int currentStreak) {
+
+	public static HabitResponse from(HabitView view, TimeService time) {
+<span class="fc" id="L28">		Habit habit = view.habit();</span>
+<span class="fc" id="L29">		HabitProgress progress = view.progress();</span>
+<span class="fc" id="L30">		return new HabitResponse(habit.getId(), habit.getName(), habit.getDescription(), habit.getFrequency(),</span>
+<span class="fc" id="L31">				time.toOffset(habit.getCreatedAt()), habit.isActive(), progress.completedToday(),</span>
+<span class="fc" id="L32">				progress.doneForCurrentPeriod(), progress.currentStreak());</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
