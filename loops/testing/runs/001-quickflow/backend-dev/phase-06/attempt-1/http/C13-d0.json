@@ -1,0 +1,1 @@
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"estimatedDurationMinutes","message":"must be greater than or equal to 1"}]}

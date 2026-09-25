@@ -1,0 +1,1 @@
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"items[0].sourceId","message":"must reference an existing LEARNING_RESOURCE"}]}

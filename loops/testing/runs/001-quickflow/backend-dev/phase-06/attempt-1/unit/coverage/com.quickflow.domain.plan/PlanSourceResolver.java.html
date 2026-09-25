@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlanSourceResolver.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.plan</a> &gt; <span class="el_source">PlanSourceResolver.java</span></div><h1>PlanSourceResolver.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.plan;
+
+import java.util.Optional;
+
+import com.quickflow.domain.habit.Habit;
+import com.quickflow.domain.habit.HabitRepository;
+import com.quickflow.domain.learning.LearningCard;
+import com.quickflow.domain.learning.LearningCardRepository;
+import com.quickflow.domain.task.Task;
+import com.quickflow.domain.task.TaskRepository;
+
+import org.springframework.stereotype.Component;
+
+/** Looks up a plan item's source: whether it still exists (BR-10, FR-07.6) and its current title (A-4). */
+@Component
+public class PlanSourceResolver {
+
+	private final TaskRepository tasks;
+
+	private final HabitRepository habits;
+
+	private final LearningCardRepository cards;
+
+<span class="fc" id="L24">	public PlanSourceResolver(TaskRepository tasks, HabitRepository habits, LearningCardRepository cards) {</span>
+<span class="fc" id="L25">		this.tasks = tasks;</span>
+<span class="fc" id="L26">		this.habits = habits;</span>
+<span class="fc" id="L27">		this.cards = cards;</span>
+<span class="fc" id="L28">	}</span>
+
+	/** The task title, habit name or card title; empty when the source doesn't exist (hard delete, A-2). */
+	public Optional&lt;String&gt; title(PlanSourceType type, long id) {
+<span class="nc bnc" id="L32" title="All 3 branches missed.">		return switch (type) {</span>
+<span class="nc" id="L33">			case TASK -&gt; tasks.findById(id).map(Task::getTitle);</span>
+<span class="nc" id="L34">			case HABIT -&gt; habits.findById(id).map(Habit::getName);</span>
+<span class="nc" id="L35">			case LEARNING_RESOURCE -&gt; cards.findById(id).map(LearningCard::getTitle);</span>
+		};
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

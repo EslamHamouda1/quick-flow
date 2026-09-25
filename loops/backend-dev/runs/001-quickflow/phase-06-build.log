@@ -1,0 +1,29 @@
+# phase-06 build log (2026-09-25, implement attempt 1)
+
+$ cd backend && ./mvnw -q -DskipTests package
+(no output; exit 0)
+
+$ cd backend && ./mvnw -q verify -Dmaven.test.failure.ignore=true
+exit 0; surefire (backend/target/surefire-reports): 22 suites, 0 failures, 0 errors
+  com.quickflow.domain.plan.PlanStatusPolicyTest   19
+  com.quickflow.domain.plan.PlanTest               19
+  com.quickflow.domain.plan.PlanServiceTest        24
+  com.quickflow.persistence.PlanRepositoryTest      5
+  com.quickflow.web.plan.PlanControllerTest        15
+  (earlier suites unchanged: TimeServiceTest 5, HabitServiceTest 23, LearningServiceTest 21, HabitRepositoryTest 5,
+   HabitTest 9, TaskServiceTest 12, HabitProgressCalculatorTest 13, ApiExceptionHandlerTest 6, AppInfoControllerTest 1,
+   TaskRepositoryTest 10, LearningCardControllerTest 16, LearningCardRepositoryTest 7, LearningCardTest 24,
+   HabitControllerTest 14, TaskTest 15, QuickflowApplicationTests 1, TaskControllerTest 12)
+
+JaCoCo (backend/target/site/jacoco): total lines 756/786 covered;
+  com.quickflow.domain.plan lines 191/204 (0.94), branches 80/100 (0.80)
+  com.quickflow.domain.task 137/142, domain.habit 118/122, domain.learning 126/127, domain.common 18/18
+
+springdoc-openapi-maven-plugin wrote backend/target/openapi.json (openapi profile, port 18080);
+copied to loops/backend-dev/outputs/openapi.json.
+Plan operations present: listPlans, createPlan, getPlan, updatePlan, deletePlan, setPlanItemDone;
+schemas Plan, PlanItem, PlanCreate, PlanUpdate, PlanItemRef, PlanItemUpdate, PlanStatus, PlanSourceType;
+listPlans `group` query param: string enum [active, completed, all], default all;
+Plan.restSeconds: type [integer, null], format int64 (matches the contract).
+Known differences vs contracts/openapi.yaml, as in phase-03/04/05 (logged, not changed): no generated 400/404
+responses from the advice, int32 formats on integers, servers url.

@@ -11,7 +11,8 @@
 | backend-dev:001-quickflow:phase-03 | 2026-09-24T21:38:54+03:00 | 2026-09-24T21:59:34+03:00 | 0h20m40s | 0h15m37s | 4 | 1 | 180 | 8096490 | 95485 | 7.9252 | 2b7f38a4-f149-49c3-b47f-0ebbb94fd66d 6970c308-dac6-4961-b16e-54d699153a31 5279a56e-ed6d-41ed-a635-7a9211ba22a2 14afc922-fd61-4f6f-9756-589ef006ca04 | 5279a56e-ed6d-41ed-a635-7a9211ba22a2 | 4f731ba | success |
 | backend-dev:001-quickflow:phase-04 | 2026-09-24T22:10:49+03:00 | 2026-09-24T22:28:51+03:00 | 0h18m02s | 0h17m31s | 4 | 1 | 256 | 12697288 | 105514 | 8.9016 | a86b8a4b-2523-4d2e-8b40-200ca1150256 245fac4e-3a3b-4d90-bd21-7936f90f697e 20927e47-47a3-4f69-b1bb-43be78dd92e3 d7f5cf05-dcc2-48dd-9bff-690cb3194c15 | 20927e47-47a3-4f69-b1bb-43be78dd92e3 | c698b54 | success |
 | backend-dev:001-quickflow:phase-05 | 2026-09-24T22:38:19+03:00 | 2026-09-24T23:15:41+03:00 | 0h37m22s | 0h14m25s | 4 | 1 | 182 | 7974338 | 78439 | 7.3067 | a1d77c0f-3950-4417-a8d1-950f403b16fb 1adb9098-836c-467b-9bdd-14e7a41e354b d412fe1d-2596-41cf-a795-871768250983 8b33bd6f-fd27-4ebe-82aa-074270cf8075 | d412fe1d-2596-41cf-a795-871768250983 | 633253a | success |
-| **Total** |  |  |  | 1h21m21s | 22 |  | 1038 | 43986334 | 473894 | 36.9790 |  |  |  |  |
+| backend-dev:001-quickflow:phase-06 | 2026-09-25T23:23:41+03:00 | 2026-09-25T23:45:46+03:00 | 0h22m05s | 0h16m21s | 4 | 1 | 208 | 9748524 | 101225 | 9.4148 | 220bfbb4-b97c-4c47-ae33-5e267e5831c9 0268db9b-e680-466b-8b54-bf34991b01e9 ba0e3b29-4ddc-42ea-a99f-68ae962745ce 19f1e531-117d-42a9-9e46-822fad896843 | ba0e3b29-4ddc-42ea-a99f-68ae962745ce |  | success |
+| **Total** |  |  |  | 1h37m42s | 26 |  | 1246 | 53734858 | 575119 | 46.3938 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -116,3 +117,15 @@
 - 2026-09-24T23:07:27+03:00 001-quickflow phase-05: marked T042-T053 [~] in phase-05.md and tasks.json, [X] in tasks.md; set phase-05 ready_for_test
 - 2026-09-24T23:15:05+03:00 test 001-quickflow phase-05 attempt 1: pass (verified_by d412fe1d-2596-41cf-a795-871768250983)
 - 2026-09-24T23:15:33+03:00 001-quickflow phase-05: close check ok (T042-T053 [X] in tasks.md, verdict pass attempt 1); marked T042-T053 [x] in phase-05.md and tasks.json; set phase-05 done
+- 2026-09-25T23:26:13+03:00 001-quickflow phase-06: wrote outputs/001-quickflow/phase-06-review.md (12 assumptions, no open questions); set phase-06 awaiting_approval
+- 2026-09-25T23:26:27+03:00 gate 001-quickflow phase-06: approved (auto)
+- 2026-09-25T23:27:24+03:00 001-quickflow phase-06: tasks.md Phase 6 already matches phase-06.md (T054-T067, no sync change); no reviewer notes or questions; checklists all ticked; set phase-06 in_progress
+- 2026-09-25T23:29:00+03:00 001-quickflow phase-06: T054-T058 tests written first by 5 parallel subagents (PlanStatusPolicyTest, PlanTest, PlanServiceTest, PlanRepositoryTest, PlanControllerTest)
+- 2026-09-25T23:31:00+03:00 001-quickflow phase-06: T059 wrote PlanStatus, PlanSourceType (plus PlanGroup for the `group` param, A-11, and PlanItemRef input record)
+- 2026-09-25T23:31:00+03:00 001-quickflow phase-06: T060-T065 wrote PlanItem, Plan, PlanStatusPolicy, PlanProgress, PlanRepository, PlanSourceResolver, PlanView, PlanService
+- 2026-09-25T23:32:00+03:00 001-quickflow phase-06: T066-T067 wrote PlanCreateRequest, PlanUpdateRequest, PlanItemRefRequest, PlanItemUpdateRequest, PlanResponse, PlanItemResponse, PlanController
+- 2026-09-25T23:34:00+03:00 001-quickflow phase-06: build ok, L.test 22 suites 0 failures/errors, domain.plan line coverage 0.94; log runs/001-quickflow/phase-06-build.log
+- 2026-09-25T23:34:00+03:00 001-quickflow phase-06: copied backend/target/openapi.json to outputs/openapi.json (6 plan operations, 8 plan schemas)
+- 2026-09-25T23:35:00+03:00 001-quickflow phase-06: marked T054-T067 [~] in phase-06.md and tasks.json, [X] in tasks.md; set phase-06 ready_for_test
+- 2026-09-25T23:44:29+03:00 test 001-quickflow phase-06 attempt 1: pass (verified_by ba0e3b29-4ddc-42ea-a99f-68ae962745ce)
+- 2026-09-25T23:46:00+03:00 001-quickflow phase-06: close check ok (T054-T067 [X] in tasks.md, verdict pass for attempt 1); marked T054-T067 [x] in phase-06.md and tasks.json; set phase-06 done
