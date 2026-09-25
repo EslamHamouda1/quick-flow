@@ -1,0 +1,70 @@
+{
+  "at": "2026-09-25T23:00:37.253Z",
+  "nav": 1,
+  "url": "http://localhost:4200/dashboard",
+  "percent": "66%",
+  "mt": "4/6 tasks done",
+  "comp": [
+    "dash-task-9",
+    "dash-task-5",
+    "dash-task-4",
+    "dash-task-3"
+  ],
+  "plans": [
+    [
+      "dash-plan-2",
+      "0% · 0/2 items",
+      [
+        [
+          "plan-item-done-3",
+          false
+        ],
+        [
+          "plan-item-done-4",
+          false
+        ]
+      ]
+    ],
+    [
+      "dash-plan-1",
+      "50% · 1/2 items",
+      [
+        [
+          "plan-item-done-1",
+          true
+        ],
+        [
+          "plan-item-done-2",
+          false
+        ]
+      ]
+    ]
+  ],
+  "api": {
+    "pct": 66,
+    "tc": {
+      "total": 6,
+      "done": 4
+    },
+    "comp": [
+      9,
+      5,
+      4,
+      3
+    ],
+    "plans": [
+      [
+        2,
+        0,
+        0,
+        2
+      ],
+      [
+        1,
+        50,
+        1,
+        2
+      ]
+    ]
+  }
+}

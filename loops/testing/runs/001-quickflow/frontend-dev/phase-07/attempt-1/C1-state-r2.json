@@ -1,0 +1,57 @@
+{
+  "ui": {
+    "greeting": "Hello",
+    "percent": "0%",
+    "mt": "0/0 tasks done",
+    "mh": "0/0 habits today",
+    "mp": "0 in progress · 0 upcoming · 0 completed",
+    "ml": "0 in progress · 0 completed",
+    "due": "Due todayNothing due today",
+    "over": "OverdueNo overdue tasks",
+    "comp": "Completed todayNothing completed today",
+    "habits": "Today's habits 0/0No active habits",
+    "hc": "0/0",
+    "plans": "Plans in progressNo plans in progress",
+    "lns": "0",
+    "lip": "0",
+    "lc": "0",
+    "ms": "0/0",
+    "quick": [
+      "Add Task",
+      "Add Habit",
+      "Add Learning Card",
+      "Create Plan"
+    ],
+    "title": "Dashboard",
+    "nav": true
+  },
+  "api": {
+    "now": "2026-09-26T01:59:34.905890779+03:00",
+    "dueToday": [],
+    "overdue": [],
+    "completedToday": [],
+    "taskCompletionPercent": 0,
+    "taskCounts": {
+      "total": 0,
+      "done": 0
+    },
+    "habits": [],
+    "habitCounts": {
+      "active": 0,
+      "completedToday": 0
+    },
+    "activePlans": [],
+    "planCounts": {
+      "notStarted": 0,
+      "inProgress": 0,
+      "completed": 0
+    },
+    "learning": {
+      "notStarted": 0,
+      "inProgress": 0,
+      "completed": 0,
+      "milestonesDone": 0,
+      "milestonesTotal": 0
+    }
+  }
+}

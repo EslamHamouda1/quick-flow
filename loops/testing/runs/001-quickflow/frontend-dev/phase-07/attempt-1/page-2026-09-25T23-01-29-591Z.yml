@@ -1,0 +1,74 @@
+- generic [ref=f1e3]:
+  - navigation "Main" [ref=f1e4]:
+    - generic [ref=f1e5]: QuickFlow
+    - link "Dashboard" [ref=f1e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f1e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f1e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f1e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f1e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f1e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f1e12]:
+    - generic [ref=f1e593]:
+      - generic [ref=f1e594]:
+        - heading "Habits" [level=1] [ref=f1e595]
+        - button "Add Habit" [ref=f1e596] [cursor=pointer]
+      - generic [ref=f1e598]:
+        - heading "Add Habit" [level=2] [ref=f1e599]
+        - generic [ref=f1e600]:
+          - generic [ref=f1e601]: Name
+          - textbox "Name" [ref=f1e602]
+        - generic [ref=f1e603]:
+          - generic [ref=f1e604]: Description
+          - textbox "Description" [ref=f1e605]
+        - generic [ref=f1e606]:
+          - generic [ref=f1e607]: Frequency
+          - combobox "Frequency" [ref=f1e608]:
+            - option "Daily" [selected]
+            - option "Weekly"
+        - generic [ref=f1e609]:
+          - button "Save" [ref=f1e610] [cursor=pointer]
+          - button "Cancel" [ref=f1e611] [cursor=pointer]
+      - list [ref=f1e612]:
+        - listitem [ref=f1e613]:
+          - 'checkbox "Done today: H1 done today" [checked] [ref=f1e615]'
+          - generic [ref=f1e616]: H1 done today
+          - generic [ref=f1e618]: Daily
+          - generic [ref=f1e619]: Done today
+          - generic [ref=f1e620]:
+            - text: Streak
+            - strong [ref=f1e621]: "1"
+          - generic [ref=f1e622]:
+            - button "Edit" [ref=f1e623] [cursor=pointer]
+            - button "Deactivate" [ref=f1e624] [cursor=pointer]
+            - button "Delete" [ref=f1e625] [cursor=pointer]
+        - listitem [ref=f1e626]:
+          - 'checkbox "Done today: H2 not done" [ref=f1e628]'
+          - generic [ref=f1e629]: H2 not done
+          - generic [ref=f1e631]: Daily
+          - generic [ref=f1e632]: Not done
+          - generic [ref=f1e633]:
+            - text: Streak
+            - strong [ref=f1e634]: "0"
+          - generic [ref=f1e635]:
+            - button "Edit" [ref=f1e636] [cursor=pointer]
+            - button "Deactivate" [ref=f1e637] [cursor=pointer]
+            - button "Delete" [ref=f1e638] [cursor=pointer]
+        - listitem [ref=f1e639]:
+          - 'checkbox "Done today: H3 inactive" [checked] [disabled] [ref=f1e641]'
+          - generic [ref=f1e642]: H3 inactive
+          - generic [ref=f1e644]: Daily
+          - generic [ref=f1e645]: Done today
+          - generic [ref=f1e646]:
+            - text: Streak
+            - strong [ref=f1e647]: "1"
+          - generic [ref=f1e648]: Inactive
+          - generic [ref=f1e649]:
+            - button "Edit" [ref=f1e650] [cursor=pointer]
+            - button "Activate" [ref=f1e651] [cursor=pointer]
+            - button "Delete" [ref=f1e652] [cursor=pointer]

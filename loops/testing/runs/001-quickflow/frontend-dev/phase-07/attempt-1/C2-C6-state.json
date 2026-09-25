@@ -1,0 +1,246 @@
+{
+  "at": "2026-09-25T22:58:22.613Z",
+  "ui": {
+    "greeting": "Hello",
+    "percent": "50%",
+    "mt": "3/6 tasks done",
+    "mh": "1/2 habits today",
+    "mp": "2 in progress · 1 upcoming · 1 completed",
+    "ml": "2 in progress · 1 completed",
+    "due": [
+      "dash-task-1",
+      "dash-task-5"
+    ],
+    "over": [
+      "dash-task-2"
+    ],
+    "comp": [
+      "dash-task-5",
+      "dash-task-4",
+      "dash-task-3"
+    ],
+    "dueText": "Due today A due today Medium Sep 26, 2026 E due today Medium Sep 26, 2026",
+    "overText": "Overdue B due yesterday Medium Sep 25, 2026",
+    "compText": "Completed today E due today Medium Sep 26, 2026 D no due date Medium C done due yesterday Medium Sep 25, 2026",
+    "habits": [
+      "dash-habit-count",
+      "dash-habit-1",
+      "dash-habit-done-1",
+      "dash-habit-2"
+    ],
+    "habitsText": "Today's habits 1/2 H1 done today Daily Done today H2 not done Daily",
+    "hc": "1/2",
+    "plans": [
+      {
+        "id": "dash-plan-2",
+        "progress": "0% · 0/2 items",
+        "rest": "1:08:58",
+        "items": [
+          [
+            "plan-item-done-3",
+            false
+          ],
+          [
+            "plan-item-done-4",
+            false
+          ]
+        ],
+        "edit": false,
+        "del": false
+      },
+      {
+        "id": "dash-plan-1",
+        "progress": "0% · 0/2 items",
+        "rest": "0:08:58",
+        "items": [
+          [
+            "plan-item-done-1",
+            false
+          ],
+          [
+            "plan-item-done-2",
+            false
+          ]
+        ],
+        "edit": false,
+        "del": false
+      }
+    ],
+    "lns": "1",
+    "lip": "2",
+    "lc": "1",
+    "ms": "3/5"
+  },
+  "api": {
+    "now": "2026-09-26T01:58:22.557406281+03:00",
+    "dueToday": [
+      1,
+      5
+    ],
+    "overdue": [
+      2
+    ],
+    "completedToday": [
+      5,
+      4,
+      3
+    ],
+    "taskCompletionPercent": 50,
+    "taskCounts": {
+      "total": 6,
+      "done": 3
+    },
+    "habits": [
+      [
+        1,
+        true
+      ],
+      [
+        2,
+        false
+      ]
+    ],
+    "habitCounts": {
+      "active": 2,
+      "completedToday": 1
+    },
+    "activePlans": [
+      [
+        2,
+        0,
+        4138
+      ],
+      [
+        1,
+        0,
+        538
+      ]
+    ],
+    "planCounts": {
+      "notStarted": 1,
+      "inProgress": 2,
+      "completed": 1
+    },
+    "learning": {
+      "notStarted": 1,
+      "inProgress": 2,
+      "completed": 1,
+      "milestonesDone": 3,
+      "milestonesTotal": 5
+    }
+  },
+  "lists": {
+    "tasks": [
+      [
+        9,
+        "TODO",
+        null,
+        null
+      ],
+      [
+        5,
+        "DONE",
+        "2026-09-26",
+        "2026-09-26T01:07:20.296208+03:00"
+      ],
+      [
+        4,
+        "DONE",
+        null,
+        "2026-09-26T01:07:20.268187+03:00"
+      ],
+      [
+        3,
+        "DONE",
+        "2026-09-25",
+        "2026-09-26T01:07:20.245551+03:00"
+      ],
+      [
+        2,
+        "TODO",
+        "2026-09-25",
+        null
+      ],
+      [
+        1,
+        "TODO",
+        "2026-09-26",
+        null
+      ]
+    ],
+    "habits": [
+      [
+        1,
+        true,
+        true
+      ],
+      [
+        2,
+        true,
+        false
+      ],
+      [
+        3,
+        false,
+        true
+      ]
+    ],
+    "cards": [
+      [
+        4,
+        "IN_PROGRESS",
+        [
+          true
+        ]
+      ],
+      [
+        3,
+        "COMPLETED",
+        [
+          false
+        ]
+      ],
+      [
+        2,
+        "IN_PROGRESS",
+        [
+          true
+        ]
+      ],
+      [
+        1,
+        "NOT_STARTED",
+        [
+          true,
+          false
+        ]
+      ]
+    ],
+    "plans": [
+      [
+        2,
+        "IN_PROGRESS",
+        0,
+        4138
+      ],
+      [
+        3,
+        "NOT_STARTED",
+        0,
+        null
+      ],
+      [
+        1,
+        "IN_PROGRESS",
+        0,
+        537
+      ],
+      [
+        4,
+        "COMPLETED",
+        0,
+        null
+      ]
+    ]
+  }
+}

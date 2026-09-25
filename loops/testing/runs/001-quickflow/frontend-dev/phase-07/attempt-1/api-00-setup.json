@@ -1,0 +1,888 @@
+{
+  "ids": {
+    "A": 1,
+    "B": 2,
+    "C": 3,
+    "D": 4,
+    "E": 5,
+    "F": 6,
+    "G": 7,
+    "H": 8,
+    "PT": 9,
+    "H1": 1,
+    "H2": 2,
+    "H3": 3,
+    "L1": 1,
+    "L2": 2,
+    "L3": 3,
+    "L4": 4,
+    "P1": 1,
+    "P2": 2,
+    "P3": 3,
+    "P4": 4
+  },
+  "bad": [],
+  "log": [
+    {
+      "m": "POST",
+      "u": "/api/tasks",
+      "b": {
+        "title": "A due today",
+        "dueDate": "2026-09-26"
+      },
+      "status": 201,
+      "res": {
+        "id": 1,
+        "title": "A due today",
+        "description": null,
+        "status": "TODO",
+        "priority": "MEDIUM",
+        "dueDate": "2026-09-26",
+        "createdAt": "2026-09-26T01:07:20.206490221+03:00",
+        "updatedAt": "2026-09-26T01:07:20.206490221+03:00",
+        "completedAt": null,
+        "archived": false,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks",
+      "b": {
+        "title": "B due yesterday",
+        "dueDate": "2026-09-25"
+      },
+      "status": 201,
+      "res": {
+        "id": 2,
+        "title": "B due yesterday",
+        "description": null,
+        "status": "TODO",
+        "priority": "MEDIUM",
+        "dueDate": "2026-09-25",
+        "createdAt": "2026-09-26T01:07:20.237558152+03:00",
+        "updatedAt": "2026-09-26T01:07:20.237558152+03:00",
+        "completedAt": null,
+        "archived": false,
+        "overdue": true
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks",
+      "b": {
+        "title": "C done due yesterday",
+        "status": "DONE",
+        "dueDate": "2026-09-25"
+      },
+      "status": 201,
+      "res": {
+        "id": 3,
+        "title": "C done due yesterday",
+        "description": null,
+        "status": "DONE",
+        "priority": "MEDIUM",
+        "dueDate": "2026-09-25",
+        "createdAt": "2026-09-26T01:07:20.245550794+03:00",
+        "updatedAt": "2026-09-26T01:07:20.245550794+03:00",
+        "completedAt": "2026-09-26T01:07:20.245550794+03:00",
+        "archived": false,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks",
+      "b": {
+        "title": "D no due date"
+      },
+      "status": 201,
+      "res": {
+        "id": 4,
+        "title": "D no due date",
+        "description": null,
+        "status": "TODO",
+        "priority": "MEDIUM",
+        "dueDate": null,
+        "createdAt": "2026-09-26T01:07:20.253401248+03:00",
+        "updatedAt": "2026-09-26T01:07:20.253401248+03:00",
+        "completedAt": null,
+        "archived": false,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks/4/complete",
+      "status": 200,
+      "res": {
+        "id": 4,
+        "title": "D no due date",
+        "description": null,
+        "status": "DONE",
+        "priority": "MEDIUM",
+        "dueDate": null,
+        "createdAt": "2026-09-26T01:07:20.253401+03:00",
+        "updatedAt": "2026-09-26T01:07:20.268186607+03:00",
+        "completedAt": "2026-09-26T01:07:20.268186607+03:00",
+        "archived": false,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks",
+      "b": {
+        "title": "E due today",
+        "dueDate": "2026-09-26"
+      },
+      "status": 201,
+      "res": {
+        "id": 5,
+        "title": "E due today",
+        "description": null,
+        "status": "TODO",
+        "priority": "MEDIUM",
+        "dueDate": "2026-09-26",
+        "createdAt": "2026-09-26T01:07:20.281992284+03:00",
+        "updatedAt": "2026-09-26T01:07:20.281992284+03:00",
+        "completedAt": null,
+        "archived": false,
+        "overdue": false
+      }
+    },
+    {
+      "m": "PUT",
+      "u": "/api/tasks/5",
+      "b": {
+        "title": "E due today",
+        "status": "DONE",
+        "priority": "MEDIUM",
+        "dueDate": "2026-09-26"
+      },
+      "status": 200,
+      "res": {
+        "id": 5,
+        "title": "E due today",
+        "description": null,
+        "status": "DONE",
+        "priority": "MEDIUM",
+        "dueDate": "2026-09-26",
+        "createdAt": "2026-09-26T01:07:20.281992+03:00",
+        "updatedAt": "2026-09-26T01:07:20.296208392+03:00",
+        "completedAt": "2026-09-26T01:07:20.296208392+03:00",
+        "archived": false,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks",
+      "b": {
+        "title": "F archived today",
+        "dueDate": "2026-09-26"
+      },
+      "status": 201,
+      "res": {
+        "id": 6,
+        "title": "F archived today",
+        "description": null,
+        "status": "TODO",
+        "priority": "MEDIUM",
+        "dueDate": "2026-09-26",
+        "createdAt": "2026-09-26T01:07:20.30354427+03:00",
+        "updatedAt": "2026-09-26T01:07:20.30354427+03:00",
+        "completedAt": null,
+        "archived": false,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks/6/archive",
+      "status": 200,
+      "res": {
+        "id": 6,
+        "title": "F archived today",
+        "description": null,
+        "status": "TODO",
+        "priority": "MEDIUM",
+        "dueDate": "2026-09-26",
+        "createdAt": "2026-09-26T01:07:20.303544+03:00",
+        "updatedAt": "2026-09-26T01:07:20.311976268+03:00",
+        "completedAt": null,
+        "archived": true,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks",
+      "b": {
+        "title": "G archived yesterday",
+        "dueDate": "2026-09-25"
+      },
+      "status": 201,
+      "res": {
+        "id": 7,
+        "title": "G archived yesterday",
+        "description": null,
+        "status": "TODO",
+        "priority": "MEDIUM",
+        "dueDate": "2026-09-25",
+        "createdAt": "2026-09-26T01:07:20.318770918+03:00",
+        "updatedAt": "2026-09-26T01:07:20.318770918+03:00",
+        "completedAt": null,
+        "archived": false,
+        "overdue": true
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks/7/archive",
+      "status": 200,
+      "res": {
+        "id": 7,
+        "title": "G archived yesterday",
+        "description": null,
+        "status": "TODO",
+        "priority": "MEDIUM",
+        "dueDate": "2026-09-25",
+        "createdAt": "2026-09-26T01:07:20.318771+03:00",
+        "updatedAt": "2026-09-26T01:07:20.326340434+03:00",
+        "completedAt": null,
+        "archived": true,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks",
+      "b": {
+        "title": "H done archived"
+      },
+      "status": 201,
+      "res": {
+        "id": 8,
+        "title": "H done archived",
+        "description": null,
+        "status": "TODO",
+        "priority": "MEDIUM",
+        "dueDate": null,
+        "createdAt": "2026-09-26T01:07:20.332714744+03:00",
+        "updatedAt": "2026-09-26T01:07:20.332714744+03:00",
+        "completedAt": null,
+        "archived": false,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks/8/complete",
+      "status": 200,
+      "res": {
+        "id": 8,
+        "title": "H done archived",
+        "description": null,
+        "status": "DONE",
+        "priority": "MEDIUM",
+        "dueDate": null,
+        "createdAt": "2026-09-26T01:07:20.332715+03:00",
+        "updatedAt": "2026-09-26T01:07:20.340016899+03:00",
+        "completedAt": "2026-09-26T01:07:20.340016899+03:00",
+        "archived": false,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks/8/archive",
+      "status": 200,
+      "res": {
+        "id": 8,
+        "title": "H done archived",
+        "description": null,
+        "status": "DONE",
+        "priority": "MEDIUM",
+        "dueDate": null,
+        "createdAt": "2026-09-26T01:07:20.332715+03:00",
+        "updatedAt": "2026-09-26T01:07:20.346778166+03:00",
+        "completedAt": "2026-09-26T01:07:20.340017+03:00",
+        "archived": true,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/tasks",
+      "b": {
+        "title": "PT plan task"
+      },
+      "status": 201,
+      "res": {
+        "id": 9,
+        "title": "PT plan task",
+        "description": null,
+        "status": "TODO",
+        "priority": "MEDIUM",
+        "dueDate": null,
+        "createdAt": "2026-09-26T01:07:20.356422522+03:00",
+        "updatedAt": "2026-09-26T01:07:20.356422522+03:00",
+        "completedAt": null,
+        "archived": false,
+        "overdue": false
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/habits",
+      "b": {
+        "name": "H1 done today",
+        "frequency": "DAILY"
+      },
+      "status": 201,
+      "res": {
+        "id": 1,
+        "name": "H1 done today",
+        "description": null,
+        "frequency": "DAILY",
+        "createdAt": "2026-09-26T01:07:20.381297233+03:00",
+        "active": true,
+        "completedToday": false,
+        "doneForCurrentPeriod": false,
+        "currentStreak": 0
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/habits",
+      "b": {
+        "name": "H2 not done",
+        "frequency": "DAILY"
+      },
+      "status": 201,
+      "res": {
+        "id": 2,
+        "name": "H2 not done",
+        "description": null,
+        "frequency": "DAILY",
+        "createdAt": "2026-09-26T01:07:20.402279569+03:00",
+        "active": true,
+        "completedToday": false,
+        "doneForCurrentPeriod": false,
+        "currentStreak": 0
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/habits",
+      "b": {
+        "name": "H3 inactive",
+        "frequency": "DAILY"
+      },
+      "status": 201,
+      "res": {
+        "id": 3,
+        "name": "H3 inactive",
+        "description": null,
+        "frequency": "DAILY",
+        "createdAt": "2026-09-26T01:07:20.409639411+03:00",
+        "active": true,
+        "completedToday": false,
+        "doneForCurrentPeriod": false,
+        "currentStreak": 0
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/habits/1/completions",
+      "b": {},
+      "status": 201,
+      "res": {
+        "id": 1,
+        "habitId": 1,
+        "completionDate": "2026-09-26",
+        "createdAt": "2026-09-26T01:07:20.425412857+03:00"
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/habits/3/completions",
+      "b": {},
+      "status": 201,
+      "res": {
+        "id": 2,
+        "habitId": 3,
+        "completionDate": "2026-09-26",
+        "createdAt": "2026-09-26T01:07:20.437986248+03:00"
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/habits/3/deactivate",
+      "status": 200,
+      "res": {
+        "id": 3,
+        "name": "H3 inactive",
+        "description": null,
+        "frequency": "DAILY",
+        "createdAt": "2026-09-26T01:07:20.409639+03:00",
+        "active": false,
+        "completedToday": true,
+        "doneForCurrentPeriod": true,
+        "currentStreak": 1
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/learning-cards",
+      "b": {
+        "title": "L1"
+      },
+      "status": 201,
+      "res": {
+        "id": 1,
+        "title": "L1",
+        "description": null,
+        "status": "NOT_STARTED",
+        "createdAt": "2026-09-26T01:07:20.459321727+03:00",
+        "milestones": [],
+        "notes": [],
+        "milestonesDone": 0,
+        "milestonesTotal": 0
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/learning-cards",
+      "b": {
+        "title": "L2"
+      },
+      "status": 201,
+      "res": {
+        "id": 2,
+        "title": "L2",
+        "description": null,
+        "status": "NOT_STARTED",
+        "createdAt": "2026-09-26T01:07:20.471521646+03:00",
+        "milestones": [],
+        "notes": [],
+        "milestonesDone": 0,
+        "milestonesTotal": 0
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/learning-cards",
+      "b": {
+        "title": "L3"
+      },
+      "status": 201,
+      "res": {
+        "id": 3,
+        "title": "L3",
+        "description": null,
+        "status": "NOT_STARTED",
+        "createdAt": "2026-09-26T01:07:20.478856111+03:00",
+        "milestones": [],
+        "notes": [],
+        "milestonesDone": 0,
+        "milestonesTotal": 0
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/learning-cards",
+      "b": {
+        "title": "L4"
+      },
+      "status": 201,
+      "res": {
+        "id": 4,
+        "title": "L4",
+        "description": null,
+        "status": "NOT_STARTED",
+        "createdAt": "2026-09-26T01:07:20.485898166+03:00",
+        "milestones": [],
+        "notes": [],
+        "milestonesDone": 0,
+        "milestonesTotal": 0
+      }
+    },
+    {
+      "m": "PUT",
+      "u": "/api/learning-cards/2",
+      "b": {
+        "title": "L2",
+        "status": "IN_PROGRESS"
+      },
+      "status": 200,
+      "res": {
+        "id": 2,
+        "title": "L2",
+        "description": null,
+        "status": "IN_PROGRESS",
+        "createdAt": "2026-09-26T01:07:20.471522+03:00",
+        "milestones": [],
+        "notes": [],
+        "milestonesDone": 0,
+        "milestonesTotal": 0
+      }
+    },
+    {
+      "m": "PUT",
+      "u": "/api/learning-cards/3",
+      "b": {
+        "title": "L3",
+        "status": "COMPLETED"
+      },
+      "status": 200,
+      "res": {
+        "id": 3,
+        "title": "L3",
+        "description": null,
+        "status": "COMPLETED",
+        "createdAt": "2026-09-26T01:07:20.478856+03:00",
+        "milestones": [],
+        "notes": [],
+        "milestonesDone": 0,
+        "milestonesTotal": 0
+      }
+    },
+    {
+      "m": "PUT",
+      "u": "/api/learning-cards/4",
+      "b": {
+        "title": "L4",
+        "status": "IN_PROGRESS"
+      },
+      "status": 200,
+      "res": {
+        "id": 4,
+        "title": "L4",
+        "description": null,
+        "status": "IN_PROGRESS",
+        "createdAt": "2026-09-26T01:07:20.485898+03:00",
+        "milestones": [],
+        "notes": [],
+        "milestonesDone": 0,
+        "milestonesTotal": 0
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/learning-cards/1/milestones",
+      "b": {
+        "title": "m1"
+      },
+      "status": 201,
+      "res": {
+        "id": 1,
+        "cardId": 1,
+        "title": "m1",
+        "done": false,
+        "targetDate": null
+      }
+    },
+    {
+      "m": "PUT",
+      "u": "/api/learning-cards/1/milestones/1",
+      "b": {
+        "title": "m1",
+        "done": true
+      },
+      "status": 200,
+      "res": {
+        "id": 1,
+        "cardId": 1,
+        "title": "m1",
+        "done": true,
+        "targetDate": null
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/learning-cards/1/milestones",
+      "b": {
+        "title": "m2"
+      },
+      "status": 201,
+      "res": {
+        "id": 2,
+        "cardId": 1,
+        "title": "m2",
+        "done": false,
+        "targetDate": null
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/learning-cards/2/milestones",
+      "b": {
+        "title": "m3"
+      },
+      "status": 201,
+      "res": {
+        "id": 3,
+        "cardId": 2,
+        "title": "m3",
+        "done": false,
+        "targetDate": null
+      }
+    },
+    {
+      "m": "PUT",
+      "u": "/api/learning-cards/2/milestones/3",
+      "b": {
+        "title": "m3",
+        "done": true
+      },
+      "status": 200,
+      "res": {
+        "id": 3,
+        "cardId": 2,
+        "title": "m3",
+        "done": true,
+        "targetDate": null
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/learning-cards/3/milestones",
+      "b": {
+        "title": "m4"
+      },
+      "status": 201,
+      "res": {
+        "id": 4,
+        "cardId": 3,
+        "title": "m4",
+        "done": false,
+        "targetDate": null
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/learning-cards/4/milestones",
+      "b": {
+        "title": "m5"
+      },
+      "status": 201,
+      "res": {
+        "id": 5,
+        "cardId": 4,
+        "title": "m5",
+        "done": false,
+        "targetDate": null
+      }
+    },
+    {
+      "m": "PUT",
+      "u": "/api/learning-cards/4/milestones/5",
+      "b": {
+        "title": "m5",
+        "done": true
+      },
+      "status": 200,
+      "res": {
+        "id": 5,
+        "cardId": 4,
+        "title": "m5",
+        "done": true,
+        "targetDate": null
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/plans",
+      "b": {
+        "title": "P1 in progress",
+        "items": [
+          {
+            "sourceType": "TASK",
+            "sourceId": 9
+          },
+          {
+            "sourceType": "HABIT",
+            "sourceId": 2
+          }
+        ],
+        "estimatedDurationMinutes": 60,
+        "startDateTime": "2026-09-25T21:07:20.605Z",
+        "endDateTime": "2026-09-25T23:07:20.605Z",
+        "priorityOrder": 2
+      },
+      "status": 201,
+      "res": {
+        "id": 1,
+        "title": "P1 in progress",
+        "items": [
+          {
+            "id": 1,
+            "sourceType": "TASK",
+            "sourceId": 9,
+            "sourceTitle": "PT plan task",
+            "sourceRemoved": false,
+            "done": false
+          },
+          {
+            "id": 2,
+            "sourceType": "HABIT",
+            "sourceId": 2,
+            "sourceTitle": "H2 not done",
+            "sourceRemoved": false,
+            "done": false
+          }
+        ],
+        "estimatedDurationMinutes": 60,
+        "startDateTime": "2026-09-26T00:07:20.605+03:00",
+        "endDateTime": "2026-09-26T02:07:20.605+03:00",
+        "priorityOrder": 2,
+        "status": "IN_PROGRESS",
+        "createdAt": "2026-09-26T01:07:20.643358626+03:00",
+        "doneItems": 0,
+        "totalItems": 2,
+        "progressPercent": 0,
+        "restSeconds": 3599
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/plans",
+      "b": {
+        "title": "P2 in progress",
+        "items": [
+          {
+            "sourceType": "HABIT",
+            "sourceId": 2
+          },
+          {
+            "sourceType": "LEARNING_RESOURCE",
+            "sourceId": 1
+          }
+        ],
+        "estimatedDurationMinutes": 60,
+        "startDateTime": "2026-09-25T21:37:20.655Z",
+        "endDateTime": "2026-09-26T00:07:20.655Z",
+        "priorityOrder": 1
+      },
+      "status": 201,
+      "res": {
+        "id": 2,
+        "title": "P2 in progress",
+        "items": [
+          {
+            "id": 3,
+            "sourceType": "HABIT",
+            "sourceId": 2,
+            "sourceTitle": "H2 not done",
+            "sourceRemoved": false,
+            "done": false
+          },
+          {
+            "id": 4,
+            "sourceType": "LEARNING_RESOURCE",
+            "sourceId": 1,
+            "sourceTitle": "L1",
+            "sourceRemoved": false,
+            "done": false
+          }
+        ],
+        "estimatedDurationMinutes": 60,
+        "startDateTime": "2026-09-26T00:37:20.655+03:00",
+        "endDateTime": "2026-09-26T03:07:20.655+03:00",
+        "priorityOrder": 1,
+        "status": "IN_PROGRESS",
+        "createdAt": "2026-09-26T01:07:20.659861152+03:00",
+        "doneItems": 0,
+        "totalItems": 2,
+        "progressPercent": 0,
+        "restSeconds": 7199
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/plans",
+      "b": {
+        "title": "P3 not started",
+        "items": [
+          {
+            "sourceType": "HABIT",
+            "sourceId": 2
+          }
+        ],
+        "estimatedDurationMinutes": 60,
+        "startDateTime": "2026-09-25T23:07:20.666Z",
+        "endDateTime": "2026-09-26T00:07:20.666Z",
+        "priorityOrder": 1
+      },
+      "status": 201,
+      "res": {
+        "id": 3,
+        "title": "P3 not started",
+        "items": [
+          {
+            "id": 5,
+            "sourceType": "HABIT",
+            "sourceId": 2,
+            "sourceTitle": "H2 not done",
+            "sourceRemoved": false,
+            "done": false
+          }
+        ],
+        "estimatedDurationMinutes": 60,
+        "startDateTime": "2026-09-26T02:07:20.666+03:00",
+        "endDateTime": "2026-09-26T03:07:20.666+03:00",
+        "priorityOrder": 1,
+        "status": "NOT_STARTED",
+        "createdAt": "2026-09-26T01:07:20.670162964+03:00",
+        "doneItems": 0,
+        "totalItems": 1,
+        "progressPercent": 0,
+        "restSeconds": null
+      }
+    },
+    {
+      "m": "POST",
+      "u": "/api/plans",
+      "b": {
+        "title": "P4 past",
+        "items": [
+          {
+            "sourceType": "HABIT",
+            "sourceId": 2
+          }
+        ],
+        "estimatedDurationMinutes": 60,
+        "startDateTime": "2026-09-25T19:07:20.675Z",
+        "endDateTime": "2026-09-25T21:07:20.675Z",
+        "priorityOrder": 1
+      },
+      "status": 201,
+      "res": {
+        "id": 4,
+        "title": "P4 past",
+        "items": [
+          {
+            "id": 6,
+            "sourceType": "HABIT",
+            "sourceId": 2,
+            "sourceTitle": "H2 not done",
+            "sourceRemoved": false,
+            "done": false
+          }
+        ],
+        "estimatedDurationMinutes": 60,
+        "startDateTime": "2026-09-25T22:07:20.675+03:00",
+        "endDateTime": "2026-09-26T00:07:20.675+03:00",
+        "priorityOrder": 1,
+        "status": "COMPLETED",
+        "createdAt": "2026-09-26T01:07:20.67961594+03:00",
+        "doneItems": 0,
+        "totalItems": 1,
+        "progressPercent": 0,
+        "restSeconds": null
+      }
+    }
+  ]
+}

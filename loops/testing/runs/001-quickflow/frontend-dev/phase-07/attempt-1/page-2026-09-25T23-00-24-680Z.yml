@@ -1,0 +1,139 @@
+- generic [ref=f1e3]:
+  - navigation "Main" [ref=f1e4]:
+    - generic [ref=f1e5]: QuickFlow
+    - link "Dashboard" [ref=f1e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f1e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f1e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f1e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f1e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f1e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f1e12]:
+    - generic [ref=f1e13]:
+      - heading "Dashboard" [level=1] [ref=f1e14]
+      - paragraph [ref=f1e15]: Hello
+      - generic [ref=f1e16]:
+        - button "Add Task" [ref=f1e17] [cursor=pointer]
+        - button "Add Habit" [ref=f1e18] [cursor=pointer]
+        - button "Add Learning Card" [ref=f1e19] [cursor=pointer]
+        - button "Create Plan" [ref=f1e20] [cursor=pointer]
+      - generic [ref=f1e21]:
+        - generic [ref=f1e22]:
+          - generic [ref=f1e23]: Tasks
+          - generic [ref=f1e24]: 3/6 tasks done
+        - generic [ref=f1e25]:
+          - generic [ref=f1e26]: Habits
+          - generic [ref=f1e27]: 1/2 habits today
+        - generic [ref=f1e28]:
+          - generic [ref=f1e29]: Todo Plans
+          - generic [ref=f1e30]: 2 in progress · 1 upcoming · 1 completed
+        - generic [ref=f1e31]:
+          - generic [ref=f1e32]: Learning
+          - generic [ref=f1e33]: 2 in progress · 1 completed
+      - generic [ref=f1e34]:
+        - generic [ref=f1e35]:
+          - heading "Task completion" [level=2] [ref=f1e36]
+          - generic [ref=f1e37]: 50%
+        - generic [ref=f1e38]:
+          - heading "Due today" [level=2] [ref=f1e39]
+          - list [ref=f1e40]:
+            - listitem [ref=f1e41]:
+              - generic [ref=f1e42]: A due today
+              - generic [ref=f1e43]: Medium
+              - generic [ref=f1e44]: Sep 26, 2026
+            - listitem [ref=f1e45]:
+              - generic [ref=f1e46]: E due today
+              - generic [ref=f1e47]: Medium
+              - generic [ref=f1e48]: Sep 26, 2026
+        - generic [ref=f1e49]:
+          - heading "Overdue" [level=2] [ref=f1e50]
+          - list [ref=f1e51]:
+            - listitem [ref=f1e52]:
+              - generic [ref=f1e53]: B due yesterday
+              - generic [ref=f1e54]: Medium
+              - generic [ref=f1e55]: Sep 25, 2026
+        - generic [ref=f1e56]:
+          - heading "Completed today" [level=2] [ref=f1e57]
+          - list [ref=f1e58]:
+            - listitem [ref=f1e59]:
+              - generic [ref=f1e60]: E due today
+              - generic [ref=f1e61]: Medium
+              - generic [ref=f1e62]: Sep 26, 2026
+            - listitem [ref=f1e63]:
+              - generic [ref=f1e64]: D no due date
+              - generic [ref=f1e65]: Medium
+            - listitem [ref=f1e66]:
+              - generic [ref=f1e67]: C done due yesterday
+              - generic [ref=f1e68]: Medium
+              - generic [ref=f1e69]: Sep 25, 2026
+        - generic [ref=f1e70]:
+          - heading "Today's habits 1/2" [level=2] [ref=f1e71]
+          - list [ref=f1e72]:
+            - listitem [ref=f1e73]:
+              - generic [ref=f1e74]: H1 done today
+              - generic [ref=f1e75]: Daily
+              - generic [ref=f1e76]: Done today
+            - listitem [ref=f1e77]:
+              - generic [ref=f1e78]: H2 not done
+              - generic [ref=f1e79]: Daily
+        - generic [ref=f1e80]:
+          - heading "Learning" [level=2] [ref=f1e81]
+          - generic [ref=f1e82]:
+            - term [ref=f1e83]: Not started
+            - definition [ref=f1e84]: "1"
+            - term [ref=f1e85]: In progress
+            - definition [ref=f1e86]: "2"
+            - term [ref=f1e87]: Completed
+            - definition [ref=f1e88]: "1"
+            - term [ref=f1e89]: Milestones
+            - definition [ref=f1e90]: 3/5
+      - generic [ref=f1e91]:
+        - heading "Plans in progress" [level=2] [ref=f1e92]
+        - generic [ref=f1e93]:
+          - article [ref=f1e96]:
+            - generic [ref=f1e97]: P2 in progress
+            - generic [ref=f1e99]:
+              - generic [ref=f1e100]: In Progress
+              - generic [ref=f1e101]: 0% · 0/2 items
+              - generic [ref=f1e102]:
+                - generic [ref=f1e103]: Time left
+                - generic [ref=f1e104]: 1:59:31
+            - generic [ref=f1e105]:
+              - generic [ref=f1e106]: Sep 26, 2026, 1:29 AM – Sep 26, 2026, 3:59 AM
+              - generic [ref=f1e107]: Priority 1
+              - generic [ref=f1e108]: 60 min
+            - list [ref=f1e109]:
+              - listitem [ref=f1e110]:
+                - 'checkbox "Done: H2 not done" [ref=f1e111]'
+                - generic [ref=f1e112]: Habit
+                - generic [ref=f1e113]: H2 not done
+              - listitem [ref=f1e114]:
+                - 'checkbox "Done: L1" [ref=f1e115]'
+                - generic [ref=f1e116]: Learning
+                - generic [ref=f1e117]: L1
+          - article [ref=f1e120]:
+            - generic [ref=f1e121]: P1 in progress
+            - generic [ref=f1e123]:
+              - generic [ref=f1e124]: In Progress
+              - generic [ref=f1e125]: 0% · 0/2 items
+              - generic [ref=f1e126]:
+                - generic [ref=f1e127]: Time left
+                - generic [ref=f1e128]: 0:59:31
+            - generic [ref=f1e129]:
+              - generic [ref=f1e130]: Sep 26, 2026, 12:59 AM – Sep 26, 2026, 2:59 AM
+              - generic [ref=f1e131]: Priority 2
+              - generic [ref=f1e132]: 60 min
+            - list [ref=f1e133]:
+              - listitem [ref=f1e134]:
+                - 'checkbox "Done: PT plan task" [ref=f1e135]'
+                - generic [ref=f1e136]: Task
+                - generic [ref=f1e137]: PT plan task
+              - listitem [ref=f1e138]:
+                - 'checkbox "Done: H2 not done" [ref=f1e139]'
+                - generic [ref=f1e140]: Habit
+                - generic [ref=f1e141]: H2 not done

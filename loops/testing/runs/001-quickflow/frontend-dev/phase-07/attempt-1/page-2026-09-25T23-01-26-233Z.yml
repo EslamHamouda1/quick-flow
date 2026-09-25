@@ -1,0 +1,120 @@
+- generic [ref=f1e3]:
+  - navigation "Main" [ref=f1e4]:
+    - generic [ref=f1e5]: QuickFlow
+    - link "Dashboard" [active] [ref=f1e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f1e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f1e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f1e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f1e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f1e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f1e12]:
+    - generic [ref=f1e485]:
+      - heading "Dashboard" [level=1] [ref=f1e486]
+      - paragraph [ref=f1e487]: Hello
+      - generic [ref=f1e488]:
+        - button "Add Task" [ref=f1e489] [cursor=pointer]
+        - button "Add Habit" [ref=f1e490] [cursor=pointer]
+        - button "Add Learning Card" [ref=f1e491] [cursor=pointer]
+        - button "Create Plan" [ref=f1e492] [cursor=pointer]
+      - generic [ref=f1e493]:
+        - generic [ref=f1e494]:
+          - generic [ref=f1e495]: Tasks
+          - generic [ref=f1e496]: 4/6 tasks done
+        - generic [ref=f1e497]:
+          - generic [ref=f1e498]: Habits
+          - generic [ref=f1e499]: 1/2 habits today
+        - generic [ref=f1e500]:
+          - generic [ref=f1e501]: Todo Plans
+          - generic [ref=f1e502]: 1 in progress · 1 upcoming · 2 completed
+        - generic [ref=f1e503]:
+          - generic [ref=f1e504]: Learning
+          - generic [ref=f1e505]: 2 in progress · 1 completed
+      - generic [ref=f1e506]:
+        - generic [ref=f1e507]:
+          - heading "Task completion" [level=2] [ref=f1e508]
+          - generic [ref=f1e509]: 66%
+        - generic [ref=f1e510]:
+          - heading "Due today" [level=2] [ref=f1e511]
+          - list [ref=f1e512]:
+            - listitem [ref=f1e513]:
+              - generic [ref=f1e514]: A due today
+              - generic [ref=f1e515]: Medium
+              - generic [ref=f1e516]: Sep 26, 2026
+            - listitem [ref=f1e517]:
+              - generic [ref=f1e518]: E due today
+              - generic [ref=f1e519]: Medium
+              - generic [ref=f1e520]: Sep 26, 2026
+        - generic [ref=f1e521]:
+          - heading "Overdue" [level=2] [ref=f1e522]
+          - list [ref=f1e523]:
+            - listitem [ref=f1e524]:
+              - generic [ref=f1e525]: B due yesterday
+              - generic [ref=f1e526]: Medium
+              - generic [ref=f1e527]: Sep 25, 2026
+        - generic [ref=f1e528]:
+          - heading "Completed today" [level=2] [ref=f1e529]
+          - list [ref=f1e530]:
+            - listitem [ref=f1e531]:
+              - generic [ref=f1e532]: PT plan task
+              - generic [ref=f1e533]: Medium
+            - listitem [ref=f1e534]:
+              - generic [ref=f1e535]: E due today
+              - generic [ref=f1e536]: Medium
+              - generic [ref=f1e537]: Sep 26, 2026
+            - listitem [ref=f1e538]:
+              - generic [ref=f1e539]: D no due date
+              - generic [ref=f1e540]: Medium
+            - listitem [ref=f1e541]:
+              - generic [ref=f1e542]: C done due yesterday
+              - generic [ref=f1e543]: Medium
+              - generic [ref=f1e544]: Sep 25, 2026
+        - generic [ref=f1e545]:
+          - heading "Today's habits 1/2" [level=2] [ref=f1e546]
+          - list [ref=f1e547]:
+            - listitem [ref=f1e548]:
+              - generic [ref=f1e549]: H1 done today
+              - generic [ref=f1e550]: Daily
+              - generic [ref=f1e551]: Done today
+            - listitem [ref=f1e552]:
+              - generic [ref=f1e553]: H2 not done
+              - generic [ref=f1e554]: Daily
+        - generic [ref=f1e555]:
+          - heading "Learning" [level=2] [ref=f1e556]
+          - generic [ref=f1e557]:
+            - term [ref=f1e558]: Not started
+            - definition [ref=f1e559]: "1"
+            - term [ref=f1e560]: In progress
+            - definition [ref=f1e561]: "2"
+            - term [ref=f1e562]: Completed
+            - definition [ref=f1e563]: "1"
+            - term [ref=f1e564]: Milestones
+            - definition [ref=f1e565]: 3/5
+      - generic [ref=f1e566]:
+        - heading "Plans in progress" [level=2] [ref=f1e567]
+        - article [ref=f1e571]:
+          - generic [ref=f1e572]: P2 in progress
+          - generic [ref=f1e574]:
+            - generic [ref=f1e575]: In Progress
+            - generic [ref=f1e576]: 50% · 1/2 items
+            - generic [ref=f1e577]:
+              - generic [ref=f1e578]: Time left
+              - generic [ref=f1e579]: 1:58:29
+          - generic [ref=f1e580]:
+            - generic [ref=f1e581]: Sep 26, 2026, 1:29 AM – Sep 26, 2026, 3:59 AM
+            - generic [ref=f1e582]: Priority 1
+            - generic [ref=f1e583]: 60 min
+          - list [ref=f1e584]:
+            - listitem [ref=f1e585]:
+              - 'checkbox "Done: H2 not done" [checked] [ref=f1e586]'
+              - generic [ref=f1e587]: Habit
+              - generic [ref=f1e588]: H2 not done
+            - listitem [ref=f1e589]:
+              - 'checkbox "Done: L1" [ref=f1e590]'
+              - generic [ref=f1e591]: Learning
+              - generic [ref=f1e592]: L1

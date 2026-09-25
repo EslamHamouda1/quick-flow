@@ -1,0 +1,55 @@
+{
+  "n": 36,
+  "bad": [],
+  "sample": [
+    {
+      "from": "dashboard",
+      "to": "dashboard",
+      "label": "Dashboard",
+      "path": "/dashboard",
+      "title": "Dashboard",
+      "nav": true
+    },
+    {
+      "from": "dashboard",
+      "to": "tasks",
+      "label": "Tasks",
+      "path": "/tasks",
+      "title": "Tasks",
+      "nav": true
+    },
+    {
+      "from": "dashboard",
+      "to": "habits",
+      "label": "Habits",
+      "path": "/habits",
+      "title": "Habits",
+      "nav": true
+    },
+    {
+      "from": "dashboard",
+      "to": "learning",
+      "label": "Learning Resources",
+      "path": "/learning",
+      "title": "Learning Resources",
+      "nav": true
+    },
+    {
+      "from": "dashboard",
+      "to": "plans",
+      "label": "Todo Plans",
+      "path": "/plans",
+      "title": "Todo Plans",
+      "nav": true
+    },
+    {
+      "from": "dashboard",
+      "to": "settings",
+      "label": "Settings",
+      "path": "/settings",
+      "title": "Settings",
+      "nav": true
+    }
+  ],
+  "fullLoads": 1
+}

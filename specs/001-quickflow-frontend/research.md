@@ -103,6 +103,21 @@ becomes a `## Questions` entry if the check fails.
   - ui-contract "Todo Plans `/plans` (US4)" has selectors for the create button, builder, source checkboxes,
     `error-items`, both groups, plan cards (status, progress, rest time, window, priority), items, actions and the
     started highlight; the empty state comes from the Shell section: AC-US4-1..13 covered, nothing missing.
+- **Checked at implement (T036, 2026-09-26)**, client regenerated after backend US5:
+  - `DashboardService` (`api/dashboard.service.ts`, `providedIn: 'root'`): `getDashboard()` (no parameters, `GET
+    /api/dashboard`) → `Observable<Dashboard>`. The other services regenerate unchanged in their API.
+  - models: `Dashboard { now: string; dueToday: Task[]; overdue: Task[]; completedToday: Task[];
+    taskCompletionPercent: number; taskCounts: TaskCounts; habits: Habit[]; habitCounts: HabitCounts; activePlans:
+    Plan[]; planCounts: PlanCounts; learning: LearningSnapshot }` (all required), `TaskCounts { total; done }`,
+    `HabitCounts { active; completedToday }`, `PlanCounts { notStarted; inProgress; completed }`, `LearningSnapshot
+    { notStarted; inProgress; completed; milestonesDone; milestonesTotal }` (all `number`, required): every field the
+    contract lists is there.
+  - still no `SettingsService` (backend US6): FA-34 applies to the greeting.
+  - ui-contract "Dashboard `/dashboard` (US5)" has `dash-greeting`, the four `metric-*` cards, `dash-task-percent`, the
+    three task lists with `dash-task-<id>` rows, `dash-habits` / `dash-habit-<id>` / `dash-habit-done-<id>` /
+    `dash-habit-count`, `dash-plans` / `dash-plan-<id>` (with the plan card's `plan-progress`, `plan-rest-time`),
+    `dash-learning` with its counts and `dash-milestones`, and the four `quick-add-*` actions; navigation (AC-US5-7)
+    is the Shell's `nav-*`: AC-US5-1..7 covered, nothing missing.
 
 ## R-3 Time zone handling
 - **Decision**: `ClockService` loads `/api/app-info` at start-up (`provideAppInitializer`), stores `timeZone` and

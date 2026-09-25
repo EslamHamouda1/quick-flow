@@ -1,3 +1,5 @@
+export * from './dashboard.service';
+import { DashboardService } from './dashboard.service';
 export * from './habits.service';
 import { HabitsService } from './habits.service';
 export * from './info.service';
@@ -8,4 +10,4 @@ export * from './plans.service';
 import { PlansService } from './plans.service';
 export * from './tasks.service';
 import { TasksService } from './tasks.service';
-export const APIS = [HabitsService, InfoService, LearningService, PlansService, TasksService];
+export const APIS = [DashboardService, HabitsService, InfoService, LearningService, PlansService, TasksService];

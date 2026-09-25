@@ -76,10 +76,12 @@ const STATUS_BADGES: Record<PlanStatus, string> = {
           </li>
         }
       </ul>
-      <div class="actions">
-        <button type="button" [attr.data-testid]="'plan-edit-' + p.id" [disabled]="busy()" (click)="edit.emit()">Edit</button>
-        <button type="button" class="danger" [attr.data-testid]="'plan-delete-' + p.id" [disabled]="busy()" (click)="remove.emit()">Delete</button>
-      </div>
+      @if (actions()) {
+        <div class="actions">
+          <button type="button" [attr.data-testid]="'plan-edit-' + p.id" [disabled]="busy()" (click)="edit.emit()">Edit</button>
+          <button type="button" class="danger" [attr.data-testid]="'plan-delete-' + p.id" [disabled]="busy()" (click)="remove.emit()">Delete</button>
+        </div>
+      }
     </article>
   `,
 })
@@ -91,6 +93,8 @@ export class PlanCardComponent {
   readonly highlighted = input(false);
   /** A call for this plan is running: all controls are disabled. */
   readonly busy = input(false);
+  /** Shows the Edit/Delete buttons; the Dashboard hides them (FA-35). */
+  readonly actions = input(true);
 
   readonly toggle = output<{ item: PlanItem; done: boolean }>();
   readonly edit = output<void>();

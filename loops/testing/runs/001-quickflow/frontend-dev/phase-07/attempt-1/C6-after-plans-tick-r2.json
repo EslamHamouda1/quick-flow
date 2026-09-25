@@ -1,0 +1,36 @@
+{
+  "at": "2026-09-25T23:00:57.312Z",
+  "navEntries": 1,
+  "plans": [
+    [
+      "dash-plan-2",
+      "50% · 1/2 items",
+      "1:58:58"
+    ],
+    [
+      "dash-plan-1",
+      "50% · 1/2 items",
+      "0:58:58"
+    ]
+  ],
+  "mp": "2 in progress · 1 upcoming · 1 completed",
+  "api": [
+    [
+      2,
+      50,
+      1,
+      7137
+    ],
+    [
+      1,
+      50,
+      1,
+      3537
+    ]
+  ],
+  "pc": {
+    "notStarted": 1,
+    "inProgress": 2,
+    "completed": 1
+  }
+}

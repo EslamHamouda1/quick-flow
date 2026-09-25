@@ -159,13 +159,15 @@ edit, remove, plan-start notification
 
 ### Tests for User Story 5 (contract first) ⚠️
 
-- [ ] T036 [US5] Check that the generated `DashboardService.getDashboard` returns every `Dashboard` field of the contract (dueToday, overdue, completedToday, taskCompletionPercent, taskCounts, habits, habitCounts, activePlans, planCounts, learning) and that the Dashboard section of contracts/ui-contract.md covers AC-US5-1..7; raise a question for anything missing
+- [X] T036 [US5] Check that the generated `DashboardService.getDashboard` returns every `Dashboard` field of the contract (dueToday, overdue, completedToday, taskCompletionPercent, taskCounts, habits, habitCounts, activePlans, planCounts, learning) and that the Dashboard section of contracts/ui-contract.md covers AC-US5-1..7; raise a question for anything missing
 
 ### Implementation for User Story 5
 
-- [ ] T037 [US5] Implement the Dashboard page: greeting (`Hello, <displayName>` / `Hello`, from `getSettings()` on every load), metric cards, task completion percent, due today / overdue / completed today lists, today's habits with done marks and count, learning snapshot, in frontend/src/app/pages/dashboard/dashboard.page.ts (FR-09.1, FR-09.2, AC-US5-1..3, AC-US5-5)
-- [ ] T038 [US5] Add the in-progress plans section (reuse `plan-card` from US4: progress, live rest time, item toggles; re-read the dashboard after a toggle and when a shown plan's end is reached) in frontend/src/app/pages/dashboard/dashboard.page.ts (AC-US5-4, FR-08.5)
-- [ ] T039 [US5] Add quick-add actions navigating to `/tasks?add=1`, `/habits?add=1`, `/learning?add=1`, `/plans?add=1` in frontend/src/app/pages/dashboard/dashboard.page.ts (AC-US5-6, research R-7)
+- [X] T037 [US5] Implement the Dashboard page: greeting (`Hello, <displayName>` / `Hello`, from `getSettings()` on every load), metric cards, task completion percent, due today / overdue / completed today lists, today's habits with done marks and count, learning snapshot, in frontend/src/app/pages/dashboard/dashboard.page.ts (FR-09.1, FR-09.2, AC-US5-1..3, AC-US5-5)
+  - Note (FA-34, approved): done with no name until US6 (greeting "Hello"), behind `displayName()`; phase-08
+    switches it to `getSettings().displayName`.
+- [X] T038 [US5] Add the in-progress plans section (reuse `plan-card` from US4: progress, live rest time, item toggles; re-read the dashboard after a toggle and when a shown plan's end is reached) in frontend/src/app/pages/dashboard/dashboard.page.ts (AC-US5-4, FR-08.5)
+- [X] T039 [US5] Add quick-add actions navigating to `/tasks?add=1`, `/habits?add=1`, `/learning?add=1`, `/plans?add=1` in frontend/src/app/pages/dashboard/dashboard.page.ts (AC-US5-6, research R-7)
 
 **Checkpoint**: US5 matches the data
 

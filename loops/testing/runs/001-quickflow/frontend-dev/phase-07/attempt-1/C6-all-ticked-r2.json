@@ -1,0 +1,21 @@
+{
+  "at": "2026-09-25T23:01:10.219Z",
+  "plans": [
+    [
+      "dash-plan-2",
+      "50% · 1/2 items"
+    ]
+  ],
+  "mp": "1 in progress · 1 upcoming · 2 completed",
+  "api": [
+    [
+      2,
+      50
+    ]
+  ],
+  "pc": {
+    "notStarted": 1,
+    "inProgress": 1,
+    "completed": 2
+  }
+}

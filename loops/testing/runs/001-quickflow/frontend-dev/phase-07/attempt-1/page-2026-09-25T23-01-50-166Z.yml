@@ -1,0 +1,167 @@
+- generic [ref=f1e3]:
+  - navigation "Main" [ref=f1e4]:
+    - generic [ref=f1e5]: QuickFlow
+    - link "Dashboard" [ref=f1e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f1e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f1e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f1e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f1e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f1e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f1e12]:
+    - generic [ref=f1e930]:
+      - generic [ref=f1e931]:
+        - heading "Todo Plans" [level=1] [ref=f1e932]
+        - button "Create Plan" [ref=f1e933] [cursor=pointer]
+      - generic [ref=f1e935]:
+        - heading "Create Plan" [level=2] [ref=f1e936]
+        - generic [ref=f1e937]:
+          - generic [ref=f1e938]: Title
+          - textbox "Title" [ref=f1e939]
+        - generic [ref=f1e940]:
+          - generic [ref=f1e941]: Estimated duration (minutes)
+          - spinbutton "Estimated duration (minutes)" [ref=f1e942]
+        - generic [ref=f1e943]:
+          - generic [ref=f1e944]: Start
+          - textbox "Start" [ref=f1e945]
+        - generic [ref=f1e946]:
+          - generic [ref=f1e947]: End
+          - textbox "End" [ref=f1e948]
+        - generic [ref=f1e949]:
+          - generic [ref=f1e950]: Priority order (1 = highest)
+          - spinbutton "Priority order (1 = highest)" [ref=f1e951]
+        - generic [ref=f1e952]:
+          - heading "Items" [level=3] [ref=f1e953]
+          - generic [ref=f1e954]:
+            - group "Tasks" [ref=f1e955]:
+              - generic [ref=f1e957]:
+                - checkbox "PT plan task" [ref=f1e958]
+                - text: PT plan task
+              - generic [ref=f1e959]:
+                - checkbox "E due today" [ref=f1e960]
+                - text: E due today
+              - generic [ref=f1e961]:
+                - checkbox "D no due date" [ref=f1e962]
+                - text: D no due date
+              - generic [ref=f1e963]:
+                - checkbox "C done due yesterday" [ref=f1e964]
+                - text: C done due yesterday
+              - generic [ref=f1e965]:
+                - checkbox "B due yesterday" [ref=f1e966]
+                - text: B due yesterday
+              - generic [ref=f1e967]:
+                - checkbox "A due today" [ref=f1e968]
+                - text: A due today
+            - group "Habits" [ref=f1e969]:
+              - generic [ref=f1e971]:
+                - checkbox "H1 done today" [ref=f1e972]
+                - text: H1 done today
+              - generic [ref=f1e973]:
+                - checkbox "H2 not done" [ref=f1e974]
+                - text: H2 not done
+            - group "Learning" [ref=f1e975]:
+              - generic [ref=f1e977]:
+                - checkbox "L4" [ref=f1e978]
+                - text: L4
+              - generic [ref=f1e979]:
+                - checkbox "L3" [ref=f1e980]
+                - text: L3
+              - generic [ref=f1e981]:
+                - checkbox "L2" [ref=f1e982]
+                - text: L2
+              - generic [ref=f1e983]:
+                - checkbox "L1" [ref=f1e984]
+                - text: L1
+        - generic [ref=f1e985]:
+          - button "Save" [ref=f1e986] [cursor=pointer]
+          - button "Cancel" [ref=f1e987] [cursor=pointer]
+      - generic [ref=f1e988]:
+        - heading "Active & upcoming" [level=2] [ref=f1e989]
+        - generic [ref=f1e990]:
+          - article [ref=f1e992]:
+            - generic [ref=f1e993]: P2 in progress
+            - generic [ref=f1e995]:
+              - generic [ref=f1e996]: In Progress
+              - generic [ref=f1e997]: 50% · 1/2 items
+              - generic [ref=f1e998]:
+                - generic [ref=f1e999]: Time left
+                - generic [ref=f1e1000]: 1:58:05
+            - generic [ref=f1e1001]:
+              - generic [ref=f1e1002]: Sep 26, 2026, 1:29 AM – Sep 26, 2026, 3:59 AM
+              - generic [ref=f1e1003]: Priority 1
+              - generic [ref=f1e1004]: 60 min
+            - list [ref=f1e1005]:
+              - listitem [ref=f1e1006]:
+                - 'checkbox "Done: H2 not done" [checked] [ref=f1e1007]'
+                - generic [ref=f1e1008]: Habit
+                - generic [ref=f1e1009]: H2 not done
+              - listitem [ref=f1e1010]:
+                - 'checkbox "Done: L1" [ref=f1e1011]'
+                - generic [ref=f1e1012]: Learning
+                - generic [ref=f1e1013]: L1
+            - generic [ref=f1e1014]:
+              - button "Edit" [ref=f1e1015] [cursor=pointer]
+              - button "Delete" [ref=f1e1016] [cursor=pointer]
+          - article [ref=f1e1018]:
+            - generic [ref=f1e1019]: P3 not started
+            - generic [ref=f1e1021]:
+              - generic [ref=f1e1022]: Not Started
+              - generic [ref=f1e1023]: 0% · 0/1 items
+            - generic [ref=f1e1024]:
+              - generic [ref=f1e1025]: Sep 26, 2026, 2:59 AM – Sep 26, 2026, 3:59 AM
+              - generic [ref=f1e1026]: Priority 1
+              - generic [ref=f1e1027]: 60 min
+            - list [ref=f1e1028]:
+              - listitem [ref=f1e1029]:
+                - 'checkbox "Done: H2 not done" [ref=f1e1030]'
+                - generic [ref=f1e1031]: Habit
+                - generic [ref=f1e1032]: H2 not done
+            - generic [ref=f1e1033]:
+              - button "Edit" [ref=f1e1034] [cursor=pointer]
+              - button "Delete" [ref=f1e1035] [cursor=pointer]
+      - generic [ref=f1e1036]:
+        - heading "History" [level=2] [ref=f1e1037]
+        - generic [ref=f1e1038]:
+          - article [ref=f1e1040]:
+            - generic [ref=f1e1041]: P1 in progress
+            - generic [ref=f1e1043]:
+              - generic [ref=f1e1044]: Completed
+              - generic [ref=f1e1045]: 100% · 2/2 items
+            - generic [ref=f1e1046]:
+              - generic [ref=f1e1047]: Sep 26, 2026, 12:59 AM – Sep 26, 2026, 2:59 AM
+              - generic [ref=f1e1048]: Priority 2
+              - generic [ref=f1e1049]: 60 min
+            - list [ref=f1e1050]:
+              - listitem [ref=f1e1051]:
+                - 'checkbox "Done: PT plan task" [checked] [ref=f1e1052]'
+                - generic [ref=f1e1053]: Task
+                - generic [ref=f1e1054]: PT plan task
+              - listitem [ref=f1e1055]:
+                - 'checkbox "Done: H2 not done" [checked] [ref=f1e1056]'
+                - generic [ref=f1e1057]: Habit
+                - generic [ref=f1e1058]: H2 not done
+            - generic [ref=f1e1059]:
+              - button "Edit" [ref=f1e1060] [cursor=pointer]
+              - button "Delete" [ref=f1e1061] [cursor=pointer]
+          - article [ref=f1e1063]:
+            - generic [ref=f1e1064]: P4 past
+            - generic [ref=f1e1066]:
+              - generic [ref=f1e1067]: Completed
+              - generic [ref=f1e1068]: 0% · 0/1 items
+            - generic [ref=f1e1069]:
+              - generic [ref=f1e1070]: Sep 25, 2026, 10:59 PM – Sep 26, 2026, 12:59 AM
+              - generic [ref=f1e1071]: Priority 1
+              - generic [ref=f1e1072]: 60 min
+            - list [ref=f1e1073]:
+              - listitem [ref=f1e1074]:
+                - 'checkbox "Done: H2 not done" [ref=f1e1075]'
+                - generic [ref=f1e1076]: Habit
+                - generic [ref=f1e1077]: H2 not done
+            - generic [ref=f1e1078]:
+              - button "Edit" [ref=f1e1079] [cursor=pointer]
+              - button "Delete" [ref=f1e1080] [cursor=pointer]
