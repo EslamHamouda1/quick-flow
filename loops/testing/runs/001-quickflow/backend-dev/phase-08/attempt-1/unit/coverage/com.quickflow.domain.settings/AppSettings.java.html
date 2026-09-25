@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppSettings.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.settings</a> &gt; <span class="el_source">AppSettings.java</span></div><h1>AppSettings.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.settings;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.quickflow.domain.common.FieldError;
+import com.quickflow.domain.common.ValidationException;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+/** The single user's profile and preferences, one row with id 1 (FR-10.2). */
+@Entity
+@Table(name = &quot;app_settings&quot;)
+public class AppSettings {
+
+	public static final long ID = 1L;
+
+	static final int DISPLAY_NAME_MAX = 100;
+
+	@Id
+	private Long id;
+
+	@Column(length = DISPLAY_NAME_MAX)
+	private String displayName;
+
+	@Column(nullable = false)
+	private boolean planStartNotifications;
+
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private DefaultPage defaultPage;
+
+<span class="fc" id="L37">	protected AppSettings() {</span>
+<span class="fc" id="L38">	}</span>
+
+	/** The row used before the user saves anything: no name, notifications on, Dashboard first. */
+	public static AppSettings defaults() {
+<span class="fc" id="L42">		AppSettings settings = new AppSettings();</span>
+<span class="fc" id="L43">		settings.id = ID;</span>
+<span class="fc" id="L44">		settings.displayName = null;</span>
+<span class="fc" id="L45">		settings.planStartNotifications = true;</span>
+<span class="fc" id="L46">		settings.defaultPage = DefaultPage.DASHBOARD;</span>
+<span class="fc" id="L47">		return settings;</span>
+	}
+
+	/** Replaces all three fields, or none of them if any is invalid. */
+	public void update(String displayName, Boolean planStartNotifications, DefaultPage defaultPage) {
+<span class="fc" id="L52">		List&lt;FieldError&gt; errors = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L53">		String cleanDisplayName = checkDisplayName(displayName, errors);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">		if (planStartNotifications == null) {</span>
+<span class="fc" id="L55">			errors.add(new FieldError(&quot;planStartNotifications&quot;, &quot;must not be null&quot;));</span>
+		}
+<span class="fc bfc" id="L57" title="All 2 branches covered.">		if (defaultPage == null) {</span>
+<span class="fc" id="L58">			errors.add(new FieldError(&quot;defaultPage&quot;, &quot;must not be null&quot;));</span>
+		}
+<span class="fc bfc" id="L60" title="All 2 branches covered.">		if (!errors.isEmpty()) {</span>
+<span class="fc" id="L61">			throw new ValidationException(errors);</span>
+		}
+<span class="fc" id="L63">		this.displayName = cleanDisplayName;</span>
+<span class="fc" id="L64">		this.planStartNotifications = planStartNotifications;</span>
+<span class="fc" id="L65">		this.defaultPage = defaultPage;</span>
+<span class="fc" id="L66">	}</span>
+
+	/** Trimmed, at most 100 characters; blank means no name. */
+	private static String checkDisplayName(String displayName, List&lt;FieldError&gt; errors) {
+<span class="fc bfc" id="L70" title="All 2 branches covered.">		if (displayName == null) {</span>
+<span class="fc" id="L71">			return null;</span>
+		}
+<span class="fc" id="L73">		String trimmed = displayName.trim();</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">		if (trimmed.isEmpty()) {</span>
+<span class="fc" id="L75">			return null;</span>
+		}
+<span class="fc bfc" id="L77" title="All 2 branches covered.">		if (trimmed.length() &gt; DISPLAY_NAME_MAX) {</span>
+<span class="fc" id="L78">			errors.add(new FieldError(&quot;displayName&quot;, &quot;must be at most &quot; + DISPLAY_NAME_MAX + &quot; characters&quot;));</span>
+		}
+<span class="fc" id="L80">		return trimmed;</span>
+	}
+
+	public Long getId() {
+<span class="fc" id="L84">		return id;</span>
+	}
+
+	public String getDisplayName() {
+<span class="fc" id="L88">		return displayName;</span>
+	}
+
+	public boolean isPlanStartNotifications() {
+<span class="fc" id="L92">		return planStartNotifications;</span>
+	}
+
+	public DefaultPage getDefaultPage() {
+<span class="fc" id="L96">		return defaultPage;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

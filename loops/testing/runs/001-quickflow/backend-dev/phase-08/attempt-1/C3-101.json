@@ -1,0 +1,1 @@
+{"detail":"Validation failed","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"displayName","message":"size must be between 0 and 100"}]}

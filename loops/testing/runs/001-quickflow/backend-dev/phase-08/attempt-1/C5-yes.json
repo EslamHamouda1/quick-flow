@@ -1,0 +1,1 @@
+{"detail":"Malformed request body","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"planStartNotifications","message":"invalid value"}]}

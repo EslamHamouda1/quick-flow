@@ -1,0 +1,1 @@
+{"detail":"Malformed request body","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"defaultPage","message":"must be one of [DASHBOARD, TASKS, HABITS, LEARNING, PLANS, SETTINGS]"}]}

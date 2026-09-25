@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LearningCardController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.web.learning</a> &gt; <span class="el_source">LearningCardController.java</span></div><h1>LearningCardController.java</h1><pre class="source lang-java linenums">package com.quickflow.web.learning;
+
+import java.util.List;
+
+import com.quickflow.domain.common.TimeService;
+import com.quickflow.domain.learning.LearningCard;
+import com.quickflow.domain.learning.LearningService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(&quot;/api/learning-cards&quot;)
+@Tag(name = &quot;learning&quot;)
+public class LearningCardController {
+
+	private final LearningService learningService;
+
+	private final TimeService timeService;
+
+<span class="fc" id="L33">	public LearningCardController(LearningService learningService, TimeService timeService) {</span>
+<span class="fc" id="L34">		this.learningService = learningService;</span>
+<span class="fc" id="L35">		this.timeService = timeService;</span>
+<span class="fc" id="L36">	}</span>
+
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = &quot;Cards with their milestones and notes, newest first&quot;)
+	public List&lt;LearningCardResponse&gt; listLearningCards() {
+<span class="fc" id="L41">		return learningService.list().stream().map(this::response).toList();</span>
+	}
+
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.CREATED)
+	public LearningCardResponse createLearningCard(@Valid @RequestBody LearningCardCreateRequest request) {
+<span class="fc" id="L47">		return response(learningService.create(request.title(), request.description()));</span>
+	}
+
+	@GetMapping(path = &quot;/{id}&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+	public LearningCardResponse getLearningCard(@PathVariable long id) {
+<span class="nc" id="L52">		return response(learningService.get(id));</span>
+	}
+
+	@PutMapping(path = &quot;/{id}&quot;, consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public LearningCardResponse updateLearningCard(@PathVariable long id,
+			@Valid @RequestBody LearningCardUpdateRequest request) {
+<span class="fc" id="L59">		return response(learningService.update(id, request.title(), request.description(), request.status()));</span>
+	}
+
+	@DeleteMapping(&quot;/{id}&quot;)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@Operation(summary = &quot;Delete the card, its milestones and notes permanently (BR-14)&quot;)
+	public void deleteLearningCard(@PathVariable long id) {
+<span class="fc" id="L66">		learningService.delete(id);</span>
+<span class="fc" id="L67">	}</span>
+
+	@PostMapping(path = &quot;/{id}/milestones&quot;, consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.CREATED)
+	public MilestoneResponse addMilestone(@PathVariable long id, @Valid @RequestBody MilestoneCreateRequest request) {
+<span class="fc" id="L73">		return MilestoneResponse.from(learningService.addMilestone(id, request.title(), request.targetDate()));</span>
+	}
+
+	@PutMapping(path = &quot;/{id}/milestones/{milestoneId}&quot;, consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = &quot;Edit title/target date and set done or not done&quot;)
+	public MilestoneResponse updateMilestone(@PathVariable long id, @PathVariable long milestoneId,
+			@Valid @RequestBody MilestoneUpdateRequest request) {
+<span class="fc" id="L81">		return MilestoneResponse.from(learningService.updateMilestone(id, milestoneId, request.title(),</span>
+<span class="fc" id="L82">				request.targetDate(), request.done()));</span>
+	}
+
+	@DeleteMapping(&quot;/{id}/milestones/{milestoneId}&quot;)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteMilestone(@PathVariable long id, @PathVariable long milestoneId) {
+<span class="fc" id="L88">		learningService.deleteMilestone(id, milestoneId);</span>
+<span class="fc" id="L89">	}</span>
+
+	@PostMapping(path = &quot;/{id}/notes&quot;, consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.CREATED)
+	public NoteResponse addNote(@PathVariable long id, @Valid @RequestBody NoteCreateRequest request) {
+<span class="fc" id="L95">		return NoteResponse.from(learningService.addNote(id, request.text()), timeService);</span>
+	}
+
+	@DeleteMapping(&quot;/{id}/notes/{noteId}&quot;)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteNote(@PathVariable long id, @PathVariable long noteId) {
+<span class="fc" id="L101">		learningService.deleteNote(id, noteId);</span>
+<span class="fc" id="L102">	}</span>
+
+	private LearningCardResponse response(LearningCard card) {
+<span class="fc" id="L105">		return LearningCardResponse.from(card, timeService);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

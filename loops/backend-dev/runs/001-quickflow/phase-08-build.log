@@ -1,0 +1,17 @@
+phase-08 build log (2026-09-26)
+
+$ cd backend && ./mvnw -q -DskipTests package
+(no output, exit 0)
+
+$ cd backend && ./mvnw -q verify -Dmaven.test.failure.ignore=true
+exit 0; surefire reports: 0 failures, 0 errors, 0 skipped in every TEST-*.xml
+  com.quickflow.domain.settings.SettingsServiceTest    tests=12
+  com.quickflow.persistence.SettingsRepositoryTest     tests=3
+  com.quickflow.web.settings.SettingsControllerTest    tests=8
+JaCoCo report total LINE: covered=870 missed=30
+
+target/openapi.json: getSettings / updateSettings under tag settings; schemas Settings
+(required [defaultPage, planStartNotifications], displayName [string,null] maxLength 100,
+planStartNotifications default true) and DefaultPage (enum of six, $ref). Extra vs contract:
+displayName minLength 0 (springdoc from @Size), no documented 400 on updateSettings (same as
+other operations). Copied to loops/backend-dev/outputs/openapi.json.
