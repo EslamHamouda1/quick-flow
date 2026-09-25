@@ -1,0 +1,88 @@
+- generic [ref=f2e3]:
+  - navigation "Main" [ref=f2e4]:
+    - generic [ref=f2e5]: QuickFlow
+    - link "Dashboard" [ref=f2e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f2e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f2e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f2e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f2e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f2e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f2e12]:
+    - generic [ref=f2e13]:
+      - generic [ref=f2e14]:
+        - heading "Todo Plans" [level=1] [ref=f2e15]
+        - button "Create Plan" [active] [ref=f2e16] [cursor=pointer]
+      - generic [ref=f2e97]:
+        - heading "Create Plan" [level=2] [ref=f2e98]
+        - generic [ref=f2e99]:
+          - generic [ref=f2e100]: Title
+          - textbox "Title" [ref=f2e101]
+        - generic [ref=f2e102]:
+          - generic [ref=f2e103]: Estimated duration (minutes)
+          - spinbutton "Estimated duration (minutes)" [ref=f2e104]
+        - generic [ref=f2e105]:
+          - generic [ref=f2e106]: Start
+          - textbox "Start" [ref=f2e107]
+        - generic [ref=f2e108]:
+          - generic [ref=f2e109]: End
+          - textbox "End" [ref=f2e110]
+        - generic [ref=f2e111]:
+          - generic [ref=f2e112]: Priority order (1 = highest)
+          - spinbutton "Priority order (1 = highest)" [ref=f2e113]
+        - generic [ref=f2e114]:
+          - heading "Items" [level=3] [ref=f2e115]
+          - generic [ref=f2e116]:
+            - group "Tasks" [ref=f2e117]:
+              - generic [ref=f2e119]:
+                - checkbox "Temp task" [ref=f2e120]
+                - text: Temp task
+              - generic [ref=f2e121]:
+                - checkbox "Write report" [ref=f2e122]
+                - text: Write report
+            - group "Habits" [ref=f2e123]:
+              - generic [ref=f2e125]:
+                - checkbox "Morning run" [ref=f2e126]
+                - text: Morning run
+            - group "Learning" [ref=f2e127]:
+              - generic [ref=f2e129]:
+                - checkbox "Angular signals" [ref=f2e130]
+                - text: Angular signals
+        - generic [ref=f2e131]:
+          - button "Save" [ref=f2e132] [cursor=pointer]
+          - button "Cancel" [ref=f2e133] [cursor=pointer]
+      - generic [ref=f2e63]:
+        - heading "Active & upcoming" [level=2] [ref=f2e64]
+        - article [ref=f2e67]:
+          - generic [ref=f2e68]: Future plan
+          - generic [ref=f2e70]:
+            - generic [ref=f2e71]: Not Started
+            - generic [ref=f2e72]: 0% · 0/3 items
+          - generic [ref=f2e73]:
+            - generic [ref=f2e74]: Sep 27, 2026, 10:00 AM – Sep 27, 2026, 12:00 PM
+            - generic [ref=f2e75]: Priority 1
+            - generic [ref=f2e76]: 90 min
+          - list [ref=f2e77]:
+            - listitem [ref=f2e78]:
+              - 'checkbox "Done: Write report" [ref=f2e79]'
+              - generic [ref=f2e80]: Task
+              - generic [ref=f2e81]: Write report
+            - listitem [ref=f2e82]:
+              - 'checkbox "Done: Morning run" [ref=f2e83]'
+              - generic [ref=f2e84]: Habit
+              - generic [ref=f2e85]: Morning run
+            - listitem [ref=f2e86]:
+              - 'checkbox "Done: Angular signals" [ref=f2e87]'
+              - generic [ref=f2e88]: Learning
+              - generic [ref=f2e89]: Angular signals
+          - generic [ref=f2e90]:
+            - button "Edit" [ref=f2e91] [cursor=pointer]
+            - button "Delete" [ref=f2e92] [cursor=pointer]
+      - generic [ref=f2e93]:
+        - heading "History" [level=2] [ref=f2e94]
+        - paragraph [ref=f2e95]: No completed plans yet

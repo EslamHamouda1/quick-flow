@@ -86,6 +86,23 @@ becomes a `## Questions` entry if the check fails.
   - ui-contract "Learning Resources `/learning` (US3)" has selectors for the form, cards (title, status select,
     milestone count), expand, edit/delete, the milestone and note add rows and rows; the empty state comes from the
     Shell section: AC-US3-1..9 covered, nothing missing.
+- **Checked at implement (T030, 2026-09-25)**, client regenerated after backend US4:
+  - `PlansService` (`api/plans.service.ts`, `providedIn: 'root'`), positional arguments: `listPlans(group?: 'active' |
+    'completed' | 'all')` → `Observable<Plan[]>`; `createPlan(PlanCreate)`, `getPlan(id)`, `updatePlan(id, PlanUpdate)`
+    → `Observable<Plan>`; `setPlanItemDone(id, itemId, PlanItemUpdate)` → `Observable<Plan>`; `deletePlan(id)` →
+    `Observable<any>`. `getPlan` is unused.
+  - models: `Plan { id: number; title; items: PlanItem[]; estimatedDurationMinutes: number; startDateTime;
+    endDateTime; priorityOrder: number; status: PlanStatus; createdAt; doneItems: number; totalItems: number;
+    progressPercent: number; restSeconds?: number | null }`, `PlanItem { id; sourceType: PlanSourceType; sourceId;
+    sourceTitle; sourceRemoved: boolean; done: boolean }`, `PlanCreate { title; items: PlanItemRef[];
+    estimatedDurationMinutes; startDateTime; endDateTime; priorityOrder }`, `PlanUpdate` (the same without `items`),
+    `PlanItemRef { sourceType; sourceId }`, `PlanItemUpdate { done }`, `PlanStatus = {NotStarted: 'NOT_STARTED',
+    InProgress: 'IN_PROGRESS', Completed: 'COMPLETED'}`, `PlanSourceType = {Task: 'TASK', Habit: 'HABIT',
+    LearningResource: 'LEARNING_RESOURCE'}` (`as const`).
+  - still no `Problem` model and no `SettingsService` (backend US6): `core/problem.ts` stays; FA-30 applies.
+  - ui-contract "Todo Plans `/plans` (US4)" has selectors for the create button, builder, source checkboxes,
+    `error-items`, both groups, plan cards (status, progress, rest time, window, priority), items, actions and the
+    started highlight; the empty state comes from the Shell section: AC-US4-1..13 covered, nothing missing.
 
 ## R-3 Time zone handling
 - **Decision**: `ClockService` loads `/api/app-info` at start-up (`provideAppInitializer`), stores `timeZone` and

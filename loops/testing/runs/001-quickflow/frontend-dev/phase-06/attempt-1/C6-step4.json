@@ -1,0 +1,48 @@
+{
+  "step": "all items done",
+  "ui": {
+    "group": "plans-completed",
+    "status": "Completed",
+    "progress": "100% · 3/3 items",
+    "rest": null,
+    "checks": [
+      "plan-item-done-4=true",
+      "plan-item-done-5=true",
+      "plan-item-done-6=true"
+    ]
+  },
+  "api": {
+    "status": "COMPLETED",
+    "progress": 100,
+    "rest": 7125,
+    "items": [
+      "4:true",
+      "5:true",
+      "6:true"
+    ]
+  },
+  "task": "DONE",
+  "habit": {
+    "id": 1,
+    "name": "Morning run",
+    "description": null,
+    "frequency": "DAILY",
+    "createdAt": "2026-09-26T00:12:36.932911+03:00",
+    "active": true,
+    "completedToday": false,
+    "doneForCurrentPeriod": false,
+    "currentStreak": 0
+  },
+  "habitCompletions": [],
+  "card": {
+    "id": 1,
+    "title": "Angular signals",
+    "description": null,
+    "status": "NOT_STARTED",
+    "createdAt": "2026-09-26T00:12:36.975697+03:00",
+    "milestones": [],
+    "notes": [],
+    "milestonesDone": 0,
+    "milestonesTotal": 0
+  }
+}

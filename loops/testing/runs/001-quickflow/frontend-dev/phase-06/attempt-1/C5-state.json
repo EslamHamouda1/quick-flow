@@ -1,0 +1,17 @@
+{
+  "first": {
+    "at": "2026-09-25T21:14:16.556Z",
+    "status": "In Progress",
+    "rest": "1:59:51",
+    "inActive": true
+  },
+  "second": {
+    "at": "2026-09-25T21:14:20.556Z",
+    "status": "In Progress",
+    "rest": "1:59:47",
+    "inActive": true
+  },
+  "apiStatus": "IN_PROGRESS",
+  "apiRestSeconds": 7186,
+  "endMinusNowSec": 7187
+}

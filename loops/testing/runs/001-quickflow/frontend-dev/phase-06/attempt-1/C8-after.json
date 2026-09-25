@@ -1,0 +1,20 @@
+{
+  "noticeSeen": {
+    "at": "2026-09-25T21:18:00.332Z",
+    "notices": [
+      "notice: Plan “Soon plan” has started\n×"
+    ]
+  },
+  "after": {
+    "at": "2026-09-25T21:18:01.840Z",
+    "group": "plans-active",
+    "status": "In Progress",
+    "rest": "0:59:58",
+    "startedBadge": "Started"
+  },
+  "api": {
+    "status": "IN_PROGRESS",
+    "rest": 3598
+  },
+  "storage": "[2,3,5,7,8]"
+}

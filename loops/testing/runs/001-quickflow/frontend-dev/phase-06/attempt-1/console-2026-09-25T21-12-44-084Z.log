@@ -1,0 +1,5 @@
+[      49ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[    9580ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/plans:0
+[   52069ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/plans:0
+[   61686ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/plans:0
+[   71518ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/plans:0

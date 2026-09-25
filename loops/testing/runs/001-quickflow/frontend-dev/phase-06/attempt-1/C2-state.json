@@ -1,0 +1,73 @@
+{
+  "builderOpen": false,
+  "notices": [],
+  "active": [
+    {
+      "id": "plan-1",
+      "text": "Future plan | Not Started | 0% · 0/3 items | Sep 27, 2026, 10:00 AM – Sep 27, 2026, 12:00 PM | Priority 1 | 90 min | Task | Write report | Habit | Morning run | Learning | Angular signals | Edit | Delete",
+      "status": "Not Started",
+      "progress": "0% · 0/3 items",
+      "rest": null,
+      "items": [
+        {
+          "id": "plan-item-done-1",
+          "checked": false,
+          "disabled": false
+        },
+        {
+          "id": "plan-item-done-2",
+          "checked": false,
+          "disabled": false
+        },
+        {
+          "id": "plan-item-done-3",
+          "checked": false,
+          "disabled": false
+        }
+      ]
+    }
+  ],
+  "completed": [],
+  "api": [
+    {
+      "id": 1,
+      "title": "Future plan",
+      "items": [
+        {
+          "id": 1,
+          "sourceType": "TASK",
+          "sourceId": 1,
+          "sourceTitle": "Write report",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 2,
+          "sourceType": "HABIT",
+          "sourceId": 1,
+          "sourceTitle": "Morning run",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 3,
+          "sourceType": "LEARNING_RESOURCE",
+          "sourceId": 1,
+          "sourceTitle": "Angular signals",
+          "sourceRemoved": false,
+          "done": false
+        }
+      ],
+      "estimatedDurationMinutes": 90,
+      "startDateTime": "2026-09-27T10:00:00+03:00",
+      "endDateTime": "2026-09-27T12:00:00+03:00",
+      "priorityOrder": 1,
+      "status": "NOT_STARTED",
+      "createdAt": "2026-09-26T00:13:03.666589+03:00",
+      "doneItems": 0,
+      "totalItems": 3,
+      "progressPercent": 0,
+      "restSeconds": null
+    }
+  ]
+}

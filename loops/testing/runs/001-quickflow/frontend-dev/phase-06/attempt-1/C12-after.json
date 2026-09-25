@@ -1,0 +1,27 @@
+{
+  "builderOpen": false,
+  "ui": {
+    "text": "Future plan (edited)",
+    "priority": "Priority 6",
+    "window": "Sep 27, 2026, 10:00 AM – Sep 27, 2026, 12:00 PM"
+  },
+  "activeOrder": [
+    "plan-4",
+    "plan-3",
+    "plan-5",
+    "plan-8",
+    "plan-7",
+    "plan-1"
+  ],
+  "api": {
+    "title": "Future plan (edited)",
+    "prio": 6,
+    "start": "2026-09-27T10:00:00+03:00",
+    "end": "2026-09-27T12:00:00+03:00",
+    "items": [
+      "1:TASK:1:false",
+      "2:HABIT:1:false",
+      "3:LEARNING_RESOURCE:1:false"
+    ]
+  }
+}

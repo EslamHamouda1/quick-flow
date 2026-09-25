@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NoticeService } from './core/notice.service';
+import { PlanStartWatcher } from './core/plan-start-watcher.service';
 
 @Component({
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
@@ -21,4 +22,9 @@ export class App {
     { id: 'plans', path: '/plans', label: 'Todo Plans' },
     { id: 'settings', path: '/settings', label: 'Settings' },
   ];
+
+  constructor() {
+    // App-wide plan-start notices, on every page (research R-6, FA-2).
+    inject(PlanStartWatcher).start();
+  }
 }

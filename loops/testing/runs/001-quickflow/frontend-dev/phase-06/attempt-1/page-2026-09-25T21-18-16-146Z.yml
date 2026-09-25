@@ -1,0 +1,247 @@
+- generic [ref=f5e3]:
+  - navigation "Main" [ref=f5e4]:
+    - generic [ref=f5e5]: QuickFlow
+    - link "Dashboard" [ref=f5e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f5e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f5e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f5e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f5e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f5e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f5e12]:
+    - generic [ref=f5e13]:
+      - generic [ref=f5e14]:
+        - heading "Todo Plans" [level=1] [ref=f5e15]
+        - button "Create Plan" [ref=f5e16] [cursor=pointer]
+      - generic [ref=f5e18]:
+        - heading "Edit Plan" [level=2] [ref=f5e19]
+        - generic [ref=f5e20]:
+          - generic [ref=f5e21]: Title
+          - textbox "Title" [ref=f5e22]: Future plan
+        - generic [ref=f5e23]:
+          - generic [ref=f5e24]: Estimated duration (minutes)
+          - spinbutton "Estimated duration (minutes)" [ref=f5e25]: "90"
+        - generic [ref=f5e26]:
+          - generic [ref=f5e27]: Start
+          - textbox "Start" [ref=f5e28]: 2026-09-27T10:00
+        - generic [ref=f5e29]:
+          - generic [ref=f5e30]: End
+          - textbox "End" [ref=f5e31]: 2026-09-27T12:00
+        - generic [ref=f5e32]:
+          - generic [ref=f5e33]: Priority order (1 = highest)
+          - spinbutton "Priority order (1 = highest)" [ref=f5e34]: "1"
+        - generic [ref=f5e35]:
+          - button "Save" [ref=f5e36] [cursor=pointer]
+          - button "Cancel" [ref=f5e37] [cursor=pointer]
+      - generic [ref=f5e38]:
+        - heading "Active & upcoming" [level=2] [ref=f5e39]
+        - generic [ref=f5e40]:
+          - article [ref=f5e42]:
+            - generic [ref=f5e43]: Prio one plan
+            - generic [ref=f5e45]:
+              - generic [ref=f5e46]: Not Started
+              - generic [ref=f5e47]: 0% · 0/3 items
+            - generic [ref=f5e48]:
+              - generic [ref=f5e49]: Sep 26, 2026, 5:15 AM – Sep 26, 2026, 6:15 AM
+              - generic [ref=f5e50]: Priority 1
+              - generic [ref=f5e51]: 60 min
+            - list [ref=f5e52]:
+              - listitem [ref=f5e53]:
+                - 'checkbox "Done: Write report" [ref=f5e54]'
+                - generic [ref=f5e55]: Task
+                - generic [ref=f5e56]: Write report
+              - listitem [ref=f5e57]:
+                - 'checkbox "Done: Morning run" [ref=f5e58]'
+                - generic [ref=f5e59]: Habit
+                - generic [ref=f5e60]: Morning run
+              - listitem [ref=f5e61]:
+                - 'checkbox "Done: Angular signals" [ref=f5e62]'
+                - generic [ref=f5e63]: Learning
+                - generic [ref=f5e64]: Angular signals
+            - generic [ref=f5e65]:
+              - button "Edit" [ref=f5e66] [cursor=pointer]
+              - button "Delete" [ref=f5e67] [cursor=pointer]
+          - article [ref=f5e69]:
+            - generic [ref=f5e70]: Future plan
+            - generic [ref=f5e72]:
+              - generic [ref=f5e73]: Not Started
+              - generic [ref=f5e74]: 0% · 0/3 items
+            - generic [ref=f5e75]:
+              - generic [ref=f5e76]: Sep 27, 2026, 10:00 AM – Sep 27, 2026, 12:00 PM
+              - generic [ref=f5e77]: Priority 1
+              - generic [ref=f5e78]: 90 min
+            - list [ref=f5e79]:
+              - listitem [ref=f5e80]:
+                - 'checkbox "Done: Write report" [ref=f5e81]'
+                - generic [ref=f5e82]: Task
+                - generic [ref=f5e83]: Write report
+              - listitem [ref=f5e84]:
+                - 'checkbox "Done: Morning run" [ref=f5e85]'
+                - generic [ref=f5e86]: Habit
+                - generic [ref=f5e87]: Morning run
+              - listitem [ref=f5e88]:
+                - 'checkbox "Done: Angular signals" [ref=f5e89]'
+                - generic [ref=f5e90]: Learning
+                - generic [ref=f5e91]: Angular signals
+            - generic [ref=f5e92]:
+              - button "Edit" [active] [ref=f5e93] [cursor=pointer]
+              - button "Delete" [ref=f5e94] [cursor=pointer]
+          - article [ref=f5e96]:
+            - generic [ref=f5e97]: Prio two plan
+            - generic [ref=f5e99]:
+              - generic [ref=f5e100]: In Progress
+              - generic [ref=f5e101]: 0% · 0/3 items
+              - generic [ref=f5e102]:
+                - generic [ref=f5e103]: Time left
+                - generic [ref=f5e104]: 2:57:22
+            - generic [ref=f5e105]:
+              - generic [ref=f5e106]: Sep 25, 2026, 11:15 PM – Sep 26, 2026, 3:15 AM
+              - generic [ref=f5e107]: Priority 2
+              - generic [ref=f5e108]: 60 min
+            - list [ref=f5e109]:
+              - listitem [ref=f5e110]:
+                - 'checkbox "Done: Write report" [ref=f5e111]'
+                - generic [ref=f5e112]: Task
+                - generic [ref=f5e113]: Write report
+              - listitem [ref=f5e114]:
+                - 'checkbox "Done: Morning run" [ref=f5e115]'
+                - generic [ref=f5e116]: Habit
+                - generic [ref=f5e117]: Morning run
+              - listitem [ref=f5e118]:
+                - 'checkbox "Done: Angular signals" [ref=f5e119]'
+                - generic [ref=f5e120]: Learning
+                - generic [ref=f5e121]: Angular signals
+            - generic [ref=f5e122]:
+              - button "Edit" [ref=f5e123] [cursor=pointer]
+              - button "Delete" [ref=f5e124] [cursor=pointer]
+          - article [ref=f5e126]:
+            - generic [ref=f5e127]: Prio three plan
+            - generic [ref=f5e129]:
+              - generic [ref=f5e130]: In Progress
+              - generic [ref=f5e131]: 0% · 0/3 items
+              - generic [ref=f5e132]:
+                - generic [ref=f5e133]: Time left
+                - generic [ref=f5e134]: 3:57:22
+            - generic [ref=f5e135]:
+              - generic [ref=f5e136]: Sep 25, 2026, 11:15 PM – Sep 26, 2026, 4:15 AM
+              - generic [ref=f5e137]: Priority 3
+              - generic [ref=f5e138]: 60 min
+            - list [ref=f5e139]:
+              - listitem [ref=f5e140]:
+                - 'checkbox "Done: Write report" [ref=f5e141]'
+                - generic [ref=f5e142]: Task
+                - generic [ref=f5e143]: Write report
+              - listitem [ref=f5e144]:
+                - 'checkbox "Done: Morning run" [ref=f5e145]'
+                - generic [ref=f5e146]: Habit
+                - generic [ref=f5e147]: Morning run
+              - listitem [ref=f5e148]:
+                - 'checkbox "Done: Angular signals" [ref=f5e149]'
+                - generic [ref=f5e150]: Learning
+                - generic [ref=f5e151]: Angular signals
+            - generic [ref=f5e152]:
+              - button "Edit" [ref=f5e153] [cursor=pointer]
+              - button "Delete" [ref=f5e154] [cursor=pointer]
+          - article [ref=f5e156]:
+            - generic [ref=f5e157]: Soon plan
+            - generic [ref=f5e159]:
+              - generic [ref=f5e160]: In Progress
+              - generic [ref=f5e161]: 0% · 0/1 items
+              - generic [ref=f5e162]:
+                - generic [ref=f5e163]: Time left
+                - generic [ref=f5e164]: 0:59:44
+            - generic [ref=f5e165]:
+              - generic [ref=f5e166]: Sep 26, 2026, 12:18 AM – Sep 26, 2026, 1:18 AM
+              - generic [ref=f5e167]: Priority 4
+              - generic [ref=f5e168]: 45 min
+            - list [ref=f5e169]:
+              - listitem [ref=f5e170]:
+                - 'checkbox "Done: Morning run" [ref=f5e171]'
+                - generic [ref=f5e172]: Habit
+                - generic [ref=f5e173]: Morning run
+            - generic [ref=f5e174]:
+              - button "Edit" [ref=f5e175] [cursor=pointer]
+              - button "Delete" [ref=f5e176] [cursor=pointer]
+          - article [ref=f5e178]:
+            - generic [ref=f5e179]: Removed source plan
+            - generic [ref=f5e181]:
+              - generic [ref=f5e182]: In Progress
+              - generic [ref=f5e183]: 50% · 1/2 items
+              - generic [ref=f5e184]:
+                - generic [ref=f5e185]: Time left
+                - generic [ref=f5e186]: 7:57:22
+            - generic [ref=f5e187]:
+              - generic [ref=f5e188]: Sep 25, 2026, 11:15 PM – Sep 26, 2026, 8:15 AM
+              - generic [ref=f5e189]: Priority 5
+              - generic [ref=f5e190]: 30 min
+            - list [ref=f5e191]:
+              - listitem [ref=f5e192]:
+                - 'checkbox "Done: Doomed task" [checked] [ref=f5e193]'
+                - generic [ref=f5e194]: Task
+                - generic [ref=f5e195]: Doomed task
+                - generic [ref=f5e196]: Removed
+              - listitem [ref=f5e197]:
+                - 'checkbox "Done: Morning run" [ref=f5e198]'
+                - generic [ref=f5e199]: Habit
+                - generic [ref=f5e200]: Morning run
+            - generic [ref=f5e201]:
+              - button "Edit" [ref=f5e202] [cursor=pointer]
+              - button "Delete" [ref=f5e203] [cursor=pointer]
+      - generic [ref=f5e204]:
+        - heading "History" [level=2] [ref=f5e205]
+        - generic [ref=f5e206]:
+          - article [ref=f5e208]:
+            - generic [ref=f5e209]: Running plan
+            - generic [ref=f5e211]:
+              - generic [ref=f5e212]: Completed
+              - generic [ref=f5e213]: 100% · 3/3 items
+            - generic [ref=f5e214]:
+              - generic [ref=f5e215]: Sep 26, 2026, 12:04 AM – Sep 26, 2026, 2:14 AM
+              - generic [ref=f5e216]: Priority 2
+              - generic [ref=f5e217]: 120 min
+            - list [ref=f5e218]:
+              - listitem [ref=f5e219]:
+                - 'checkbox "Done: Write report" [checked] [ref=f5e220]'
+                - generic [ref=f5e221]: Task
+                - generic [ref=f5e222]: Write report
+              - listitem [ref=f5e223]:
+                - 'checkbox "Done: Morning run" [checked] [ref=f5e224]'
+                - generic [ref=f5e225]: Habit
+                - generic [ref=f5e226]: Morning run
+              - listitem [ref=f5e227]:
+                - 'checkbox "Done: Angular signals" [checked] [ref=f5e228]'
+                - generic [ref=f5e229]: Learning
+                - generic [ref=f5e230]: Angular signals
+            - generic [ref=f5e231]:
+              - button "Edit" [ref=f5e232] [cursor=pointer]
+              - button "Delete" [ref=f5e233] [cursor=pointer]
+          - article [ref=f5e235]:
+            - generic [ref=f5e236]: Past plan
+            - generic [ref=f5e238]:
+              - generic [ref=f5e239]: Completed
+              - generic [ref=f5e240]: 33% · 1/3 items
+            - generic [ref=f5e241]:
+              - generic [ref=f5e242]: Sep 25, 2026, 7:15 PM – Sep 25, 2026, 9:15 PM
+              - generic [ref=f5e243]: Priority 1
+              - generic [ref=f5e244]: 60 min
+            - list [ref=f5e245]:
+              - listitem [ref=f5e246]:
+                - 'checkbox "Done: Write report" [ref=f5e247]'
+                - generic [ref=f5e248]: Task
+                - generic [ref=f5e249]: Write report
+              - listitem [ref=f5e250]:
+                - 'checkbox "Done: Morning run" [checked] [ref=f5e251]'
+                - generic [ref=f5e252]: Habit
+                - generic [ref=f5e253]: Morning run
+              - listitem [ref=f5e254]:
+                - 'checkbox "Done: Angular signals" [ref=f5e255]'
+                - generic [ref=f5e256]: Learning
+                - generic [ref=f5e257]: Angular signals
+            - generic [ref=f5e258]:
+              - button "Edit" [ref=f5e259] [cursor=pointer]
+              - button "Delete" [ref=f5e260] [cursor=pointer]

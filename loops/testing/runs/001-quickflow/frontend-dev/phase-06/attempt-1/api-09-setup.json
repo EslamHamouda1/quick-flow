@@ -1,0 +1,426 @@
+[
+  {
+    "req": "POST /api/plans",
+    "body": {
+      "title": "Prio two plan",
+      "items": [
+        {
+          "sourceType": "TASK",
+          "sourceId": 1
+        },
+        {
+          "sourceType": "HABIT",
+          "sourceId": 1
+        },
+        {
+          "sourceType": "LEARNING_RESOURCE",
+          "sourceId": 1
+        }
+      ],
+      "estimatedDurationMinutes": 60,
+      "startDateTime": "2026-09-25T20:15:38.507Z",
+      "endDateTime": "2026-09-26T00:15:38.507Z",
+      "priorityOrder": 2
+    },
+    "status": 201,
+    "resp": {
+      "id": 3,
+      "title": "Prio two plan",
+      "items": [
+        {
+          "id": 7,
+          "sourceType": "TASK",
+          "sourceId": 1,
+          "sourceTitle": "Write report",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 8,
+          "sourceType": "HABIT",
+          "sourceId": 1,
+          "sourceTitle": "Morning run",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 9,
+          "sourceType": "LEARNING_RESOURCE",
+          "sourceId": 1,
+          "sourceTitle": "Angular signals",
+          "sourceRemoved": false,
+          "done": false
+        }
+      ],
+      "estimatedDurationMinutes": 60,
+      "startDateTime": "2026-09-25T23:15:38.507+03:00",
+      "endDateTime": "2026-09-26T03:15:38.507+03:00",
+      "priorityOrder": 2,
+      "status": "IN_PROGRESS",
+      "createdAt": "2026-09-26T00:15:38.512925885+03:00",
+      "doneItems": 0,
+      "totalItems": 3,
+      "progressPercent": 0,
+      "restSeconds": 10799
+    }
+  },
+  {
+    "req": "POST /api/plans",
+    "body": {
+      "title": "Prio one plan",
+      "items": [
+        {
+          "sourceType": "TASK",
+          "sourceId": 1
+        },
+        {
+          "sourceType": "HABIT",
+          "sourceId": 1
+        },
+        {
+          "sourceType": "LEARNING_RESOURCE",
+          "sourceId": 1
+        }
+      ],
+      "estimatedDurationMinutes": 60,
+      "startDateTime": "2026-09-26T02:15:38.507Z",
+      "endDateTime": "2026-09-26T03:15:38.507Z",
+      "priorityOrder": 1
+    },
+    "status": 201,
+    "resp": {
+      "id": 4,
+      "title": "Prio one plan",
+      "items": [
+        {
+          "id": 10,
+          "sourceType": "TASK",
+          "sourceId": 1,
+          "sourceTitle": "Write report",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 11,
+          "sourceType": "HABIT",
+          "sourceId": 1,
+          "sourceTitle": "Morning run",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 12,
+          "sourceType": "LEARNING_RESOURCE",
+          "sourceId": 1,
+          "sourceTitle": "Angular signals",
+          "sourceRemoved": false,
+          "done": false
+        }
+      ],
+      "estimatedDurationMinutes": 60,
+      "startDateTime": "2026-09-26T05:15:38.507+03:00",
+      "endDateTime": "2026-09-26T06:15:38.507+03:00",
+      "priorityOrder": 1,
+      "status": "NOT_STARTED",
+      "createdAt": "2026-09-26T00:15:38.523782426+03:00",
+      "doneItems": 0,
+      "totalItems": 3,
+      "progressPercent": 0,
+      "restSeconds": null
+    }
+  },
+  {
+    "req": "POST /api/plans",
+    "body": {
+      "title": "Prio three plan",
+      "items": [
+        {
+          "sourceType": "TASK",
+          "sourceId": 1
+        },
+        {
+          "sourceType": "HABIT",
+          "sourceId": 1
+        },
+        {
+          "sourceType": "LEARNING_RESOURCE",
+          "sourceId": 1
+        }
+      ],
+      "estimatedDurationMinutes": 60,
+      "startDateTime": "2026-09-25T20:15:38.507Z",
+      "endDateTime": "2026-09-26T01:15:38.507Z",
+      "priorityOrder": 3
+    },
+    "status": 201,
+    "resp": {
+      "id": 5,
+      "title": "Prio three plan",
+      "items": [
+        {
+          "id": 13,
+          "sourceType": "TASK",
+          "sourceId": 1,
+          "sourceTitle": "Write report",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 14,
+          "sourceType": "HABIT",
+          "sourceId": 1,
+          "sourceTitle": "Morning run",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 15,
+          "sourceType": "LEARNING_RESOURCE",
+          "sourceId": 1,
+          "sourceTitle": "Angular signals",
+          "sourceRemoved": false,
+          "done": false
+        }
+      ],
+      "estimatedDurationMinutes": 60,
+      "startDateTime": "2026-09-25T23:15:38.507+03:00",
+      "endDateTime": "2026-09-26T04:15:38.507+03:00",
+      "priorityOrder": 3,
+      "status": "IN_PROGRESS",
+      "createdAt": "2026-09-26T00:15:38.534056138+03:00",
+      "doneItems": 0,
+      "totalItems": 3,
+      "progressPercent": 0,
+      "restSeconds": 14399
+    }
+  },
+  {
+    "req": "POST /api/plans",
+    "body": {
+      "title": "Past plan",
+      "items": [
+        {
+          "sourceType": "TASK",
+          "sourceId": 1
+        },
+        {
+          "sourceType": "HABIT",
+          "sourceId": 1
+        },
+        {
+          "sourceType": "LEARNING_RESOURCE",
+          "sourceId": 1
+        }
+      ],
+      "estimatedDurationMinutes": 60,
+      "startDateTime": "2026-09-25T16:15:38.507Z",
+      "endDateTime": "2026-09-25T18:15:38.507Z",
+      "priorityOrder": 1
+    },
+    "status": 201,
+    "resp": {
+      "id": 6,
+      "title": "Past plan",
+      "items": [
+        {
+          "id": 16,
+          "sourceType": "TASK",
+          "sourceId": 1,
+          "sourceTitle": "Write report",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 17,
+          "sourceType": "HABIT",
+          "sourceId": 1,
+          "sourceTitle": "Morning run",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 18,
+          "sourceType": "LEARNING_RESOURCE",
+          "sourceId": 1,
+          "sourceTitle": "Angular signals",
+          "sourceRemoved": false,
+          "done": false
+        }
+      ],
+      "estimatedDurationMinutes": 60,
+      "startDateTime": "2026-09-25T19:15:38.507+03:00",
+      "endDateTime": "2026-09-25T21:15:38.507+03:00",
+      "priorityOrder": 1,
+      "status": "COMPLETED",
+      "createdAt": "2026-09-26T00:15:38.544742506+03:00",
+      "doneItems": 0,
+      "totalItems": 3,
+      "progressPercent": 0,
+      "restSeconds": null
+    }
+  },
+  {
+    "req": "PUT /api/plans/6/items/17",
+    "body": {
+      "done": true
+    },
+    "status": 200,
+    "resp": {
+      "id": 6,
+      "title": "Past plan",
+      "items": [
+        {
+          "id": 16,
+          "sourceType": "TASK",
+          "sourceId": 1,
+          "sourceTitle": "Write report",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 17,
+          "sourceType": "HABIT",
+          "sourceId": 1,
+          "sourceTitle": "Morning run",
+          "sourceRemoved": false,
+          "done": true
+        },
+        {
+          "id": 18,
+          "sourceType": "LEARNING_RESOURCE",
+          "sourceId": 1,
+          "sourceTitle": "Angular signals",
+          "sourceRemoved": false,
+          "done": false
+        }
+      ],
+      "estimatedDurationMinutes": 60,
+      "startDateTime": "2026-09-25T19:15:38.507+03:00",
+      "endDateTime": "2026-09-25T21:15:38.507+03:00",
+      "priorityOrder": 1,
+      "status": "COMPLETED",
+      "createdAt": "2026-09-26T00:15:38.544743+03:00",
+      "doneItems": 1,
+      "totalItems": 3,
+      "progressPercent": 33,
+      "restSeconds": null
+    }
+  },
+  {
+    "req": "POST /api/tasks",
+    "body": {
+      "title": "Doomed task"
+    },
+    "status": 201,
+    "resp": {
+      "id": 4,
+      "title": "Doomed task",
+      "description": null,
+      "status": "TODO",
+      "priority": "MEDIUM",
+      "dueDate": null,
+      "createdAt": "2026-09-26T00:15:38.563556994+03:00",
+      "updatedAt": "2026-09-26T00:15:38.563556994+03:00",
+      "completedAt": null,
+      "archived": false,
+      "overdue": false
+    }
+  },
+  {
+    "req": "POST /api/plans",
+    "body": {
+      "title": "Removed source plan",
+      "items": [
+        {
+          "sourceType": "TASK",
+          "sourceId": 4
+        },
+        {
+          "sourceType": "HABIT",
+          "sourceId": 1
+        }
+      ],
+      "estimatedDurationMinutes": 30,
+      "startDateTime": "2026-09-25T20:15:38.507Z",
+      "endDateTime": "2026-09-26T05:15:38.507Z",
+      "priorityOrder": 5
+    },
+    "status": 201,
+    "resp": {
+      "id": 7,
+      "title": "Removed source plan",
+      "items": [
+        {
+          "id": 19,
+          "sourceType": "TASK",
+          "sourceId": 4,
+          "sourceTitle": "Doomed task",
+          "sourceRemoved": false,
+          "done": false
+        },
+        {
+          "id": 20,
+          "sourceType": "HABIT",
+          "sourceId": 1,
+          "sourceTitle": "Morning run",
+          "sourceRemoved": false,
+          "done": false
+        }
+      ],
+      "estimatedDurationMinutes": 30,
+      "startDateTime": "2026-09-25T23:15:38.507+03:00",
+      "endDateTime": "2026-09-26T08:15:38.507+03:00",
+      "priorityOrder": 5,
+      "status": "IN_PROGRESS",
+      "createdAt": "2026-09-26T00:15:38.570963382+03:00",
+      "doneItems": 0,
+      "totalItems": 2,
+      "progressPercent": 0,
+      "restSeconds": 28799
+    }
+  },
+  {
+    "req": "PUT /api/plans/7/items/19",
+    "body": {
+      "done": true
+    },
+    "status": 200,
+    "resp": {
+      "id": 7,
+      "title": "Removed source plan",
+      "items": [
+        {
+          "id": 19,
+          "sourceType": "TASK",
+          "sourceId": 4,
+          "sourceTitle": "Doomed task",
+          "sourceRemoved": false,
+          "done": true
+        },
+        {
+          "id": 20,
+          "sourceType": "HABIT",
+          "sourceId": 1,
+          "sourceTitle": "Morning run",
+          "sourceRemoved": false,
+          "done": false
+        }
+      ],
+      "estimatedDurationMinutes": 30,
+      "startDateTime": "2026-09-25T23:15:38.507+03:00",
+      "endDateTime": "2026-09-26T08:15:38.507+03:00",
+      "priorityOrder": 5,
+      "status": "IN_PROGRESS",
+      "createdAt": "2026-09-26T00:15:38.570963+03:00",
+      "doneItems": 1,
+      "totalItems": 2,
+      "progressPercent": 50,
+      "restSeconds": 28799
+    }
+  },
+  {
+    "req": "DELETE /api/tasks/4",
+    "status": 204,
+    "resp": null
+  }
+]

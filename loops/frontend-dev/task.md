@@ -6,15 +6,15 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **feature:** 001-quickflow
 - **loop:** frontend-dev
 - **mode:** dev
-- **stops_at:** US3
+- **stops_at:** US4
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260925T230953-105683
-- **runner_nonce:** 2eac9aea357a93f2b87ab20f
-- **orchestrator_step:** frontend-dev:US3
+- **runner_nonce:** 307c6b6ca30ef1366e52b229
+- **orchestrator_step:** frontend-dev:US4
 - **swagger:** loops/backend-dev/outputs/openapi.json
-- **current_step:** close phase-05
+- **current_step:** close phase-06
 
 ## Current orchestrator step
 - loop: frontend-dev
-- story: US3
-- goal: Track learning resources with milestones and notes
+- story: US4
+- goal: Build and follow Todo Plans

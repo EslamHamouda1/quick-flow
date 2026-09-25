@@ -1,0 +1,13 @@
+{
+  "at": "2026-09-25T21:16:14.532Z",
+  "ui": {
+    "status": "Not Started",
+    "rest": null,
+    "started": false
+  },
+  "notices": [],
+  "api": {
+    "start": "2026-09-26T00:18:00+03:00",
+    "status": "NOT_STARTED"
+  }
+}

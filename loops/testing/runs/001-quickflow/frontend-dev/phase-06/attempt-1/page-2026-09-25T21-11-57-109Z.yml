@@ -1,0 +1,52 @@
+- generic [ref=e3]:
+  - navigation "Main" [ref=e4]:
+    - generic [ref=e5]: QuickFlow
+    - link "Dashboard" [ref=e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - heading "Todo Plans" [level=1] [ref=e15]
+        - button "Create Plan" [ref=e16] [cursor=pointer]
+      - generic [ref=e22]:
+        - heading "Create Plan" [level=2] [ref=e23]
+        - generic [ref=e24]:
+          - generic [ref=e25]: Title
+          - textbox "Title" [ref=e26]
+        - generic [ref=e27]:
+          - generic [ref=e28]: Estimated duration (minutes)
+          - spinbutton "Estimated duration (minutes)" [ref=e29]
+        - generic [ref=e30]:
+          - generic [ref=e31]: Start
+          - textbox "Start" [ref=e32]
+        - generic [ref=e33]:
+          - generic [ref=e34]: End
+          - textbox "End" [ref=e35]
+        - generic [ref=e36]:
+          - generic [ref=e37]: Priority order (1 = highest)
+          - spinbutton "Priority order (1 = highest)" [ref=e38]
+        - generic [ref=e39]:
+          - heading "Items" [level=3] [ref=e40]
+          - generic [ref=e41]:
+            - group "Tasks" [ref=e42]:
+              - paragraph [ref=e44]: No tasks
+            - group "Habits" [ref=e45]:
+              - paragraph [ref=e47]: No active habits
+            - group "Learning" [ref=e48]:
+              - paragraph [ref=e50]: No learning cards
+        - generic [ref=e51]:
+          - button "Save" [ref=e52] [cursor=pointer]
+          - button "Cancel" [ref=e53] [cursor=pointer]
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: No plans yet
+        - button "Create Plan" [active] [ref=e20] [cursor=pointer]

@@ -1,0 +1,55 @@
+{
+  "cardGone": true,
+  "getStatus": 404,
+  "getBody": {
+    "detail": "Plan 3 not found",
+    "instance": "/api/plans/3",
+    "status": 404,
+    "title": "Not Found"
+  },
+  "listIds": [
+    4,
+    5,
+    8,
+    7,
+    1,
+    2,
+    6
+  ],
+  "task": {
+    "id": 1,
+    "title": "Write report",
+    "description": null,
+    "status": "DONE",
+    "priority": "MEDIUM",
+    "dueDate": null,
+    "createdAt": "2026-09-26T00:12:36.866625+03:00",
+    "updatedAt": "2026-09-26T00:15:13.906123+03:00",
+    "completedAt": "2026-09-26T00:14:30.849652+03:00",
+    "archived": false,
+    "overdue": false
+  },
+  "habit": {
+    "id": 1,
+    "name": "Morning run",
+    "description": null,
+    "frequency": "DAILY",
+    "createdAt": "2026-09-26T00:12:36.932911+03:00",
+    "active": true,
+    "completedToday": false,
+    "doneForCurrentPeriod": false,
+    "currentStreak": 0
+  },
+  "habitCompletions": [],
+  "card": {
+    "id": 1,
+    "title": "Angular signals",
+    "description": null,
+    "status": "NOT_STARTED",
+    "createdAt": "2026-09-26T00:12:36.975697+03:00",
+    "milestones": [],
+    "notes": [],
+    "milestonesDone": 0,
+    "milestonesTotal": 0
+  }
+}

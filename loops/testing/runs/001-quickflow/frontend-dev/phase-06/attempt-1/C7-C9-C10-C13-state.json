@@ -1,0 +1,269 @@
+{
+  "groups": [
+    "plans-active: Active & upcoming",
+    "plans-completed: History"
+  ],
+  "active": [
+    {
+      "id": "plan-4",
+      "title": "Prio one plan",
+      "status": "Not Started",
+      "progress": "0% · 0/3 items",
+      "priority": "Priority 1",
+      "rest": null,
+      "hasDelete": true,
+      "items": [
+        {
+          "id": "plan-item-10",
+          "text": "Task Write report",
+          "checkbox": false,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-11",
+          "text": "Habit Morning run",
+          "checkbox": false,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-12",
+          "text": "Learning Angular signals",
+          "checkbox": false,
+          "removedBadge": null
+        }
+      ]
+    },
+    {
+      "id": "plan-1",
+      "title": "Future plan",
+      "status": "Not Started",
+      "progress": "0% · 0/3 items",
+      "priority": "Priority 1",
+      "rest": null,
+      "hasDelete": true,
+      "items": [
+        {
+          "id": "plan-item-1",
+          "text": "Task Write report",
+          "checkbox": false,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-2",
+          "text": "Habit Morning run",
+          "checkbox": false,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-3",
+          "text": "Learning Angular signals",
+          "checkbox": false,
+          "removedBadge": null
+        }
+      ]
+    },
+    {
+      "id": "plan-3",
+      "title": "Prio two plan",
+      "status": "In Progress",
+      "progress": "0% · 0/3 items",
+      "priority": "Priority 2",
+      "rest": "2:59:46",
+      "hasDelete": true,
+      "items": [
+        {
+          "id": "plan-item-7",
+          "text": "Task Write report",
+          "checkbox": false,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-8",
+          "text": "Habit Morning run",
+          "checkbox": false,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-9",
+          "text": "Learning Angular signals",
+          "checkbox": false,
+          "removedBadge": null
+        }
+      ]
+    },
+    {
+      "id": "plan-5",
+      "title": "Prio three plan",
+      "status": "In Progress",
+      "progress": "0% · 0/3 items",
+      "priority": "Priority 3",
+      "rest": "3:59:46",
+      "hasDelete": true,
+      "items": [
+        {
+          "id": "plan-item-13",
+          "text": "Task Write report",
+          "checkbox": false,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-14",
+          "text": "Habit Morning run",
+          "checkbox": false,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-15",
+          "text": "Learning Angular signals",
+          "checkbox": false,
+          "removedBadge": null
+        }
+      ]
+    },
+    {
+      "id": "plan-7",
+      "title": "Removed source plan",
+      "status": "In Progress",
+      "progress": "50% · 1/2 items",
+      "priority": "Priority 5",
+      "rest": "7:59:46",
+      "hasDelete": true,
+      "items": [
+        {
+          "id": "plan-item-19",
+          "text": "Task Doomed task Removed",
+          "checkbox": true,
+          "removedBadge": "Removed"
+        },
+        {
+          "id": "plan-item-20",
+          "text": "Habit Morning run",
+          "checkbox": false,
+          "removedBadge": null
+        }
+      ]
+    }
+  ],
+  "completed": [
+    {
+      "id": "plan-2",
+      "title": "Running plan",
+      "status": "Completed",
+      "progress": "100% · 3/3 items",
+      "priority": "Priority 2",
+      "rest": null,
+      "hasDelete": true,
+      "items": [
+        {
+          "id": "plan-item-4",
+          "text": "Task Write report",
+          "checkbox": true,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-5",
+          "text": "Habit Morning run",
+          "checkbox": true,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-6",
+          "text": "Learning Angular signals",
+          "checkbox": true,
+          "removedBadge": null
+        }
+      ]
+    },
+    {
+      "id": "plan-6",
+      "title": "Past plan",
+      "status": "Completed",
+      "progress": "33% · 1/3 items",
+      "priority": "Priority 1",
+      "rest": null,
+      "hasDelete": true,
+      "items": [
+        {
+          "id": "plan-item-16",
+          "text": "Task Write report",
+          "checkbox": false,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-17",
+          "text": "Habit Morning run",
+          "checkbox": true,
+          "removedBadge": null
+        },
+        {
+          "id": "plan-item-18",
+          "text": "Learning Angular signals",
+          "checkbox": false,
+          "removedBadge": null
+        }
+      ]
+    }
+  ],
+  "apiAll": [
+    {
+      "id": 4,
+      "status": "NOT_STARTED",
+      "pct": 0,
+      "prio": 1,
+      "rest": null
+    },
+    {
+      "id": 1,
+      "status": "NOT_STARTED",
+      "pct": 0,
+      "prio": 1,
+      "rest": null
+    },
+    {
+      "id": 3,
+      "status": "IN_PROGRESS",
+      "pct": 0,
+      "prio": 2,
+      "rest": 10786
+    },
+    {
+      "id": 5,
+      "status": "IN_PROGRESS",
+      "pct": 0,
+      "prio": 3,
+      "rest": 14386
+    },
+    {
+      "id": 7,
+      "status": "IN_PROGRESS",
+      "pct": 50,
+      "prio": 5,
+      "rest": 28786
+    },
+    {
+      "id": 2,
+      "status": "COMPLETED",
+      "pct": 100,
+      "prio": 2,
+      "rest": 7095
+    },
+    {
+      "id": 6,
+      "status": "COMPLETED",
+      "pct": 33,
+      "prio": 1,
+      "rest": null
+    }
+  ],
+  "apiActiveOrder": [
+    4,
+    1,
+    3,
+    5,
+    7
+  ],
+  "apiCompletedOrder": [
+    2,
+    6
+  ]
+}

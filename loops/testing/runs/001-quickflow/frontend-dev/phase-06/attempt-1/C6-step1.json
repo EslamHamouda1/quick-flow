@@ -1,0 +1,26 @@
+{
+  "step": "tick task item 4",
+  "ui": {
+    "group": "plans-active",
+    "progress": "33% · 1/3 items",
+    "checks": [
+      "plan-item-done-4=true",
+      "plan-item-done-5=false",
+      "plan-item-done-6=false"
+    ]
+  },
+  "notices": [],
+  "api": {
+    "status": "IN_PROGRESS",
+    "progress": 33,
+    "items": [
+      "4:true",
+      "5:false",
+      "6:false"
+    ]
+  },
+  "task": {
+    "status": "DONE",
+    "completedAt": "2026-09-26T00:14:30.849652+03:00"
+  }
+}
