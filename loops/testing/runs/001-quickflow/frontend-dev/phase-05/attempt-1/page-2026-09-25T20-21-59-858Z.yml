@@ -1,0 +1,71 @@
+- generic [ref=f5e3]:
+  - navigation "Main" [ref=f5e4]:
+    - generic [ref=f5e5]: QuickFlow
+    - link "Dashboard" [ref=f5e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f5e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f5e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f5e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f5e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f5e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f5e12]:
+    - generic [ref=f5e13]:
+      - generic [ref=f5e14]:
+        - heading "Learning Resources" [level=1] [ref=f5e15]
+        - button "Add Learning Card" [ref=f5e16] [cursor=pointer]
+      - generic [ref=f5e17]:
+        - article [ref=f5e19]:
+          - generic [ref=f5e20]: Card B Title Only
+          - generic [ref=f5e22]:
+            - 'combobox "Status: Card B Title Only" [ref=f5e23]':
+              - option "Not Started" [selected]
+              - option "In Progress"
+              - option "Completed"
+            - generic [ref=f5e24]: 0/0
+          - generic [ref=f5e25]:
+            - button "Show details" [ref=f5e26] [cursor=pointer]
+            - button "Edit" [ref=f5e27] [cursor=pointer]
+            - button "Delete" [ref=f5e28] [cursor=pointer]
+        - article [ref=f5e30]:
+          - generic [ref=f5e31]:
+            - generic [ref=f5e32]: Card A Angular Signals
+            - generic [ref=f5e33]: angular.dev course
+          - generic [ref=f5e34]:
+            - 'combobox "Status: Card A Angular Signals" [ref=f5e35]':
+              - option "Not Started" [selected]
+              - option "In Progress"
+              - option "Completed"
+            - generic [ref=f5e36]: 0/1
+          - generic [ref=f5e37]:
+            - button "Hide details" [expanded] [active] [ref=f5e90] [cursor=pointer]
+            - button "Edit" [ref=f5e39] [cursor=pointer]
+            - button "Delete" [ref=f5e40] [cursor=pointer]
+          - generic [ref=f5e91]:
+            - generic [ref=f5e92]:
+              - heading "Milestones" [level=3] [ref=f5e93]
+              - list [ref=f5e94]:
+                - listitem [ref=f5e95]:
+                  - 'checkbox "Done: Finish module 1" [ref=f5e96]'
+                  - generic [ref=f5e97]: Finish module 1
+                  - generic [ref=f5e98]: Oct 15, 2026
+                  - button "Remove" [ref=f5e99] [cursor=pointer]
+              - generic [ref=f5e100]:
+                - textbox "Milestone title" [ref=f5e101]
+                - textbox "Target date" [ref=f5e102]
+                - button "Add milestone" [ref=f5e103] [cursor=pointer]
+            - generic [ref=f5e104]:
+              - heading "Notes" [level=3] [ref=f5e105]
+              - list [ref=f5e106]:
+                - listitem [ref=f5e107]:
+                  - generic [ref=f5e108]: Signals replace zone.js change detection
+                  - generic [ref=f5e109]: Sep 25, 2026, 11:20 PM
+                  - button "Remove" [ref=f5e110] [cursor=pointer]
+              - generic [ref=f5e111]:
+                - textbox "Note text" [ref=f5e112]:
+                  - /placeholder: Note
+                - button "Add note" [ref=f5e113] [cursor=pointer]

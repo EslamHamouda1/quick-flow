@@ -114,13 +114,13 @@ Playwright MCP checks, written from the acceptance criteria against the selector
 
 ### Tests for User Story 3 (contract first) ⚠️
 
-- [ ] T026 [US3] Check that the generated `LearningService` has `listLearningCards`, `createLearningCard`, `updateLearningCard`, `deleteLearningCard`, `addMilestone`, `updateMilestone`, `deleteMilestone`, `addNote`, `deleteNote`; check the Learning section of contracts/ui-contract.md covers AC-US3-1..9; raise a question for anything missing
+- [X] T026 [US3] Check that the generated `LearningService` has `listLearningCards`, `createLearningCard`, `updateLearningCard`, `deleteLearningCard`, `addMilestone`, `updateMilestone`, `deleteMilestone`, `addNote`, `deleteNote`; check the Learning section of contracts/ui-contract.md covers AC-US3-1..9; raise a question for anything missing
 
 ### Implementation for User Story 3
 
-- [ ] T027 [P] [US3] Create the card form component (title, description/source, field errors; edit also saves status) in frontend/src/app/pages/learning/card-form.ts (AC-US3-1, AC-US3-2)
-- [ ] T028 [P] [US3] Create the learning card component (title, status select saving via `updateLearningCard`, milestone count, expand toggle, milestone list with done checkbox/remove and add row, note list with time in the app zone/remove and add row, field errors per sub-form) in frontend/src/app/pages/learning/learning-card.ts (AC-US3-3..6, AC-US3-8)
-- [ ] T029 [US3] Implement the Learning Resources page (card grid, add flow also from `?add=1`, card delete, re-read after every change, empty state) in frontend/src/app/pages/learning/learning.page.ts (AC-US3-1, AC-US3-7, AC-US3-9)
+- [X] T027 [P] [US3] Create the card form component (title, description/source, field errors; edit also saves status) in frontend/src/app/pages/learning/card-form.ts (AC-US3-1, AC-US3-2)
+- [X] T028 [P] [US3] Create the learning card component (title, status select saving via `updateLearningCard`, milestone count, expand toggle, milestone list with done checkbox/remove and add row, note list with time in the app zone/remove and add row, field errors per sub-form) in frontend/src/app/pages/learning/learning-card.ts (AC-US3-3..6, AC-US3-8)
+- [X] T029 [US3] Implement the Learning Resources page (card grid, add flow also from `?add=1`, card delete, re-read after every change, empty state) in frontend/src/app/pages/learning/learning.page.ts (AC-US3-1, AC-US3-7, AC-US3-9)
 
 **Checkpoint**: US3 works on its own
 

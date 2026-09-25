@@ -1,0 +1,35 @@
+- generic [ref=f1e3]:
+  - navigation "Main" [ref=f1e4]:
+    - generic [ref=f1e5]: QuickFlow
+    - link "Dashboard" [ref=f1e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f1e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f1e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f1e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f1e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f1e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f1e12]:
+    - generic [ref=f1e13]:
+      - generic [ref=f1e14]:
+        - heading "Learning Resources" [level=1] [ref=f1e15]
+        - button "Add Learning Card" [ref=f1e16] [cursor=pointer]
+      - generic [ref=f1e18]:
+        - heading "Add Learning Card" [level=2] [ref=f1e19]
+        - generic [ref=f1e20]:
+          - generic [ref=f1e21]: Title
+          - textbox "Title" [ref=f1e22]
+          - generic [ref=f1e23]: size must be between 1 and 200
+        - generic [ref=f1e25]:
+          - generic [ref=f1e26]: Description / source
+          - textbox "Description / source" [ref=f1e27]
+        - generic [ref=f1e28]:
+          - button "Save" [active] [ref=f1e29] [cursor=pointer]
+          - button "Cancel" [ref=f1e30] [cursor=pointer]
+      - generic [ref=f1e32]:
+        - paragraph [ref=f1e33]: No learning cards yet
+        - button "Add Learning Card" [ref=f1e34] [cursor=pointer]

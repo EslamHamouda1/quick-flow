@@ -10,8 +10,8 @@
 | frontend-dev:001-quickflow:phase-02 | 2026-09-24T21:13:50+03:00 | 2026-09-24T21:38:52+03:00 | 0h25m02s | 0h13m13s | 6 | 2 | 300 | 8948976 | 57966 | 5.8937 | 310c03df-bd9c-4264-906b-a38eb53a11a2 32e8f7a6-395e-467b-9168-dc56e48069e8 fb0efe85-73a4-40b3-a70c-6a7301bf9140 9d5f214b-a6c1-4ee5-957a-97d1a4ba4b49 642ca420-711e-4d3c-8e59-db81d75ec35a 1eced14b-213f-4269-a35e-441c6e787cf5 | 642ca420-711e-4d3c-8e59-db81d75ec35a | 363039c | success |
 | frontend-dev:001-quickflow:phase-03 | 2026-09-24T21:59:36+03:00 | 2026-09-24T22:10:48+03:00 | 0h11m12s | 0h10m52s | 4 | 1 | 172 | 5803342 | 59105 | 4.2636 | 939faff4-63d2-4d1c-a494-eb746fcb8cbd 52a702ec-6d1e-4fe9-bde5-02c58e71b2ae 6b8917af-d3f7-4f88-b415-285f8904c22e 7a602e34-6d82-4d66-a645-167c6bf3dbdb | 6b8917af-d3f7-4f88-b415-285f8904c22e | 9a21140 | success |
 | frontend-dev:001-quickflow:phase-04 | 2026-09-24T22:28:53+03:00 | 2026-09-24T22:38:17+03:00 | 0h09m24s | 0h09m06s | 4 | 1 | 182 | 5902181 | 50791 | 3.9513 | a124cacf-1e84-4fb5-a5df-4d18276abc9c c284576f-d920-425b-adcc-d3ed4c04242d 939d5c41-e2c7-4f94-9a1a-ec2a3cf6cc88 00fbb766-5bd4-417f-9f49-0b075c3ace2d | 939d5c41-e2c7-4f94-9a1a-ec2a3cf6cc88 | 3855981 | success |
-| frontend-dev:001-quickflow:phase-05 | 2026-09-24T23:15:42+03:00 | 2026-09-24T23:19:44+03:00 | 0h04m02s | 0h02m15s | 2 | 1 | 34 | 1064410 | 12529 | 1.8682 | 50cfeb4a-229f-4b55-b58d-d91cc14ed0b6 74886349-0f64-42b9-a9ec-d94403a79c9d |  |  | error:success |
-| **Total** |  |  |  | 0h56m54s | 25 |  | 902 | 28700076 | 268921 | 21.5613 |  |  |  |  |
+| frontend-dev:001-quickflow:phase-05 | 2026-09-24T23:15:42+03:00 | 2026-09-25T23:23:39+03:00 | 24h07m57s | 0h14m37s | 6 | 1 | 208 | 6651670 | 57203 | 5.4725 | 50cfeb4a-229f-4b55-b58d-d91cc14ed0b6 74886349-0f64-42b9-a9ec-d94403a79c9d 5f6c74f7-9d5a-4eba-93d4-0563314465c7 e0cc4391-f2f3-41c1-ba3f-8fbeecb115f0 5708449e-9a3e-4294-90b8-91ec1b212616 2437387a-d507-4172-9849-297f8a104460 | 5708449e-9a3e-4294-90b8-91ec1b212616 |  | success |
+| **Total** |  |  |  | 1h09m16s | 29 |  | 1076 | 34287336 | 313595 | 25.1656 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -78,3 +78,12 @@
 - 2026-09-24T22:38:09+03:00 001-quickflow phase-04: close check OK (T021–T025 [X] in tasks.md, verdict pass attempt 1); T021–T025 [~] → [x] in phase-04.md and tasks.json; status passed → done
 - 2026-09-24T23:17:47+03:00 001-quickflow phase-05: wrote phase-05-review.md (goal, tasks, ACs, files, planned checks, risks, assumptions FA-25..FA-29, no open questions, swagger input, contract differences: none for US3 apart from undeclared error responses); status planned → awaiting_approval
 - 2026-09-24T23:18:00+03:00 gate 001-quickflow phase-05: approved (auto)
+- 2026-09-25T23:14:12+03:00 001-quickflow phase-05: resumed in_progress (previous implement session ended without logging); tasks.md Phase 5 matches phase-05.md (no sync changes); no reviewer notes; no unchecked checklist items
+- 2026-09-25T23:14:12+03:00 001-quickflow phase-05: generate_client re-run (LearningService + learning models present)
+- 2026-09-25T23:14:12+03:00 001-quickflow phase-05: T026 [~] LearningService signatures, models and LearningStatus names checked against research.md R-2 (already recorded); ui-contract Learning section covers AC-US3-1..9, no question
+- 2026-09-25T23:14:12+03:00 001-quickflow phase-05: T027 [~] pages/learning/card-form.ts (from the previous session) checked complete: title, description/source, field errors title/description/status, empty description → null
+- 2026-09-25T23:14:12+03:00 001-quickflow phase-05: T028 [~] wrote pages/learning/learning-card.ts (status select, milestone count, expand, milestone rows/add, note rows/add with app-zone time, sub-form field errors; done inline, only [P] task left)
+- 2026-09-25T23:14:12+03:00 001-quickflow phase-05: T029 [~] rewrote pages/learning/learning.page.ts (card grid, create/edit incl. ?add=1 with replaceUrl, expanded set kept across re-reads, card delete, re-read after every change, empty state)
+- 2026-09-25T23:14:12+03:00 001-quickflow phase-05: T026–T029 [~] in phase-05.md and tasks.json, [X] in tasks.md; ui-url.md unchanged; npm run build OK (RUNS/phase-05-build.log); status in_progress → ready_for_test
+- 2026-09-25T23:22:56+03:00 test 001-quickflow phase-05 attempt 1: pass (verified_by 5708449e-9a3e-4294-90b8-91ec1b212616)
+- 2026-09-25T23:23:31+03:00 001-quickflow phase-05: close check OK (T026–T029 [X] in tasks.md, verdict pass attempt 1); T026–T029 [~] → [x] in phase-05.md and tasks.json; status passed → done

@@ -1,0 +1,27 @@
+
+> frontend@0.0.0 build
+> ng build
+
+❯ Building...
+✔ Building...
+Initial chunk files | Names          |  Raw size | Estimated transfer size
+main-52RBBQUF.js    | main           | 150.80 kB |                33.62 kB
+chunk-C3FYi57Z.js   | -              | 137.36 kB |                40.78 kB
+styles-MNYWPIBD.css | styles         |   2.53 kB |               729 bytes
+
+                    | Initial total  | 290.69 kB |                75.13 kB
+
+Lazy chunk files    | Names          |  Raw size | Estimated transfer size
+chunk-Bk9XEiAn.js   | learning-page  |  16.75 kB |                 4.61 kB
+chunk-CXU2452Y.js   | tasks-page     |  15.01 kB |                 3.98 kB
+chunk-Dr1CzFrD.js   | habits-page    |  10.24 kB |                 3.14 kB
+chunk-CqB2sOkI.js   | -              |   1.91 kB |               883 bytes
+chunk-BkuKDdgh.js   | -              | 361 bytes |               361 bytes
+chunk-CLfnWLtX.js   | dashboard-page | 343 bytes |               343 bytes
+chunk-bCgOGsN0.js   | settings-page  | 341 bytes |               341 bytes
+chunk-Bi85KrpZ.js   | plans-page     | 340 bytes |               340 bytes
+
+Application bundle generation complete. [1.766 seconds] - 2026-09-25T20:12:51.614Z
+
+Output location: /home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/dist/frontend
+

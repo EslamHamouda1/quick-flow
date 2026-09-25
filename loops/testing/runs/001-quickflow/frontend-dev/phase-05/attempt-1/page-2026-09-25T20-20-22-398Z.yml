@@ -1,0 +1,74 @@
+- generic [ref=f4e3]:
+  - navigation "Main" [ref=f4e4]:
+    - generic [ref=f4e5]: QuickFlow
+    - link "Dashboard" [ref=f4e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f4e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f4e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f4e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f4e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f4e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f4e12]:
+    - status [ref=f4e65]:
+      - generic [ref=f4e66]: Milestone added
+      - button "Dismiss" [ref=f4e67] [cursor=pointer]: ×
+    - generic [ref=f4e13]:
+      - generic [ref=f4e14]:
+        - heading "Learning Resources" [level=1] [ref=f4e15]
+        - button "Add Learning Card" [ref=f4e16] [cursor=pointer]
+      - generic [ref=f4e17]:
+        - article [ref=f4e19]:
+          - generic [ref=f4e20]: Card B Title Only
+          - generic [ref=f4e22]:
+            - 'combobox "Status: Card B Title Only" [ref=f4e23]':
+              - option "Not Started" [selected]
+              - option "In Progress"
+              - option "Completed"
+            - generic [ref=f4e24]: 0/0
+          - generic [ref=f4e25]:
+            - button "Show details" [ref=f4e26] [cursor=pointer]
+            - button "Edit" [ref=f4e27] [cursor=pointer]
+            - button "Delete" [ref=f4e28] [cursor=pointer]
+        - article [ref=f4e30]:
+          - generic [ref=f4e31]:
+            - generic [ref=f4e32]: Card A Angular Signals
+            - generic [ref=f4e33]: angular.dev course
+          - generic [ref=f4e34]:
+            - 'combobox "Status: Card A Angular Signals" [ref=f4e35]':
+              - option "Not Started" [selected]
+              - option "In Progress"
+              - option "Completed"
+            - generic [ref=f4e36]: 0/2
+          - generic [ref=f4e37]:
+            - button "Hide details" [expanded] [ref=f4e38] [cursor=pointer]
+            - button "Edit" [ref=f4e39] [cursor=pointer]
+            - button "Delete" [ref=f4e40] [cursor=pointer]
+          - generic [ref=f4e41]:
+            - generic [ref=f4e42]:
+              - heading "Milestones" [level=3] [ref=f4e43]
+              - list [ref=f4e59]:
+                - listitem [ref=f4e60]:
+                  - 'checkbox "Done: Finish module 1" [ref=f4e61]'
+                  - generic [ref=f4e62]: Finish module 1
+                  - generic [ref=f4e63]: Oct 15, 2026
+                  - button "Remove" [ref=f4e64] [cursor=pointer]
+                - listitem [ref=f4e68]:
+                  - 'checkbox "Done: Build a sample app" [ref=f4e69]'
+                  - generic [ref=f4e70]: Build a sample app
+                  - button "Remove" [ref=f4e71] [cursor=pointer]
+              - generic [ref=f4e45]:
+                - textbox "Milestone title" [ref=f4e46]
+                - textbox "Target date" [ref=f4e47]
+                - button "Add milestone" [ref=f4e48] [cursor=pointer]
+            - generic [ref=f4e49]:
+              - heading "Notes" [level=3] [ref=f4e50]
+              - paragraph [ref=f4e51]: No notes yet
+              - generic [ref=f4e52]:
+                - textbox "Note text" [ref=f4e53]:
+                  - /placeholder: Note
+                - button "Add note" [ref=f4e54] [cursor=pointer]
