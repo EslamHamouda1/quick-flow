@@ -1,0 +1,1477 @@
+== R1-C1 api-docs HTTP 200 application/json
+== R1-C2 swagger-ui HTTP 200 text/html
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 69
+Date: Sat, 26 Sep 2026 14:25:40 GMT
+
+{"timeZone":"Africa/Cairo","now":"2026-09-26T17:25:40.8599828+03:00"}
+== R2-C1 app-info HTTP 200 application/json
+HTTP/1.1 404 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:25:40 GMT
+
+{"timestamp":"2026-09-26T14:25:40.866Z","status":404,"error":"Not Found","path":"/api/does-not-exist"}
+== R2-C3 does-not-exist HTTP 404
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 263
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+
+{"id":1,"title":"R3 C1 full","description":"desc one","status":"TODO","priority":"HIGH","dueDate":"2026-10-01","createdAt":"2026-09-26T17:27:06.910766598+03:00","updatedAt":"2026-09-26T17:27:06.910766598+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C1 POST full HTTP 201
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 257
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+
+{"id":1,"title":"R3 C1 full","description":"desc one","status":"TODO","priority":"HIGH","dueDate":"2026-10-01","createdAt":"2026-09-26T17:27:06.910767+03:00","updatedAt":"2026-09-26T17:27:06.910767+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C1 GET /1 HTTP 200
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 257
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+
+{"id":2,"title":"R3 C1 title only","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:27:06.938875674+03:00","updatedAt":"2026-09-26T17:27:06.938875674+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C1 POST title-only HTTP 201
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"},{"field":"title","message":"must not be blank"}]}
+== R3-C2 POST title empty HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+== R3-C2 POST title blank HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+== R3-C2 POST title missing HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"}]}
+== R3-C2 POST title 201 HTTP 400
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 441
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+
+{"id":3,"title":"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:27:06.955431743+03:00","updatedAt":"2026-09-26T17:27:06.955431743+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C2 POST title 200 HTTP 201
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"},{"field":"title","message":"size must be between 1 and 200"}]}
+== R3-C2 PUT /1 title empty HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"}]}
+== R3-C2 PUT /1 title 201 HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"description","message":"size must be between 0 and 2000"}]}
+== R3-C3 POST desc 2001 HTTP 400
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 2247
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+
+{"id":4,"title":"desc2000","description":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD","status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:27:06.964407922+03:00","updatedAt":"2026-09-26T17:27:06.964407922+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C3 POST desc 2000 HTTP 201
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"description","message":"size must be between 0 and 2000"}]}
+== R3-C3 PUT /1 desc 2001 HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must be one of [TODO, IN_PROGRESS, DONE]"}]}
+== R3-C4 POST status FOO HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"priority","message":"must be one of [LOW, MEDIUM, HIGH]"}]}
+== R3-C4 POST priority FOO HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must be one of [TODO, IN_PROGRESS, DONE]"}]}
+== R3-C4 PUT /1 status FOO HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"priority","message":"must be one of [LOW, MEDIUM, HIGH]"}]}
+== R3-C4 PUT /1 priority URGENT HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must not be null"}]}
+== R3-C4 PUT /1 status null HTTP 400
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 257
+Date: Sat, 26 Sep 2026 14:27:06 GMT
+
+{"id":1,"title":"R3 C1 full","description":"desc one","status":"TODO","priority":"HIGH","dueDate":"2026-10-01","createdAt":"2026-09-26T17:27:06.910767+03:00","updatedAt":"2026-09-26T17:27:06.910767+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C4 GET /1 after HTTP 200
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 255
+Date: Sat, 26 Sep 2026 14:27:17 GMT
+
+{"id":5,"title":"R3 C5 edit me","description":"before","status":"TODO","priority":"LOW","dueDate":null,"createdAt":"2026-09-26T17:27:17.707610848+03:00","updatedAt":"2026-09-26T17:27:17.707610848+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C5 POST HTTP 201
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 258
+Date: Sat, 26 Sep 2026 14:27:17 GMT
+
+{"id":6,"title":"R3 C6 complete me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:27:17.710072088+03:00","updatedAt":"2026-09-26T17:27:17.710072088+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C6 POST HTTP 201
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 255
+Date: Sat, 26 Sep 2026 14:27:17 GMT
+
+{"id":7,"title":"R3 C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:27:17.71168285+03:00","updatedAt":"2026-09-26T17:27:17.71168285+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C7 POST HTTP 201
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 265
+Date: Sat, 26 Sep 2026 14:27:17 GMT
+
+{"id":8,"title":"R3 C8 qwdel token","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-26T17:27:17.713165001+03:00","updatedAt":"2026-09-26T17:27:17.713165001+03:00","completedAt":null,"archived":false,"overdue":true}
+== R3-C8 POST due yesterday HTTP 201
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 266
+Date: Sat, 26 Sep 2026 14:27:25 GMT
+
+{"id":5,"title":"R3 C5 edited","description":"after","status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-10-03","createdAt":"2026-09-26T17:27:17.707611+03:00","updatedAt":"2026-09-26T17:27:25.399701491+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C5 PUT /5 HTTP 200
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 263
+Date: Sat, 26 Sep 2026 14:27:25 GMT
+
+{"id":5,"title":"R3 C5 edited","description":"after","status":"IN_PROGRESS","priority":"HIGH","dueDate":"2026-10-03","createdAt":"2026-09-26T17:27:17.707611+03:00","updatedAt":"2026-09-26T17:27:25.399701+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C5 GET /5 HTTP 200
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 288
+Date: Sat, 26 Sep 2026 14:27:25 GMT
+
+{"id":6,"title":"R3 C6 complete me","description":null,"status":"DONE","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:27:17.710072+03:00","updatedAt":"2026-09-26T17:27:25.407574709+03:00","completedAt":"2026-09-26T17:27:25.407574709+03:00","archived":false,"overdue":false}
+== R3-C6 complete /6 HTTP 200
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 282
+Date: Sat, 26 Sep 2026 14:27:25 GMT
+
+{"id":6,"title":"R3 C6 complete me","description":null,"status":"DONE","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:27:17.710072+03:00","updatedAt":"2026-09-26T17:27:25.407575+03:00","completedAt":"2026-09-26T17:27:25.407575+03:00","archived":false,"overdue":false}
+== R3-C6 GET /6 HTTP 200
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 255
+Date: Sat, 26 Sep 2026 14:27:25 GMT
+
+{"id":6,"title":"R3 C6 complete me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:27:17.710072+03:00","updatedAt":"2026-09-26T17:27:25.410686307+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C6 PUT /6 TODO HTTP 200
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 253
+Date: Sat, 26 Sep 2026 14:27:25 GMT
+
+{"id":7,"title":"R3 C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:27:17.711683+03:00","updatedAt":"2026-09-26T17:27:25.412347419+03:00","completedAt":null,"archived":true,"overdue":false}
+== R3-C7 archive /7 HTTP 200
+== R3-C7 (list fetch below)
+== R3-C7 GET /api/tasks ids after archive: [8,6,5,4,3,2,1]
+== R3-C7 GET ?archived=true ids: [7]
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 254
+Date: Sat, 26 Sep 2026 14:27:41 GMT
+
+{"id":7,"title":"R3 C7 archive me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:27:17.711683+03:00","updatedAt":"2026-09-26T17:27:41.236119629+03:00","completedAt":null,"archived":false,"overdue":false}
+== R3-C7 restore /7 HTTP 200
+== R3-C7 GET /api/tasks ids after restore: [8,7,6,5,4,3,2,1]
+== R3-C7 GET ?archived=true ids after restore: []
+== R3-C8 overdue ids before delete: [8]
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 14:27:41 GMT
+
+
+== R3-C8 DELETE /8 HTTP 204
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:41 GMT
+
+{"detail":"Task 8 not found","instance":"/api/tasks/8","status":404,"title":"Not Found"}
+== R3-C8 GET /8 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:41 GMT
+
+{"detail":"Task 8 not found","instance":"/api/tasks/8","status":404,"title":"Not Found"}
+== R3-C8 PUT /8 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:41 GMT
+
+{"detail":"Task 8 not found","instance":"/api/tasks/8/complete","status":404,"title":"Not Found"}
+== R3-C8 complete /8 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:41 GMT
+
+{"detail":"Task 8 not found","instance":"/api/tasks/8/archive","status":404,"title":"Not Found"}
+== R3-C8 archive /8 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:41 GMT
+
+{"detail":"Task 8 not found","instance":"/api/tasks/8/restore","status":404,"title":"Not Found"}
+== R3-C8 restore /8 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:41 GMT
+
+{"detail":"Task 8 not found","instance":"/api/tasks/8","status":404,"title":"Not Found"}
+== R3-C8 DELETE /8 again HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:27:41 GMT
+
+{"detail":"Task 999999 not found","instance":"/api/tasks/999999","status":404,"title":"Not Found"}
+== R3-C8 GET /999999 HTTP 404
+== R3-C8 default list ids: [7,6,5,4,3,2,1]
+== R3-C8 archived ids: []
+== R3-C8 ?q=qwdel ids: []
+== R3-C8 overdue ids after delete: []
+== R3-C9 POST 201
+== R3-C9 POST 201
+== R3-C9 POST 201
+== R3-C9 POST 201
+== R3-C10 POST a 201
+== R3-C10 POST b 201
+== R3-C10 POST c 201
+== R3-C10 POST d 201
+== R3-C10 POST e 201
+== R3-C10 POST f 201
+== R3-C9 q=zyxqn: ["Mixed ZyXqN case","zyxqn lower","Report ZYXQn alpha"]
+== R3-C9 q=ZYXQN: ["Mixed ZyXqN case","zyxqn lower","Report ZYXQn alpha"]
+== R3-C9 q=yxqn: ["Mixed ZyXqN case","zyxqn lower","Report ZYXQn alpha"]
+== R3-C10 status=TODO: ["f","e","c","a"]
+== R3-C10 priority=HIGH: ["e","d","b","a"]
+== R3-C10 TODO+HIGH: ["e","a"]
+== R3-C10 dueFrom d+2 dueTo d+3: ["f","d","b"]
+== R3-C10 dueFrom d+3: ["f","c","b"]
+== R3-C10 dueTo d+2: ["d","a"]
+== R3-C10 HIGH dueFrom d+2: ["d","b"]
+== R3-C10 sort dueDate asc: [["a","2026-09-27"],["d","2026-09-28"],["b","2026-09-29"],["f","2026-09-29"],["c","2026-10-01"],["e",null]]
+== R3-C10 sort dueDate desc: [["c","2026-10-01"],["f","2026-09-29"],["b","2026-09-29"],["d","2026-09-28"],["a","2026-09-27"],["e",null]]
+== R3-C10 sort createdAt asc: ["a","b","c","d","e","f"]
+== R3-C10 sort createdAt desc: ["f","e","d","c","b","a"]
+== R3-C10 no sort: ["f","e","d","c","b","a"]
+== R3-C10 TODO sort dueDate asc: [["a","2026-09-27"],["f","2026-09-29"],["c","2026-10-01"],["e",null]]
+== R3-C11 POST o1 201
+== R3-C11 POST o2 201
+== R3-C11 POST n1 201
+== R3-C11 POST n2 201
+== R3-C11 POST n3 201
+== R3-C11 POST n4 201
+== R3-C11 POST n5 201
+== R3-C11 ids: [[25,"C11 n5"],[24,"C11 n4"],[23,"C11 n3"],[22,"C11 n2"],[21,"C11 n1"],[20,"C11 o2"],[19,"C11 o1"]]
+== R3-C11 archive n3 (23) 200
+== R3-C11 GET /overdue: [[20,"C11 o2","2026-09-22","IN_PROGRESS",false,true],[19,"C11 o1","2026-09-25","TODO",false,true]]
+== R3-C11 GET 19 C11 o1 overdue=true
+== R3-C11 GET 20 C11 o2 overdue=true
+== R3-C11 GET 21 C11 n1 overdue=false
+== R3-C11 GET 22 C11 n2 overdue=false
+== R3-C11 GET 23 C11 n3 overdue=false
+== R3-C11 GET 24 C11 n4 overdue=false
+== R3-C11 GET 25 C11 n5 overdue=false
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 211
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+
+{"id":1,"name":"R4 C1 daily","description":"drink water","frequency":"DAILY","createdAt":"2026-09-26T17:28:58.690556246+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R4-C1 POST daily HTTP 201
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 204
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+
+{"id":2,"name":"R4 C1 weekly","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T17:28:58.699759988+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R4-C1 POST weekly HTTP 201
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 208
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+
+{"id":1,"name":"R4 C1 daily","description":"drink water","frequency":"DAILY","createdAt":"2026-09-26T17:28:58.690556+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R4-C1 GET /1 HTTP 200
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 200
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+
+{"id":2,"name":"R4 C1 weekly","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T17:28:58.69976+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R4-C1 GET /2 HTTP 200
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"name","message":"size must be between 1 and 150"},{"field":"name","message":"must not be blank"}]}
+== R4-C2 POST name empty HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"name","message":"must not be blank"}]}
+== R4-C2 POST name blank HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"name","message":"must not be blank"}]}
+== R4-C2 POST name missing HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"name","message":"size must be between 1 and 150"}]}
+== R4-C2 POST name 151 HTTP 400
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 341
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+
+{"id":3,"name":"NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN","description":null,"frequency":"DAILY","createdAt":"2026-09-26T17:28:58.710782138+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R4-C2 POST name 150 HTTP 201
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/habits/1","status":400,"title":"Bad Request","errors":[{"field":"name","message":"must not be blank"},{"field":"name","message":"size must be between 1 and 150"}]}
+== R4-C2 PUT /1 name empty HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/habits/1","status":400,"title":"Bad Request","errors":[{"field":"name","message":"size must be between 1 and 150"}]}
+== R4-C2 PUT /1 name 151 HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"description","message":"size must be between 0 and 2000"}]}
+== R4-C3 POST desc 2001 HTTP 400
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 2199
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+
+{"id":4,"name":"h desc2000","description":"DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD","frequency":"DAILY","createdAt":"2026-09-26T17:28:58.714947968+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R4-C3 POST desc 2000 HTTP 201
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"frequency","message":"must not be null"}]}
+== R4-C3 POST freq missing HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:28:58 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"frequency","message":"must be one of [DAILY, WEEKLY]"}]}
+== R4-C3 POST freq MONTHLY HTTP 400
+== R4 POST C4a 201
+== R4 POST C4b 201
+== R4 POST C4c 201
+== R4 POST C7a 201
+== R4 POST C7gap 201
+== R4 POST C8a 201
+== R4 POST C8sun 201
+== R4 POST C10 201
+== R4 POST C11 201
+== R4 POST C12 201
+== R4 habit ids: [[1,"R4 C1 dail"],[2,"R4 C1 week"],[3,"NNNNNNNNNN"],[4,"h desc2000"],[5,"R4 C4 a"],[6,"R4 C4 b"],[7,"R4 C4 c"],[8,"R4 C7 a"],[9,"R4 C7 gap"],[10,"R4 C8 a"],[11,"R4 C8 sun"],[12,"R4 C10"],[13,"R4 C11"],[14,"R4 C12"]]
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 100
+Date: Sat, 26 Sep 2026 14:29:14 GMT
+
+{"id":1,"habitId":5,"completionDate":"2026-09-26","createdAt":"2026-09-26T17:29:14.868774447+03:00"}
+== R4-C4 complete /5 no body HTTP 201
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 99
+Date: Sat, 26 Sep 2026 14:29:14 GMT
+
+{"id":2,"habitId":6,"completionDate":"2026-09-26","createdAt":"2026-09-26T17:29:14.87454222+03:00"}
+== R4-C4 complete /6 {} HTTP 201
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 100
+Date: Sat, 26 Sep 2026 14:29:14 GMT
+
+{"id":3,"habitId":7,"completionDate":"2026-09-26","createdAt":"2026-09-26T17:29:14.877224153+03:00"}
+== R4-C4 complete /7 date today HTTP 201
+[{"id":1,"habitId":5,"completionDate":"2026-09-26","createdAt":"2026-09-26T17:29:14.868774+03:00"}]
+== R4-C4 GET /5/completions HTTP 200
+[{"id":2,"habitId":6,"completionDate":"2026-09-26","createdAt":"2026-09-26T17:29:14.874542+03:00"}]
+== R4-C4 GET /6/completions HTTP 200
+[{"id":3,"habitId":7,"completionDate":"2026-09-26","createdAt":"2026-09-26T17:29:14.877224+03:00"}]
+== R4-C4 GET /7/completions HTTP 200
+HTTP/1.1 409 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:29:14 GMT
+
+{"detail":"Habit 5 is already complete for 2026-09-26","instance":"/api/habits/5/completions","status":409,"title":"Conflict"}
+== R4-C5 complete /5 again no body HTTP 409
+HTTP/1.1 409 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:29:14 GMT
+
+{"detail":"Habit 5 is already complete for 2026-09-26","instance":"/api/habits/5/completions","status":409,"title":"Conflict"}
+== R4-C5 complete /5 again date today HTTP 409
+== R4-C5 complete /5 yesterday HTTP 201
+HTTP/1.1 409 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:29:14 GMT
+
+{"detail":"Habit 5 is already complete for 2026-09-25","instance":"/api/habits/5/completions","status":409,"title":"Conflict"}
+== R4-C5 complete /5 yesterday again HTTP 409
+[{"id":1,"habitId":5,"completionDate":"2026-09-26","createdAt":"2026-09-26T17:29:14.868774+03:00"},{"id":4,"habitId":5,"completionDate":"2026-09-25","createdAt":"2026-09-26T17:29:14.890226+03:00"}]
+== R4-C5 GET /5/completions HTTP 200
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:29:14 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/habits/6/completions","status":400,"title":"Bad Request","errors":[{"field":"date","message":"must not be in the future"}]}
+== R4-C6 complete /6 tomorrow HTTP 400
+[{"id":2,"habitId":6,"completionDate":"2026-09-26","createdAt":"2026-09-26T17:29:14.874542+03:00"}]
+== R4-C6 GET /6/completions HTTP 200
+== R4-C7 fresh habit 8 R4 C7 a freq=DAILY completedToday=false done=false streak=0
+== R4-C7 /8 complete 09-25 201
+== R4-C7 /8 complete 09-24 201
+== R4-C7 /9 complete 09-25 201
+== R4-C7 /9 complete 09-23 201
+== R4-C8 /10 complete 09-21 201
+== R4-C8 /10 complete 09-14 201
+== R4-C8 /10 complete 09-07 201
+== R4-C8 /11 complete 09-20 last Sunday 201
+== R4-C7 after yesterday+today-2 habit 8 completedToday=false done=false streak=2
+== R4-C7 /8 complete today 201
+== R4-C7/C8 now habit 8 R4 C7 a freq=DAILY completedToday=true done=true streak=3
+== R4-C7/C8 now habit 9 R4 C7 gap freq=DAILY completedToday=false done=false streak=1
+== R4-C7/C8 now habit 10 R4 C8 a freq=WEEKLY completedToday=false done=true streak=3
+== R4-C7/C8 now habit 11 R4 C8 sun freq=WEEKLY completedToday=false done=false streak=1
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 208
+Date: Sat, 26 Sep 2026 14:29:53 GMT
+
+{"id":1,"name":"R4 C9 renamed","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T17:28:58.690556+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R4-C9 PUT /1 HTTP 200
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 208
+Date: Sat, 26 Sep 2026 14:29:53 GMT
+
+{"id":1,"name":"R4 C9 renamed","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T17:28:58.690556+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R4-C9 GET /1 HTTP 200
+== R4-C10 /12 complete yesterday 201
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 195
+Date: Sat, 26 Sep 2026 14:29:53 GMT
+
+{"id":12,"name":"R4 C10","description":null,"frequency":"DAILY","createdAt":"2026-09-26T17:29:07.50404+03:00","active":false,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":1}
+== R4-C10 deactivate /12 HTTP 200
+== R4-C10 ?active=true has 12: false
+== R4-C10 ?active=false ids: [12]
+== R4-C10 all has 12: true
+[{"id":14,"habitId":12,"completionDate":"2026-09-25","createdAt":"2026-09-26T17:29:53.793099+03:00"}]
+== R4-C10 GET /12/completions HTTP 200
+HTTP/1.1 409 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:29:53 GMT
+
+{"detail":"Habit 12 is inactive","instance":"/api/habits/12/completions","status":409,"title":"Conflict"}
+== R4-C10 complete inactive /12 HTTP 409
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 194
+Date: Sat, 26 Sep 2026 14:29:53 GMT
+
+{"id":12,"name":"R4 C10","description":null,"frequency":"DAILY","createdAt":"2026-09-26T17:29:07.50404+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":1}
+== R4-C10 activate /12 HTTP 200
+== R4-C10 ?active=true has 12 after activate: true
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 102
+Date: Sat, 26 Sep 2026 14:29:53 GMT
+
+{"id":15,"habitId":12,"completionDate":"2026-09-26","createdAt":"2026-09-26T17:29:53.943759792+03:00"}
+== R4-C10 complete /12 after activate HTTP 201
+== R4-C11 /13 complete today 201
+== R4-C11 /13 complete yesterday 201
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+
+== R4-C11 DELETE /13 HTTP 204
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+{"detail":"Habit 13 not found","instance":"/api/habits/13","status":404,"title":"Not Found"}
+== R4-C11 GET /13 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+{"detail":"Habit 13 not found","instance":"/api/habits/13/completions","status":404,"title":"Not Found"}
+== R4-C11 GET /13/completions HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+{"detail":"Habit 13 not found","instance":"/api/habits/13","status":404,"title":"Not Found"}
+== R4-C11 PUT /13 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+{"detail":"Habit 13 not found","instance":"/api/habits/13/deactivate","status":404,"title":"Not Found"}
+== R4-C11 deactivate /13 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+{"detail":"Habit 13 not found","instance":"/api/habits/13/activate","status":404,"title":"Not Found"}
+== R4-C11 activate /13 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+{"detail":"Habit 13 not found","instance":"/api/habits/13/completions","status":404,"title":"Not Found"}
+== R4-C11 complete /13 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+{"detail":"Habit 13 not found","instance":"/api/habits/13","status":404,"title":"Not Found"}
+== R4-C11 DELETE /13 again HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+{"detail":"Habit 999999 not found","instance":"/api/habits/999999","status":404,"title":"Not Found"}
+== R4-C11 GET /999999 HTTP 404
+== R4-C11 a list contains 13: false
+== R4-C11 a list contains 13: false
+== R4-C11 a list contains 13: false
+== R4-C12 /14 complete today 201
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+
+== R4-C12 DELETE /14/completions/2026-09-26 HTTP 204
+[]
+== R4-C12 GET /14/completions HTTP 200
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:04 GMT
+
+{"detail":"Habit 14 has no completion for 2026-09-26","instance":"/api/habits/14/completions/2026-09-26","status":404,"title":"Not Found"}
+== R4-C12 DELETE again HTTP 404
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 198
+Date: Sat, 26 Sep 2026 14:30:26 GMT
+
+{"id":1,"title":"R5 C1 Spring book","description":"ch 1-5","status":"NOT_STARTED","createdAt":"2026-09-26T17:30:26.759926249+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C1 POST HTTP 201
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 195
+Date: Sat, 26 Sep 2026 14:30:26 GMT
+
+{"id":1,"title":"R5 C1 Spring book","description":"ch 1-5","status":"NOT_STARTED","createdAt":"2026-09-26T17:30:26.759926+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C1 GET /1 HTTP 200
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 193
+Date: Sat, 26 Sep 2026 14:30:26 GMT
+
+{"id":2,"title":"R5 C1 title only","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:30:26.767211502+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C1 POST title-only HTTP 201
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:26 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"},{"field":"title","message":"size must be between 1 and 200"}]}
+== R5-C2 POST title empty HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:26 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+== R5-C2 POST title blank HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:26 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+== R5-C2 POST title missing HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:26 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards/1","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"},{"field":"title","message":"size must be between 1 and 200"}]}
+== R5-C2 PUT /1 title empty HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:26 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"}]}
+== R5-C3 POST title 201 HTTP 400
+== R5-C3 POST title 200 HTTP 201
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:26 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"description","message":"size must be between 0 and 2000"}]}
+== R5-C3 POST desc 2001 HTTP 400
+== R5-C3 POST desc 2000 HTTP 201
+== R5-C3 GET 3 title len 200 desc len 0
+== R5-C3 GET 4 title len 7 desc len 2000
+{"id":1,"title":"R5 C4 t1","description":"d1","status":"IN_PROGRESS","createdAt":"2026-09-26T17:30:26.759926+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C4 PUT IN_PROGRESS HTTP 200
+{"id":1,"title":"R5 C4 t1","description":"d1","status":"IN_PROGRESS","createdAt":"2026-09-26T17:30:26.759926+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C4 GET after IN_PROGRESS HTTP 200
+{"id":1,"title":"R5 C4 t2","description":"d2","status":"COMPLETED","createdAt":"2026-09-26T17:30:26.759926+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C4 PUT COMPLETED HTTP 200
+{"id":1,"title":"R5 C4 t2","description":"d2","status":"COMPLETED","createdAt":"2026-09-26T17:30:26.759926+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C4 GET after COMPLETED HTTP 200
+{"id":1,"title":"R5 C4 t3","description":"d3","status":"NOT_STARTED","createdAt":"2026-09-26T17:30:26.759926+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C4 PUT NOT_STARTED HTTP 200
+{"id":1,"title":"R5 C4 t3","description":"d3","status":"NOT_STARTED","createdAt":"2026-09-26T17:30:26.759926+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C4 GET after NOT_STARTED HTTP 200
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:46 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/learning-cards/1","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must be one of [NOT_STARTED, IN_PROGRESS, COMPLETED]"}]}
+== R5-C4 PUT DONE HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:46 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards/1","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must not be null"}]}
+== R5-C4 PUT no status HTTP 400
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:46 GMT
+
+{"detail":"Learning card 999999 not found","instance":"/api/learning-cards/999999","status":404,"title":"Not Found"}
+== R5-C4 PUT /999999 HTTP 404
+{"id":1,"title":"R5 C4 t3","description":"d3","status":"NOT_STARTED","createdAt":"2026-09-26T17:30:26.759926+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C4 GET after rejected HTTP 200
+== R5-C5 POST card A 201
+== R5-C5 POST card B 201
+== R5-C8 POST card 201
+== R5 card ids: [[7,"R5 C8 doomed"],[6,"R5 card B"],[5,"R5 card A"],[4,"l d2000"],[3,"TTTTTTTTTTTTTT"],[2,"R5 C1 title on"],[1,"R5 C4 t3"]]
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 75
+Date: Sat, 26 Sep 2026 14:30:57 GMT
+
+{"id":1,"cardId":5,"title":"ms one","done":false,"targetDate":"2026-10-10"}
+== R5-C5 POST A milestone w/ date HTTP 201
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 67
+Date: Sat, 26 Sep 2026 14:30:57 GMT
+
+{"id":2,"cardId":5,"title":"ms two","done":false,"targetDate":null}
+== R5-C5 POST A milestone no date HTTP 201
+{"id":5,"title":"R5 card A","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:30:51.217934+03:00","milestones":[{"id":1,"cardId":5,"title":"ms one","done":false,"targetDate":"2026-10-10"},{"id":2,"cardId":5,"title":"ms two","done":false,"targetDate":null}],"notes":[],"milestonesDone":0,"milestonesTotal":2}
+== R5-C5 GET A HTTP 200
+{"id":6,"title":"R5 card B","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:30:51.220003+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R5-C5 GET B HTTP 200
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:57 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards/5/milestones","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+== R5-C5 POST milestone blank HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:57 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards/5/milestones","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"}]}
+== R5-C5 POST milestone 201 HTTP 400
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:30:57 GMT
+
+{"detail":"Learning card 999999 not found","instance":"/api/learning-cards/999999/milestones","status":404,"title":"Not Found"}
+== R5-C5 POST milestone unknown card HTTP 404
+{"id":1,"cardId":5,"title":"ms one","done":true,"targetDate":"2026-10-10"}
+== R5-C6 PUT m1 done=true HTTP 200
+{"id":5,"title":"R5 card A","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:30:51.217934+03:00","milestones":[{"id":1,"cardId":5,"title":"ms one","done":true,"targetDate":"2026-10-10"},{"id":2,"cardId":5,"title":"ms two","done":false,"targetDate":null}],"notes":[],"milestonesDone":1,"milestonesTotal":2}
+== R5-C6 GET A HTTP 200
+{"id":1,"cardId":5,"title":"ms one","done":false,"targetDate":"2026-10-10"}
+== R5-C6 PUT m1 done=false HTTP 200
+{"id":5,"title":"R5 card A","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:30:51.217934+03:00","milestones":[{"id":1,"cardId":5,"title":"ms one","done":false,"targetDate":"2026-10-10"},{"id":2,"cardId":5,"title":"ms two","done":false,"targetDate":null}],"notes":[],"milestonesDone":0,"milestonesTotal":2}
+== R5-C6 GET A HTTP 200
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:04 GMT
+
+{"detail":"Milestone 1 not found on learning card 6","instance":"/api/learning-cards/6/milestones/1","status":404,"title":"Not Found"}
+== R5-C6 PUT m1 via card B HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:04 GMT
+
+{"detail":"Milestone 1 not found on learning card 6","instance":"/api/learning-cards/6/milestones/1","status":404,"title":"Not Found"}
+== R5-C6 DELETE m1 via card B HTTP 404
+{"id":5,"title":"R5 card A","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:30:51.217934+03:00","milestones":[{"id":1,"cardId":5,"title":"ms one","done":false,"targetDate":"2026-10-10"},{"id":2,"cardId":5,"title":"ms two","done":false,"targetDate":null}],"notes":[],"milestonesDone":0,"milestonesTotal":2}
+== R5-C6 GET A after B attempts HTTP 200
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 14:31:04 GMT
+
+
+== R5-C6 DELETE m1 HTTP 204
+{"id":5,"title":"R5 card A","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:30:51.217934+03:00","milestones":[{"id":2,"cardId":5,"title":"ms two","done":false,"targetDate":null}],"notes":[],"milestonesDone":0,"milestonesTotal":1}
+== R5-C6 GET A after delete HTTP 200
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:04 GMT
+
+{"detail":"Milestone 1 not found on learning card 5","instance":"/api/learning-cards/5/milestones/1","status":404,"title":"Not Found"}
+== R5-C6 DELETE m1 again HTTP 404
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 89
+Date: Sat, 26 Sep 2026 14:31:12 GMT
+
+{"id":1,"cardId":5,"text":"first note","createdAt":"2026-09-26T17:31:12.539786436+03:00"}
+== R5-C7 POST note HTTP 201
+{"id":5,"title":"R5 card A","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:30:51.217934+03:00","milestones":[{"id":2,"cardId":5,"title":"ms two","done":false,"targetDate":null}],"notes":[{"id":1,"cardId":5,"text":"first note","createdAt":"2026-09-26T17:31:12.539786+03:00"}],"milestonesDone":0,"milestonesTotal":1}
+== R5-C7 GET A HTTP 200
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:12 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards/5/notes","status":400,"title":"Bad Request","errors":[{"field":"text","message":"must not be blank"}]}
+== R5-C7 POST note blank HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:12 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards/5/notes","status":400,"title":"Bad Request","errors":[{"field":"text","message":"must not be blank"}]}
+== R5-C7 POST note missing HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:12 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/learning-cards/5/notes","status":400,"title":"Bad Request","errors":[{"field":"text","message":"size must be between 1 and 5000"}]}
+== R5-C7 POST note 5001 HTTP 400
+== R5-C7 POST note 5000 HTTP 201
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:12 GMT
+
+{"detail":"Note 1 not found on learning card 6","instance":"/api/learning-cards/6/notes/1","status":404,"title":"Not Found"}
+== R5-C7 DELETE n1 via card B HTTP 404
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 14:31:12 GMT
+
+
+== R5-C7 DELETE n1 HTTP 204
+== R5-C7 GET A after delete: notes [[2,5000,"2026-09-26T17:31:12.54958+03:00"]]
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:12 GMT
+
+{"detail":"Note 1 not found on learning card 5","instance":"/api/learning-cards/5/notes/1","status":404,"title":"Not Found"}
+== R5-C7 DELETE n1 again HTTP 404
+{"id":3,"cardId":7,"title":"c8 m1","done":false,"targetDate":null}
+== R5-C8 add milestone HTTP 201
+{"id":4,"cardId":7,"title":"c8 m2","done":false,"targetDate":null}
+== R5-C8 add milestone HTTP 201
+{"id":3,"cardId":7,"text":"c8 n1","createdAt":"2026-09-26T17:31:23.199442562+03:00"}
+== R5-C8 add note HTTP 201
+{"id":4,"cardId":7,"text":"c8 n2","createdAt":"2026-09-26T17:31:23.200658841+03:00"}
+== R5-C8 add note HTTP 201
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 14:31:23 GMT
+
+
+== R5-C8 DELETE card 7 HTTP 204
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:23 GMT
+
+{"detail":"Learning card 7 not found","instance":"/api/learning-cards/7","status":404,"title":"Not Found"}
+== R5-C8 GET 7 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:23 GMT
+
+{"detail":"Learning card 7 not found","instance":"/api/learning-cards/7/milestones/3","status":404,"title":"Not Found"}
+== R5-C8 PUT milestone 3 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:23 GMT
+
+{"detail":"Learning card 7 not found","instance":"/api/learning-cards/7/milestones/3","status":404,"title":"Not Found"}
+== R5-C8 DELETE milestone 3 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:23 GMT
+
+{"detail":"Learning card 7 not found","instance":"/api/learning-cards/7/notes/3","status":404,"title":"Not Found"}
+== R5-C8 DELETE note 3 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:23 GMT
+
+{"detail":"Learning card 7 not found","instance":"/api/learning-cards/7/milestones","status":404,"title":"Not Found"}
+== R5-C8 add milestone HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:23 GMT
+
+{"detail":"Learning card 7 not found","instance":"/api/learning-cards/7/notes","status":404,"title":"Not Found"}
+== R5-C8 add note HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:23 GMT
+
+{"detail":"Learning card 7 not found","instance":"/api/learning-cards/7","status":404,"title":"Not Found"}
+== R5-C8 PUT card 7 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:31:23 GMT
+
+{"detail":"Learning card 7 not found","instance":"/api/learning-cards/7","status":404,"title":"Not Found"}
+== R5-C8 DELETE card 7 again HTTP 404
+== R5-C8/C9 list ids [6,5,4,3,2,1] milestone ids [2] note ids [2]
+== R5-C9 list card 5 embeds: {"m":[2],"n":[2]}
+{"id":26,"title":"R6 task A","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:31:51.126746903+03:00","updatedAt":"2026-09-26T17:31:51.126746903+03:00","completedAt":null,"archived":false,"overdue":false}
+== R6 setup task HTTP 201
+{"id":27,"title":"R6 task C","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:31:51.129381494+03:00","updatedAt":"2026-09-26T17:31:51.129381494+03:00","completedAt":null,"archived":false,"overdue":false}
+== R6 setup task HTTP 201
+{"id":28,"title":"R6 task D","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:31:51.130754749+03:00","updatedAt":"2026-09-26T17:31:51.130754749+03:00","completedAt":null,"archived":false,"overdue":false}
+== R6 setup task HTTP 201
+{"id":15,"name":"R6 habit A","description":null,"frequency":"DAILY","createdAt":"2026-09-26T17:31:51.133403376+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R6 setup habit HTTP 201
+{"id":16,"name":"R6 habit E","description":null,"frequency":"DAILY","createdAt":"2026-09-26T17:31:51.135313502+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R6 setup habit HTTP 201
+{"id":8,"title":"R6 card A","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:31:51.136347539+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R6 setup card HTTP 201
+{"id":9,"title":"R6 card E","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:31:51.137329117+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R6 setup card HTTP 201
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 642
+Date: Sat, 26 Sep 2026 14:32:21 GMT
+
+{"id":1,"title":"R6 C1 future","items":[{"id":1,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":false},{"id":2,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":3,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":90,"startDateTime":"2026-09-26T19:00:00+03:00","endDateTime":"2026-09-26T21:00:00+03:00","priorityOrder":2,"status":"NOT_STARTED","createdAt":"2026-09-26T17:32:21.561864338+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":null}
+== R6-C1 POST future plan HTTP 201
+{"id":1,"title":"R6 C1 future","items":[{"id":1,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":false},{"id":2,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":3,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":90,"startDateTime":"2026-09-26T19:00:00+03:00","endDateTime":"2026-09-26T21:00:00+03:00","priorityOrder":2,"status":"NOT_STARTED","createdAt":"2026-09-26T17:32:21.561864+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":null}
+== R6-C1 GET /1 HTTP 200
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:32:21 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"items","message":"must not be empty"}]}
+== R6-C2 items [] HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:32:21 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"items","message":"must not be empty"}]}
+== R6-C2 items missing HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:32:21 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"items[0].sourceId","message":"must reference an existing TASK"}]}
+== R6-C2 unknown TASK HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:32:21 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"items[0].sourceId","message":"must reference an existing HABIT"}]}
+== R6-C2 unknown HABIT HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:32:21 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"items[0].sourceId","message":"must reference an existing LEARNING_RESOURCE"}]}
+== R6-C2 unknown LEARNING_RESOURCE HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:32:21 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"items[1].sourceId","message":"must reference an existing TASK"}]}
+== R6-C2 deleted task 8 as item[1] HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:32:21 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"endDateTime","message":"must be after startDateTime"}]}
+== R6-C3 end=start HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:32:21 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"endDateTime","message":"must be after startDateTime"}]}
+== R6-C3 end<start HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:32:21 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/plans/1","status":400,"title":"Bad Request","errors":[{"field":"endDateTime","message":"must be after startDateTime"}]}
+== R6-C3 PUT /1 end<start HTTP 400
+{"id":1,"title":"R6 C1 future","items":[{"id":1,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":false},{"id":2,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":3,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":90,"startDateTime":"2026-09-26T19:00:00+03:00","endDateTime":"2026-09-26T21:00:00+03:00","priorityOrder":2,"status":"NOT_STARTED","createdAt":"2026-09-26T17:32:21.561864+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":null}
+== R6-C3 GET /1 after HTTP 200
+== R6-C2 plan count after rejects: 1
+{"id":15,"name":"R6 habit A","description":null,"frequency":"DAILY","createdAt":"2026-09-26T17:31:51.133403+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R6-C5 before: habit 15 HTTP 200
+[]
+== R6-C5 before: habit 15 completions HTTP 200
+{"id":8,"title":"R6 card A","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:31:51.136348+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R6-C5 before: card 8 HTTP 200
+{"id":26,"title":"R6 task A","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:31:51.126747+03:00","updatedAt":"2026-09-26T17:31:51.126747+03:00","completedAt":null,"archived":false,"overdue":false}
+== R6-C5 before: task 26 HTTP 200
+{"id":2,"title":"R6 C4 window","items":[{"id":4,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":false},{"id":5,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":6,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:45:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:32:41.710852793+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":4338}
+== R6-C4 POST window plan 2 HTTP 201
+{"id":2,"title":"R6 C4 window","items":[{"id":4,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":false},{"id":5,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":true},{"id":6,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:45:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:32:41.710853+03:00","doneItems":1,"totalItems":3,"progressPercent":33,"restSeconds":4338}
+== R6-C4 tick habit item 5 HTTP 200
+{"id":2,"title":"R6 C4 window","items":[{"id":4,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":false},{"id":5,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":true},{"id":6,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:45:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:32:41.710853+03:00","doneItems":1,"totalItems":3,"progressPercent":33,"restSeconds":4338}
+== R6-C4 GET /2 HTTP 200
+{"id":2,"title":"R6 C4 window","items":[{"id":4,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":false},{"id":5,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":6,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:45:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:32:41.710853+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":4338}
+== R6-C4 untick habit item 5 HTTP 200
+{"id":2,"title":"R6 C4 window","items":[{"id":4,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":false},{"id":5,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":6,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:45:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:32:41.710853+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":4338}
+== R6-C4 GET /2 HTTP 200
+{"id":3,"title":"R6 C4 two items","items":[{"id":7,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":8,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:45:00+03:00","priorityOrder":4,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:32:41.722653325+03:00","doneItems":0,"totalItems":2,"progressPercent":0,"restSeconds":4338}
+== R6-C4 POST plan 3 two items HTTP 201
+{"id":3,"title":"R6 C4 two items","items":[{"id":7,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":true},{"id":8,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:45:00+03:00","priorityOrder":4,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:32:41.722653+03:00","doneItems":1,"totalItems":2,"progressPercent":50,"restSeconds":4338}
+== R6-C4 plan 3 tick item 7 HTTP 200
+{"id":3,"title":"R6 C4 two items","items":[{"id":7,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":true},{"id":8,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:45:00+03:00","priorityOrder":4,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:32:41.722653+03:00","doneItems":1,"totalItems":2,"progressPercent":50,"restSeconds":4338}
+== R6-C4 GET /3 HTTP 200
+== R6-C5 tick habit item 5 HTTP 200
+== R6-C5 tick LR item 6 HTTP 200
+{"id":15,"name":"R6 habit A","description":null,"frequency":"DAILY","createdAt":"2026-09-26T17:31:51.133403+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+== R6-C5 after: habit 15 HTTP 200
+[]
+== R6-C5 after: habit 15 completions HTTP 200
+{"id":8,"title":"R6 card A","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:31:51.136348+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R6-C5 after: card 8 HTTP 200
+== R6-C5 tick TASK item 4 HTTP 200
+{"id":26,"title":"R6 task A","description":null,"status":"DONE","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:31:51.126747+03:00","updatedAt":"2026-09-26T17:32:52.979304+03:00","completedAt":"2026-09-26T17:32:52.979304+03:00","archived":false,"overdue":false}
+== R6-C5 task 26 after tick HTTP 200
+== R6-C5 untick TASK item 4 HTTP 200
+{"id":26,"title":"R6 task A","description":null,"status":"DONE","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:31:51.126747+03:00","updatedAt":"2026-09-26T17:32:52.979304+03:00","completedAt":"2026-09-26T17:32:52.979304+03:00","archived":false,"overdue":false}
+== R6-C5 task 26 after untick HTTP 200
+{"id":1,"title":"R6 C1 future","items":[{"id":1,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":false},{"id":2,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":3,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":90,"startDateTime":"2026-09-26T19:00:00+03:00","endDateTime":"2026-09-26T21:00:00+03:00","priorityOrder":2,"status":"NOT_STARTED","createdAt":"2026-09-26T17:32:21.561864+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":null}
+== R6-C6 GET /1 future HTTP 200
+== R6-C6 tick item 1 HTTP 200
+== R6-C6 tick item 2 HTTP 200
+== R6-C6 tick item 3 HTTP 200
+{"id":1,"title":"R6 C1 future","items":[{"id":1,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":true},{"id":2,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":true},{"id":3,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":true}],"estimatedDurationMinutes":90,"startDateTime":"2026-09-26T19:00:00+03:00","endDateTime":"2026-09-26T21:00:00+03:00","priorityOrder":2,"status":"NOT_STARTED","createdAt":"2026-09-26T17:32:21.561864+03:00","doneItems":3,"totalItems":3,"progressPercent":100,"restSeconds":null}
+== R6-C6 GET /1 all ticked HTTP 200
+{"id":4,"title":"R6 C7 window","items":[{"id":9,"sourceType":"TASK","sourceId":27,"sourceTitle":"R6 task C","sourceRemoved":false,"done":false},{"id":10,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":11,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:50:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:33:03.225553881+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":4616}
+== R6-C7 POST window plan 4 HTTP 201
+{"id":4,"title":"R6 C7 window","items":[{"id":9,"sourceType":"TASK","sourceId":27,"sourceTitle":"R6 task C","sourceRemoved":false,"done":false},{"id":10,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":11,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:50:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:33:03.225554+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":4616}
+== R6-C7 GET /4 first HTTP 200
+{"id":5,"title":"R6 C8 past","items":[{"id":12,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T14:00:00+03:00","endDateTime":"2026-09-26T16:00:00+03:00","priorityOrder":1,"status":"COMPLETED","createdAt":"2026-09-26T17:33:03.228856932+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}
+== R6-C8 POST past plan 5 HTTP 201
+{"id":5,"title":"R6 C8 past","items":[{"id":12,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T14:00:00+03:00","endDateTime":"2026-09-26T16:00:00+03:00","priorityOrder":1,"status":"COMPLETED","createdAt":"2026-09-26T17:33:03.228857+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}
+== R6-C8 GET /5 read 1 HTTP 200
+{"id":5,"title":"R6 C8 past","items":[{"id":12,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T14:00:00+03:00","endDateTime":"2026-09-26T16:00:00+03:00","priorityOrder":1,"status":"COMPLETED","createdAt":"2026-09-26T17:33:03.228857+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}
+== R6-C8 GET /5 read 2 HTTP 200
+{"id":4,"title":"R6 C7 window","items":[{"id":9,"sourceType":"TASK","sourceId":27,"sourceTitle":"R6 task C","sourceRemoved":false,"done":false},{"id":10,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":11,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:50:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:33:03.225554+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":4605}
+== R6-C7 GET /4 later HTTP 200
+== R6-C7 tick 9 HTTP 200
+== R6-C7 tick 10 HTTP 200
+== R6-C7 tick 11 HTTP 200
+{"id":4,"title":"R6 C7 window","items":[{"id":9,"sourceType":"TASK","sourceId":27,"sourceTitle":"R6 task C","sourceRemoved":false,"done":true},{"id":10,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":true},{"id":11,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":true}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:50:00+03:00","priorityOrder":1,"status":"COMPLETED","createdAt":"2026-09-26T17:33:03.225554+03:00","doneItems":3,"totalItems":3,"progressPercent":100,"restSeconds":4605}
+== R6-C7 GET /4 all done HTTP 200
+== R6-C7 untick 10 HTTP 200
+{"id":4,"title":"R6 C7 window","items":[{"id":9,"sourceType":"TASK","sourceId":27,"sourceTitle":"R6 task C","sourceRemoved":false,"done":true},{"id":10,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":11,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":true}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:30:00+03:00","endDateTime":"2026-09-26T18:50:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:33:03.225554+03:00","doneItems":2,"totalItems":3,"progressPercent":66,"restSeconds":4605}
+== R6-C7 GET /4 after untick HTTP 200
+{"id":5,"title":"R6 C8 past","items":[{"id":12,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:00:00+03:00","endDateTime":"2026-09-26T19:30:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:33:03.228857+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":7005}
+== R6-C8 PUT /5 into window HTTP 200
+{"id":5,"title":"R6 C8 past","items":[{"id":12,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T16:00:00+03:00","endDateTime":"2026-09-26T19:30:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:33:03.228857+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":7005}
+== R6-C8 GET /5 after window HTTP 200
+{"id":5,"title":"R6 C8 now future","items":[{"id":12,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T19:30:00+03:00","endDateTime":"2026-09-26T20:30:00+03:00","priorityOrder":3,"status":"NOT_STARTED","createdAt":"2026-09-26T17:33:03.228857+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}
+== R6-C8 PUT /5 into future HTTP 200
+{"id":5,"title":"R6 C8 now future","items":[{"id":12,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T19:30:00+03:00","endDateTime":"2026-09-26T20:30:00+03:00","priorityOrder":3,"status":"NOT_STARTED","createdAt":"2026-09-26T17:33:03.228857+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}
+== R6-C8 GET /5 after future HTTP 200
+{"id":6,"title":"R6 C10 past","items":[{"id":13,"sourceType":"TASK","sourceId":27,"sourceTitle":"R6 task C","sourceRemoved":false,"done":false},{"id":14,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false},{"id":15,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":45,"startDateTime":"2026-09-26T12:00:00+03:00","endDateTime":"2026-09-26T13:00:00+03:00","priorityOrder":1,"status":"COMPLETED","createdAt":"2026-09-26T17:33:28.296566234+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":null}
+== R6-C10 POST past plan 6 HTTP 201
+{"id":6,"title":"R6 C10 past","items":[{"id":13,"sourceType":"TASK","sourceId":27,"sourceTitle":"R6 task C","sourceRemoved":false,"done":false},{"id":14,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":true},{"id":15,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":45,"startDateTime":"2026-09-26T12:00:00+03:00","endDateTime":"2026-09-26T13:00:00+03:00","priorityOrder":1,"status":"COMPLETED","createdAt":"2026-09-26T17:33:28.296566+03:00","doneItems":1,"totalItems":3,"progressPercent":33,"restSeconds":null}
+== R6-C10 tick item 14 HTTP 200
+== R6-C9 group=active: [[2,"IN_PROGRESS",1,"16:30",66,4291],[4,"IN_PROGRESS",1,"16:30",66,4591],[1,"NOT_STARTED",2,"19:00",100,null],[5,"NOT_STARTED",3,"19:30",0,null],[3,"IN_PROGRESS",4,"16:30",50,4291]]
+== R6-C9/C10 group=completed: [[6,"COMPLETED","13:00",1,3,33]]
+== R6-C9 group=all: [[2,"IN_PROGRESS"],[4,"IN_PROGRESS"],[1,"NOT_STARTED"],[5,"NOT_STARTED"],[3,"IN_PROGRESS"],[6,"COMPLETED"]]
+== R6-C9 no group: [[2,"IN_PROGRESS"],[4,"IN_PROGRESS"],[1,"NOT_STARTED"],[5,"NOT_STARTED"],[3,"IN_PROGRESS"],[6,"COMPLETED"]] every item has done: true
+== R6-C11 POST plan 7 HTTP 201
+== R6-C11 POST plan 8 HTTP 201
+== R6-C11 tick plan 7 item 16 (task) HTTP 200
+== R6-C11 tick plan 8 item 18 (habit) HTTP 200
+== R6-C11 DELETE task 28 HTTP 204
+== R6-C11 DELETE habit 16 HTTP 204
+== R6-C11 DELETE card 9 HTTP 204
+== R6-C11 GET task 28 HTTP 404
+{"id":7,"title":"R6 C11 task removed","items":[{"id":16,"sourceType":"TASK","sourceId":28,"sourceTitle":"R6 task D","sourceRemoved":true,"done":true},{"id":17,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":45,"startDateTime":"2026-09-26T14:00:00+03:00","endDateTime":"2026-09-26T15:00:00+03:00","priorityOrder":1,"status":"COMPLETED","createdAt":"2026-09-26T17:33:42.531369+03:00","doneItems":1,"totalItems":2,"progressPercent":50,"restSeconds":null}
+== R6-C11 GET plan 7 HTTP 200
+{"id":8,"title":"R6 C11 habit+card removed","items":[{"id":18,"sourceType":"HABIT","sourceId":16,"sourceTitle":"R6 habit E","sourceRemoved":true,"done":true},{"id":19,"sourceType":"LEARNING_RESOURCE","sourceId":9,"sourceTitle":"R6 card E","sourceRemoved":true,"done":false}],"estimatedDurationMinutes":45,"startDateTime":"2026-09-26T11:00:00+03:00","endDateTime":"2026-09-26T12:30:00+03:00","priorityOrder":1,"status":"COMPLETED","createdAt":"2026-09-26T17:33:42.534231+03:00","doneItems":1,"totalItems":2,"progressPercent":50,"restSeconds":null}
+== R6-C11 GET plan 8 HTTP 200
+== R6-C9 group=completed end desc: [[7,"15:00"],[6,"13:00"],[8,"12:30"]]
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 14:33:52 GMT
+
+
+== R6-C12 DELETE plan 3 HTTP 204
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:33:52 GMT
+
+{"detail":"Plan 3 not found","instance":"/api/plans/3","status":404,"title":"Not Found"}
+== R6-C12 GET plan 3 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:33:52 GMT
+
+{"detail":"Plan 3 not found","instance":"/api/plans/3/items/8","status":404,"title":"Not Found"}
+== R6-C12 PUT plan 3 item 8 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:33:52 GMT
+
+{"detail":"Plan 3 not found","instance":"/api/plans/3","status":404,"title":"Not Found"}
+== R6-C12 DELETE plan 3 again HTTP 404
+== R6-C12 list has plan 3: false
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+== R6-C13 blank title HTTP 400
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"}]}
+== R6-C13 201-char title HTTP 400
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+== R6-C13 missing title HTTP 400
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"estimatedDurationMinutes","message":"must be greater than or equal to 1"}]}
+== R6-C13 duration 0 HTTP 400
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"estimatedDurationMinutes","message":"must be less than or equal to 100000"}]}
+== R6-C13 duration 100001 HTTP 400
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"priorityOrder","message":"must be greater than or equal to 1"}]}
+== R6-C13 priorityOrder 0 HTTP 400
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"items[1]","message":"must not repeat a selected item"}]}
+== R6-C13 duplicate HABIT 15 HTTP 400
+{"detail":"Malformed request body","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"items[0].sourceType","message":"must be one of [TASK, HABIT, LEARNING_RESOURCE]"}]}
+== R6-C13 unknown sourceType HTTP 400
+== R6-C13 200-char title HTTP 201
+== R6-C13 duration 1 HTTP 201
+== R6-C13 duration 100000 HTTP 201
+{"id":1,"title":"R6 C14 edited","items":[{"id":1,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":true},{"id":2,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":true},{"id":3,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":true}],"estimatedDurationMinutes":120,"startDateTime":"2026-09-26T19:00:00+03:00","endDateTime":"2026-09-26T21:00:00+03:00","priorityOrder":6,"status":"NOT_STARTED","createdAt":"2026-09-26T17:32:21.561864+03:00","doneItems":3,"totalItems":3,"progressPercent":100,"restSeconds":null}
+== R6-C14 PUT /1 HTTP 200
+{"id":1,"title":"R6 C14 edited","items":[{"id":1,"sourceType":"TASK","sourceId":26,"sourceTitle":"R6 task A","sourceRemoved":false,"done":true},{"id":2,"sourceType":"HABIT","sourceId":15,"sourceTitle":"R6 habit A","sourceRemoved":false,"done":true},{"id":3,"sourceType":"LEARNING_RESOURCE","sourceId":8,"sourceTitle":"R6 card A","sourceRemoved":false,"done":true}],"estimatedDurationMinutes":120,"startDateTime":"2026-09-26T19:00:00+03:00","endDateTime":"2026-09-26T21:00:00+03:00","priorityOrder":6,"status":"NOT_STARTED","createdAt":"2026-09-26T17:32:21.561864+03:00","doneItems":3,"totalItems":3,"progressPercent":100,"restSeconds":null}
+== R6-C14 GET /1 HTTP 200
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:18 GMT
+
+{"detail":"Plan 999999 not found","instance":"/api/plans/999999","status":404,"title":"Not Found"}
+== R6-C14 PUT /999999 HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:18 GMT
+
+{"detail":"Plan 999999 not found","instance":"/api/plans/999999","status":404,"title":"Not Found"}
+== R6-C14 GET /999999 HTTP 404
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:18 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/plans/1/items/1","status":400,"title":"Bad Request","errors":[{"field":"done","message":"must not be null"}]}
+== R6-C14 item PUT {} HTTP 400
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:18 GMT
+
+{"detail":"Plan 999999 not found","instance":"/api/plans/999999/items/1","status":404,"title":"Not Found"}
+== R6-C14 item of unknown plan HTTP 404
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:18 GMT
+
+{"detail":"Plan item 4 not found on plan 1","instance":"/api/plans/1/items/4","status":404,"title":"Not Found"}
+== R6-C14 item 4 (plan 2) via plan 1 HTTP 404
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 76
+Date: Sat, 26 Sep 2026 14:34:34 GMT
+
+{"displayName":null,"planStartNotifications":true,"defaultPage":"DASHBOARD"}
+== R8-C1 GET settings 1 HTTP 200
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 76
+Date: Sat, 26 Sep 2026 14:34:34 GMT
+
+{"displayName":null,"planStartNotifications":true,"defaultPage":"DASHBOARD"}
+== R8-C1 GET settings 2 HTTP 200
+{"displayName":"Eve","planStartNotifications":false,"defaultPage":"HABITS"}
+== R8-C2 PUT Eve/false/HABITS HTTP 200
+{"displayName":"Eve","planStartNotifications":false,"defaultPage":"HABITS"}
+== R8-C2 GET HTTP 200
+== R8-C2 PUT DASHBOARD 200
+{"displayName":"Eve","planStartNotifications":false,"defaultPage":"DASHBOARD"}
+== R8-C2 GET HTTP 200
+== R8-C2 PUT TASKS 200
+{"displayName":"Eve","planStartNotifications":false,"defaultPage":"TASKS"}
+== R8-C2 GET HTTP 200
+== R8-C2 PUT HABITS 200
+{"displayName":"Eve","planStartNotifications":false,"defaultPage":"HABITS"}
+== R8-C2 GET HTTP 200
+== R8-C2 PUT LEARNING 200
+{"displayName":"Eve","planStartNotifications":false,"defaultPage":"LEARNING"}
+== R8-C2 GET HTTP 200
+== R8-C2 PUT PLANS 200
+{"displayName":"Eve","planStartNotifications":false,"defaultPage":"PLANS"}
+== R8-C2 GET HTTP 200
+== R8-C2 PUT SETTINGS 200
+{"displayName":"Eve","planStartNotifications":false,"defaultPage":"SETTINGS"}
+== R8-C2 GET HTTP 200
+== R8-C2 PUT displayName null 200
+{"displayName":null,"planStartNotifications":true,"defaultPage":"DASHBOARD"}
+== R8-C2 GET HTTP 200
+== R8-C2 PUT Zed 200
+== R8-C2 PUT displayName omitted 200
+{"displayName":null,"planStartNotifications":true,"defaultPage":"DASHBOARD"}
+== R8-C2 GET HTTP 200
+{"displayName":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","planStartNotifications":true,"defaultPage":"TASKS"}
+== R8-C3 PUT name 100 HTTP 200
+{"displayName":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","planStartNotifications":true,"defaultPage":"TASKS"}
+== R8-C3 GET HTTP 200
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:50 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"displayName","message":"size must be between 0 and 100"}]}
+== R8-C3 PUT name 101 HTTP 400
+{"displayName":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","planStartNotifications":true,"defaultPage":"TASKS"}
+== R8-C3 GET after 101 HTTP 200
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:58 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"defaultPage","message":"must be one of [DASHBOARD, TASKS, HABITS, LEARNING, PLANS, SETTINGS]"}]}
+== R8-C4 defaultPage FOO HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"defaultPage","message":"must not be null"}]}
+== R8-C4 defaultPage missing HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"defaultPage","message":"must not be null"}]}
+== R8-C4 defaultPage null HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:58 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"defaultPage","message":"must be one of [DASHBOARD, TASKS, HABITS, LEARNING, PLANS, SETTINGS]"}]}
+== R8-C4 defaultPage lower-case HTTP 400
+{"displayName":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","planStartNotifications":true,"defaultPage":"TASKS"}
+== R8-C4 GET after HTTP 200
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"planStartNotifications","message":"must not be null"}]}
+== R8-C5 notifications missing HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:58 GMT
+Connection: close
+
+{"detail":"Validation failed","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"planStartNotifications","message":"must not be null"}]}
+== R8-C5 notifications null HTTP 400
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 14:34:58 GMT
+Connection: close
+
+{"detail":"Malformed request body","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"planStartNotifications","message":"invalid value"}]}
+== R8-C5 notifications "yes" HTTP 400
+{"displayName":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","planStartNotifications":true,"defaultPage":"TASKS"}
+== R8-C5 GET after HTTP 200
+== reset settings to defaults 200
+== clear via API: DELETE plans/[1-20], tasks/[1-40], habits/[1-25], learning-cards/[1-15]
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 381
+Date: Sat, 26 Sep 2026 14:35:11 GMT
+
+{"now":"2026-09-26T17:35:11.64725424+03:00","dueToday":[],"overdue":[],"completedToday":[],"taskCompletionPercent":0,"taskCounts":{"total":0,"done":0},"habits":[],"habitCounts":{"active":0,"completedToday":0},"activePlans":[],"planCounts":{"notStarted":0,"inProgress":0,"completed":0},"learning":{"notStarted":0,"inProgress":0,"completed":0,"milestonesDone":0,"milestonesTotal":0}}
+== R7-C1 GET dashboard empty HTTP 200
+== R7-C2 POST A 201
+== R7-C2 POST B 201
+== R7-C2 POST C 201
+== R7-C2 POST D 201
+== R7-C2 POST E 201
+== R7-C2 POST F 201
+== R7-C2 POST G 201
+== R7-C2 POST H 201
+== R7-C2 POST I 201
+== R7-C2 ids: [[37,"R7 I"],[36,"R7 H"],[35,"R7 G"],[34,"R7 F"],[33,"R7 E"],[32,"R7 D"],[31,"R7 C"],[30,"R7 B"],[29,"R7 A"]]
+== R7-C2 complete D 200
+== R7-C2 PUT E DONE 200
+== R7-C2 archive F 200
+== R7-C2 archive G 200
+== R7-C2 complete H 200
+== R7-C2 archive H 200
+== R7-C2 delete I 204
+{"now":"2026-09-26T17:35:25.973850494+03:00","dueToday":[{"id":29,"title":"R7 A","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-26","createdAt":"2026-09-26T17:35:20.016247+03:00","updatedAt":"2026-09-26T17:35:20.016247+03:00","completedAt":null,"archived":false,"overdue":false},{"id":33,"title":"R7 E","description":null,"status":"DONE","priority":"MEDIUM","dueDate":"2026-09-26","createdAt":"2026-09-26T17:35:20.020659+03:00","updatedAt":"2026-09-26T17:35:25.968684+03:00","completedAt":"2026-09-26T17:35:25.968684+03:00","archived":false,"overdue":false}],"overdue":[{"id":30,"title":"R7 B","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-26T17:35:20.017895+03:00","updatedAt":"2026-09-26T17:35:20.017895+03:00","completedAt":null,"archived":false,"overdue":true}],"completedToday":[{"id":33,"title":"R7 E","description":null,"status":"DONE","priority":"MEDIUM","dueDate":"2026-09-26","createdAt":"2026-09-26T17:35:20.020659+03:00","updatedAt":"2026-09-26T17:35:25.968684+03:00","completedAt":"2026-09-26T17:35:25.968684+03:00","archived":false,"overdue":false},{"id":32,"title":"R7 D","description":null,"status":"DONE","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T17:35:20.01988+03:00","updatedAt":"2026-09-26T17:35:25.965331+03:00","completedAt":"2026-09-26T17:35:25.965331+03:00","archived":false,"overdue":false},{"id":31,"title":"R7 C","description":null,"status":"DONE","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-26T17:35:20.019044+03:00","updatedAt":"2026-09-26T17:35:20.019044+03:00","completedAt":"2026-09-26T17:35:20.019044+03:00","archived":false,"overdue":false}],"taskCompletionPercent":60,"taskCounts":{"total":5,"done":3},"habits":[],"habitCounts":{"active":0,"completedToday":0},"activePlans":[],"planCounts":{"notStarted":0,"inProgress":0,"completed":0},"learning":{"notStarted":0,"inProgress":0,"completed":0,"milestonesDone":0,"milestonesTotal":0}}
+== R7-C2 GET dashboard HTTP 200
+== R7-C2 dashboard entries equal GET /api/tasks entries: [true,true,true,true,true,true]
+== R7-C3 GET /api/tasks count 5
+== R7-C3 GET ?status=DONE count 3
+== R7-C3 POST extra 1 201
+== R7-C3 dashboard after +1: {"total":6,"done":3} 50%
+== R7-C3 POST extra 2 201
+== R7-C3 dashboard after +2: {"total":7,"done":3} 42%
+== R7-C4 POST H1 201
+== R7-C4 POST H2 201
+== R7-C4 POST H3 201
+== R7-C4 complete H1 (17) 201
+== R7-C4 complete H3 (19) 201
+== R7-C4 deactivate H3 200
+== R7-C4 dashboard habits [[17,"R7 H1",true],[18,"R7 H2",false]] counts {"active":2,"completedToday":1} entries equal GET /api/habits: [true,true]
+== R7-C4 undo H1 today 204
+== R7-C4 after undo: {"active":2,"completedToday":0} [[17,false],[18,false]]
+{"id":10,"title":"R7 L1","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:36:06.598836801+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R7-C5 POST L1 201
+{"id":11,"title":"R7 L2","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:36:06.600327144+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R7-C5 POST L2 201
+{"id":12,"title":"R7 L3","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:36:06.601039507+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R7-C5 POST L3 201
+{"id":13,"title":"R7 L4","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T17:36:06.60165886+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== R7-C5 POST L4 201
+{"id":5,"cardId":10,"title":"m1","done":false,"targetDate":null}
+== R7-C5 m1 201
+{"id":6,"cardId":10,"title":"m2","done":false,"targetDate":null}
+== R7-C5 m2 201
+{"id":7,"cardId":11,"title":"m3","done":false,"targetDate":null}
+== R7-C5 m3 201
+{"id":8,"cardId":12,"title":"m4","done":false,"targetDate":null}
+== R7-C5 m4 201
+{"id":9,"cardId":13,"title":"m5","done":false,"targetDate":null}
+== R7-C5 m5 201
+== R7-C5 L2 IN_PROGRESS 200
+== R7-C5 L3 COMPLETED 200
+== R7-C5 L4 IN_PROGRESS 200
+== R7-C5 m1 done 200
+== R7-C5 m3 done 200
+== R7-C5 m5 done 200
+== R7-C5 learning: {"notStarted":1,"inProgress":2,"completed":1,"milestonesDone":3,"milestonesTotal":5}
+== R7-C5 DELETE L4 204
+== R7-C5 learning after delete: {"notStarted":1,"inProgress":1,"completed":1,"milestonesDone":2,"milestonesTotal":4}
+{"id":12,"title":"R7 P1 window prio2","items":[{"id":23,"sourceType":"HABIT","sourceId":18,"sourceTitle":"R7 H2","sourceRemoved":false,"done":false},{"id":24,"sourceType":"LEARNING_RESOURCE","sourceId":10,"sourceTitle":"R7 L1","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T17:00:00+03:00","endDateTime":"2026-09-26T19:00:00+03:00","priorityOrder":2,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:36:37.128914134+03:00","doneItems":0,"totalItems":2,"progressPercent":0,"restSeconds":5002}
+== R7-C6 POST P1 201
+{"id":13,"title":"R7 P2 window prio1","items":[{"id":25,"sourceType":"HABIT","sourceId":18,"sourceTitle":"R7 H2","sourceRemoved":false,"done":false},{"id":26,"sourceType":"LEARNING_RESOURCE","sourceId":10,"sourceTitle":"R7 L1","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T17:00:00+03:00","endDateTime":"2026-09-26T19:10:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T17:36:37.131302709+03:00","doneItems":0,"totalItems":2,"progressPercent":0,"restSeconds":5602}
+== R7-C6 POST P2 201
+{"id":14,"title":"R7 P3 future","items":[{"id":27,"sourceType":"HABIT","sourceId":18,"sourceTitle":"R7 H2","sourceRemoved":false,"done":false},{"id":28,"sourceType":"LEARNING_RESOURCE","sourceId":10,"sourceTitle":"R7 L1","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T21:00:00+03:00","endDateTime":"2026-09-26T22:00:00+03:00","priorityOrder":1,"status":"NOT_STARTED","createdAt":"2026-09-26T17:36:37.132615555+03:00","doneItems":0,"totalItems":2,"progressPercent":0,"restSeconds":null}
+== R7-C6 POST P3 201
+{"id":15,"title":"R7 P4 past","items":[{"id":29,"sourceType":"HABIT","sourceId":18,"sourceTitle":"R7 H2","sourceRemoved":false,"done":false},{"id":30,"sourceType":"LEARNING_RESOURCE","sourceId":10,"sourceTitle":"R7 L1","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T10:00:00+03:00","endDateTime":"2026-09-26T11:00:00+03:00","priorityOrder":1,"status":"COMPLETED","createdAt":"2026-09-26T17:36:37.134048046+03:00","doneItems":0,"totalItems":2,"progressPercent":0,"restSeconds":null}
+== R7-C6 POST P4 201
+== R7-C6 read1 [[13,5602],[12,5002]] read2 [[13,5596],[12,4996]] counts {"notStarted":1,"inProgress":2,"completed":1} entries equal GET (minus restSeconds): [true,true]
+== R7-C6 tick P2 item 25 200
+== R7-C6 after 1 of 2: [[13,50],[12,0]] {"notStarted":1,"inProgress":2,"completed":1}
+== R7-C6 tick P2 item 26 200
+== R7-C6 after 2 of 2: [[12,0]] {"notStarted":1,"inProgress":1,"completed":2}
+== clear via API before UI checks: DELETE plans/[1-30], tasks/[1-50], habits/[1-30], learning-cards/[1-20]
+== clear via API before R16: DELETE plans/[1-40], tasks/[1-80], habits/[1-40], learning-cards/[1-30]
+== clear via API before R18: DELETE plans/[1-50], tasks/[1-90], habits/[1-40], learning-cards/[1-30]

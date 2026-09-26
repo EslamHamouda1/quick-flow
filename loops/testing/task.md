@@ -8,7 +8,7 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **mode:** suite
 - **stops_at:** end of loop
 - **review_gates:** off (--auto-approve)
-- **run_id:** orch-20260926T111201-195372
-- **runner_nonce:** d6b91ab1b8137580d7357994
+- **run_id:** orch-20260926T172351-320864
+- **runner_nonce:** 4ba0ff3ecd607578af8f23f0
 - **current_step:** test-phase-regression
 - **run_dir:** loops/testing/runs/001-quickflow/suite/test-phase-regression/attempt-1

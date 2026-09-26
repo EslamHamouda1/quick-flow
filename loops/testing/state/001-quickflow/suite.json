@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "complete",
   "not_ready": [],
   "test_phases": [
     {
@@ -72,7 +72,7 @@
     },
     {
       "id": "test-phase-E2E",
-      "title": "End-to-end flow (PRD §11)",
+      "title": "End-to-end flow (PRD \u00a711)",
       "stories": [
         "US1",
         "US2",
@@ -95,7 +95,7 @@
         "US5",
         "US6"
       ],
-      "status": "planned",
+      "status": "done",
       "attempt": 1,
       "bugs": []
     }

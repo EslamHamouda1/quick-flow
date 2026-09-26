@@ -1,0 +1,66 @@
+# test-phase-regression attempt-1: file checks (second session, 2026-09-26 17:25+03:00)
+# The files api-*.json, curl.log and swagger.html are from an earlier session of this
+# attempt that crashed (15:05–15:12, a different app run / DB); they are NOT evidence for this report.
+# This session's evidence: curl-r2.log, r2-*.json, file-checks.txt, shot-*.png.
+
+## R1 (backend phase-01)
+C4 unit/backend/unit-result.json: exit_code 0, passed 338, failed 0, errors 0, outcome pass
+   backend/pom.xml: spring-boot-starter-parent 4.1.1 (line 7-8), <java.version>25 (line 30)
+   server-backend.log line 11: "Starting QuickflowApplication using Java 25.0.4.1"
+C5 unit/backend/coverage/jacoco.xml present (+ jacoco.csv, index.html)
+   backend/pom.xml lines 121-148: jacoco-maven-plugin 0.8.15, executions jacoco-report (phase verify, goal report)
+   and jacoco-check (phase verify, goal check, includes com/quickflow/domain/**)
+C6 backend/target/openapi.json vs loops/backend-dev/outputs/openapi.json: cmp → identical (SAME)
+   both: title "QuickFlow API", version 0.1.0, 39 operationIds (phase-03..08 added the /api paths)
+C7 ls backend/data/: quickflow.mv.db quickflow.trace.db test.mv.db  (test.mv.db matches backend/data/test*)
+   server-backend.log line 12: The following 1 profile is active: "test"
+   server-backend.log lines 23/26: url=jdbc:h2:file:./data/test ; Database JDBC URL [jdbc:h2:file:./data/test]
+
+## R2 (backend phase-02)
+C5 target and copy: title "QuickFlow API", version "0.1.0", /api/app-info get operationId getAppInfo (jq), identical files
+C6 TEST-com.quickflow.web.ApiExceptionHandlerTest.xml: tests="6" errors="0" skipped="0" failures="0"
+C7 TEST-com.quickflow.domain.common.TimeServiceTest.xml: tests="5" errors="0" failures="0"
+   TEST-com.quickflow.web.info.AppInfoControllerTest.xml: tests="1" errors="0" failures="0"
+
+## R9 (backend phase-09)
+C1 r2-opids-live.txt (jq over r2-api-docs.json) vs r2-opids-contract.txt (operationId: lines of
+   specs/001-quickflow-backend/contracts/openapi.yaml): 39 each, diff empty → OPIDS-IDENTICAL
+   (the plan text says 38; the phase-09 run already counted 39 on both sides)
+C2 backend/target/openapi.json and loops/backend-dev/outputs/openapi.json: cmp identical, 39 operationIds
+C3 every phase-03..08 check re-run in this session on the running app (R3..R8 in curl-r2.log)
+C4 TEST-com.quickflow.persistence.SchemaIndexesTest.xml: tests="4" errors="0" failures="0":
+   nfr1_taskStatusIndexExists, br7_habitCompletionUniqueConstraintExists, nfr1_planItemPlanIdIndexExists,
+   nfr1_taskArchivedDueDateIndexExists
+C5 not run (plan: the testing loop never restarts processes)
+C6 domain line coverage 676/695 = 97.3 % (see R20)
+C7 r2-ids-spec.txt (52 BR/FR ids in specs/001-quickflow-backend/spec.md) vs r2-ids-tests.txt (50 ids in
+   @DisplayName strings under backend/src/test/java): missing only FR-08.1 and FR-10.1 (the allowed exceptions)
+
+## R20 unit tests
+backend: 338 passed, 0 failed, 0 errors, 0 skipped (unit-result.json)
+domain line coverage from unit/backend/coverage/jacoco.csv, packages com.quickflow.domain.*:
+   missed 19, covered 676 → 676/695 = 97.3 % ≥ 80 % (coverage.min_line 0.80)
+   (unit-result.json says "coverage skipped: no classes in com/quickflow/domain": the runner's exact-package
+   match misses the sub-packages, as noted in every earlier report; jacoco.csv has them)
+frontend: outcome none (no unit test command configured)
+
+# third session, 2026-09-26 21:47+03:00 (the second session crashed after R17 at 18:07; the runner re-ran the
+# unit tests and restarted the app on a fresh test DB at 21:46). Evidence: ui-R18-R19.json, R18-console-errors.txt,
+# shot-90..111, this section. R1–R17 evidence stays the second session's (curl-r2.log, r2-*.json, ui-R10..R17.json,
+# shot-01..89).
+
+## R18 C9 (frontend phase-09, quickstart step 3)
+curl http://localhost:4200/ → 200
+curl http://localhost:4200/api/app-info → 200 application/json {"timeZone":"Africa/Cairo","now":"2026-09-26T21:50:38.03048912+03:00"}
+steps 1–2 not run (they write under frontend/)
+
+## R19 (frontend phase-polish-1)
+C1 ls frontend/src/app/app.spec.ts → "No such file or directory"; find frontend/src -name '*.spec.ts' → no output
+C2 server-frontend.log (this app run): "Application bundle generation complete. [1.574 seconds] - 2026-09-26T18:46:39.036Z";
+   grep -cE 'error TS|✘ \[ERROR\]' server-frontend.log → 0
+C3 same steps as R18 C8 (six nav-* clicks from /settings): ui-R18-R19.json "R18_C8_and_R19_C3", shot-106..111
+
+## R20 re-read for this run's unit/ (files rewritten by the runner at 21:4x)
+unit/backend/unit-result.json: exit_code 0, passed 338, failed 0, errors 0, skipped 0, outcome pass
+surefire: 30 TEST-*.xml, none with failures or errors > 0
+jacoco.csv com.quickflow.domain.* LINE_MISSED/LINE_COVERED summed: 19 / 676 → 676/695 = 97.3 % ≥ 80 %
