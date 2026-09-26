@@ -2,5 +2,5 @@
   "feature_dir": "specs/001-quickflow-frontend",
   "current_phase": "phase-00",
   "loop_status": "running",
-  "stop_reason": "until_reached: US5"
+  "stop_reason": "until_reached: phase-00"
 }
