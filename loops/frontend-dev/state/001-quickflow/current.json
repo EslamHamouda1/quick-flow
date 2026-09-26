@@ -2,5 +2,5 @@
   "feature_dir": "specs/001-quickflow-frontend",
   "current_phase": "phase-polish-1",
   "loop_status": "complete",
-  "stop_reason": "until_reached: US6"
+  "stop_reason": "complete"
 }
