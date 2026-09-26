@@ -182,7 +182,7 @@ class PlanServiceTest {
 	}
 
 	@Test
-	@DisplayName("BR-13: ticking a TASK item completes the task")
+	@DisplayName("BR-13, FR-07.5: ticking a TASK item completes the task")
 	void br13_taskItemDoneCompletesTask() {
 		Plan plan = existing(7L, TASK_1, HABIT_2);
 		given(plans.findById(7L)).willReturn(Optional.of(plan));
@@ -196,7 +196,7 @@ class PlanServiceTest {
 	}
 
 	@Test
-	@DisplayName("BR-13: un-ticking a TASK item leaves the task unchanged")
+	@DisplayName("BR-13, FR-07.5: un-ticking a TASK item leaves the task unchanged")
 	void br13_taskItemUndoneLeavesTask() {
 		Plan plan = existing(7L, TASK_1, HABIT_2);
 		plan.findItem(71L).orElseThrow().setDone(true);
@@ -211,7 +211,7 @@ class PlanServiceTest {
 	}
 
 	@Test
-	@DisplayName("BR-13: ticking a HABIT item changes no source")
+	@DisplayName("BR-13, FR-07.5: ticking a HABIT item changes no source")
 	void br13_habitItemDoneChangesNoSource() {
 		Plan plan = existing(7L, TASK_1, HABIT_2);
 		given(plans.findById(7L)).willReturn(Optional.of(plan));
@@ -225,7 +225,7 @@ class PlanServiceTest {
 	}
 
 	@Test
-	@DisplayName("BR-13: ticking a LEARNING_RESOURCE item changes no source")
+	@DisplayName("BR-13, FR-07.5: ticking a LEARNING_RESOURCE item changes no source")
 	void br13_learningItemDoneChangesNoSource() {
 		Plan plan = existing(7L, TASK_1, CARD_3);
 		given(plans.findById(7L)).willReturn(Optional.of(plan));

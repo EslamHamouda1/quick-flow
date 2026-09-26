@@ -135,6 +135,28 @@ class TaskControllerTest {
 	}
 
 	@Test
+	@DisplayName("FR-01.1: a task is returned with exactly the contract Task fields")
+	void fr01_1_taskHasExactlyContractFields() {
+		given(this.taskService.get(7L)).willReturn(task("Write report", TaskStatus.TODO, TaskPriority.LOW, null));
+
+		var result = assertThat(this.mvc.get().uri("/api/tasks/7"));
+		result.hasStatusOk().hasContentType(MediaType.APPLICATION_JSON);
+		var json = result.bodyJson();
+		json.extractingPath("$").asMap()
+			.containsOnlyKeys("id", "title", "description", "status", "priority", "dueDate", "createdAt", "updatedAt",
+					"completedAt", "archived", "overdue");
+		json.extractingPath("$.description").isNull();
+		json.extractingPath("$.dueDate").isNull();
+		json.extractingPath("$.completedAt").isNull();
+		json.extractingPath("$.status").isEqualTo("TODO");
+		json.extractingPath("$.priority").isEqualTo("LOW");
+		json.extractingPath("$.createdAt").isEqualTo("2026-09-24T12:00:00+03:00");
+		json.extractingPath("$.updatedAt").isEqualTo("2026-09-24T12:00:00+03:00");
+		json.extractingPath("$.archived").isEqualTo(false);
+		json.extractingPath("$.overdue").isEqualTo(false);
+	}
+
+	@Test
 	@DisplayName("US1: GET /api/tasks/{id} for an unknown id is 404 problem")
 	void getTaskUnknownIs404() {
 		given(this.taskService.get(99L)).willThrow(new NotFoundException("Task 99 not found"));

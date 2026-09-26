@@ -1,0 +1,40 @@
+phase-09 attempt 1 — file checks (run 2026-09-26 ~11:43 +03:00)
+
+== C1: operationIds
+live  (C1-api-docs.json, GET /v3/api-docs -> 200): jq '.paths[][] | .operationId' | sort
+contract (specs/001-quickflow-backend/contracts/openapi.yaml): grep operationId
+Both sorted lists (39 each, identical):
+activateHabit addMilestone addNote archiveTask completeHabit completeTask createHabit
+createLearningCard createPlan createTask deactivateHabit deleteHabit deleteLearningCard
+deleteMilestone deleteNote deletePlan deleteTask getAppInfo getDashboard getHabit
+getLearningCard getPlan getSettings getTask listHabitCompletions listHabits
+listLearningCards listOverdueTasks listPlans listTasks restoreTask setPlanItemDone
+undoHabitCompletion updateHabit updateLearningCard updateMilestone updatePlan
+updateSettings updateTask
+Note: the review says "38 each"; the count is 39 in both files (1 app-info + 9 task + 10 habit
++ 10 learning + 6 plan + 1 dashboard + 2 settings). The sets are the same.
+
+== C2: copy vs target
+cmp loops/backend-dev/outputs/openapi.json backend/target/openapi.json -> IDENTICAL
+jq path/method/operationId/response-code listing of backend/target/openapi.json: same 39
+operationIds as C1; success codes 200/201/204 as in the contract.
+
+== C4: SchemaIndexesTest (unit/surefire/TEST-com.quickflow.persistence.SchemaIndexesTest.xml)
+tests="4" failures="0" errors="0" skipped="0"
+nfr1_taskArchivedDueDateIndexExists, nfr1_taskStatusIndexExists,
+nfr1_planItemPlanIdIndexExists, br7_habitCompletionUniqueConstraintExists
+QuickflowApplicationTests.xml: 0 <failure>/<error>
+
+== C6: domain line coverage (unit/coverage/jacoco.csv, packages com.quickflow.domain.*)
+missed 19 / covered 676 -> 676/695 = 0.973 (min_line 0.80)
+missed lines: LearningService 1, PlanGroup 1, Plan 4, PlanService 4, TaskSort 1, TaskService 4,
+Habit 1, HabitService 3; PlanSourceResolver 0 missed / 9 covered (was 4/9 missed in phase-08).
+
+== C7: rule / FR ids in @DisplayName (backend/src/test/java)
+spec.md ids: BR-1..BR-14, FR-01.1..01.7, FR-02.1..02.3, FR-03.1..03.3, FR-04.1..04.5,
+FR-05.1..05.2, FR-06.1..06.3, FR-07.1..07.6, FR-08.1..08.5, FR-09.1..09.2, FR-10.1..10.2
+@DisplayName ids: all of the above except FR-08.1 and FR-10.1 (the two excluded UI-only ids).
+Missing: none.
+New tests passing (surefire, 0 failure/error): TaskControllerTest fr01_1_taskHasExactlyContractFields;
+PlanSourceResolverTest br10_taskSourceTitleResolved, br10_habitSourceNameResolved,
+br10_learningSourceTitleResolved, br10_missingSourceIsEmpty.

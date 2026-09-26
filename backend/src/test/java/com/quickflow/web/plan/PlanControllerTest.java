@@ -181,7 +181,7 @@ class PlanControllerTest {
 	}
 
 	@Test
-	@DisplayName("BR-11: an end not after the start is rejected with 400 and field endDateTime")
+	@DisplayName("BR-11, FR-07.4: an end not after the start is rejected with 400 and field endDateTime")
 	void br11_endNotAfterStartIs400WithEndDateTimeField() {
 		given(this.planService.create(anyString(), anyInt(), any(), any(), anyInt(), anyList()))
 			.willThrow(new ValidationException("endDateTime", "must be after startDateTime"));

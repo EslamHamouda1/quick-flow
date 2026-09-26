@@ -68,7 +68,7 @@ class PlanStatusPolicyTest {
 	}
 
 	@Test
-	@DisplayName("BR-12: there is no rest time before the start")
+	@DisplayName("BR-12, FR-08.2: there is no rest time before the start")
 	void br12_restSecondsNullBeforeStart() {
 		assertThat(PlanStatusPolicy.restSeconds(START, END, BEFORE_START)).isNull();
 	}
@@ -80,7 +80,7 @@ class PlanStatusPolicyTest {
 	}
 
 	@Test
-	@DisplayName("BR-12: inside the window the rest time is the seconds to the end")
+	@DisplayName("BR-12, FR-08.2: inside the window the rest time is the seconds to the end")
 	void br12_restSecondsInsideWindow() {
 		assertThat(PlanStatusPolicy.restSeconds(START, END, INSIDE)).isEqualTo(5400L);
 	}
@@ -92,7 +92,7 @@ class PlanStatusPolicyTest {
 	}
 
 	@Test
-	@DisplayName("BR-12: there is no rest time after the end")
+	@DisplayName("BR-12, FR-08.2: there is no rest time after the end")
 	void br12_restSecondsNullAfterEnd() {
 		assertThat(PlanStatusPolicy.restSeconds(START, END, AFTER_END)).isNull();
 	}

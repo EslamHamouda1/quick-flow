@@ -188,7 +188,7 @@ class HabitControllerTest {
 	}
 
 	@Test
-	@DisplayName("BR-7: a second completion for the same date is 409 problem")
+	@DisplayName("BR-7, FR-04.2: a second completion for the same date is 409 problem")
 	void br7_duplicateCompletionIs409Problem() {
 		given(this.habitService.complete(7L, null))
 			.willThrow(new ConflictException("Habit 7 is already complete for 2026-09-24"));

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlanStatusPolicy.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.plan</a> &gt; <span class="el_source">PlanStatusPolicy.java</span></div><h1>PlanStatusPolicy.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.plan;
+
+import java.time.Duration;
+import java.time.Instant;
+
+/** Pure functions of the stored plan values and the clock (research R-6, NFR-4). */
+public final class PlanStatusPolicy {
+
+	private PlanStatusPolicy() {
+	}
+
+	/** Not Started before start; Completed at/after end or once all items are done; else In Progress (FR-08.4). */
+	public static PlanStatus statusAt(Instant start, Instant end, int done, int total, Instant now) {
+<span class="fc bfc" id="L14" title="All 2 branches covered.">		if (now.isBefore(start)) {</span>
+<span class="fc" id="L15">			return PlanStatus.NOT_STARTED;</span>
+		}
+<span class="pc bpc" id="L17" title="1 of 6 branches missed.">		if (!now.isBefore(end) || (total &gt; 0 &amp;&amp; done == total)) {</span>
+<span class="fc" id="L18">			return PlanStatus.COMPLETED;</span>
+		}
+<span class="fc" id="L20">		return PlanStatus.IN_PROGRESS;</span>
+	}
+
+	/** Whole seconds to end while {@code start &lt;= now &lt; end}, else null, whatever the status (BR-12, A-5). */
+	public static Long restSeconds(Instant start, Instant end, Instant now) {
+<span class="fc bfc" id="L25" title="All 4 branches covered.">		if (now.isBefore(start) || !now.isBefore(end)) {</span>
+<span class="fc" id="L26">			return null;</span>
+		}
+<span class="fc" id="L28">		return Duration.between(now, end).getSeconds();</span>
+	}
+
+	/** floor(100 * done / total), 0 for no items (FR-08.3). */
+	public static int progressPercent(int done, int total) {
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">		return total == 0 ? 0 : 100 * done / total;</span>
+	}
+
+	public static PlanProgress progress(Plan plan, Instant now) {
+<span class="fc" id="L37">		int done = plan.doneItems();</span>
+<span class="fc" id="L38">		int total = plan.totalItems();</span>
+<span class="fc" id="L39">		return new PlanProgress(statusAt(plan.getStartDateTime(), plan.getEndDateTime(), done, total, now), done,</span>
+<span class="fc" id="L40">				total, progressPercent(done, total),</span>
+<span class="fc" id="L41">				restSeconds(plan.getStartDateTime(), plan.getEndDateTime(), now));</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

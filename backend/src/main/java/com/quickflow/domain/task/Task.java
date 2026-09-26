@@ -14,10 +14,13 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "task")
+@Table(name = "task", indexes = {
+		@Index(name = "idx_task_archived_due_date", columnList = "archived, due_date"),
+		@Index(name = "idx_task_status", columnList = "status") })
 public class Task {
 
 	static final int TITLE_MAX = 200;

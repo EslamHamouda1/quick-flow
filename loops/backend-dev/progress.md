@@ -14,7 +14,8 @@
 | backend-dev:001-quickflow:phase-06 | 2026-09-25T23:23:41+03:00 | 2026-09-25T23:45:46+03:00 | 0h22m05s | 0h16m21s | 4 | 1 | 208 | 9748524 | 101225 | 9.4148 | 220bfbb4-b97c-4c47-ae33-5e267e5831c9 0268db9b-e680-466b-8b54-bf34991b01e9 ba0e3b29-4ddc-42ea-a99f-68ae962745ce 19f1e531-117d-42a9-9e46-822fad896843 | ba0e3b29-4ddc-42ea-a99f-68ae962745ce | 126addf | success |
 | backend-dev:001-quickflow:phase-07 | 2026-09-26T00:20:42+03:00 | 2026-09-26T00:59:42+03:00 | 0h39m00s | 0h13m02s | 5 | 1 | 222 | 8702138 | 77442 | 8.1618 | a179dff8-2927-473d-a32e-23057de42010 0d17c0dd-e014-4982-b64e-9718b8775736 d0241dc8-dec3-456b-bf7f-143c67bd0b34 0befc91c-e612-4319-ba25-1c34fae2af70 c0289276-5b57-4a81-a4ad-6ba95b83c3d4 | 0befc91c-e612-4319-ba25-1c34fae2af70 | ac43ef8 | success |
 | backend-dev:001-quickflow:phase-08 | 2026-09-26T02:04:49+03:00 | 2026-09-26T11:13:04+03:00 | 9h08m15s | 0h09m52s | 5 | 1 | 168 | 5376789 | 51634 | 4.7602 | d138fe9f-8f9b-43f5-99f4-6bae679d717a ea738d99-f508-4787-b1a7-bfe59a12c0a9 758c4006-7be9-4e8c-b10c-93b224242123 313676a5-0ba6-4353-b617-6e7e0e24cadd c38c4bc4-2589-4745-8bef-a8205d075e55 | 758c4006-7be9-4e8c-b10c-93b224242123 | 837f6e8 | success |
-| **Total** |  |  |  | 2h00m37s | 36 |  | 1636 | 67813785 | 704195 | 59.3158 |  |  |  |  |
+| backend-dev:001-quickflow:phase-09 | 2026-09-26T11:27:27+03:00 | 2026-09-26T11:46:36+03:00 | 0h19m09s | 0h16m49s | 4 | 1 | 284 | 11117579 | 85013 | 6.6305 | 78ba0196-4658-4068-9865-864fb24c71cd fac73a1e-0ba6-4957-a3ad-d167a9a53cf7 b6d18791-6e09-482f-8887-b405f74ff5e5 827608e9-5bdd-45cd-b23d-b67c0a60dada | b6d18791-6e09-482f-8887-b405f74ff5e5 |  | success |
+| **Total** |  |  |  | 2h17m27s | 40 |  | 1920 | 78931364 | 789208 | 65.9462 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -151,3 +152,17 @@
 - 2026-09-26T02:10:12+03:00 001-quickflow phase-08: marked T075-T081 [~] in phase-08.md and tasks.json, [X] in tasks.md; set phase-08 ready_for_test
 - 2026-09-26T02:14:28+03:00 test 001-quickflow phase-08 attempt 1: pass (verified_by 758c4006-7be9-4e8c-b10c-93b224242123)
 - 2026-09-26T11:15:00+03:00 001-quickflow phase-08: close check ok (T075-T081 [X] in tasks.md, verdict pass for attempt 1); marked T075-T081 [x] in phase-08.md and tasks.json; set phase-08 done
+- 2026-09-26T11:30:21+03:00 001-quickflow phase-09: wrote outputs/001-quickflow/phase-09-review.md (T083-T087; 38/38 operationIds match, domain coverage already > 80%, 7 FR ids missing from @DisplayName, 4 assumptions, no open questions); set phase-09 awaiting_approval
+- 2026-09-26T11:30:36+03:00 gate 001-quickflow phase-09: approved (auto)
+- 2026-09-26T11:31:00+03:00 001-quickflow phase-09: tasks.md Phase 9 matches phase-09.md (T083-T087, no sync change); no reviewer notes, no unchecked checklist items; set phase-09 in_progress
+- 2026-09-26T11:32:00+03:00 001-quickflow phase-09: tests first: wrote persistence/SchemaIndexesTest (NFR-1 x3, BR-7), domain/plan/PlanSourceResolverTest (BR-10 x4), TaskControllerTest fr01_1 (FR-01.1 field set)
+- 2026-09-26T11:32:30+03:00 001-quickflow phase-09: T086 added FR-01.5/FR-01.6/FR-04.2/FR-07.4/FR-07.5/FR-08.2 to existing @DisplayName strings (TaskTest, TaskRepositoryTest, HabitServiceTest, HabitControllerTest, PlanTest, PlanControllerTest, PlanServiceTest, PlanStatusPolicyTest); no assertion changes
+- 2026-09-26T11:32:45+03:00 001-quickflow phase-09: T084 added @Index idx_task_archived_due_date, idx_task_status (Task.java) and idx_plan_item_plan_id (PlanItem.java); checked hibernate-core 7.4.5 AbstractSchemaMigrator.applyIndexes adds missing named indexes under ddl-auto=update
+- 2026-09-26T11:34:00+03:00 001-quickflow phase-09: ./mvnw verify: 338 tests, 0 failures/errors; domain line coverage 97.3% (T085); log runs/001-quickflow/phase-09-build.log
+- 2026-09-26T11:40:00+03:00 001-quickflow phase-09: T083 swagger vs contract: 39/39 operations and all schemas match except D-1..D-5; wrote research.md R-contract; no code change
+- 2026-09-26T11:41:00+03:00 001-quickflow phase-09: T087 quickstart.md: documented how verify produces backend/target/openapi.json (profile openapi, port 18080, in-memory H2)
+- 2026-09-26T11:41:30+03:00 001-quickflow phase-09: copied backend/target/openapi.json to loops/backend-dev/outputs/openapi.json
+- 2026-09-26T11:42:00+03:00 001-quickflow phase-09: marked T083-T087 [~] in phase-09.md and tasks.json, [X] in tasks.md; set phase-09 ready_for_test
+- 2026-09-26T11:44:24+03:00 test 001-quickflow phase-09 attempt 1: pass (verified_by b6d18791-6e09-482f-8887-b405f74ff5e5)
+- 2026-09-26T11:45:00+03:00 001-quickflow phase-09: close check ok (T083-T087 [X] in tasks.md, verdict pass attempt 1); marked T083-T087 [x] in phase-09.md and tasks.json; set phase-09 done
+- 2026-09-26T11:50:00+03:00 001-quickflow converge: /speckit-converge reports Converged (14 BR, 50 backend FR, 12 plan decisions, 5 constitution principles checked; 0 findings; tasks.md unchanged); set current.json loop_status complete

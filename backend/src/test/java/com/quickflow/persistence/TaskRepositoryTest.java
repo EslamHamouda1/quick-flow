@@ -143,7 +143,7 @@ class TaskRepositoryTest {
 	}
 
 	@Test
-	@DisplayName("BR-4: archived tasks are excluded by default")
+	@DisplayName("BR-4, FR-01.6: archived tasks are excluded by default")
 	void br4_archivedExcludedByDefault() {
 		Task archived = task("archived");
 		archived.archive(BASE.plusSeconds(86_400));
@@ -153,7 +153,7 @@ class TaskRepositoryTest {
 	}
 
 	@Test
-	@DisplayName("BR-4: archived=true lists only archived tasks")
+	@DisplayName("BR-4, FR-01.6: archived=true lists only archived tasks")
 	void br4_archivedTrueListsArchived() {
 		Task archived = task("archived");
 		archived.archive(BASE.plusSeconds(86_400));

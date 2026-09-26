@@ -76,3 +76,20 @@ library sources, a small compile) before code relies on it (Constitution V).
 ## R-11 Duplicate completion under concurrency (BR-7)
 - **Decision**: unique constraint on `(habit_id, completion_date)`; the service checks first and also maps
   `DataIntegrityViolationException` to 409, so two concurrent requests still create one row.
+
+## R-contract Deliberate differences between the generated swagger and contracts/openapi.yaml (T083)
+Checked in phase-09 on `backend/target/openapi.json` from `./mvnw verify`: both documents have the same 39
+operations (path, method, operationId, tags, parameters with `required`/schema/default/enum, requestBody presence and
+`required`, success status code and response schema) and the same schemas (property set, `required` list, types incl.
+`[x, null]`, enums, `$ref`s, min/max constraints). The only differences, all accepted as deliberate (phase-09 review
+A-2); the contract is not edited:
+- **D-1** No 400/404/409 responses (and so no `Problem`/`FieldError` schemas) in the generated swagger: they come from
+  `ApiExceptionHandler` at runtime as RFC 9457 problem details (R-9); the generated frontend client doesn't use error types.
+- **D-2** Plain integers carry `format: int32` (the contract has `integer` without format); ids and `restSeconds` are
+  `int64` in both.
+- **D-3** `minLength: 0` on optional strings with only `@Size(max=…)` (`TaskCreate/TaskUpdate/LearningCardCreate/
+  LearningCardUpdate/HabitWrite.description`, `Settings.displayName`): the same constraint, as springdoc renders it.
+- **D-4** `servers` is the `openapi` generation profile's `http://localhost:18080` (contract: `http://localhost:8080`,
+  the app's port).
+- **D-5** `completeHabit`'s requestBody has no `required` key: OpenAPI's default `false`, equal to the contract's
+  `required: false`.

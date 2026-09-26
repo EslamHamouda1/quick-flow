@@ -66,7 +66,7 @@ class PlanTest {
 	}
 
 	@Test
-	@DisplayName("BR-11: an end equal to the start is rejected with field endDateTime")
+	@DisplayName("BR-11, FR-07.4: an end equal to the start is rejected with field endDateTime")
 	void br11_endEqualStartRejectedWithFieldEndDateTime() {
 		ValidationException ex = catchThrowableOfType(ValidationException.class,
 				() -> new Plan("Deep work", 90, START, START, 1, ITEMS, NOW));
@@ -75,7 +75,7 @@ class PlanTest {
 	}
 
 	@Test
-	@DisplayName("BR-11: an end before the start is rejected with field endDateTime")
+	@DisplayName("BR-11, FR-07.4: an end before the start is rejected with field endDateTime")
 	void br11_endBeforeStartRejected() {
 		ValidationException ex = catchThrowableOfType(ValidationException.class,
 				() -> new Plan("Deep work", 90, START, START.minusSeconds(1), 1, ITEMS, NOW));

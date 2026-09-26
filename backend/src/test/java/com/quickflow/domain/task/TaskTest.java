@@ -36,7 +36,7 @@ class TaskTest {
 	}
 
 	@Test
-	@DisplayName("BR-1: a blank title is rejected")
+	@DisplayName("BR-1, FR-01.5: a blank title is rejected")
 	void br1_blankTitleRejected() {
 		ValidationException ex = catchThrowableOfType(ValidationException.class,
 				() -> new Task("   ", null, TaskStatus.TODO, TaskPriority.MEDIUM, null, NOW));
@@ -45,7 +45,7 @@ class TaskTest {
 	}
 
 	@Test
-	@DisplayName("BR-1: a title of 201 characters is rejected")
+	@DisplayName("BR-1, FR-01.5: a title of 201 characters is rejected")
 	void br1_title201CharsRejected() {
 		ValidationException ex = catchThrowableOfType(ValidationException.class,
 				() -> new Task("a".repeat(201), null, TaskStatus.TODO, TaskPriority.MEDIUM, null, NOW));
@@ -64,7 +64,7 @@ class TaskTest {
 	}
 
 	@Test
-	@DisplayName("BR-2: a description of 2001 characters is rejected")
+	@DisplayName("BR-2, FR-01.5: a description of 2001 characters is rejected")
 	void br2_description2001CharsRejected() {
 		ValidationException ex = catchThrowableOfType(ValidationException.class,
 				() -> new Task("Write report", "d".repeat(2001), TaskStatus.TODO, TaskPriority.MEDIUM, null, NOW));
@@ -81,7 +81,7 @@ class TaskTest {
 	}
 
 	@Test
-	@DisplayName("BR-3: a null status is rejected on update and on status change")
+	@DisplayName("BR-3, FR-01.5: a null status is rejected on update and on status change")
 	void br3_nullStatusRejected() {
 		Task task = task();
 

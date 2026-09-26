@@ -104,7 +104,7 @@ class HabitServiceTest {
 	}
 
 	@Test
-	@DisplayName("BR-7: completing an already completed date is a conflict")
+	@DisplayName("BR-7, FR-04.2: completing an already completed date is a conflict")
 	void br7_existingCompletionIsConflict() {
 		given(habits.findById(7L)).willReturn(Optional.of(existing(7L)));
 		given(completions.existsByHabitIdAndCompletionDate(7L, TODAY)).willReturn(true);

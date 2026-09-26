@@ -12,7 +12,11 @@ the running API), not by the dev loop.
 - Tests + coverage + OpenAPI: `cd backend && ./mvnw -q verify`
   - Surefire reports: `backend/target/surefire-reports/TEST-*.xml`
   - JaCoCo: `backend/target/site/jacoco/jacoco.xml` (line coverage ≥ 80% on `com.quickflow.domain`)
-  - Generated swagger: `backend/target/openapi.json` (copied to `loops/backend-dev/outputs/openapi.json`)
+  - Generated swagger: `backend/target/openapi.json` (copied to `loops/backend-dev/outputs/openapi.json`).
+    During `verify`, `spring-boot-maven-plugin` starts the app with profile `openapi` (port 18080, in-memory
+    H2 `openapi`, `ddl-auto=create-drop`), `springdoc-openapi-maven-plugin` reads
+    `http://localhost:18080/v3/api-docs`, then the app is stopped. Its known differences from
+    `contracts/openapi.yaml` are listed in [research.md](research.md) (R-contract).
 
 ## Run
 - Default profile (file DB `backend/data/quickflow`): `cd backend && ./mvnw spring-boot:run`
