@@ -1,0 +1,38 @@
+{
+  "feature": "002-us-tags",
+  "source": "examples/single-us/US-tags.md",
+  "stories": [
+    {
+      "id": "US1",
+      "title": "Tag tasks and filter by tag",
+      "priority": "P1",
+      "acceptance": [
+        {"id": "AC-US1-1", "given": "an existing task", "when": "the user adds the tags \"work\" and \"urgent\" to it", "then": "the task shows both tags, and reading the task back returns both tags"},
+        {"id": "AC-US1-2", "given": "tasks tagged \"work\" and tasks without that tag", "when": "the user filters the task list by \"work\"", "then": "only the tasks tagged \"work\" are listed"},
+        {"id": "AC-US1-3", "given": "a task tagged \"work\"", "when": "the user removes the tag \"work\"", "then": "the task no longer shows it and no longer appears when filtering by \"work\""},
+        {"id": "AC-US1-4", "given": "a task", "when": "the user tries to add an empty tag or a tag longer than 30 characters", "then": "the tag is rejected with a validation message and the task's tags are unchanged (BR-T1)"},
+        {"id": "AC-US1-5", "given": "a task tagged \"work\"", "when": "the user adds \"Work\" or filters by \"WORK\"", "then": "\"Work\" and \"work\" are treated as the same tag: the task still has one such tag, and it is listed by the filter (BR-T2)"},
+        {"id": "AC-US1-6", "given": "a task with 10 tags", "when": "the user adds another, different tag", "then": "the tag is rejected with a validation message and the task's tags are unchanged (BR-T3)"}
+      ],
+      "requirements": ["FR-001", "FR-002", "FR-003", "FR-004", "FR-005", "FR-006", "FR-007", "FR-008"],
+      "depends_on": [],
+      "layers": ["backend", "frontend"]
+    }
+  ],
+  "requirements": [
+    {"id": "FR-001", "text": "Users MUST be able to add one or more tags to an existing task in one action (AC-US1-1)."},
+    {"id": "FR-002", "text": "Every read of a task (single task and task list) MUST return the task's tags, in a stable order (alphabetical) (AC-US1-1). Tags are shown in lower case."},
+    {"id": "FR-003", "text": "Tags MUST be case-insensitive: two tags that differ only in letter case are the same tag, a task never holds both, and adding a tag the task already has never creates a second one: it is a silent no-op (BR-T2, AC-US1-5)."},
+    {"id": "FR-004", "text": "Users MUST be able to filter the task list by one tag; only tasks that have that tag (ignoring case) are listed; the filter combines with all existing list filters and sort (AC-US1-2, AC-US1-5)."},
+    {"id": "FR-005", "text": "Users MUST be able to remove a tag from a task; afterwards the task no longer shows it and the tag filter no longer lists it; removing a tag the task doesn't have is a silent no-op (AC-US1-3)."},
+    {"id": "FR-006", "text": "The system MUST reject an empty tag (after trimming spaces) or a tag longer than 30 characters with a validation message naming the tags field, leaving the task's tags unchanged (BR-T1, AC-US1-4)."},
+    {"id": "FR-007", "text": "The system MUST reject an addition that would give a task more than 10 tags with a validation message, leaving the task's tags unchanged (BR-T3, AC-US1-6)."},
+    {"id": "FR-008", "text": "Tags MUST be kept with the task (they survive an app restart) and removed with it when the task is deleted (BR-T4)."}
+  ],
+  "rules": [
+    {"id": "BR-T1", "text": "A tag is 1 to 30 characters long after spaces around it are removed."},
+    {"id": "BR-T2", "text": "Tags are case-insensitive: \"Work\" and \"work\" are the same tag."},
+    {"id": "BR-T3", "text": "A task has at most 10 tags."},
+    {"id": "BR-T4", "text": "A task's tags belong to it alone and are deleted with it; editing, completing, archiving or restoring a task never changes its tags."}
+  ]
+}
