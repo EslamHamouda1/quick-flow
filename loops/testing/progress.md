@@ -33,7 +33,7 @@
 | testing:001-quickflow:suite:test-phase-06 | 2026-09-26T13:16:07+03:00 | 2026-09-26T13:23:07+03:00 | 0h07m00s | 0h06m57s | 1 | 1 | 70 | 2656067 | 28465 | 1.7447 | 15f09895-e692-4488-beb9-5f4976032d4f |  | 7f17a1c | success |
 | testing:001-quickflow:suite:test-phase-07 | 2026-09-26T13:23:15+03:00 | 2026-09-26T14:00:50+03:00 | 0h37m35s | 0h10m36s | 1 | 1 | 96 | 3279415 | 27987 | 1.8491 | f0462109-b51b-44b4-a3ec-b97010de82df |  | bb6999a | success |
 | testing:001-quickflow:suite:test-phase-E2E | 2026-09-26T14:00:56+03:00 | 2026-09-26T15:03:49+03:00 | 1h02m53s | 0h00m00s | 1 | 1 | 0 | 0 | 0 | 0.0000 |  |  | 16d22f1 | error:crash |
-| testing:001-quickflow:suite:test-phase-regression | 2026-09-26T15:04:14+03:00 | 2026-09-26T21:54:53+03:00 | 6h50m39s | 0h16m10s | 3 | 1 | 192 | 10301133 | 82183 | 6.1206 | 359157aa-6f1b-42bf-8354-8542d44d9889 14246260-5d9e-4c66-b49f-ccd28630d676 |  |  | success |
+| testing:001-quickflow:suite:test-phase-regression | 2026-09-26T15:04:14+03:00 | 2026-09-26T21:54:53+03:00 | 6h50m39s | 0h16m10s | 3 | 1 | 192 | 10301133 | 82183 | 6.1206 | 359157aa-6f1b-42bf-8354-8542d44d9889 14246260-5d9e-4c66-b49f-ccd28630d676 |  | e855b12 | success |
 | **Total** |  |  |  | 3h02m17s | 32 |  | 2438 | 98724584 | 884295 | 57.9088 |  |  |  |  |
 <!-- milestones:end -->
 

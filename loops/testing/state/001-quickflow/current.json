@@ -4,6 +4,6 @@
   "phase": "phase-polish-1",
   "dev_attempt": 1,
   "status": "testing",
-  "stop_reason": "usage_limit: You've hit your session limit \u00b7 resets 4:10pm (Africa/Cairo) (rerun the same command after the reset; state is kept)",
+  "stop_reason": "complete",
   "loop_status": "none"
 }
