@@ -1,0 +1,42 @@
+{
+  "U1-U4_dashboard_vs_api_2026-09-26T13:19:12": {
+    "ui": {
+      "greeting": "Hello",
+      "metrics": {"tasks": "4/8 tasks done", "habits": "1/3 habits today", "plans": "2 in progress · 1 upcoming · 1 completed", "learning": "1 in progress · 1 completed"},
+      "percent": "50%",
+      "dueToday": ["dash-task-1", "dash-task-2"],
+      "overdue": [], "overdueText": "Overdue No overdue tasks",
+      "completedToday": ["dash-task-4", "dash-task-3", "dash-task-8", "dash-task-7"],
+      "habits": ["dash-habit-1", "dash-habit-2", "dash-habit-3"], "habitDone": ["dash-habit-done-2"], "habitCount": "1/3",
+      "learning": {"notStarted": "1", "inProgress": "1", "completed": "1", "milestones": "1/2"},
+      "plans": [{"id": "dash-plan-2", "progress": "50% · 1/2 items", "rest": "4:40:48"}, {"id": "dash-plan-1", "progress": "33% · 1/3 items", "rest": "6:40:48"}],
+      "quickAdds": {"task": true, "habit": true, "learning": true, "plan": true}
+    },
+    "api": {
+      "now": "2026-09-26T13:19:12.114+03:00",
+      "dueToday": [1, 2], "overdue": [], "completedToday": [4, 3, 8, 7],
+      "taskCompletionPercent": 50, "taskCounts": {"total": 8, "done": 4},
+      "habits": [[1, false], [2, true], [3, false]], "habitCounts": {"active": 3, "completedToday": 1},
+      "planCounts": {"notStarted": 1, "inProgress": 2, "completed": 1},
+      "learning": {"notStarted": 1, "inProgress": 1, "completed": 1, "milestonesDone": 1, "milestonesTotal": 2},
+      "activePlans": [[2, 50, 16847], [1, 33, 24047]]
+    },
+    "settings_displayName": null
+  },
+  "U5": {
+    "plans_tick": "plan-item-done-3 (P1, LEARNING C4) clicked on /plans; locator.check() threw 'did not change its state' but the checkbox then reads checked and API plan 1 items [[1,false],[2,true],[3,true]], 66%, 2/3",
+    "plans_page_progress": "66% · 2/3 items",
+    "next_dashboard_view_dash-plan-1": "66% · 2/3 items",
+    "api_dashboard_plan1": [66, 2, 3],
+    "rest_read_1": {"at": "2026-09-26T13:19:55.225+03:00", "v": [["dash-plan-2", "4:40:05"], ["dash-plan-1", "6:40:05"]]},
+    "rest_read_2": {"at": "2026-09-26T13:20:00.228+03:00", "v": [["dash-plan-2", "4:40:00"], ["dash-plan-1", "6:40:00"]]},
+    "api_at_13:20:00.236": [[2, 16799], [1, 23999]]
+  },
+  "U6": [
+    {"k": "task", "label": "Add Task", "url": "/tasks?add=1", "form": "task-form", "visible": true},
+    {"k": "habit", "label": "Add Habit", "url": "/habits?add=1", "form": "habit-form", "visible": true},
+    {"k": "learning", "label": "Add Learning Card", "url": "/learning?add=1", "form": "card-form", "visible": true},
+    {"k": "plan", "label": "Create Plan", "url": "/plans?add=1", "form": "plan-builder", "visible": true}
+  ],
+  "U7": {"navMoves": 36, "bad": 0, "rule": "from each of the 6 routes, each nav-* link (text = label) reaches its route and page-title is an H1 equal to the label"}
+}
