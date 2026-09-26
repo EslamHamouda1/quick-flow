@@ -6,13 +6,13 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **feature:** 001-quickflow
 - **loop:** frontend-dev
 - **mode:** dev
-- **stops_at:** US5
+- **stops_at:** US6
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260926T172351-320864
-- **runner_nonce:** d179b0b2db8cd55ec1593882
-- **orchestrator_step:** frontend-dev:US5
+- **runner_nonce:** 7767b8590387a457d1d95db0
+- **orchestrator_step:** frontend-dev:US6
 
 ## Current orchestrator step
 - loop: frontend-dev
-- story: US5
-- goal: See everything on the Dashboard
+- story: US6
+- goal: Adjust settings
