@@ -1,0 +1,33 @@
+{
+  "_note": "Return values of the Playwright MCP (headless) runs for test-phase-02; screenshots shot-NN-*.png in this folder. API read-backs are fetch() calls from the page through the dev-server proxy.",
+  "setup": {"deleted_all_tasks": [11, 9, 8, 7, 6, 2, 1, 10], "left": 0},
+  "U1": {"emptyText": "No tasks yet\n\nAdd Task", "actionText": "Add Task", "formAfterAction": true, "formFromAdd1": true, "statusShownOnCreate": 0},
+  "U3": {"emptyTitleErr": "must not be blank", "titleValueLen": 201, "longTitleErr": "size must be between 1 and 200", "descValueLen": 2001, "descErr": "size must be between 0 and 2000", "savedCount": 0},
+  "U2": {"api": [{"id": 12, "title": "U2 created in UI", "description": "from the form", "status": "TODO", "priority": "HIGH", "dueDate": "2026-09-28", "archived": false}], "row": {"title": "U2 created in UI", "status": "Todo", "priority": "High", "due": "Sep 28, 2026"}, "formOpen": 0, "notice": ["Task created\n×"]},
+  "U4": {"statusOptions": [["TODO", "Todo"], ["IN_PROGRESS", "In Progress"], ["DONE", "Done"]], "priorityOptions": [["LOW", "Low"], ["MEDIUM", "Medium"], ["HIGH", "High"]]},
+  "U5": {"prefill": {"title": "U2 created in UI", "desc": "from the form", "status": "TODO", "priority": "HIGH", "due": "2026-09-28"}, "api": {"title": "U5 edited", "description": "edited desc", "status": "IN_PROGRESS", "priority": "LOW", "dueDate": "2026-10-02", "updatedChanged": true}, "row": {"title": "U5 edited", "status": "In Progress", "priority": "Low", "due": "Oct 2, 2026"}},
+  "U6": {"rowStatus": "Done", "api": {"status": "DONE", "completedAt": "2026-09-26T12:43:27.194345+03:00"}},
+  "U7": {"rowInDefaultAfterArchive": 0, "filterArchived": "INPUT:checkbox", "rowInArchivedView": 1, "restoreButton": 1, "inArchivedAfterRestore": 0, "inDefaultAfterRestore": 1, "apiArchived": false},
+  "U8": {"id": 13, "before": 1, "afterList": 0, "apiGet": 404, "afterSearch": 0, "searchEmptyState": 1, "afterArchived": 0, "afterOverdue": 0, "overdueRows": []},
+  "U9_dataset": {"Alpha report": 14, "alphabet soup": 15, "Beta ALPHA (DONE)": 16, "Gamma": 17, "Delta old (archived)": 18, "Done late (DONE)": 19, "No due": 20, "U5 edited (DONE, 10-02)": 12},
+  "U9": [
+    {"n": "default", "ui": [20,19,17,16,15,14,12], "api": [20,19,17,16,15,14,12], "match": true},
+    {"n": "search alpha", "ui": [16,15,14], "api": [16,15,14], "match": true},
+    {"n": "search ALPHA", "ui": [16,15,14], "api": [16,15,14], "match": true},
+    {"n": "status TODO", "ui": [20,17,14], "api": [20,17,14], "match": true},
+    {"n": "status DONE", "ui": [19,16,12], "api": [19,16,12], "match": true},
+    {"n": "priority LOW", "ui": [19,15,12], "api": [19,15,12], "match": true},
+    {"n": "dueFrom 09-26", "ui": [17,16,15,12], "api": [17,16,15,12], "match": true},
+    {"n": "dueTo 09-26", "ui": [19,15,14], "api": [19,15,14], "match": true},
+    {"n": "from-to 09-26..09-30", "ui": [16,15], "api": [16,15], "match": true},
+    {"n": "combined TODO+HIGH+from 09-21", "ui": [17], "api": [17], "match": true},
+    {"n": "sort dueDate asc", "ui": [14,19,15,16,12,17,20], "api": [14,19,15,16,12,17,20], "match": true},
+    {"n": "sort dueDate desc", "ui": [17,12,16,15,19,14,20], "api": [17,12,16,15,19,14,20], "match": true},
+    {"n": "sort createdAt asc", "ui": [12,14,15,16,17,19,20], "api": [12,14,15,16,17,19,20], "match": true},
+    {"n": "archived", "ui": [18], "api": [18], "match": true},
+    {"n": "search zzz", "ui": [], "api": [], "match": true, "emptyState": 1}
+  ],
+  "U10": {"defaultBadges": [[20,false],[19,false],[17,false],[16,false],[15,false],[14,true],[12,false]], "overdueUi": [14], "overdueBadges": [[14,true]], "overdueApi": [14]},
+  "U11": {"navUrl": "http://localhost:4200/tasks", "title": "Tasks", "titleTag": "H1", "navText": "Tasks"},
+  "console": "3 x 400 on POST /api/tasks (the U3 invalid saves) and 1 x 404 on GET /api/tasks/13 (the U8 read-back after delete); no other errors"
+}

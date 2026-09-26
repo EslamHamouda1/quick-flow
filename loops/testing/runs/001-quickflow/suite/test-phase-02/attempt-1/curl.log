@@ -1,0 +1,121 @@
+# suite test-phase-02 (US1) API checks, base http://localhost:8080, fresh test DB, 2026-09-26 (Africa/Cairo)
+# Raw responses copied from the curl output of this session (bash scripts / tee need approval here, so curl
+# ran directly and its output is recorded below). Long bodies (201/2000/2001-char fields) came from
+# bodies.json in this folder; list responses were piped through `jq -c 'map(.id)'`.
+
+== A1 POST /api/tasks {"title":"A1 full","description":"desc","priority":"HIGH","dueDate":"2026-09-27"}
+{"id":1,"title":"A1 full","description":"desc","status":"TODO","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-26T12:39:26.782360819+03:00","updatedAt":"2026-09-26T12:39:26.782360819+03:00","completedAt":null,"archived":false,"overdue":false}
+HTTP 201
+== A1 POST /api/tasks {"title":"A1 min"}
+{"id":2,"title":"A1 min","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T12:39:39.267200321+03:00","updatedAt":"2026-09-26T12:39:39.267200321+03:00","completedAt":null,"archived":false,"overdue":false}
+HTTP 201
+
+== A2 POST /api/tasks {"title":""}
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"},{"field":"title","message":"size must be between 1 and 200"}]}
+HTTP 400
+== A2 POST /api/tasks {"description":"no title"}
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+HTTP 400
+== A2 POST /api/tasks bodies.json[0] (title 201 x)
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"}]}
+HTTP 400
+== A2 POST /api/tasks bodies.json[1] (title 200 y)  -> id 3
+HTTP 201
+
+== A3 POST /api/tasks bodies.json[2] (description 2001 d)
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"description","message":"size must be between 0 and 2000"}]}
+HTTP 400
+== A3 POST /api/tasks bodies.json[3] (description 2000 d)  -> id 4
+HTTP 201
+
+== A4 POST /api/tasks {"title":"A4","status":"BLOCKED"}
+{"detail":"Malformed request body","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must be one of [TODO, IN_PROGRESS, DONE]"}]}
+HTTP 400
+== A4 POST /api/tasks {"title":"A4","priority":"URGENT"}
+{"detail":"Malformed request body","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"priority","message":"must be one of [LOW, MEDIUM, HIGH]"}]}
+HTTP 400
+== A4 PUT /api/tasks/2 {"title":"A1 min","status":"BLOCKED","priority":"MEDIUM"}
+{"detail":"Malformed request body","instance":"/api/tasks/2","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must be one of [TODO, IN_PROGRESS, DONE]"}]}
+HTTP 400
+== A4 PUT /api/tasks/2 {"title":"A1 min","status":"TODO","priority":"URGENT"}
+{"detail":"Malformed request body","instance":"/api/tasks/2","status":400,"title":"Bad Request","errors":[{"field":"priority","message":"must be one of [LOW, MEDIUM, HIGH]"}]}
+HTTP 400
+== A4 GET /api/tasks/2 (unchanged)
+{"id":2,"title":"A1 min","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T12:39:39.2672+03:00","updatedAt":"2026-09-26T12:39:39.2672+03:00","completedAt":null,"archived":false,"overdue":false}
+HTTP 200
+
+== A5 PUT /api/tasks/2 {"title":"A5 edited","description":"new desc","status":"IN_PROGRESS","priority":"LOW","dueDate":"2026-10-05"}
+{"id":2,"title":"A5 edited","description":"new desc","status":"IN_PROGRESS","priority":"LOW","dueDate":"2026-10-05","createdAt":"2026-09-26T12:39:39.2672+03:00","updatedAt":"2026-09-26T12:40:06.074621464+03:00","completedAt":null,"archived":false,"overdue":false}
+HTTP 200
+== A5 GET /api/tasks/2
+{"id":2,"title":"A5 edited","description":"new desc","status":"IN_PROGRESS","priority":"LOW","dueDate":"2026-10-05","createdAt":"2026-09-26T12:39:39.2672+03:00","updatedAt":"2026-09-26T12:40:06.074621+03:00","completedAt":null,"archived":false,"overdue":false}
+HTTP 200
+
+== A6 POST /api/tasks/2/complete
+{"id":2,...,"status":"DONE",...,"updatedAt":"2026-09-26T12:40:06.087653606+03:00","completedAt":"2026-09-26T12:40:06.087653606+03:00","archived":false,"overdue":false}
+HTTP 200
+== A6 PUT /api/tasks/2 status TODO
+{"id":2,...,"status":"TODO",...,"updatedAt":"2026-09-26T12:40:06.096741608+03:00","completedAt":null,"archived":false,"overdue":false}
+HTTP 200
+== A6 POST /api/tasks/2/complete
+{"id":2,...,"status":"DONE",...,"completedAt":"2026-09-26T12:40:06.100008731+03:00",...}
+HTTP 200
+== A6 PUT /api/tasks/2 status IN_PROGRESS
+{"id":2,...,"status":"IN_PROGRESS",...,"updatedAt":"2026-09-26T12:40:06.102776739+03:00","completedAt":null,"archived":false,"overdue":false}
+HTTP 200
+
+== A7 POST /api/tasks/1/archive
+{"id":1,"title":"A1 full",...,"archived":true,"overdue":false}
+HTTP 200
+== A7 GET /api/tasks -> ids [4,3,2]  (1 absent; body truncated in output, starts with id 4)   HTTP 200
+== A7 GET /api/tasks?archived=true
+[{"id":1,"title":"A1 full","description":"desc","status":"TODO","priority":"HIGH","dueDate":"2026-09-27","createdAt":"2026-09-26T12:39:26.782361+03:00","updatedAt":"2026-09-26T12:40:13.952392+03:00","completedAt":null,"archived":true,"overdue":false}]
+HTTP 200
+== A7 POST /api/tasks/1/restore
+{"id":1,"title":"A1 full",...,"archived":false,"overdue":false}
+HTTP 200
+== A7 GET /api/tasks | jq map(.id)            -> [4,3,2,1]
+== A7 GET /api/tasks?archived=true            -> []   HTTP 200
+
+== A8 POST /api/tasks {"title":"A8 delete me","dueDate":"2026-09-25"}
+{"id":5,"title":"A8 delete me","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25",...,"archived":false,"overdue":true}
+HTTP 201
+== A8 before delete: GET /api/dashboard -> {"overdue":[5],"dueToday":[],"completedToday":[],"taskCounts":{"total":5,"done":0}}; GET /api/tasks/overdue -> [5]
+== A8 DELETE /api/tasks/5 -> HTTP 204
+== A8 GET /api/tasks/5
+{"detail":"Task 5 not found","instance":"/api/tasks/5","status":404,"title":"Not Found"}
+HTTP 404
+== A8 GET /api/tasks -> [4,3,2,1]; ?q=A8 -> []; ?archived=true -> []; /overdue -> []
+== A8 GET /api/dashboard -> {"overdue":[],"dueToday":[],"completedToday":[],"taskCounts":{"total":4,"done":0}}
+
+== A9-A11 dataset: DELETE 3 -> 204, DELETE 4 -> 204; created
+   6 "Alpha report" HIGH TODO due 2026-09-20 (overdue:true)
+   7 "alphabet soup" LOW IN_PROGRESS due 2026-09-26 (today, overdue:false)
+   8 "Beta ALPHA" MEDIUM due 2026-09-30 -> complete 200 (DONE)
+   9 "Gamma" HIGH TODO due 2026-10-10
+  10 "Delta old" LOW due 2026-09-24 -> archive 200
+  11 "Done late" LOW due 2026-09-24 -> complete 200 (DONE)
+  plus 1 "A1 full" HIGH TODO 2026-09-27, 2 "A5 edited" LOW IN_PROGRESS 2026-10-05
+== query                                          -> ids (expected, derived from the data above)
+   ?q=alpha                                       -> [8,7,6]   (expected [8,7,6])
+   ?q=ALPHA                                       -> [8,7,6]   (expected [8,7,6])
+   ?q=zzz                                         -> []        (expected [])
+   ?status=TODO                                   -> [9,6,1]
+   ?status=IN_PROGRESS                            -> [7,2]
+   ?status=DONE                                   -> [11,8]
+   ?priority=HIGH                                 -> [9,6,1]
+   ?priority=LOW                                  -> [11,7,2]
+   ?priority=MEDIUM                               -> [8]
+   ?dueFrom=2026-09-26                            -> [9,8,7,2,1]  (inclusive: 7 due 09-26 present)
+   ?dueTo=2026-09-26                              -> [11,7,6]     (inclusive: 7 present)
+   ?dueFrom=2026-09-26&dueTo=2026-09-30           -> [8,7,1]      (both ends inclusive)
+   ?status=TODO&priority=HIGH&dueFrom=2026-09-21  -> [9,1]
+   ?q=a&status=DONE&priority=LOW                  -> [11]
+   ?sort=dueDate&direction=asc                    -> [6,11,7,1,8,2,9]  (09-20,09-24,09-26,09-27,09-30,10-05,10-10)
+   ?sort=dueDate&direction=desc                   -> [9,2,8,1,7,11,6]
+   ?sort=createdAt&direction=asc                  -> [1,2,6,7,8,9,11]
+   ?sort=createdAt&direction=desc                 -> [11,9,8,7,6,2,1]
+   (no params)                                    -> [11,9,8,7,6,2,1]  (default createdAt newest first)
+   ?archived=true                                 -> [10]
+   ?archived=true&q=DELTA                         -> [10]
+   /api/tasks/overdue                             -> [6]   (not 7 due today, not 11 Done, not 10 archived)
