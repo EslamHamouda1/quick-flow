@@ -2,5 +2,5 @@
   "feature_dir": "specs/002-us-tags-frontend",
   "current_phase": "phase-00",
   "loop_status": "running",
-  "stop_reason": "until_reached: phase-00"
+  "stop_reason": "until_reached: US1"
 }
