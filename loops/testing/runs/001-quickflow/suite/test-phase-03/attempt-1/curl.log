@@ -1,0 +1,136 @@
+{"id":1,"name":"Read 10 pages","description":"evening","frequency":"DAILY","createdAt":"2026-09-26T12:48:04.418677054+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+-> 201
+{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408262+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+-> 201
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"name","message":"must not be blank"},{"field":"name","message":"size must be between 1 and 150"}]}
+-> 400
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"name","message":"must not be blank"}]}
+-> 400
+{"id":3,"name":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:04.467203774+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+-> 201
+{"id":4,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:04.469362697+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+-> 201
+{"detail":"Malformed request body","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"frequency","message":"must be one of [DAILY, WEEKLY]"}]}
+-> 400
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"frequency","message":"must not be null"}]}
+-> 400
+[{"id":1,"name":"Read 10 pages","description":"evening","frequency":"DAILY","createdAt":"2026-09-26T12:48:04.418677+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0},{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0},{"id":3,"name":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:04.467204+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0},{"id":4,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:04.469363+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}]
+-> 200
+== (above) A1 + first A2 try: bodies file measured 147/143 chars (test-data error, not an app result); cleanup: delete ids 3,4; A2 re-run with exact 151/150 bodies
+
+-> 204
+
+-> 204
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"name","message":"size must be between 1 and 150"}]}
+-> 400
+{"id":5,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:27.020868779+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+-> 201
+== A2 list after: ids and name lengths
+[{"id":1,"len":13},{"id":2,"len":8},{"id":5,"len":150}]
+== A3 complete habit 1 with no body, empty body {}, then future date 2026-09-27; completions list
+{"id":1,"habitId":1,"completionDate":"2026-09-26","createdAt":"2026-09-26T12:48:34.409644073+03:00"}
+-> 201
+{"detail":"Validation failed","instance":"/api/habits/1/completions","status":400,"title":"Bad Request","errors":[{"field":"date","message":"must not be in the future"}]}
+-> 400
+[{"id":1,"habitId":1,"completionDate":"2026-09-26","createdAt":"2026-09-26T12:48:34.409644+03:00"}]
+-> 200
+== A4 complete habit 1 again: no body, {} body, explicit date 2026-09-26; completions list
+{"detail":"Habit 1 is already complete for 2026-09-26","instance":"/api/habits/1/completions","status":409,"title":"Conflict"}
+-> 409
+{"detail":"Habit 1 is already complete for 2026-09-26","instance":"/api/habits/1/completions","status":409,"title":"Conflict"}
+-> 409
+{"detail":"Habit 1 is already complete for 2026-09-26","instance":"/api/habits/1/completions","status":409,"title":"Conflict"}
+-> 409
+[{"id":1,"habitId":1,"completionDate":"2026-09-26","createdAt":"2026-09-26T12:48:34.409644+03:00"}]
+-> 200
+== A5 habit 1 DAILY +09-24 +09-25 (today already); habit 5 DAILY +09-24 +09-25 (not today); new habit 6 DAILY +09-23 only; habit 2 WEEKLY +09-15 (prev week)
+{"id":2,"habitId":1,"completionDate":"2026-09-24","createdAt":"2026-09-26T12:48:55.264570587+03:00"}
+-> 201
+{"id":3,"habitId":1,"completionDate":"2026-09-25","createdAt":"2026-09-26T12:48:55.267711019+03:00"}
+-> 201
+{"id":4,"habitId":5,"completionDate":"2026-09-24","createdAt":"2026-09-26T12:48:55.270012006+03:00"}
+-> 201
+{"id":5,"habitId":5,"completionDate":"2026-09-25","createdAt":"2026-09-26T12:48:55.272401379+03:00"}
+-> 201
+{"id":6,"name":"Gap habit","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:55.273922633+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+-> 201
+{"id":6,"habitId":6,"completionDate":"2026-09-23","createdAt":"2026-09-26T12:48:55.276047813+03:00"}
+-> 201
+{"id":7,"habitId":2,"completionDate":"2026-09-15","createdAt":"2026-09-26T12:48:55.278216955+03:00"}
+-> 201
+[{"id":1,"name":"Read 10 pages","description":"evening","frequency":"DAILY","createdAt":"2026-09-26T12:48:04.418677+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":3},{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":1},{"id":5,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:27.020869+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":2},{"id":6,"name":"Gap habit","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}]
+-> 200
+-- A5 habit 2 WEEKLY +09-22 (Mon this week) then read; then + today (no body) then read
+{"id":8,"habitId":2,"completionDate":"2026-09-22","createdAt":"2026-09-26T12:49:01.193646957+03:00"}
+-> 201
+{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":2}
+-> 200
+{"id":9,"habitId":2,"completionDate":"2026-09-26","createdAt":"2026-09-26T12:49:01.198217653+03:00"}
+-> 201
+{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":2}
+-> 200
+[{"id":9,"habitId":2,"completionDate":"2026-09-26","createdAt":"2026-09-26T12:49:01.198218+03:00"},{"id":8,"habitId":2,"completionDate":"2026-09-22","createdAt":"2026-09-26T12:49:01.193647+03:00"},{"id":7,"habitId":2,"completionDate":"2026-09-15","createdAt":"2026-09-26T12:48:55.278217+03:00"}]
+-> 200
+== A6 edit habit 6: name, description, frequency DAILY->WEEKLY; GET
+{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":1}
+-> 200
+{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":1}
+-> 200
+== A7 dashboard + active list before; deactivate 6; active=true list; active=false list; dashboard habits; completions of 6; complete 6 (no body) and for 09-25; activate 6; complete 6 today
+{"now":"2026-09-26T12:49:12.122784325+03:00","dueToday":[],"overdue":[],"completedToday":[],"taskCompletionPercent":0,"taskCounts":{"total":0,"done":0},"habits":[{"id":1,"name":"Read 10 pages","description":"evening","frequency":"DAILY","createdAt":"2026-09-26T12:48:04.418677+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":3},{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":2},{"id":5,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:27.020869+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":2},{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":1}],"habitCounts":{"active":4,"completedToday":2},"activePlans":[],"planCounts":{"notStarted":0,"inProgress":0,"completed":0},"learning":{"notStarted":0,"inProgress":0,"completed":0,"milestonesDone":0,"milestonesTotal":0}}
+-> 200
+{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":false,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":1}
+-> 200
+[{"id":1,"name":"Read 10 pages","description":"evening","frequency":"DAILY","createdAt":"2026-09-26T12:48:04.418677+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":3},{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":2},{"id":5,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:27.020869+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":2}]
+-> 200
+[{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":false,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":1}]
+-> 200
+{"now":"2026-09-26T12:49:12.150140984+03:00","dueToday":[],"overdue":[],"completedToday":[],"taskCompletionPercent":0,"taskCounts":{"total":0,"done":0},"habits":[{"id":1,"name":"Read 10 pages","description":"evening","frequency":"DAILY","createdAt":"2026-09-26T12:48:04.418677+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":3},{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":2},{"id":5,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:27.020869+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":2}],"habitCounts":{"active":3,"completedToday":2},"activePlans":[],"planCounts":{"notStarted":0,"inProgress":0,"completed":0},"learning":{"notStarted":0,"inProgress":0,"completed":0,"milestonesDone":0,"milestonesTotal":0}}
+-> 200
+[{"id":6,"habitId":6,"completionDate":"2026-09-23","createdAt":"2026-09-26T12:48:55.276048+03:00"}]
+-> 200
+{"detail":"Habit 6 is inactive","instance":"/api/habits/6/completions","status":409,"title":"Conflict"}
+-> 409
+{"detail":"Habit 6 is inactive","instance":"/api/habits/6/completions","status":409,"title":"Conflict"}
+-> 409
+[{"id":6,"habitId":6,"completionDate":"2026-09-23","createdAt":"2026-09-26T12:48:55.276048+03:00"}]
+-> 200
+{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":1}
+-> 200
+{"id":10,"habitId":6,"completionDate":"2026-09-26","createdAt":"2026-09-26T12:49:12.165691406+03:00"}
+-> 201
+[{"id":1,"name":"Read 10 pages","description":"evening","frequency":"DAILY","createdAt":"2026-09-26T12:48:04.418677+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":3},{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":2},{"id":5,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:27.020869+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":2},{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":1}]
+-> 200
+== A8 undo habit 6 completion for 2026-09-26; completions; GET 6
+
+-> 204
+[{"id":6,"habitId":6,"completionDate":"2026-09-23","createdAt":"2026-09-26T12:48:55.276048+03:00"}]
+-> 200
+{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":1}
+-> 200
+== A9 delete habit 1 (3 completions); GET 1; completions of 1; complete 1; list all; active=true; active=false
+
+-> 204
+{"detail":"Habit 1 not found","instance":"/api/habits/1","status":404,"title":"Not Found"}
+-> 404
+{"detail":"Habit 1 not found","instance":"/api/habits/1/completions","status":404,"title":"Not Found"}
+-> 404
+{"detail":"Habit 1 not found","instance":"/api/habits/1/completions","status":404,"title":"Not Found"}
+-> 404
+[{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":2},{"id":5,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:27.020869+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":2},{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":1}]
+-> 200
+[{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":2},{"id":5,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:27.020869+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":2},{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":1}]
+-> 200
+[]
+-> 200
+{"now":"2026-09-26T12:49:25.444770227+03:00","dueToday":[],"overdue":[],"completedToday":[],"taskCompletionPercent":0,"taskCounts":{"total":0,"done":0},"habits":[{"id":2,"name":"Long run","description":null,"frequency":"WEEKLY","createdAt":"2026-09-26T12:48:04.448408+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":2},{"id":5,"name":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:48:27.020869+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":2},{"id":6,"name":"Gap habit edited","description":"new desc","frequency":"WEEKLY","createdAt":"2026-09-26T12:48:55.273923+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":true,"currentStreak":1}],"habitCounts":{"active":3,"completedToday":1},"activePlans":[],"planCounts":{"notStarted":0,"inProgress":0,"completed":0},"learning":{"notStarted":0,"inProgress":0,"completed":0,"milestonesDone":0,"milestonesTotal":0}}
+-> 200
+== UI setup: delete API test habits 2,5,6 so /habits starts empty
+
+-> 204
+
+-> 204
+
+-> 204
+[]
+-> 200

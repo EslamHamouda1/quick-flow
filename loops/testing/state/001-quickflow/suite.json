@@ -4,7 +4,7 @@
   "test_phases": [
     {"id": "test-phase-01", "title": "API contract", "stories": [], "status": "done", "attempt": 1, "bugs": []},
     {"id": "test-phase-02", "title": "US1 Manage tasks", "stories": ["US1"], "status": "done", "attempt": 1, "bugs": []},
-    {"id": "test-phase-03", "title": "US2 Track recurring habits", "stories": ["US2"], "status": "planned", "attempt": 1, "bugs": []},
+    {"id": "test-phase-03", "title": "US2 Track recurring habits", "stories": ["US2"], "status": "done", "attempt": 1, "bugs": []},
     {"id": "test-phase-04", "title": "US3 Track learning resources with milestones and notes", "stories": ["US3"], "status": "planned", "attempt": 1, "bugs": []},
     {"id": "test-phase-05", "title": "US4 Build and follow Todo Plans", "stories": ["US4"], "status": "planned", "attempt": 1, "bugs": []},
     {"id": "test-phase-06", "title": "US5 See everything on the Dashboard", "stories": ["US5"], "status": "planned", "attempt": 1, "bugs": []},
