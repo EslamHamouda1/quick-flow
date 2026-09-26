@@ -70,8 +70,14 @@ def project_terms(cfg):
 def main():
     cfg = yaml.safe_load((ROOT / "project.config.yaml").read_text())
     terms = project_terms(cfg)
+    # entity names are matched case-sensitively as proper names; names that are also the
+    # engine's own vocabulary (a phase has tasks, the orchestrator writes a plan) are skipped
+    engine_vocab = {"Task", "Tasks", "Plan", "Plans", "Phase", "Loop", "Milestone", "Note", "Notes",
+                    "State", "Setting", "Settings", "Item", "Status", "Question", "Report", "Bug"}
+    entities = set()
     for dm in ROOT.glob("specs/*/data-model.md"):
-        terms |= set(re.findall(r"^#{2,4}\s+`?([A-Z][A-Za-z0-9]+)`?", dm.read_text(), re.M))
+        entities |= set(re.findall(r"^#{2,4}\s+`?([A-Z][A-Za-z0-9]+)`?", dm.read_text(), re.M))
+    entities = {e for e in entities - engine_vocab if not e.isupper()}   # skip acronyms like API
     # anything the generic template also uses is not project-specific
     example = yaml.safe_load((ROOT / "project.config.example.yaml").read_text())
     generic = project_terms(example) - {p for p in project_terms(example) if p.isdigit()}
@@ -84,10 +90,13 @@ def main():
             for t in terms:
                 if re.search(rf"(?<![A-Za-z0-9_-]){re.escape(t)}(?![A-Za-z0-9_-])", line, re.I):
                     hits.append(f"{f.relative_to(ROOT)}:{n}: '{t}': {line.strip()[:100]}")
+            for t in entities:
+                if re.search(rf"(?<![A-Za-z0-9_-]){re.escape(t)}(?![A-Za-z0-9_-])", line):
+                    hits.append(f"{f.relative_to(ROOT)}:{n}: entity '{t}': {line.strip()[:100]}")
     if hits:
         print("\n".join(sorted(set(hits))))
         sys.exit(1)
-    print(f"ok: {len(ENGINE)} engine files, {len(terms)} project terms, no hits")
+    print(f"ok: {len(ENGINE)} engine files, {len(terms)} project terms, {len(entities)} entity names, no hits")
 
 
 if __name__ == "__main__":
