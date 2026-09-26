@@ -247,4 +247,4 @@ Task: "Create the plan card component in frontend/src/app/pages/plans/plan-card.
 
 ## Phase 10: Convergence
 
-- [ ] T048 Remove the stale scaffold spec frontend/src/app/app.spec.ts (asserts an `h1` "Hello, frontend" the shell no longer renders; the frontend writes no spec files) per plan: Testing / FA-1 (unrequested)
+- [X] T048 Remove the stale scaffold spec frontend/src/app/app.spec.ts (asserts an `h1` "Hello, frontend" the shell no longer renders; the frontend writes no spec files) per plan: Testing / FA-1 (unrequested)

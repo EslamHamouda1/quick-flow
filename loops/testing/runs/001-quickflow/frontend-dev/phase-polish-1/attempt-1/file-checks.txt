@@ -1,0 +1,2 @@
+ls: cannot access 'frontend/src/app/app.spec.ts': No such file or directory
+spec files found: see lines above (none = only the ls error line)

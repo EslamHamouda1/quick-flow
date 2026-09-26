@@ -11,4 +11,4 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **run_id:** orch-20260926T111201-195372
 - **runner_nonce:** 697177853b59aa3e4450f3db
 - **swagger:** loops/backend-dev/outputs/openapi.json
-- **current_step:** close phase-09
+- **current_step:** close phase-polish-1

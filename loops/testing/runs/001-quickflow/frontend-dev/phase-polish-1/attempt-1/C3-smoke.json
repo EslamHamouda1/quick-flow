@@ -1,0 +1,8 @@
+[
+ {"nav": "nav-dashboard", "label": "Dashboard", "url": "http://localhost:4200/dashboard", "pageTitle": "Dashboard", "match": true, "screenshot": "shot-01-C3-dashboard.png"},
+ {"nav": "nav-tasks", "label": "Tasks", "url": "http://localhost:4200/tasks", "pageTitle": "Tasks", "match": true, "screenshot": "shot-02-C3-tasks.png"},
+ {"nav": "nav-habits", "label": "Habits", "url": "http://localhost:4200/habits", "pageTitle": "Habits", "match": true, "screenshot": "shot-03-C3-habits.png"},
+ {"nav": "nav-learning", "label": "Learning Resources", "url": "http://localhost:4200/learning", "pageTitle": "Learning Resources", "match": true, "screenshot": "shot-04-C3-learning.png"},
+ {"nav": "nav-plans", "label": "Todo Plans", "url": "http://localhost:4200/plans", "pageTitle": "Todo Plans", "match": true, "screenshot": "shot-05-C3-plans.png"},
+ {"nav": "nav-settings", "label": "Settings", "url": "http://localhost:4200/settings", "pageTitle": "Settings", "match": true, "screenshot": "shot-06-C3-settings.png"}
+]
