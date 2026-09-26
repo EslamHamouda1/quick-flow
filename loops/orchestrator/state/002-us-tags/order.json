@@ -1,0 +1,4 @@
+{"feature": "002-us-tags", "steps": [
+  {"loop": "backend-dev", "story_id": "US1", "goal": "Tag tasks and filter by tag"},
+  {"loop": "frontend-dev", "story_id": "US1", "goal": "Tag tasks and filter by tag"}
+]}
