@@ -1,0 +1,22 @@
+{
+  "notice": null,
+  "input1": "",
+  "row1": [
+    "urgent",
+    "work"
+  ],
+  "removeBtn": [
+    [
+      "×",
+      "Remove tag urgent"
+    ],
+    [
+      "×",
+      "Remove tag work"
+    ]
+  ],
+  "apiTags": [
+    "urgent",
+    "work"
+  ]
+}

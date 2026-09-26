@@ -10,6 +10,7 @@ import { NoticeService } from '../../core/notice.service';
 import { readProblem } from '../../core/problem';
 import { EmptyStateComponent } from '../../shared/empty-state';
 import { PRIORITY_OPTIONS, STATUS_OPTIONS, TASK_FORM_FIELDS, TaskFormComponent } from './task-form';
+import { TaskTagsComponent } from './task-tags';
 
 type SortField = 'createdAt' | 'dueDate';
 type SortDirection = 'asc' | 'desc';
@@ -21,6 +22,7 @@ interface TaskFilters {
   dueFrom: string;
   dueTo: string;
   archived: boolean;
+  tag: string;
   sort: SortField;
   direction: SortDirection;
 }
@@ -33,6 +35,7 @@ const DEFAULT_FILTERS: TaskFilters = {
   dueFrom: '',
   dueTo: '',
   archived: false,
+  tag: '',
   sort: 'createdAt',
   direction: 'desc',
 };
@@ -44,7 +47,7 @@ const PRIORITY_LABELS = Object.fromEntries(PRIORITY_OPTIONS.map((o) => [o.value,
 @Component({
   selector: 'app-tasks-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TaskFormComponent, EmptyStateComponent],
+  imports: [TaskFormComponent, TaskTagsComponent, EmptyStateComponent],
   styles: `
     .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; margin-bottom: var(--gap); }
     .toolbar label { display: flex; flex-direction: column; gap: 2px; font-size: 0.85em; color: var(--muted); }
@@ -106,6 +109,10 @@ const PRIORITY_LABELS = Object.fromEntries(PRIORITY_OPTIONS.map((o) => [o.value,
           [checked]="filters().archived" (change)="setFilter('archived', checked($event))" />
         Archived
       </label>
+      <label>Tag
+        <input type="text" data-testid="filter-tag" [disabled]="overdueView()"
+          [value]="filters().tag" (input)="setFilter('tag', value($event))" />
+      </label>
       <label>Sort by
         <select data-testid="sort-field" [disabled]="overdueView()" (change)="setFilter('sort', $any(value($event)))">
           <option value="createdAt" [selected]="filters().sort === 'createdAt'">Creation date</option>
@@ -148,6 +155,7 @@ const PRIORITY_LABELS = Object.fromEntries(PRIORITY_OPTIONS.map((o) => [o.value,
                 }
                 <button type="button" class="danger" [attr.data-testid]="'task-delete-' + t.id" (click)="remove(t)">Delete</button>
               </span>
+              <app-task-tags [task]="t" [errors]="tagErrors()[t.id] ?? {}" (add)="addTags(t, $event)" (remove)="removeTag(t, $event)" />
             </li>
           }
         </ul>
@@ -172,12 +180,14 @@ export default class TasksPage {
   protected readonly loaded = signal(false);
   protected readonly editing = signal<Task | 'new' | null>(null);
   protected readonly formErrors = signal<Record<string, string>>({});
+  // Per task id, the `tags` message of the last rejected add (data-model "View state").
+  protected readonly tagErrors = signal<Record<number, Record<string, string>>>({});
 
   // FA-18: "No tasks yet" only for the unfiltered default list.
   protected readonly emptyMessage = computed(() => {
     const f = this.filters();
     const filtered =
-      this.overdueView() || f.q !== '' || f.status !== '' || f.priority !== '' || f.dueFrom !== '' || f.dueTo !== '' || f.archived;
+      this.overdueView() || f.q !== '' || f.status !== '' || f.priority !== '' || f.dueFrom !== '' || f.dueTo !== '' || f.archived || f.tag.trim() !== '';
     return filtered ? 'No tasks match' : 'No tasks yet';
   });
 
@@ -225,6 +235,7 @@ export default class TasksPage {
   /** Re-reads the shown view; a newer request cancels the pending one (FA-14). */
   private reload(): void {
     this.pending?.unsubscribe();
+    this.tagErrors.set({});
     const f = this.filters();
     const request: Observable<Task[]> = this.overdueView()
       ? this.api.listOverdueTasks()
@@ -235,6 +246,7 @@ export default class TasksPage {
           f.dueFrom || undefined,
           f.dueTo || undefined,
           f.archived,
+          f.tag.trim() === '' ? undefined : f.tag,
           f.sort,
           f.direction,
         );
@@ -319,6 +331,40 @@ export default class TasksPage {
   // FA-7: deletes without a confirmation dialog.
   protected remove(task: Task): void {
     this.act(this.api.deleteTask(task.id), 'Task deleted');
+  }
+
+  // Research R-2/R-4: a 400 keeps the row as it is and shows the `tags` message under its input.
+  protected addTags(task: Task, tags: string[]): void {
+    this.clearTagErrors(task.id);
+    this.api.addTaskTags(task.id, { tags }).subscribe({
+      next: () => {
+        this.notice.success('Tags added');
+        this.reload();
+      },
+      error: (err: HttpErrorResponse) => {
+        const problem = readProblem(err);
+        if (err.status === 400) {
+          const { tags: message, ...rest } = problem.fieldErrors;
+          if (message !== undefined) this.tagErrors.update((all) => ({ ...all, [task.id]: { tags: message } }));
+          const other = Object.values(rest);
+          if (other.length > 0 || message === undefined) {
+            this.notice.error(other.length > 0 ? other.join('; ') : problem.message);
+          }
+          return;
+        }
+        this.notice.error(problem.message);
+        this.reload();
+      },
+    });
+  }
+
+  protected removeTag(task: Task, tag: string): void {
+    this.clearTagErrors(task.id);
+    this.act(this.api.removeTaskTag(task.id, tag), 'Tag removed');
+  }
+
+  private clearTagErrors(id: number): void {
+    this.tagErrors.update(({ [id]: _, ...rest }) => rest);
   }
 
   private act(request: Observable<unknown>, success: string): void {

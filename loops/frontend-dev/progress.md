@@ -17,7 +17,8 @@
 | frontend-dev:001-quickflow:phase-09 | 2026-09-26T11:46:37+03:00 | 2026-09-26T12:00:03+03:00 | 0h13m26s | 0h13m03s | 4 | 1 | 186 | 6058094 | 55078 | 4.9692 | dbdd2b47-d0b1-4a5a-adc4-7dbe97939c26 be2e2156-3350-4595-b3e1-60fd36816bb2 da3c978a-6895-4334-bcf9-797c321d0460 70a38372-8df6-4239-9b97-8fde0907182a | da3c978a-6895-4334-bcf9-797c321d0460 | 7dbc0a9 | success |
 | frontend-dev:001-quickflow:phase-polish-1 | 2026-09-26T12:00:04+03:00 | 2026-09-26T12:08:14+03:00 | 0h08m10s | 0h07m51s | 4 | 1 | 126 | 3039271 | 24608 | 3.6779 | 55ca8160-c868-469a-9efe-ab83fffa4c42 bfa00451-425b-4b98-b5f7-5beb1c4a66d1 ea1edb2e-35a5-4261-89f7-d376eb98aded 9d080d3d-272c-4a5c-b02f-c68be39570c6 | ea1edb2e-35a5-4261-89f7-d376eb98aded | acece36 | success |
 | frontend-dev:002-us-tags:phase-00-plan | 2026-09-26T22:49:30+03:00 | 2026-09-26T22:55:44+03:00 | 0h06m14s | 0h06m07s | 2 | 1 | 90 | 3341953 | 35833 | 2.4190 | cf20ee51-3544-4dcc-8953-5ad8b6db8575 e6e6ba79-b35a-4e7d-bcd9-5b98dea11178 |  | b772ca7 | success |
-| **Total** |  |  |  | 2h22m42s | 52 |  | 2178 | 73833915 | 631078 | 53.1969 |  |  |  |  |
+| frontend-dev:002-us-tags:phase-01 | 2026-09-26T23:11:04+03:00 | 2026-09-26T23:24:05+03:00 | 0h13m01s | 0h10m10s | 4 | 1 | 212 | 7058458 | 47770 | 4.2231 | d5228fb3-0193-4317-aa5f-0d63c8225c46 e47ecef3-ccbf-4dd1-9b11-7d5a3942b564 42d4ac9a-a9c2-4e84-b957-fbfb45790985 d8f91352-90b1-41da-8d44-732d9df2400c | 42d4ac9a-a9c2-4e84-b957-fbfb45790985 |  | success |
+| **Total** |  |  |  | 2h32m52s | 56 |  | 2390 | 80892373 | 678848 | 57.4200 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -150,3 +151,14 @@
 - 2026-09-26T22:55:00+03:00 002-us-tags phase-00: wrote OUT/phase-00-review.md (no open questions; assumptions FA-T1..FA-T9); phase-00 → awaiting_approval; current.json current_phase phase-00, loop_status running
 - 2026-09-26T22:54:41+03:00 gate 002-us-tags phase-00: approved (auto)
 - 2026-09-26T22:55:31+03:00 002-us-tags phase-00: plan_apply: no reviewer notes (auto); spec.md has no [NEEDS CLARIFICATION], requirements.json unchanged; phase files match tasks.md (no sync); checklist already all checked; review '## Open questions' → '## Answered questions'; plan.md gate V note updated (assumptions approved); /speckit-analyze re-run: 0 CRITICAL, 0 HIGH; phase-00 → done
+- 2026-09-26T23:12:35+03:00 002-us-tags phase-01: wrote OUT/phase-01-review.md (swagger loops/backend-dev/outputs/openapi.json vs planning contract: doc-only differences; `tag` is listTasks' 7th parameter; no new assumptions, no open questions); phase-01 → awaiting_approval
+- 2026-09-26T23:13:34+03:00 gate 002-us-tags phase-01: approved (auto)
+- 2026-09-26T23:14:00+03:00 002-us-tags phase-01: implement: tasks.md Phase 1 matches phase-01.md (no sync changes); no reviewer notes/questions; checklists all checked; phase-01 → in_progress
+- 2026-09-26T23:14:30+03:00 002-us-tags phase-01: T001 [~] client regenerated with generate_client; Task.tags, TaskTags, addTaskTags, removeTaskTag present; listTasks `tag` is 7th parameter; recorded in research.md R-1; ui-contract covers AC-US1-1..6 (no question)
+- 2026-09-26T23:15:00+03:00 002-us-tags phase-01: T002 [~] wrote frontend/src/app/pages/tasks/task-tags.ts (TaskTagsComponent)
+- 2026-09-26T23:15:10+03:00 002-us-tags phase-01: T003 [~] tag filter `filter-tag` in tasks.page.ts (TaskFilters.tag, listTasks 7th arg, emptyMessage)
+- 2026-09-26T23:15:20+03:00 002-us-tags phase-01: T004 [~] <app-task-tags> in every row, addTags/removeTag handlers, tagErrors signal in tasks.page.ts
+- 2026-09-26T23:15:30+03:00 002-us-tags phase-01: T005 [~] `cd frontend && npm run build` OK (no errors); log in runs/002-us-tags/phase-01-build.log
+- 2026-09-26T23:15:40+03:00 002-us-tags phase-01: tasks.md T001–T005 [X]; ui-url.md already holds L.url + start line (unchanged); phase-01 → ready_for_test
+- 2026-09-26T23:20:31+03:00 test 002-us-tags phase-01 attempt 1: pass (verified_by 42d4ac9a-a9c2-4e84-b957-fbfb45790985)
+- 2026-09-26T23:23:49+03:00 002-us-tags phase-01: close check OK (T001–T005 [X] in tasks.md, verdict pass attempt 1); T001–T005 [~] → [x] in phase-01.md and tasks.json; status passed → done

@@ -1,0 +1,12 @@
+{
+  "case": "31 chars",
+  "inputValue": "abcdefghijabcdefghijabcdefghijk",
+  "inputLength": 31,
+  "errorTags": "must be at most 30 characters",
+  "row8": [
+    "alpha"
+  ],
+  "apiTags8": [
+    "alpha"
+  ]
+}

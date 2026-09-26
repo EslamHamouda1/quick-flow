@@ -1,9 +1,9 @@
 {
-  "T001": {"phase": "phase-01", "state": " "},
-  "T002": {"phase": "phase-01", "state": " "},
-  "T003": {"phase": "phase-01", "state": " "},
-  "T004": {"phase": "phase-01", "state": " "},
-  "T005": {"phase": "phase-01", "state": " "},
+  "T001": {"phase": "phase-01", "state": "x"},
+  "T002": {"phase": "phase-01", "state": "x"},
+  "T003": {"phase": "phase-01", "state": "x"},
+  "T004": {"phase": "phase-01", "state": "x"},
+  "T005": {"phase": "phase-01", "state": "x"},
   "T006": {"phase": "phase-02", "state": " "},
   "T007": {"phase": "phase-02", "state": " "}
 }

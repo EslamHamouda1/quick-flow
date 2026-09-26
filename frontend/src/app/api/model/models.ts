@@ -32,4 +32,5 @@ export * from './taskCounts';
 export * from './taskCreate';
 export * from './taskPriority';
 export * from './taskStatus';
+export * from './taskTags';
 export * from './taskUpdate';

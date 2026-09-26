@@ -15,6 +15,16 @@ The decisions below cover what the spec leaves to the UI; each UI choice is also
   parameters** follow that file. Today's client (checked 2026-09-26) has `listTasks(q, status, priority, dueFrom,
   dueTo, archived, sort, direction)` and no tag operations, because the backend story isn't built yet.
 - **Alternatives**: hand-written `HttpClient` calls (rejected: the constitution says the client is generated).
+- **Checked after regeneration (T001, 2026-09-26)** in `frontend/src/app/api/`:
+  - `model/task.ts`: `Task.tags: Array<string>` (required).
+  - `model/taskTags.ts`: `interface TaskTags { tags: Array<string> }`, exported from `model/models.ts`.
+  - `api/tasks.service.ts`: `addTaskTags(id: number, taskTags: TaskTags): Observable<Task>`,
+    `removeTaskTag(id: number, tag: string): Observable<Task>`, and
+    `listTasks(q?, status?, priority?, dueFrom?, dueTo?, archived?, tag?: string, sort?, direction?)`: `tag` is the
+    **7th** positional parameter (after `archived`, before `sort`).
+  - Callers of `listTasks`: `pages/tasks/tasks.page.ts` `reload()` (positional, updated in T003) and
+    `pages/plans/plan-builder.ts` (no arguments, unaffected).
+  - `contracts/ui-contract.md` "Acceptance criteria → selectors" covers AC-US1-1..6. Nothing missing.
 
 ## R-2 Error mapping
 

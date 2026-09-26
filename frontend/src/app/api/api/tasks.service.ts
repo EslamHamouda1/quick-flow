@@ -25,6 +25,8 @@ import { TaskPriority } from '../model/taskPriority';
 // @ts-ignore
 import { TaskStatus } from '../model/taskStatus';
 // @ts-ignore
+import { TaskTags } from '../model/taskTags';
+// @ts-ignore
 import { TaskUpdate } from '../model/taskUpdate';
 
 // @ts-ignore
@@ -41,6 +43,76 @@ export class TasksService extends BaseService {
 
     constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string|string[], @Optional() configuration?: Configuration) {
         super(basePath, configuration);
+    }
+
+    /**
+     * Add tags (FR-001). Trimmed, case-insensitive (BR-T2); a tag already on the task is kept once (Q2). All or nothing: an invalid tag or more than 10 tags in total rejects the whole request and leaves the tags unchanged (BR-T1, BR-T3).
+     * @endpoint post /api/tasks/{id}/tags
+     * @param id 
+     * @param taskTags 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public addTaskTags(id: number, taskTags: TaskTags, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Task>;
+    public addTaskTags(id: number, taskTags: TaskTags, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Task>>;
+    public addTaskTags(id: number, taskTags: TaskTags, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Task>>;
+    public addTaskTags(id: number, taskTags: TaskTags, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling addTaskTags.');
+        }
+        if (taskTags === null || taskTags === undefined) {
+            throw new Error('Required parameter taskTags was null or undefined when calling addTaskTags.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/api/tasks/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}/tags`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<Task>('post', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: taskTags,
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
     }
 
     /**
@@ -382,7 +454,7 @@ export class TasksService extends BaseService {
     }
 
     /**
-     * List tasks (search, filters, sort; archived excluded by default, BR-4)
+     * List tasks (search, filters incl. tag, sort; archived excluded by default, BR-4)
      * @endpoint get /api/tasks
      * @param q Case-insensitive substring of the title
      * @param status 
@@ -390,16 +462,17 @@ export class TasksService extends BaseService {
      * @param dueFrom Inclusive
      * @param dueTo Inclusive
      * @param archived 
+     * @param tag Only tasks that have this tag (whole tag, ignoring case, spaces around it ignored); blank &#x3D; no tag filter (FR-004); a value no task has gives an empty list
      * @param sort 
      * @param direction 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public listTasks(q?: string, status?: TaskStatus, priority?: TaskPriority, dueFrom?: string, dueTo?: string, archived?: boolean, sort?: 'createdAt' | 'dueDate', direction?: 'asc' | 'desc', observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<Task>>;
-    public listTasks(q?: string, status?: TaskStatus, priority?: TaskPriority, dueFrom?: string, dueTo?: string, archived?: boolean, sort?: 'createdAt' | 'dueDate', direction?: 'asc' | 'desc', observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<Task>>>;
-    public listTasks(q?: string, status?: TaskStatus, priority?: TaskPriority, dueFrom?: string, dueTo?: string, archived?: boolean, sort?: 'createdAt' | 'dueDate', direction?: 'asc' | 'desc', observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<Task>>>;
-    public listTasks(q?: string, status?: TaskStatus, priority?: TaskPriority, dueFrom?: string, dueTo?: string, archived?: boolean, sort?: 'createdAt' | 'dueDate', direction?: 'asc' | 'desc', observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public listTasks(q?: string, status?: TaskStatus, priority?: TaskPriority, dueFrom?: string, dueTo?: string, archived?: boolean, tag?: string, sort?: 'createdAt' | 'dueDate', direction?: 'asc' | 'desc', observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<Task>>;
+    public listTasks(q?: string, status?: TaskStatus, priority?: TaskPriority, dueFrom?: string, dueTo?: string, archived?: boolean, tag?: string, sort?: 'createdAt' | 'dueDate', direction?: 'asc' | 'desc', observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<Task>>>;
+    public listTasks(q?: string, status?: TaskStatus, priority?: TaskPriority, dueFrom?: string, dueTo?: string, archived?: boolean, tag?: string, sort?: 'createdAt' | 'dueDate', direction?: 'asc' | 'desc', observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<Task>>>;
+    public listTasks(q?: string, status?: TaskStatus, priority?: TaskPriority, dueFrom?: string, dueTo?: string, archived?: boolean, tag?: string, sort?: 'createdAt' | 'dueDate', direction?: 'asc' | 'desc', observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
 
@@ -459,6 +532,15 @@ export class TasksService extends BaseService {
 
         localVarQueryParameters = this.addToHttpParams(
             localVarQueryParameters,
+            'tag',
+            <any>tag,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
             'sort',
             <any>sort,
             QueryParamStyle.Form,
@@ -503,6 +585,78 @@ export class TasksService extends BaseService {
         let localVarPath = `/api/tasks`;
         const { basePath, withCredentials } = this.configuration;
         return this.httpClient.request<Array<Task>>('get', `${basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                params: localVarQueryParameters.toHttpParams(),
+                responseType: <any>responseType_,
+                ...(withCredentials ? { withCredentials } : {}),
+                headers: localVarHeaders,
+                observe: observe,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Remove one tag, matched ignoring case (FR-005). A tag the task doesn\&#39;t have is a no-op (Q3).
+     * @endpoint delete /api/tasks/{id}/tags
+     * @param id 
+     * @param tag The tag to remove
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     * @param options additional options
+     */
+    public removeTaskTag(id: number, tag: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Task>;
+    public removeTaskTag(id: number, tag: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Task>>;
+    public removeTaskTag(id: number, tag: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Task>>;
+    public removeTaskTag(id: number, tag: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling removeTaskTag.');
+        }
+        if (tag === null || tag === undefined) {
+            throw new Error('Required parameter tag was null or undefined when calling removeTaskTag.');
+        }
+
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'tag',
+            <any>tag,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        let localVarHeaders = this.defaultHeaders;
+
+        const localVarHttpHeaderAcceptSelected: string | undefined = options?.httpHeaderAccept ?? this.configuration.selectHeaderAccept([
+            'application/json'
+        ]);
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        const localVarHttpContext: HttpContext = options?.context ?? new HttpContext();
+
+        const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/api/tasks/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int64"})}/tags`;
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<Task>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters.toHttpParams(),

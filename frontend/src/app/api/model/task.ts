@@ -26,6 +26,10 @@ export interface Task {
      * Computed on read (FR-01.7)
      */
     overdue: boolean;
+    /**
+     * Lower case, alphabetical; empty when the task has no tags
+     */
+    tags: Array<string>;
 }
 export namespace Task {
 }

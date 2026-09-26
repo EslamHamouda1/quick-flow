@@ -1,0 +1,109 @@
+{
+  "filter": "work",
+  "listed": {
+    "task-row-9": {
+      "title": "Task K",
+      "tags": [
+        "work"
+      ]
+    },
+    "task-row-7": {
+      "title": "Task R",
+      "tags": [
+        "home",
+        "work"
+      ]
+    },
+    "task-row-3": {
+      "title": "Task W2",
+      "tags": [
+        "home",
+        "work"
+      ]
+    },
+    "task-row-2": {
+      "title": "Task W1",
+      "tags": [
+        "work"
+      ]
+    },
+    "task-row-1": {
+      "title": "Task A",
+      "tags": [
+        "urgent",
+        "work"
+      ]
+    }
+  },
+  "apiAll": [
+    {
+      "id": 10,
+      "title": "Task F",
+      "tags": []
+    },
+    {
+      "id": 9,
+      "title": "Task K",
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Task V",
+      "tags": [
+        "alpha"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Task R",
+      "tags": [
+        "home",
+        "work"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Task N3",
+      "tags": [
+        "workshop"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Task N2",
+      "tags": []
+    },
+    {
+      "id": 4,
+      "title": "Task N1",
+      "tags": [
+        "home"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Task W2",
+      "tags": [
+        "home",
+        "work"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Task W1",
+      "tags": [
+        "work"
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Task A",
+      "tags": [
+        "urgent",
+        "work"
+      ]
+    }
+  ]
+}
