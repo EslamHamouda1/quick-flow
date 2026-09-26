@@ -1,0 +1,54 @@
+{"displayName":null,"planStartNotifications":true,"defaultPage":"DASHBOARD"}
+== A1 GET /api/settings (fresh DB) HTTP 200 0.057295s
+{"timeZone":"Africa/Cairo","now":"2026-09-26T13:24:18.671138619+03:00"}
+== A1 GET /api/app-info HTTP 200 0.002043s
+{"displayName":"Eslam","planStartNotifications":false,"defaultPage":"TASKS"}
+== A2 PUT defaultPage=TASKS notif=false name=Eslam HTTP 200
+{"displayName":"Eslam","planStartNotifications":false,"defaultPage":"TASKS"}
+== A2 GET after TASKS HTTP 200
+{"displayName":"Eslam","planStartNotifications":false,"defaultPage":"HABITS"}
+== A2 PUT defaultPage=HABITS HTTP 200
+{"displayName":"Eslam","planStartNotifications":false,"defaultPage":"HABITS"}
+== A2 GET after HABITS HTTP 200
+{"displayName":"Eslam","planStartNotifications":false,"defaultPage":"LEARNING"}
+== A2 PUT defaultPage=LEARNING HTTP 200
+{"displayName":"Eslam","planStartNotifications":false,"defaultPage":"LEARNING"}
+== A2 GET after LEARNING HTTP 200
+{"displayName":"Eslam","planStartNotifications":false,"defaultPage":"PLANS"}
+== A2 PUT defaultPage=PLANS HTTP 200
+{"displayName":"Eslam","planStartNotifications":false,"defaultPage":"PLANS"}
+== A2 GET after PLANS HTTP 200
+{"displayName":"Eslam","planStartNotifications":false,"defaultPage":"SETTINGS"}
+== A2 PUT defaultPage=SETTINGS HTTP 200
+{"displayName":"Eslam","planStartNotifications":false,"defaultPage":"SETTINGS"}
+== A2 GET after SETTINGS HTTP 200
+{"displayName":"Tester Q","planStartNotifications":true,"defaultPage":"DASHBOARD"}
+== A2 PUT defaultPage=DASHBOARD notif=true name=Tester Q HTTP 200
+{"displayName":"Tester Q","planStartNotifications":true,"defaultPage":"DASHBOARD"}
+== A2 GET after DASHBOARD HTTP 200
+{"displayName":null,"planStartNotifications":true,"defaultPage":"DASHBOARD"}
+== A2 PUT displayName=null (clear) HTTP 200
+{"displayName":null,"planStartNotifications":true,"defaultPage":"DASHBOARD"}
+== A2 GET after clear HTTP 200
+{"displayName":"nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn","planStartNotifications":false,"defaultPage":"PLANS"}
+== A3 PUT displayName 100 chars (body-name100.json) HTTP 200
+{"displayName":"nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn","planStartNotifications":false,"defaultPage":"PLANS"}
+== A3 GET after 100 HTTP 200
+{"detail":"Validation failed","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"displayName","message":"size must be between 0 and 100"}]}
+== A3 PUT displayName 101 chars (body-name101.json) HTTP 400
+{"displayName":"nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn","planStartNotifications":false,"defaultPage":"PLANS"}
+== A3 GET after 101 (unchanged?) HTTP 200
+{"detail":"Malformed request body","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"defaultPage","message":"must be one of [DASHBOARD, TASKS, HABITS, LEARNING, PLANS, SETTINGS]"}]}
+== A4 PUT defaultPage=HOME HTTP 400
+{"detail":"Malformed request body","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"defaultPage","message":"must be one of [DASHBOARD, TASKS, HABITS, LEARNING, PLANS, SETTINGS]"}]}
+== A4 PUT defaultPage=dashboard (lower case) HTTP 400
+{"detail":"Validation failed","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"defaultPage","message":"must not be null"}]}
+== A4 PUT defaultPage missing HTTP 400
+{"detail":"Malformed request body","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"planStartNotifications","message":"invalid value"}]}
+== A4 PUT planStartNotifications="maybe" HTTP 400
+{"detail":"Validation failed","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"planStartNotifications","message":"must not be null"}]}
+== A4 PUT planStartNotifications missing HTTP 400
+{"detail":"Validation failed","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"planStartNotifications","message":"must not be null"}]}
+== A4 PUT planStartNotifications null HTTP 400
+{"displayName":"nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn","planStartNotifications":false,"defaultPage":"PLANS"}
+== A4 GET after invalid PUTs (unchanged?) HTTP 200
