@@ -1,4 +1,4 @@
 {
-  "stop_reason": "violation",
+  "stop_reason": "until_reached: orchestrator plan",
   "loop_status": "stopped"
 }
