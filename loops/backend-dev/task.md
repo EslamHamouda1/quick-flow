@@ -6,13 +6,13 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **feature:** 001-quickflow
 - **loop:** backend-dev
 - **mode:** dev
-- **stops_at:** US4
+- **stops_at:** US5
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260926T172351-320864
-- **runner_nonce:** 9eca4e56065279eff8c4b689
-- **orchestrator_step:** backend-dev:US4
+- **runner_nonce:** 0d5e8eee065e39f3ca67e670
+- **orchestrator_step:** backend-dev:US5
 
 ## Current orchestrator step
 - loop: backend-dev
-- story: US4
-- goal: Build and follow Todo Plans
+- story: US5
+- goal: See everything on the Dashboard
