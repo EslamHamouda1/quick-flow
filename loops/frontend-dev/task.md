@@ -8,7 +8,5 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **mode:** dev
 - **stops_at:** phase-00
 - **review_gates:** off (--auto-approve)
-- **run_id:** orch-20260926T224717-382863
-- **runner_nonce:** 81943453a18cf37230c0f63d
-- **swagger:** specs/002-us-tags-backend/contracts/openapi.yaml
-- **current_step:** plan_apply phase-00
+- **run_id:** orch-20260926T225858-388446
+- **runner_nonce:** d079cd83b803390bb37e4f77
