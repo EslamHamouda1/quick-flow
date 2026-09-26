@@ -2,5 +2,5 @@
   "feature_dir": "specs/002-us-tags-backend",
   "current_phase": "phase-00",
   "loop_status": "running",
-  "stop_reason": "violation: backend-dev plan session 97e97192-f350-4702-8e44-10f417c6cc8a (restored: runner-owned file changed: docs/commit-reviews.md;)"
+  "stop_reason": "until_reached: phase-00"
 }
