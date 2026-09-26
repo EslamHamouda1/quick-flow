@@ -42,7 +42,7 @@ Nothing else in the task API changes (`PUT /api/tasks/{id}` never touches tags, 
 | II. Independent verification | Dev loop writes no verdicts and runs no curl; the testing loop checks the ACs with curl against `contracts/openapi.yaml`. | PASS |
 | III. Backend unit tests first | Every rule BR-T1..BR-T4 and FR-001..FR-008 has a named test (domain, web slice, persistence slice), written before the code in each phase. | PASS |
 | IV. Domain separate, time from a clock | Tag rules live in `Task` (domain); controller only maps. `updatedAt` on tag changes comes from `TimeService` (clock). | PASS |
-| V. No guessing | 3 open questions left in spec.md as `[NEEDS CLARIFICATION]` (tag spelling, adding an existing tag, removing an absent tag); plan choices that aren't in the spec are listed as assumptions (research.md) for approval. | PASS (pending answers) |
+| V. No guessing | 3 open questions (tag spelling, adding an existing tag, removing an absent tag) answered at the phase-00 review and written into spec.md; plan choices that aren't in the spec are listed as assumptions (research.md) for approval. | PASS |
 | Technical constraints | REST under `/api`; contract written before code (`contracts/openapi.yaml`); BR-14 deleted rows never returned. | PASS |
 
 **Post-design re-check**: PASS. The design adds no project, dependency or pattern beyond the ones

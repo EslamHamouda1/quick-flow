@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -31,7 +31,6 @@
 
 ## Notes
 
-- 3 [NEEDS CLARIFICATION] markers remain (tag spelling shown, adding a tag already on the task,
-  removing a tag not on the task). They go to the phase-00 review as open questions; the loop does
-  not ask them interactively.
-- "Requirements are testable and unambiguous" is checked for everything outside those 3 markers.
+- The 3 [NEEDS CLARIFICATION] markers (tag spelling shown, adding a tag already on the task,
+  removing a tag not on the task) were answered at the phase-00 review (2026-09-26) and written
+  into spec.md: lower case, silent no-op, silent no-op.

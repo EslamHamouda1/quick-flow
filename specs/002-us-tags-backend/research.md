@@ -2,8 +2,8 @@
 
 Decisions for `plan.md`. Items marked **(assumption)** are not written in the requirements or the
 spec; they are listed in the phase-00 review under `## Assumptions` and are built only once approved.
-Items marked **(Qn)** depend on an open question in `spec.md`; the recommended answer is used here
-and the decision changes with the reviewer's answer.
+Items marked **(Qn)** followed a question in `spec.md`; the reviewer confirmed the recommended answer
+at the phase-00 review (2026-09-26), and it is now written in `spec.md`.
 
 ## R-1 Storage: a collection table owned by the task
 - **Decision**: `Task.tags` is a JPA `@ElementCollection(fetch = EAGER)` of `String` in table
@@ -19,7 +19,7 @@ and the decision changes with the reviewer's answer.
   exactly without string tricks and breaks on tags containing commas.
 
 ## R-2 Letter case (Q1)
-- **Decision** (recommended answer to Q1): tags are stored and returned in lower case
+- **Decision** (answer to Q1, confirmed at the phase-00 review): tags are stored and returned in lower case
   (`toLowerCase(Locale.ROOT)` after trimming). The filter lower-cases its value the same way.
 - **Rationale**: one spelling makes "Work" = "work" hold everywhere (storage, uniqueness, filter,
   display) with no extra column.
@@ -50,13 +50,13 @@ and the decision changes with the reviewer's answer.
   nothing; the error body is the existing RFC 9457 shape with `errors[].field`.
 
 ## R-5 Adding a tag the task already has (Q2)
-- **Decision** (recommended answer to Q2): a silent no-op: the tag stays once, the request succeeds
+- **Decision** (answer to Q2, confirmed at the phase-00 review): a silent no-op: the tag stays once, the request succeeds
   (200) and returns the task; a repeated tag in the same request counts once. It counts toward the
   limit only once.
 - **If Q2 is answered "rejected"**: 400 with field error `tags` ("already on the task"), tags unchanged.
 
 ## R-6 Removing a tag the task doesn't have (Q3)
-- **Decision** (recommended answer to Q3): a silent no-op: 200 with the task unchanged. An unknown
+- **Decision** (answer to Q3, confirmed at the phase-00 review): a silent no-op: 200 with the task unchanged. An unknown
   task id is still 404. A blank `tag` parameter → 400 on `tag`.
 - **If Q3 is answered "not found"**: 404 problem detail "Tag <tag> not found on task <id>".
 

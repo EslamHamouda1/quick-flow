@@ -15,8 +15,8 @@
 | backend-dev:001-quickflow:phase-07 | 2026-09-26T00:20:42+03:00 | 2026-09-26T00:59:42+03:00 | 0h39m00s | 0h13m02s | 5 | 1 | 222 | 8702138 | 77442 | 8.1618 | a179dff8-2927-473d-a32e-23057de42010 0d17c0dd-e014-4982-b64e-9718b8775736 d0241dc8-dec3-456b-bf7f-143c67bd0b34 0befc91c-e612-4319-ba25-1c34fae2af70 c0289276-5b57-4a81-a4ad-6ba95b83c3d4 | 0befc91c-e612-4319-ba25-1c34fae2af70 | ac43ef8 | success |
 | backend-dev:001-quickflow:phase-08 | 2026-09-26T02:04:49+03:00 | 2026-09-26T11:13:04+03:00 | 9h08m15s | 0h09m52s | 5 | 1 | 168 | 5376789 | 51634 | 4.7602 | d138fe9f-8f9b-43f5-99f4-6bae679d717a ea738d99-f508-4787-b1a7-bfe59a12c0a9 758c4006-7be9-4e8c-b10c-93b224242123 313676a5-0ba6-4353-b617-6e7e0e24cadd c38c4bc4-2589-4745-8bef-a8205d075e55 | 758c4006-7be9-4e8c-b10c-93b224242123 | 837f6e8 | success |
 | backend-dev:001-quickflow:phase-09 | 2026-09-26T11:27:27+03:00 | 2026-09-26T11:46:36+03:00 | 0h19m09s | 0h16m49s | 4 | 1 | 284 | 11117579 | 85013 | 6.6305 | 78ba0196-4658-4068-9865-864fb24c71cd fac73a1e-0ba6-4957-a3ad-d167a9a53cf7 b6d18791-6e09-482f-8887-b405f74ff5e5 827608e9-5bdd-45cd-b23d-b67c0a60dada | b6d18791-6e09-482f-8887-b405f74ff5e5 | 3dc0eed | success |
-| backend-dev:002-us-tags:phase-00-plan | 2026-09-26T22:35:07+03:00 | 2026-09-26T22:42:08+03:00 | 0h07m01s | 0h06m58s | 1 | 1 | 74 | 3332125 | 40857 | 2.4226 | 97e97192-f350-4702-8e44-10f417c6cc8a |  |  | violation: runner-owned file changed: docs/commit-reviews.md; |
-| **Total** |  |  |  | 2h24m26s | 41 |  | 1994 | 82263489 | 830065 | 68.3689 |  |  |  |  |
+| backend-dev:002-us-tags:phase-00-plan | 2026-09-26T22:35:07+03:00 | 2026-09-26T22:49:28+03:00 | 0h14m21s | 0h09m06s | 2 | 1 | 112 | 4417927 | 54774 | 3.2994 | 97e97192-f350-4702-8e44-10f417c6cc8a f69fe676-18a1-4449-890c-7a15d47b44f0 |  |  | success |
+| **Total** |  |  |  | 2h26m33s | 42 |  | 2032 | 83349291 | 843982 | 69.2457 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -173,3 +173,6 @@
 - 2026-09-26T22:41:43+03:00 002-us-tags phase-00: wrote tasks.md (T001-T012, tests first) and ran the analyze pass (0 CRITICAL, 1 HIGH: open questions; 2 contract fixes applied)
 - 2026-09-26T22:41:43+03:00 002-us-tags phase-00: wrote outputs phase-01.md, phase-02.md, phase-00-review.md; created phases.json (phase-00 awaiting_approval, phase-01/02 planned), tasks.json, current.json (running)
 - 2026-09-26T22:47:11+03:00 gate 002-us-tags phase-00: approved — notes: Q1: tags are always lower case (stored, matched, filtered and shown as lower case). Q2: adding a tag the task already has is a silent no-op (200, task unchanged, counts once toward the 10). Q3: removing a tag the task doesn't have is a silent no-op (200, task unchanged); an unknown task id is still 404.
+- 2026-09-26T22:47:42+03:00 002-us-tags phase-00: plan_apply: wrote reviewer answers Q1 (lower case), Q2 (add existing = no-op), Q3 (remove absent = no-op) into spec.md (3 [NEEDS CLARIFICATION] markers replaced, FR-002/003/005) and requirements.json; renamed review "## Open questions" to "## Answered questions"
+- 2026-09-26T22:47:42+03:00 002-us-tags phase-00: plan_apply: no reviewer edits to phase-01/phase-02 task lists (tasks.md tasks and task_ids unchanged); updated plan.md (Constitution V PASS), research.md and tasks.md notes to say the answers are confirmed
+- 2026-09-26T22:47:42+03:00 002-us-tags phase-00: plan_apply: ticked checklists/requirements.md "No [NEEDS CLARIFICATION] markers remain"; re-analysis: 0 CRITICAL, 0 HIGH; phase-00 approved -> done

@@ -26,8 +26,8 @@ context); web slice (`@WebMvcTest` + `MockMvcTester`, services `@MockitoBean`); 
   The backend exists already (feature `001-quickflow`); no setup or foundational work is needed.
 - Controller method names equal the `operationId`s in `contracts/openapi.yaml` (`listTasks`, `getTask`,
   `addTaskTags`, `removeTaskTag`), so the generated `target/openapi.json` matches the contract.
-- Tasks marked (Q1)/(Q2)/(Q3) follow the answers to the spec's open questions (research R-2, R-5, R-6);
-  the text below uses the recommended answers.
+- Tasks marked (Q1)/(Q2)/(Q3) follow the answers to the spec's questions (research R-2, R-5, R-6);
+  the reviewer confirmed the recommended answers at the phase-00 review.
 
 ---
 

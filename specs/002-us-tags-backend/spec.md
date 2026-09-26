@@ -41,11 +41,11 @@ list by a tag, remove a tag, and try invalid tags; delivers grouping of tasks by
 
 ### Edge Cases
 
-- Adding a tag the task already has (in any letter case): see FR-003 [NEEDS CLARIFICATION: Is adding a tag the task already has (e.g. "Work" when it has "work") a silent no-op that returns the task unchanged, or is it rejected with a validation message?]
-- Removing a tag the task doesn't have: see FR-005 [NEEDS CLARIFICATION: Is removing a tag the task doesn't have a silent no-op (success, task unchanged) or a "not found" error?]
+- Adding a tag the task already has (in any letter case): a silent no-op; the request succeeds, the task is unchanged, and the tag counts once toward the 10 (FR-003; answered at the phase-00 review, 2026-09-26).
+- Removing a tag the task doesn't have: a silent no-op; the request succeeds and the task is unchanged. An unknown task id is still "not found" (FR-005; answered at the phase-00 review, 2026-09-26).
 - Several tags added at once where one is invalid (empty, over 30 characters, or the total would exceed 10): the whole request is rejected and none of them is added (AC-US1-4, "tags are unchanged").
 - A tag of only spaces counts as empty; spaces around a tag are dropped ("  work " is "work").
-- A tag is looked up and stored in one letter case form: see FR-002 [NEEDS CLARIFICATION: Which spelling does the user see for a tag: always lower case ("Work" is stored and shown as "work"), or the spelling first used on that task?]
+- A tag is looked up and stored in one letter case form: always lower case; "Work" is stored, matched, filtered and shown as "work" (FR-002; answered at the phase-00 review, 2026-09-26).
 - Filtering by a tag no task has returns an empty list, not an error.
 - The tag filter combines with the existing filters (search text, status, priority, due dates, archived) and sort: a task is listed only if it matches all of them; archived tasks stay excluded by default (BR-4).
 - Deleting a task deletes its tags with it; a deleted task is never listed by a tag filter (BR-14, BR-T4).
@@ -56,10 +56,10 @@ list by a tag, remove a tag, and try invalid tags; delivers grouping of tasks by
 ### Functional Requirements
 
 - **FR-001**: Users MUST be able to add one or more tags to an existing task in one action (AC-US1-1).
-- **FR-002**: Every read of a task (single task and task list) MUST return the task's tags, in a stable order (alphabetical) (AC-US1-1). The spelling shown is open (see Edge Cases, tag spelling).
-- **FR-003**: Tags MUST be case-insensitive: two tags that differ only in letter case are the same tag, a task never holds both, and adding a tag the task already has never creates a second one (BR-T2, AC-US1-5).
+- **FR-002**: Every read of a task (single task and task list) MUST return the task's tags, in a stable order (alphabetical) (AC-US1-1). Tags are shown in lower case (see Edge Cases, tag spelling).
+- **FR-003**: Tags MUST be case-insensitive: two tags that differ only in letter case are the same tag, a task never holds both, and adding a tag the task already has never creates a second one: it is a silent no-op (BR-T2, AC-US1-5).
 - **FR-004**: Users MUST be able to filter the task list by one tag; only tasks that have that tag (ignoring case) are listed; the filter combines with all existing list filters and sort (AC-US1-2, AC-US1-5).
-- **FR-005**: Users MUST be able to remove a tag from a task; afterwards the task no longer shows it and the tag filter no longer lists it (AC-US1-3).
+- **FR-005**: Users MUST be able to remove a tag from a task; afterwards the task no longer shows it and the tag filter no longer lists it; removing a tag the task doesn't have is a silent no-op (AC-US1-3).
 - **FR-006**: The system MUST reject an empty tag (after trimming spaces) or a tag longer than 30 characters with a validation message naming the tags field, leaving the task's tags unchanged (BR-T1, AC-US1-4).
 - **FR-007**: The system MUST reject an addition that would give a task more than 10 tags with a validation message, leaving the task's tags unchanged (BR-T3, AC-US1-6).
 - **FR-008**: Tags MUST be kept with the task (they survive an app restart) and removed with it when the task is deleted (BR-T4).

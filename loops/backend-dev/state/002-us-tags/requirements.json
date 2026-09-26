@@ -22,10 +22,10 @@
   ],
   "requirements": [
     {"id": "FR-001", "text": "Users MUST be able to add one or more tags to an existing task in one action."},
-    {"id": "FR-002", "text": "Every read of a task (single task and task list) MUST return the task's tags, in a stable order (alphabetical). Spelling shown: open question."},
-    {"id": "FR-003", "text": "Tags MUST be case-insensitive: two tags that differ only in letter case are the same tag, a task never holds both, and adding a tag the task already has never creates a second one. Whether that addition is a no-op or rejected: open question."},
+    {"id": "FR-002", "text": "Every read of a task (single task and task list) MUST return the task's tags, in a stable order (alphabetical). Tags are stored, matched, filtered and shown in lower case."},
+    {"id": "FR-003", "text": "Tags MUST be case-insensitive: two tags that differ only in letter case are the same tag, a task never holds both, and adding a tag the task already has never creates a second one. Adding a tag the task already has is a silent no-op (success, task unchanged, counts once toward the 10)."},
     {"id": "FR-004", "text": "Users MUST be able to filter the task list by one tag; only tasks that have that tag (ignoring case) are listed; the filter combines with all existing list filters and sort."},
-    {"id": "FR-005", "text": "Users MUST be able to remove a tag from a task; afterwards the task no longer shows it and the tag filter no longer lists it. Removing a tag the task doesn't have: open question."},
+    {"id": "FR-005", "text": "Users MUST be able to remove a tag from a task; afterwards the task no longer shows it and the tag filter no longer lists it. Removing a tag the task doesn't have is a silent no-op (success, task unchanged); an unknown task id is still not found."},
     {"id": "FR-006", "text": "The system MUST reject an empty tag (after trimming spaces) or a tag longer than 30 characters with a validation message naming the tags field, leaving the task's tags unchanged."},
     {"id": "FR-007", "text": "The system MUST reject an addition that would give a task more than 10 tags with a validation message, leaving the task's tags unchanged."},
     {"id": "FR-008", "text": "Tags MUST be kept with the task (they survive an app restart) and removed with it when the task is deleted."}

@@ -16,13 +16,14 @@ and is the frontend layer's swagger input (`contract_from: backend`).
 There is no Setup or Foundational phase: the backend of feature 001 is in place and tags only
 extend the task package.
 
-## Open questions
+## Answered questions
 - Q1 (FR-002, BR-T2): Which spelling does the user see for a tag: always lower case ("Work" is stored and shown as "work"), or the spelling first used on that task? **Recommended: always lower case** (one spelling for storage, uniqueness, filter and display; research R-2).
 - Q2 (FR-003): Is adding a tag the task already has (e.g. "Work" when it has "work") a silent no-op that returns the task unchanged, or is it rejected with a validation message? **Recommended: silent no-op** (200, tag kept once, counts once toward the 10; research R-5).
 - Q3 (FR-005): Is removing a tag the task doesn't have a silent no-op (success, task unchanged) or a "not found" error? **Recommended: silent no-op** (200 with the task unchanged; an unknown task id is still 404; research R-6).
 
 ## Analyze findings
 - HIGH (Constitution V): the 3 questions above are unresolved `[NEEDS CLARIFICATION]` markers in spec.md. The plan, contract (parts marked "Qn") and tasks (T001, T005, marked Q1/Q2/Q3) use the recommended answers; plan_apply must update them if an answer differs.
+- plan_apply re-analysis (2026-09-26T22:47:42+03:00): the HIGH finding above is resolved (Q1–Q3 answered as recommended and written into spec.md; plan, contract and tasks already used those answers, so nothing else changed). No CRITICAL or HIGH findings remain.
 - No CRITICAL findings. Coverage: every FR-001..FR-008 and BR-T1..BR-T4 maps to at least one test task (T001–T004) and one implementation task (T005–T010); every AC-US1-1..6 is in quickstart.md.
 - Fixed during analysis: the contract had a `maxLength: 30` on the `tag` list filter that no task enforces (removed; an unknown tag gives an empty list), and a per-item `maxLength` on the add-tags body that would reject a padded tag the domain accepts after trimming (moved to the description; the rule is checked in the domain after trim).
 
