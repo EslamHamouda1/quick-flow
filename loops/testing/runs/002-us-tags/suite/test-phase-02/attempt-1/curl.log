@@ -1,0 +1,88 @@
+# suite test-phase-02 attempt 1: API checks A1–A10 (curl against http://localhost:8080, fresh test DB)
+# Each line: <check> | METHOD URL | request body | HTTP status | time_total | response (Task bodies reduced to the
+# fields the check reads: id, title, status, priority, archived, tags; Problem bodies verbatim). curl was run
+# as chained `curl --next` commands with -w '@@ %{method} %{url_effective} %{http_code} %{time_total}' (bash
+# verify.sh needed approval in this session, as in earlier sessions; test-phase-02-verify.sh holds the same checks).
+# Task ids (fresh DB): A=1 W1=2 W2=3 N1=4 N2=5 N3=6 R=7 V=8 K=9 F=10 P1=11 P2=12 P3=13 AR=14 E=15 D=16.
+
+## A1 AC-US1-1 / FR-001 / FR-002
+setup | POST /api/tasks | {"title":"S2 A"} | 201 | 0.080427 | id 1, tags []
+A1 | POST /api/tasks/1/tags | {"tags":["work","urgent"]} | 200 | 0.025942 | id 1 tags ["urgent","work"]
+A1 | GET /api/tasks/1 | - | 200 | 0.003798 | id 1 tags ["urgent","work"]
+A1 | GET /api/tasks | - | 200 | 0.005271 | [id 1 tags ["urgent","work"]]
+
+## A2 AC-US1-2 / FR-004 / SC-004
+setup | POST /api/tasks x5 (S2 W1, W2, N1, N2, N3) | | 201 x5 | 0.005749 0.002859 0.002067 0.001817 0.001726 | ids 2..6, tags []
+setup | POST /api/tasks/2/tags | {"tags":["work"]} | 200 | 0.002942 | tags ["work"]
+setup | POST /api/tasks/3/tags | {"tags":["home","work"]} | 200 | 0.002587 | tags ["home","work"]
+setup | POST /api/tasks/4/tags | {"tags":["home"]} | 200 | 0.002403 | tags ["home"]
+setup | POST /api/tasks/6/tags | {"tags":["workshop"]} | 200 | 0.002378 | tags ["workshop"]
+A2 | GET /api/tasks?tag=work | - | 200 | 0.015301 | ids [3,2,1] (W2 ["home","work"], W1 ["work"], A ["urgent","work"]); N1, N2, N3 (workshop) absent
+A2 | GET /api/tasks?tag=nosuchtag | - | 200 | 0.003354 | []
+
+## A3 AC-US1-3 / FR-005
+setup | POST /api/tasks | {"title":"S2 R"} | 201 | 0.005582 | id 7
+setup | POST /api/tasks/7/tags | {"tags":["work","home"]} | 200 | 0.003782 | tags ["home","work"]
+A3 | DELETE /api/tasks/7/tags?tag=work | - | 200 | 0.003820 | tags ["home"], updatedAt 00:00:17.81056496
+A3 | GET /api/tasks/7 | - | 200 | 0.001690 | tags ["home"]
+A3 | GET /api/tasks?tag=work | - | 200 | 0.004150 | ids [3,2,1] (7 absent)
+A3 | DELETE /api/tasks/7/tags?tag=nosuchtag | - | 200 | 0.001861 | tags ["home"], updatedAt 00:00:17.810565 (unchanged)
+A3 | DELETE /api/tasks/999999999/tags?tag=work | - | 404 | 0.008803 | {"detail":"Task 999999999 not found","instance":"/api/tasks/999999999/tags","status":404,"title":"Not Found"}
+
+## A4 AC-US1-4 / FR-006 / BR-T1 / SC-003 (31-char = "a"x31, 30-char = "b"x30; lengths checked with jq: [31,30])
+setup | POST /api/tasks | {"title":"S2 V"} | 201 | 0.005549 | id 8
+setup | POST /api/tasks/8/tags | {"tags":["alpha"]} | 200 | 0.003941 | tags ["alpha"]
+A4 | POST /api/tasks/8/tags | {"tags":[""]} | 400 | 0.004005 | {"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"tag must not be blank"}]}
+A4 | GET /api/tasks/8 | - | 200 | 0.002242 | tags ["alpha"]
+A4 | POST /api/tasks/8/tags | {"tags":["   "]} | 400 | 0.002899 | {"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"tag must not be blank"}]}
+A4 | GET /api/tasks/8 | - | 200 | 0.001891 | tags ["alpha"]
+A4 | POST /api/tasks/8/tags | {"tags":["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]} | 400 | 0.001929 | {"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must be at most 30 characters"}]}
+A4 | GET /api/tasks/8 | - | 200 | 0.001991 | tags ["alpha"]
+A4 | POST /api/tasks/8/tags | {"tags":["beta","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]} | 400 | 0.002171 | {"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must be at most 30 characters"}]}
+A4 | GET /api/tasks/8 | - | 200 | 0.002888 | tags ["alpha"] (beta not added: all or nothing)
+A4 | POST /api/tasks/8/tags | {"tags":["bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"]} | 200 | 0.003486 | tags ["alpha","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"]
+A4 | POST /api/tasks/8/tags | {"tags":["  gamma "]} | 200 | 0.002722 | tags ["alpha","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","gamma"]
+
+## A5 AC-US1-5 / FR-003 / BR-T2
+setup | POST /api/tasks | {"title":"S2 K"} | 201 | 0.005550 | id 9
+setup | POST /api/tasks/9/tags | {"tags":["work"]} | 200 | 0.003421 | tags ["work"]
+A5 | POST /api/tasks/9/tags | {"tags":["Work"]} | 200 | 0.002177 | tags ["work"] (updatedAt unchanged)
+A5 | GET /api/tasks?tag=WORK | - | 200 | 0.005560 | ids [9,3,2,1] (second call, body read with jq '[.[].id]')
+A5 | POST /api/tasks/9/tags | {"tags":["Home"]} | 200 | 0.003289 | tags ["home","work"]
+
+## A6 AC-US1-6 / FR-007 / BR-T3 / SC-003
+setup | POST /api/tasks | {"title":"S2 F"} | 201 | 0.002111 | id 10
+A6 | POST /api/tasks/10/tags | {"tags":["t01",..,"t10"]} | 200 | 0.002934 | tags ["t01","t02","t03","t04","t05","t06","t07","t08","t09","t10"]
+A6 | POST /api/tasks/10/tags | {"tags":["t11"]} | 400 | 0.002080 | {"detail":"Validation failed","instance":"/api/tasks/10/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must have at most 10 tags"}]}
+A6 | GET /api/tasks/10 | - | 200 | 0.002145 | tags t01..t10 (10)
+A6 | POST /api/tasks/10/tags | {"tags":["T05"]} | 200 | 0.002071 | tags t01..t10 (10), updatedAt unchanged
+
+## A7 FR-004 with other filters; BR-4 archived hidden
+setup | POST /api/tasks x4 (P1 alpha HIGH IN_PROGRESS, P2 beta LOW TODO, P3 alpha HIGH TODO, AR) | | 201 x4 | 0.005513 0.002682 0.001983 0.001563 | ids 11..14
+setup | POST /api/tasks/11,12,14/tags ["work"], 13 ["home"] | | 200 x4 | 0.002768 0.002528 0.002459 0.002393 |
+setup | POST /api/tasks/14/archive | - | 200 | 0.002005 | archived true, tags ["work"]
+A7 | GET /api/tasks?tag=work&priority=HIGH | - | 200 | 0.004967 | ids [11]
+A7 | GET /api/tasks?tag=work&status=TODO | - | 200 | 0.004352 | ids [12,9,3,2,1] (11 IN_PROGRESS and 13 home absent)
+A7 | GET /api/tasks?tag=work&q=alpha | - | 200 | 0.008249 | ids [11] (13 "P3 alpha" is home, absent)
+A7 | GET /api/tasks?tag=work | - | 200 | 0.004633 | ids [12,11,9,3,2,1] (archived 14 absent)
+info | GET /api/tasks?tag=work&archived=true | - | 200 | 0.002871 | ids [14]
+
+## A8 BR-T4
+setup | POST /api/tasks | {"title":"S2 E"} | 201 | 0.005255 | id 15
+setup | POST /api/tasks/15/tags | {"tags":["keep","work"]} | 200 | 0.003322 | tags ["keep","work"]
+A8 | PUT /api/tasks/15 | {"title":"S2 E edited","priority":"HIGH","status":"IN_PROGRESS"} | 200 | 0.008905 | title "S2 E edited", tags ["keep","work"]
+A8 | POST /api/tasks/15/complete | - | 200 | 0.002529 | status DONE, tags ["keep","work"]
+A8 | POST /api/tasks/15/archive | - | 200 | 0.001747 | archived true, tags ["keep","work"]
+A8 | POST /api/tasks/15/restore | - | 200 | 0.001635 | archived false, tags ["keep","work"]
+A8 | GET /api/tasks/15 | - | 200 | 0.001154 | tags ["keep","work"]
+
+## A9 FR-008 / BR-T4 delete
+setup | POST /api/tasks | {"title":"S2 D"} | 201 | 0.002099 | id 16
+setup | POST /api/tasks/16/tags | {"tags":["gone"]} | 200 | 0.002154 | tags ["gone"]
+A9 | GET /api/tasks?tag=gone | - | 200 | 0.003532 | ids [16]
+A9 | DELETE /api/tasks/16 | - | 204 | 0.008974 | (empty)
+A9 | GET /api/tasks?tag=gone | - | 200 | 0.003811 | []
+A9 | POST /api/tasks/16/tags | {"tags":["x"]} | 404 | 0.002401 | {"detail":"Task 16 not found","instance":"/api/tasks/16/tags","status":404,"title":"Not Found"}
+A9 | DELETE /api/tasks/16/tags?tag=gone | - | 404 | 0.001723 | {"detail":"Task 16 not found","instance":"/api/tasks/16/tags","status":404,"title":"Not Found"}
+
+## A10 SC-002: every addTaskTags / removeTaskTag / listTasks?tag= call above: max time_total 0.025942 s (first add, A1); all < 0.500 s
