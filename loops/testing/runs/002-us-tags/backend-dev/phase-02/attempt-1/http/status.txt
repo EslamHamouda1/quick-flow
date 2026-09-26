@@ -1,0 +1,52 @@
+# Status lines printed by curl -w '%{method} %{url} %{http_code}' for each call, in order.
+# Response bodies: NN.json in this folder (NN = call number). Copied from the session's curl output
+# (tee/redirection into a file needed approval in this session).
+01 POST /api/tasks {"title":"C1 task"} 201            (id 1)
+02 POST /api/tasks {"title":"C2 w1"} 201              (id 2)
+03 POST /api/tasks {"title":"C2 w2"} 201              (id 3)
+04 POST /api/tasks {"title":"C2 n1"} 201              (id 4)
+05 POST /api/tasks {"title":"C2 n2"} 201              (id 5)
+06 POST /api/tasks {"title":"C2 n3"} 201              (id 6)
+07 POST /api/tasks {"title":"C3 task"} 201            (id 7)
+08 POST /api/tasks {"title":"C4 task"} 201            (id 8)
+09 POST /api/tasks {"title":"C5 task"} 201            (id 9)
+10 POST /api/tasks {"title":"C6 task"} 201            (id 10)
+11 POST /api/tasks {"title":"P2 C4 task"} 201         (id 11)
+12 POST /api/tasks/1/tags ["work","urgent"] 200
+13 GET /api/tasks/1 200
+14 GET /api/tasks 200
+15 POST /api/tasks/2/tags ["work"] 200
+16 POST /api/tasks/3/tags ["home","work"] 200
+17 POST /api/tasks/4/tags ["home"] 200
+18 POST /api/tasks/6/tags ["workshop"] 200
+19 GET /api/tasks?tag=work 200
+20 GET /api/tasks?tag=nosuchtag 200
+21 POST /api/tasks/7/tags ["work","home"] 200
+22 DELETE /api/tasks/7/tags?tag=work 200
+23 GET /api/tasks/7 200
+24 GET /api/tasks?tag=work 200
+25 POST /api/tasks/8/tags ["alpha"] 200
+26 POST /api/tasks/8/tags [""] 400
+27 POST /api/tasks/8/tags ["   "] 400
+28 POST /api/tasks/8/tags [<31 x a>] 400
+29 POST /api/tasks/8/tags ["beta",<31 x a>] 400
+30 GET /api/tasks/8 200
+31 POST /api/tasks/8/tags [<30 x b>] 200
+32 POST /api/tasks/9/tags ["work"] 200
+33 POST /api/tasks/9/tags ["Work"] 200
+34 GET /api/tasks/9 200
+35 GET /api/tasks?tag=WORK 200
+36 POST /api/tasks/10/tags ["t01".."t10"] 200
+37 POST /api/tasks/10/tags ["t11"] 400
+38 GET /api/tasks/10 200
+39 POST /api/tasks/11/tags ["alpha"] 200
+40 POST /api/tasks/11/tags {"tags":[]} 400
+41 POST /api/tasks/11/tags {"tags":null} 400
+42 POST /api/tasks/11/tags {} 400
+43 GET /api/tasks/11 200
+44 POST /api/tasks/999999/tags ["x"] 404
+45 DELETE /api/tasks/999999/tags?tag=x 404
+46 DELETE /api/tasks/11/tags (no tag) 400
+47 POST /api/tasks {"title":"P2 C5 task","dueDate":"2026-09-26"} 201   (id 12)
+48 POST /api/tasks/12/tags ["dash","board"] 200
+49 GET /api/dashboard 200

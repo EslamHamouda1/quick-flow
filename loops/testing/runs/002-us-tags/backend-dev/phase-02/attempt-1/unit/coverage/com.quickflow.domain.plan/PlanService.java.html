@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlanService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.plan</a> &gt; <span class="el_source">PlanService.java</span></div><h1>PlanService.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.plan;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+
+import com.quickflow.domain.common.FieldError;
+import com.quickflow.domain.common.NotFoundException;
+import com.quickflow.domain.common.TimeService;
+import com.quickflow.domain.common.ValidationException;
+import com.quickflow.domain.task.TaskService;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@Transactional
+public class PlanService {
+
+	/** Active plans: priority order, then start, then id (A-9). */
+<span class="fc" id="L23">	private static final Comparator&lt;PlanView&gt; ACTIVE_ORDER = Comparator</span>
+<span class="fc" id="L24">			.comparingInt((PlanView v) -&gt; v.plan().getPriorityOrder())</span>
+<span class="fc" id="L25">			.thenComparing(v -&gt; v.plan().getStartDateTime())</span>
+<span class="pc" id="L26">			.thenComparing(v -&gt; v.plan().getId(), Comparator.nullsLast(Comparator.naturalOrder()));</span>
+
+	/** Completed plans: latest end first, then id desc (A-9). */
+<span class="fc" id="L29">	private static final Comparator&lt;PlanView&gt; COMPLETED_ORDER = Comparator</span>
+<span class="fc" id="L30">			.comparing((PlanView v) -&gt; v.plan().getEndDateTime()).reversed()</span>
+<span class="pc" id="L31">			.thenComparing(v -&gt; v.plan().getId(), Comparator.nullsLast(Comparator.&lt;Long&gt;reverseOrder()));</span>
+
+	private final PlanRepository plans;
+
+	private final PlanSourceResolver sources;
+
+	private final TaskService taskService;
+
+	private final TimeService timeService;
+
+	public PlanService(PlanRepository plans, PlanSourceResolver sources, TaskService taskService,
+<span class="fc" id="L42">			TimeService timeService) {</span>
+<span class="fc" id="L43">		this.plans = plans;</span>
+<span class="fc" id="L44">		this.sources = sources;</span>
+<span class="fc" id="L45">		this.taskService = taskService;</span>
+<span class="fc" id="L46">		this.timeService = timeService;</span>
+<span class="fc" id="L47">	}</span>
+
+	/** Field errors and unknown or deleted sources (BR-10) are reported together (A-3). */
+	public PlanView create(String title, int estimatedDurationMinutes, Instant startDateTime, Instant endDateTime,
+			int priorityOrder, List&lt;PlanItemRef&gt; items) {
+<span class="fc" id="L52">		List&lt;FieldError&gt; errors = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L53">		Plan plan = null;</span>
+		try {
+<span class="fc" id="L55">			plan = new Plan(title, estimatedDurationMinutes, startDateTime, endDateTime, priorityOrder, items, now());</span>
+		}
+<span class="nc" id="L57">		catch (ValidationException ex) {</span>
+<span class="nc" id="L58">			errors.addAll(ex.getErrors());</span>
+<span class="fc" id="L59">		}</span>
+<span class="fc" id="L60">		List&lt;String&gt; titles = new ArrayList&lt;&gt;();</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">		if (items != null) {</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">			for (int i = 0; i &lt; items.size(); i++) {</span>
+<span class="fc" id="L63">				PlanItemRef ref = items.get(i);</span>
+<span class="pc bpc" id="L64" title="3 of 6 branches missed.">				if (ref == null || ref.sourceType() == null || ref.sourceId() == null) {</span>
+<span class="nc" id="L65">					titles.add(null);</span>
+<span class="nc" id="L66">					continue;</span>
+				}
+<span class="fc" id="L68">				Optional&lt;String&gt; sourceTitle = sources.title(ref.sourceType(), ref.sourceId());</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">				if (sourceTitle.isEmpty()) {</span>
+<span class="fc" id="L70">					errors.add(new FieldError(&quot;items[&quot; + i + &quot;].sourceId&quot;,</span>
+<span class="fc" id="L71">							&quot;must reference an existing &quot; + ref.sourceType()));</span>
+				}
+<span class="fc" id="L73">				titles.add(sourceTitle.orElse(null));</span>
+			}
+		}
+<span class="fc bfc" id="L76" title="All 2 branches covered.">		if (!errors.isEmpty()) {</span>
+<span class="fc" id="L77">			throw new ValidationException(errors);</span>
+		}
+<span class="fc bfc" id="L79" title="All 2 branches covered.">		for (int i = 0; i &lt; titles.size(); i++) {</span>
+<span class="fc" id="L80">			plan.getItems().get(i).refreshTitle(titles.get(i));</span>
+		}
+<span class="fc" id="L82">		return view(plans.save(plan), true);</span>
+	}
+
+	@Transactional(readOnly = true)
+	public PlanView get(long id) {
+<span class="fc" id="L87">		return view(find(id), false);</span>
+	}
+
+	@Transactional(readOnly = true)
+	public List&lt;PlanView&gt; list(PlanGroup group) {
+<span class="fc" id="L92">		List&lt;PlanView&gt; all = plans.findAll().stream().map(plan -&gt; view(plan, false)).toList();</span>
+<span class="fc" id="L93">		List&lt;PlanView&gt; active = all.stream()</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">				.filter(v -&gt; v.progress().status() != PlanStatus.COMPLETED)</span>
+<span class="fc" id="L95">				.sorted(ACTIVE_ORDER)</span>
+<span class="fc" id="L96">				.toList();</span>
+<span class="fc" id="L97">		List&lt;PlanView&gt; completed = all.stream()</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">				.filter(v -&gt; v.progress().status() == PlanStatus.COMPLETED)</span>
+<span class="fc" id="L99">				.sorted(COMPLETED_ORDER)</span>
+<span class="fc" id="L100">				.toList();</span>
+<span class="fc bfc" id="L101" title="All 3 branches covered.">		return switch (group) {</span>
+<span class="fc" id="L102">			case ACTIVE -&gt; active;</span>
+<span class="fc" id="L103">			case COMPLETED -&gt; completed;</span>
+			case ALL -&gt; {
+<span class="fc" id="L105">				List&lt;PlanView&gt; both = new ArrayList&lt;&gt;(active);</span>
+<span class="fc" id="L106">				both.addAll(completed);</span>
+<span class="fc" id="L107">				yield both;</span>
+			}
+		};
+	}
+
+	public PlanView update(long id, String title, int estimatedDurationMinutes, Instant startDateTime,
+			Instant endDateTime, int priorityOrder) {
+<span class="fc" id="L114">		Plan plan = find(id);</span>
+<span class="fc" id="L115">		plan.update(title, estimatedDurationMinutes, startDateTime, endDateTime, priorityOrder);</span>
+<span class="fc" id="L116">		return view(plan, true);</span>
+	}
+
+	/** Removes the plan and, by cascade, its items; the referenced sources are unchanged (BR-14). */
+	public void delete(long id) {
+<span class="fc" id="L121">		plans.delete(find(id));</span>
+<span class="fc" id="L122">	}</span>
+
+	/**
+	 * A TASK item marked done completes its task while the task exists; un-ticking and HABIT / LEARNING_RESOURCE
+	 * items change no source (BR-13, FR-07.5, A-7).
+	 */
+	public PlanView setItemDone(long id, long itemId, boolean done) {
+<span class="fc" id="L129">		Plan plan = find(id);</span>
+<span class="fc" id="L130">		PlanItem item = plan.findItem(itemId)</span>
+<span class="fc" id="L131">				.orElseThrow(() -&gt; new NotFoundException(&quot;Plan item &quot; + itemId + &quot; not found on plan &quot; + id));</span>
+<span class="fc" id="L132">		item.setDone(done);</span>
+<span class="fc bfc" id="L133" title="All 4 branches covered.">		if (done &amp;&amp; item.getSourceType() == PlanSourceType.TASK</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">				&amp;&amp; sources.title(PlanSourceType.TASK, item.getSourceId()).isPresent()) {</span>
+<span class="fc" id="L135">			taskService.complete(item.getSourceId());</span>
+		}
+<span class="fc" id="L137">		return view(plan, true);</span>
+	}
+
+	private Plan find(long id) {
+<span class="fc" id="L141">		return plans.findById(id).orElseThrow(() -&gt; new NotFoundException(&quot;Plan &quot; + id + &quot; not found&quot;));</span>
+	}
+
+	/**
+	 * Shows each source's current title while it exists, else the stored snapshot with {@code sourceRemoved};
+	 * write operations also update the snapshot (A-4).
+	 */
+	private PlanView view(Plan plan, boolean refreshSnapshot) {
+<span class="fc" id="L149">		List&lt;PlanView.Item&gt; items = plan.getItems().stream().map(item -&gt; {</span>
+<span class="fc" id="L150">			Optional&lt;String&gt; current = sources.title(item.getSourceType(), item.getSourceId());</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">			if (current.isEmpty()) {</span>
+<span class="fc" id="L152">				return new PlanView.Item(item, item.getSourceTitle(), true);</span>
+			}
+<span class="fc bfc" id="L154" title="All 2 branches covered.">			if (refreshSnapshot) {</span>
+<span class="fc" id="L155">				item.refreshTitle(current.get());</span>
+			}
+<span class="fc" id="L157">			return new PlanView.Item(item, current.get(), false);</span>
+<span class="fc" id="L158">		}).toList();</span>
+<span class="fc" id="L159">		return new PlanView(plan, items, PlanStatusPolicy.progress(plan, now()));</span>
+	}
+
+	private Instant now() {
+<span class="fc" id="L163">		return timeService.now().toInstant();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

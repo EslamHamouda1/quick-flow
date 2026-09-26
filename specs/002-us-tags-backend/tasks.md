@@ -63,8 +63,8 @@ validation (1–30 characters, case-insensitive, at most 10).
 
 **Purpose**: contract conformance and the coverage gate
 
-- [ ] T011 Compare the generated backend/target/openapi.json with specs/002-us-tags-backend/contracts/openapi.yaml for `listTasks` (`tag` parameter), `addTaskTags`, `removeTaskTag`, schemas `TaskTags` and `Task.tags` (required, array of string); fix the `@Schema`/`@Parameter` annotations in backend/src/main/java/com/quickflow/web/task/ where they differ
-- [ ] T012 Run `cd backend && ./mvnw -q verify`: all existing tests (dashboard, plans, tasks) still pass with the eager `tags` collection, and JaCoCo line coverage on `com.quickflow.domain` stays ≥ 80% (Constitution III); save the output to loops/backend-dev/runs/002-us-tags/phase-02-build.log
+- [X] T011 Compare the generated backend/target/openapi.json with specs/002-us-tags-backend/contracts/openapi.yaml for `listTasks` (`tag` parameter), `addTaskTags`, `removeTaskTag`, schemas `TaskTags` and `Task.tags` (required, array of string); fix the `@Schema`/`@Parameter` annotations in backend/src/main/java/com/quickflow/web/task/ where they differ
+- [X] T012 Run `cd backend && ./mvnw -q verify`: all existing tests (dashboard, plans, tasks) still pass with the eager `tags` collection, and JaCoCo line coverage on `com.quickflow.domain` stays ≥ 80% (Constitution III); save the output to loops/backend-dev/runs/002-us-tags/phase-02-build.log
 
 ---
 

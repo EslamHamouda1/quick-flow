@@ -8,6 +8,7 @@ import com.quickflow.domain.common.TimeService;
 import com.quickflow.domain.task.Task;
 import com.quickflow.domain.task.TaskPriority;
 import com.quickflow.domain.task.TaskStatus;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 
@@ -24,8 +25,9 @@ public record TaskResponse(
 		@Schema(types = {"string", "null"}, format = "date-time") OffsetDateTime completedAt,
 		@Schema(requiredMode = RequiredMode.REQUIRED) boolean archived,
 		@Schema(requiredMode = RequiredMode.REQUIRED, description = "Computed on read (FR-01.7)") boolean overdue,
-		@Schema(requiredMode = RequiredMode.REQUIRED,
-				description = "Lower case, alphabetical; empty when the task has no tags") List<String> tags) {
+		@ArraySchema(arraySchema = @Schema(requiredMode = RequiredMode.REQUIRED,
+				description = "Lower case (Q1), alphabetical; empty when the task has no tags"), maxItems = 10,
+				uniqueItems = true, schema = @Schema(minLength = 1, maxLength = 30)) List<String> tags) {
 
 	public static TaskResponse from(Task task, TimeService time) {
 		return new TaskResponse(task.getId(), task.getTitle(), task.getDescription(), task.getStatus(),

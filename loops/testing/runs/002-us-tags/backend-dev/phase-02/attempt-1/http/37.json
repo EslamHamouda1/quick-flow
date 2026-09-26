@@ -1,0 +1,1 @@
+{"detail":"Validation failed","instance":"/api/tasks/10/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must have at most 10 tags"}]}

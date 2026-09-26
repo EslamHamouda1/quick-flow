@@ -1,0 +1,54 @@
+# phase-02 build log (002-us-tags, backend)
+
+Commands (from the repo root):
+  cd backend && ./mvnw -q verify -Dmaven.test.failure.ignore=true   (L.test; runs package, tests, JaCoCo
+  report + check, and the springdoc plugin that writes backend/target/openapi.json)
+Run 3 times: before any change, after the first annotation fix, after the final annotation fix.
+Maven's own console output is mostly Hibernate SQL and Spring startup logs; the summary below was read
+from backend/target/surefire-reports/TEST-*.xml, backend/target/site/jacoco/jacoco.xml and
+backend/target/openapi.json after each run. No [ERROR], BUILD FAILURE or JaCoCo "Rule violated" line
+appeared in any run.
+
+## T011: generated swagger vs specs/002-us-tags-backend/contracts/openapi.yaml
+
+Run 1 (code as left by phase-01):
+- listTasks `tag` query param: in query, required false, schema string, description as contract. MATCH
+- addTaskTags: POST /api/tasks/{id}/tags, id path int64 required, body $ref TaskTags required,
+  200 -> Task, summary as contract. MATCH
+- removeTaskTag: DELETE /api/tasks/{id}/tags, id path int64, `tag` query required string minLength 1,
+  200 -> Task. MATCH
+- Task.required contains `tags`; Task.tags type array of string. MATCH (the checked shape)
+- DIFF-1 TaskTags.tags: extra `maxItems: 2147483647` (default max of @Size(min = 1)); contract has none.
+- DIFF-2 Task.tags: missing `maxItems: 10`, `uniqueItems: true`, items `minLength: 1` / `maxLength: 30`;
+  description lacks "(Q1)".
+
+Fixes (annotations only, backend/src/main/java/com/quickflow/web/task/):
+- TaskResponse.tags: @Schema -> @ArraySchema(arraySchema = @Schema(requiredMode = REQUIRED,
+  description = "Lower case (Q1), ..."), maxItems = 10, uniqueItems = true,
+  schema = @Schema(minLength = 1, maxLength = 30)). Run 2 output:
+  "tags":{"type":"array","description":"Lower case (Q1), alphabetical; empty when the task has no tags",
+  "items":{"type":"string","maxLength":30,"minLength":1},"maxItems":10,"uniqueItems":true}; `tags` still
+  in Task.required. DIFF-2 fixed.
+- TaskTagsRequest.tags: first tried @ArraySchema(minItems = 1) next to @NotNull @Size(min = 1): run 2
+  still emitted maxItems 2147483647 (springdoc applies @Size). Replaced @NotNull @Size(min = 1) with
+  @NotEmpty (same accept/reject outcome: null or empty list -> 400, field `tags`; only the default
+  message text changes, which no test or spec asserts). Run 3 output:
+  "TaskTags":{"type":"object","properties":{"tags":{"type":"array","description":"Each tag is trimmed
+  first, then must be 1-30 characters (BR-T1); checked by the server, error field `tags`",
+  "items":{"type":"string"},"minItems":1}},"required":["tags"]}. DIFF-1 fixed.
+
+Differences listed, not fixed (springdoc presentation, same as the 001 feature's D-1..D-5):
+- no 400/404 responses on the operations (springdoc adds none from ApiExceptionHandler);
+- 200 response description "OK" instead of the contract's prose;
+- servers url http://localhost:18080 (openapi profile) vs http://localhost:8080;
+- TaskTags `examples` not emitted.
+
+Copied backend/target/openapi.json (run 3) to loops/backend-dev/outputs/openapi.json (cmp: identical).
+
+## T012: full suite and coverage gate (run 3, final code)
+
+- 30 suites, 386 tests, 0 failures, 0 errors, 0 skipped (dashboard, plans, tasks, habits, learning,
+  settings, info, persistence, application context all green with the EAGER `tags` collection).
+- JaCoCo LINE, com/quickflow/domain/**: covered 715, missed 19 -> 97.4% (gate 80%, Constitution III).
+  learning 126/1, plan 195/9, common 18/0, task 176/5, settings 41/0, dashboard 41/0, habit 118/4.
+- jacoco:check passed (no rule violation, build did not fail).

@@ -17,7 +17,8 @@
 | backend-dev:001-quickflow:phase-09 | 2026-09-26T11:27:27+03:00 | 2026-09-26T11:46:36+03:00 | 0h19m09s | 0h16m49s | 4 | 1 | 284 | 11117579 | 85013 | 6.6305 | 78ba0196-4658-4068-9865-864fb24c71cd fac73a1e-0ba6-4957-a3ad-d167a9a53cf7 b6d18791-6e09-482f-8887-b405f74ff5e5 827608e9-5bdd-45cd-b23d-b67c0a60dada | b6d18791-6e09-482f-8887-b405f74ff5e5 | 3dc0eed | success |
 | backend-dev:002-us-tags:phase-00-plan | 2026-09-26T22:35:07+03:00 | 2026-09-26T22:49:28+03:00 | 0h14m21s | 0h09m06s | 2 | 1 | 112 | 4417927 | 54774 | 3.2994 | 97e97192-f350-4702-8e44-10f417c6cc8a f69fe676-18a1-4449-890c-7a15d47b44f0 |  | 5517e77 | success |
 | backend-dev:002-us-tags:phase-01 | 2026-09-26T22:59:36+03:00 | 2026-09-26T23:11:01+03:00 | 0h11m25s | 0h10m51s | 4 | 1 | 164 | 6087352 | 62105 | 5.7026 | ea4043c7-2fe8-407d-a6dc-c09430e9c15e 90173efa-debc-4995-9bae-1df8951608ff 66a2329a-9f3b-49b3-a7b1-0672c7f438a7 9e049abe-9a5a-4419-8743-a09da21170e6 | 66a2329a-9f3b-49b3-a7b1-0672c7f438a7 | dbe139e | success |
-| **Total** |  |  |  | 2h37m24s | 46 |  | 2196 | 89436643 | 906087 | 74.9483 |  |  |  |  |
+| backend-dev:002-us-tags:phase-02 | 2026-09-26T23:24:07+03:00 | 2026-09-26T23:36:26+03:00 | 0h12m19s | 0h11m36s | 4 | 1 | 180 | 6187869 | 55055 | 4.2072 | cd4fd9a9-d1df-4c43-abb9-db60a3e7b6dd 6b837034-1456-41ea-b432-34d3050f5b87 06026f73-1438-4039-9fbb-650a96c51226 c5d4032d-2eb5-4598-ad7c-95d1766f9dd0 | 06026f73-1438-4039-9fbb-650a96c51226 |  | success |
+| **Total** |  |  |  | 2h49m01s | 50 |  | 2376 | 95624512 | 961142 | 79.1554 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -189,3 +190,15 @@
 - 2026-09-26T23:05:44+03:00 002-us-tags phase-01: marked T001-T010 [~] in phase-01.md and tasks.json, [X] in tasks.md; set phase-01 ready_for_test
 - 2026-09-26T23:10:15+03:00 test 002-us-tags phase-01 attempt 1: pass (verified_by 66a2329a-9f3b-49b3-a7b1-0672c7f438a7)
 - 2026-09-26T23:11:00+03:00 002-us-tags phase-01: close check ok (T001-T010 [X] in tasks.md, verdict pass attempt 1); marked T001-T010 [x] in phase-01.md and tasks.json; set phase-01 done
+- 2026-09-26T23:25:10+03:00 002-us-tags phase-02: wrote phase-02-review.md (T011-T012, no new assumptions, no open questions); set phase-02 awaiting_approval
+- 2026-09-26T23:25:26+03:00 gate 002-us-tags phase-02: approved (auto)
+- 2026-09-26T23:27:00+03:00 002-us-tags phase-02: implement: tasks.md Phase 2 matches phase-02.md (T011-T012, no sync change); no reviewer notes or questions; no unchecked checklist items; set phase-02 in_progress
+- 2026-09-26T23:28:00+03:00 002-us-tags phase-02: T011 swagger vs contract: listTasks tag param, addTaskTags, removeTaskTag, Task.required tags match; DIFF-1 TaskTags.tags maxItems 2147483647 (from @Size), DIFF-2 Task.tags missing maxItems 10/uniqueItems/items 1-30
+- 2026-09-26T23:28:30+03:00 002-us-tags phase-02: T011 fixed DIFF-2 with @ArraySchema on TaskResponse.tags (maxItems 10, uniqueItems, items minLength 1/maxLength 30, description "(Q1)"); fixed DIFF-1 by replacing @NotNull @Size(min = 1) with @NotEmpty on TaskTagsRequest.tags (@ArraySchema(minItems) did not drop the @Size maxItems; same 400/field tags outcome, default message text only); presentation differences (no 4xx responses, "OK" descriptions, servers url, examples) listed, not changed
+- 2026-09-26T23:29:15+03:00 002-us-tags phase-02: T012 ./mvnw -q verify (3 runs, final on final code): 30 suites, 386 tests, 0 failures/errors; jacoco check met, domain lines 715/734 = 97.4%; log runs/002-us-tags/phase-02-build.log
+- 2026-09-26T23:29:30+03:00 002-us-tags phase-02: copied backend/target/openapi.json to loops/backend-dev/outputs/openapi.json
+- 2026-09-26T23:29:45+03:00 002-us-tags phase-02: marked T011-T012 [~] in phase-02.md and tasks.json, [X] in tasks.md; set phase-02 ready_for_test
+- 2026-09-26T23:34:57+03:00 test 002-us-tags phase-02 attempt 1: pass (verified_by 06026f73-1438-4039-9fbb-650a96c51226)
+- 2026-09-26T23:35:29+03:00 002-us-tags phase-02: close check ok (T011-T012 [X] in tasks.md, verdict pass for attempt 1); marked T011-T012 [x] in phase-02.md and tasks.json; set phase-02 done
+- 2026-09-26T23:35:30+03:00 002-us-tags converge: all phases done, running /speckit-converge
+- 2026-09-26T23:38:00+03:00 002-us-tags converge: Converged (0 findings; FR-001..FR-008, AC-US1-1..6, BR-T1..T4, plan touch-points, constitution I-V checked); tasks.md unchanged; set current.json loop_status complete

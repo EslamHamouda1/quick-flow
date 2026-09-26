@@ -1,0 +1,2398 @@
+{
+  "components": {
+    "schemas": {
+      "AppInfo": {
+        "properties": {
+          "now": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "timeZone": {
+            "examples": [
+              "Africa/Cairo"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "now",
+          "timeZone"
+        ],
+        "type": "object"
+      },
+      "Dashboard": {
+        "properties": {
+          "activePlans": {
+            "description": "IN_PROGRESS plans by priority",
+            "items": {
+              "$ref": "#/components/schemas/Plan"
+            },
+            "type": "array"
+          },
+          "completedToday": {
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            },
+            "type": "array"
+          },
+          "dueToday": {
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            },
+            "type": "array"
+          },
+          "habitCounts": {
+            "$ref": "#/components/schemas/HabitCounts"
+          },
+          "habits": {
+            "description": "Active habits",
+            "items": {
+              "$ref": "#/components/schemas/Habit"
+            },
+            "type": "array"
+          },
+          "learning": {
+            "$ref": "#/components/schemas/LearningSnapshot"
+          },
+          "now": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "overdue": {
+            "items": {
+              "$ref": "#/components/schemas/Task"
+            },
+            "type": "array"
+          },
+          "planCounts": {
+            "$ref": "#/components/schemas/PlanCounts"
+          },
+          "taskCompletionPercent": {
+            "format": "int32",
+            "maximum": 100,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "taskCounts": {
+            "$ref": "#/components/schemas/TaskCounts"
+          }
+        },
+        "required": [
+          "activePlans",
+          "completedToday",
+          "dueToday",
+          "habitCounts",
+          "habits",
+          "learning",
+          "now",
+          "overdue",
+          "planCounts",
+          "taskCompletionPercent",
+          "taskCounts"
+        ],
+        "type": "object"
+      },
+      "DefaultPage": {
+        "enum": [
+          "DASHBOARD",
+          "TASKS",
+          "HABITS",
+          "LEARNING",
+          "PLANS",
+          "SETTINGS"
+        ],
+        "type": "string"
+      },
+      "Habit": {
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "completedToday": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currentStreak": {
+            "description": "Consecutive periods with a completion",
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "doneForCurrentPeriod": {
+            "description": "Today (DAILY) or current Monday-Sunday week (WEEKLY)",
+            "type": "boolean"
+          },
+          "frequency": {
+            "$ref": "#/components/schemas/HabitFrequency"
+          },
+          "id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "active",
+          "completedToday",
+          "createdAt",
+          "currentStreak",
+          "doneForCurrentPeriod",
+          "frequency",
+          "id",
+          "name"
+        ],
+        "type": "object"
+      },
+      "HabitCompletion": {
+        "properties": {
+          "completionDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "habitId": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "id": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "completionDate",
+          "createdAt",
+          "habitId",
+          "id"
+        ],
+        "type": "object"
+      },
+      "HabitCompletionCreate": {
+        "properties": {
+          "date": {
+            "description": "Default today; a future date is rejected",
+            "format": "date",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "HabitCounts": {
+        "properties": {
+          "active": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "completedToday": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "active",
+          "completedToday"
+        ],
+        "type": "object"
+      },
+      "HabitFrequency": {
+        "enum": [
+          "DAILY",
+          "WEEKLY"
+        ],
+        "type": "string"
+      },
+      "HabitWrite": {
+        "properties": {
+          "description": {
+            "maxLength": 2000,
+            "minLength": 0,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "frequency": {
+            "$ref": "#/components/schemas/HabitFrequency"
+          },
+          "name": {
+            "maxLength": 150,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "frequency",
+          "name"
+        ],
+        "type": "object"
+      },
+      "LearningCard": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "milestones": {
+            "items": {
+              "$ref": "#/components/schemas/Milestone"
+            },
+            "type": "array"
+          },
+          "milestonesDone": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "milestonesTotal": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "notes": {
+            "items": {
+              "$ref": "#/components/schemas/Note"
+            },
+            "type": "array"
+          },
+          "status": {
+            "$ref": "#/components/schemas/LearningStatus"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "createdAt",
+          "id",
+          "milestones",
+          "milestonesDone",
+          "milestonesTotal",
+          "notes",
+          "status",
+          "title"
+        ],
+        "type": "object"
+      },
+      "LearningCardCreate": {
+        "properties": {
+          "description": {
+            "maxLength": 2000,
+            "minLength": 0,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "type": "object"
+      },
+      "LearningCardUpdate": {
+        "properties": {
+          "description": {
+            "maxLength": 2000,
+            "minLength": 0,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/LearningStatus"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "title"
+        ],
+        "type": "object"
+      },
+      "LearningSnapshot": {
+        "properties": {
+          "completed": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "inProgress": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "milestonesDone": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "milestonesTotal": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "notStarted": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "completed",
+          "inProgress",
+          "milestonesDone",
+          "milestonesTotal",
+          "notStarted"
+        ],
+        "type": "object"
+      },
+      "LearningStatus": {
+        "enum": [
+          "NOT_STARTED",
+          "IN_PROGRESS",
+          "COMPLETED"
+        ],
+        "type": "string"
+      },
+      "Milestone": {
+        "properties": {
+          "cardId": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "done": {
+            "type": "boolean"
+          },
+          "id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "targetDate": {
+            "format": "date",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "cardId",
+          "done",
+          "id",
+          "title"
+        ],
+        "type": "object"
+      },
+      "MilestoneCreate": {
+        "properties": {
+          "targetDate": {
+            "format": "date",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "type": "object"
+      },
+      "MilestoneUpdate": {
+        "properties": {
+          "done": {
+            "type": "boolean"
+          },
+          "targetDate": {
+            "format": "date",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "done",
+          "title"
+        ],
+        "type": "object"
+      },
+      "Note": {
+        "properties": {
+          "cardId": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "cardId",
+          "createdAt",
+          "id",
+          "text"
+        ],
+        "type": "object"
+      },
+      "NoteCreate": {
+        "properties": {
+          "text": {
+            "maxLength": 5000,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "type": "object"
+      },
+      "Plan": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "doneItems": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "endDateTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "estimatedDurationMinutes": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/PlanItem"
+            },
+            "type": "array"
+          },
+          "priorityOrder": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "progressPercent": {
+            "format": "int32",
+            "maximum": 100,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "restSeconds": {
+            "description": "Seconds until endDateTime while start <= now < end, otherwise null (BR-12)",
+            "format": "int64",
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "startDateTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/PlanStatus",
+            "description": "Computed on read (FR-08.4, Q2)"
+          },
+          "title": {
+            "type": "string"
+          },
+          "totalItems": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "createdAt",
+          "doneItems",
+          "endDateTime",
+          "estimatedDurationMinutes",
+          "id",
+          "items",
+          "priorityOrder",
+          "progressPercent",
+          "startDateTime",
+          "status",
+          "title",
+          "totalItems"
+        ],
+        "type": "object"
+      },
+      "PlanCounts": {
+        "properties": {
+          "completed": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "inProgress": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "notStarted": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "completed",
+          "inProgress",
+          "notStarted"
+        ],
+        "type": "object"
+      },
+      "PlanCreate": {
+        "properties": {
+          "endDateTime": {
+            "description": "Must be after startDateTime (BR-11)",
+            "format": "date-time",
+            "type": "string"
+          },
+          "estimatedDurationMinutes": {
+            "format": "int32",
+            "maximum": 100000,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "items": {
+            "description": "Existing, distinct tasks/habits/learning cards (BR-10)",
+            "items": {
+              "$ref": "#/components/schemas/PlanItemRef"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "priorityOrder": {
+            "description": "1 is the highest",
+            "format": "int32",
+            "minimum": 1,
+            "type": "integer"
+          },
+          "startDateTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "endDateTime",
+          "estimatedDurationMinutes",
+          "items",
+          "priorityOrder",
+          "startDateTime",
+          "title"
+        ],
+        "type": "object"
+      },
+      "PlanItem": {
+        "properties": {
+          "done": {
+            "type": "boolean"
+          },
+          "id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "sourceId": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "sourceRemoved": {
+            "description": "The source was deleted (FR-07.6)",
+            "type": "boolean"
+          },
+          "sourceTitle": {
+            "type": "string"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/PlanSourceType"
+          }
+        },
+        "required": [
+          "done",
+          "id",
+          "sourceId",
+          "sourceRemoved",
+          "sourceTitle",
+          "sourceType"
+        ],
+        "type": "object"
+      },
+      "PlanItemRef": {
+        "properties": {
+          "sourceId": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/PlanSourceType"
+          }
+        },
+        "required": [
+          "sourceId",
+          "sourceType"
+        ],
+        "type": "object"
+      },
+      "PlanItemUpdate": {
+        "properties": {
+          "done": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "done"
+        ],
+        "type": "object"
+      },
+      "PlanSourceType": {
+        "enum": [
+          "TASK",
+          "HABIT",
+          "LEARNING_RESOURCE"
+        ],
+        "type": "string"
+      },
+      "PlanStatus": {
+        "enum": [
+          "NOT_STARTED",
+          "IN_PROGRESS",
+          "COMPLETED"
+        ],
+        "type": "string"
+      },
+      "PlanUpdate": {
+        "properties": {
+          "endDateTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "estimatedDurationMinutes": {
+            "format": "int32",
+            "maximum": 100000,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "priorityOrder": {
+            "format": "int32",
+            "minimum": 1,
+            "type": "integer"
+          },
+          "startDateTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "endDateTime",
+          "estimatedDurationMinutes",
+          "priorityOrder",
+          "startDateTime",
+          "title"
+        ],
+        "type": "object"
+      },
+      "Settings": {
+        "description": "Profile and preferences of the single user (FR-10.2, Q3)",
+        "properties": {
+          "defaultPage": {
+            "$ref": "#/components/schemas/DefaultPage"
+          },
+          "displayName": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "planStartNotifications": {
+            "default": true,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "defaultPage",
+          "planStartNotifications"
+        ],
+        "type": "object"
+      },
+      "Task": {
+        "properties": {
+          "archived": {
+            "type": "boolean"
+          },
+          "completedAt": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dueDate": {
+            "format": "date",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "overdue": {
+            "description": "Computed on read (FR-01.7)",
+            "type": "boolean"
+          },
+          "priority": {
+            "$ref": "#/components/schemas/TaskPriority"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TaskStatus"
+          },
+          "tags": {
+            "description": "Lower case (Q1), alphabetical; empty when the task has no tags",
+            "items": {
+              "maxLength": 30,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 10,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "title": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "archived",
+          "createdAt",
+          "id",
+          "overdue",
+          "priority",
+          "status",
+          "tags",
+          "title",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "TaskCounts": {
+        "properties": {
+          "done": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "total": {
+            "description": "Non-archived tasks",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "done",
+          "total"
+        ],
+        "type": "object"
+      },
+      "TaskCreate": {
+        "properties": {
+          "description": {
+            "maxLength": 2000,
+            "minLength": 0,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dueDate": {
+            "format": "date",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "priority": {
+            "$ref": "#/components/schemas/TaskPriority",
+            "description": "Default MEDIUM"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TaskStatus",
+            "description": "Default TODO"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "type": "object"
+      },
+      "TaskPriority": {
+        "enum": [
+          "LOW",
+          "MEDIUM",
+          "HIGH"
+        ],
+        "type": "string"
+      },
+      "TaskStatus": {
+        "enum": [
+          "TODO",
+          "IN_PROGRESS",
+          "DONE"
+        ],
+        "type": "string"
+      },
+      "TaskTags": {
+        "properties": {
+          "tags": {
+            "description": "Each tag is trimmed first, then must be 1-30 characters (BR-T1); checked by the server, error field `tags`",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "tags"
+        ],
+        "type": "object"
+      },
+      "TaskUpdate": {
+        "properties": {
+          "description": {
+            "maxLength": 2000,
+            "minLength": 0,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dueDate": {
+            "format": "date",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "priority": {
+            "$ref": "#/components/schemas/TaskPriority"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TaskStatus"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "priority",
+          "status",
+          "title"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "paths": {
+    "/api/app-info": {
+      "get": {
+        "operationId": "getAppInfo",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppInfo"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "App time zone and the server's current time",
+        "tags": [
+          "info"
+        ]
+      }
+    },
+    "/api/dashboard": {
+      "get": {
+        "operationId": "getDashboard",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dashboard"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Summary computed from current data",
+        "tags": [
+          "dashboard"
+        ]
+      }
+    },
+    "/api/habits": {
+      "get": {
+        "operationId": "listHabits",
+        "parameters": [
+          {
+            "description": "Omit for all habits",
+            "in": "query",
+            "name": "active",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Habit"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Habits with progress, oldest first",
+        "tags": [
+          "habits"
+        ]
+      },
+      "post": {
+        "operationId": "createHabit",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HabitWrite"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Habit"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "tags": [
+          "habits"
+        ]
+      }
+    },
+    "/api/habits/{id}": {
+      "delete": {
+        "operationId": "deleteHabit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "summary": "Delete the habit and its completions permanently (BR-14)",
+        "tags": [
+          "habits"
+        ]
+      },
+      "get": {
+        "operationId": "getHabit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Habit"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "habits"
+        ]
+      },
+      "put": {
+        "operationId": "updateHabit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HabitWrite"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Habit"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "habits"
+        ]
+      }
+    },
+    "/api/habits/{id}/activate": {
+      "post": {
+        "operationId": "activateHabit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Habit"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "habits"
+        ]
+      }
+    },
+    "/api/habits/{id}/completions": {
+      "get": {
+        "operationId": "listHabitCompletions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/HabitCompletion"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Completions, newest date first",
+        "tags": [
+          "habits"
+        ]
+      },
+      "post": {
+        "operationId": "completeHabit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HabitCompletionCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HabitCompletion"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "summary": "Record a completion for a date (default today); one per habit and date (BR-7)",
+        "tags": [
+          "habits"
+        ]
+      }
+    },
+    "/api/habits/{id}/completions/{date}": {
+      "delete": {
+        "operationId": "undoHabitCompletion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "date",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "tags": [
+          "habits"
+        ]
+      }
+    },
+    "/api/habits/{id}/deactivate": {
+      "post": {
+        "operationId": "deactivateHabit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Habit"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "habits"
+        ]
+      }
+    },
+    "/api/learning-cards": {
+      "get": {
+        "operationId": "listLearningCards",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/LearningCard"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Cards with their milestones and notes, newest first",
+        "tags": [
+          "learning"
+        ]
+      },
+      "post": {
+        "operationId": "createLearningCard",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LearningCardCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningCard"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "tags": [
+          "learning"
+        ]
+      }
+    },
+    "/api/learning-cards/{id}": {
+      "delete": {
+        "operationId": "deleteLearningCard",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "summary": "Delete the card, its milestones and notes permanently (BR-14)",
+        "tags": [
+          "learning"
+        ]
+      },
+      "get": {
+        "operationId": "getLearningCard",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningCard"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "learning"
+        ]
+      },
+      "put": {
+        "operationId": "updateLearningCard",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LearningCardUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningCard"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "learning"
+        ]
+      }
+    },
+    "/api/learning-cards/{id}/milestones": {
+      "post": {
+        "operationId": "addMilestone",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MilestoneCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Milestone"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "tags": [
+          "learning"
+        ]
+      }
+    },
+    "/api/learning-cards/{id}/milestones/{milestoneId}": {
+      "delete": {
+        "operationId": "deleteMilestone",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "milestoneId",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "tags": [
+          "learning"
+        ]
+      },
+      "put": {
+        "operationId": "updateMilestone",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "milestoneId",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MilestoneUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Milestone"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Edit title/target date and set done or not done",
+        "tags": [
+          "learning"
+        ]
+      }
+    },
+    "/api/learning-cards/{id}/notes": {
+      "post": {
+        "operationId": "addNote",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NoteCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Note"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "tags": [
+          "learning"
+        ]
+      }
+    },
+    "/api/learning-cards/{id}/notes/{noteId}": {
+      "delete": {
+        "operationId": "deleteNote",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "noteId",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "tags": [
+          "learning"
+        ]
+      }
+    },
+    "/api/plans": {
+      "get": {
+        "operationId": "listPlans",
+        "parameters": [
+          {
+            "description": "active = NOT_STARTED or IN_PROGRESS (priorityOrder asc, then start asc); completed = COMPLETED (end desc); all = active then completed",
+            "in": "query",
+            "name": "group",
+            "required": false,
+            "schema": {
+              "default": "all",
+              "enum": [
+                "active",
+                "completed",
+                "all"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Plan"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Plans with computed status, progress and rest time",
+        "tags": [
+          "plans"
+        ]
+      },
+      "post": {
+        "operationId": "createPlan",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlanCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plan"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "tags": [
+          "plans"
+        ]
+      }
+    },
+    "/api/plans/{id}": {
+      "delete": {
+        "operationId": "deletePlan",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "summary": "Delete the plan and its items; referenced sources are unchanged (BR-14)",
+        "tags": [
+          "plans"
+        ]
+      },
+      "get": {
+        "operationId": "getPlan",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plan"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "plans"
+        ]
+      },
+      "put": {
+        "operationId": "updatePlan",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlanUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plan"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Edit title, estimated duration, start/end and priority order (items are unchanged)",
+        "tags": [
+          "plans"
+        ]
+      }
+    },
+    "/api/plans/{id}/items/{itemId}": {
+      "put": {
+        "operationId": "setPlanItemDone",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlanItemUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plan"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Mark a plan item done or not done; a TASK item marked done also completes the task; un-ticking and HABIT/LEARNING_RESOURCE items change no source (BR-13, Q1)",
+        "tags": [
+          "plans"
+        ]
+      }
+    },
+    "/api/settings": {
+      "get": {
+        "operationId": "getSettings",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Settings"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Current settings (defaults on first read)",
+        "tags": [
+          "settings"
+        ]
+      },
+      "put": {
+        "operationId": "updateSettings",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Settings"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Settings"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Replace the settings",
+        "tags": [
+          "settings"
+        ]
+      }
+    },
+    "/api/tasks": {
+      "get": {
+        "operationId": "listTasks",
+        "parameters": [
+          {
+            "description": "Case-insensitive substring of the title",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/TaskStatus"
+            }
+          },
+          {
+            "in": "query",
+            "name": "priority",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/TaskPriority"
+            }
+          },
+          {
+            "description": "Inclusive",
+            "in": "query",
+            "name": "dueFrom",
+            "required": false,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Inclusive",
+            "in": "query",
+            "name": "dueTo",
+            "required": false,
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "archived",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Only tasks that have this tag (whole tag, ignoring case, spaces around it ignored); blank = no tag filter (FR-004); a value no task has gives an empty list",
+            "in": "query",
+            "name": "tag",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "default": "createdAt",
+              "enum": [
+                "createdAt",
+                "dueDate"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "direction",
+            "required": false,
+            "schema": {
+              "default": "desc",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Task"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "List tasks (search, filters incl. tag, sort; archived excluded by default, BR-4)",
+        "tags": [
+          "tasks"
+        ]
+      },
+      "post": {
+        "operationId": "createTask",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "tags": [
+          "tasks"
+        ]
+      }
+    },
+    "/api/tasks/overdue": {
+      "get": {
+        "operationId": "listOverdueTasks",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Task"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Tasks due before today, not Done, not archived (FR-01.7)",
+        "tags": [
+          "tasks"
+        ]
+      }
+    },
+    "/api/tasks/{id}": {
+      "delete": {
+        "operationId": "deleteTask",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "summary": "Delete permanently (BR-14)",
+        "tags": [
+          "tasks"
+        ]
+      },
+      "get": {
+        "operationId": "getTask",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "tasks"
+        ]
+      },
+      "put": {
+        "operationId": "updateTask",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Replace the editable fields (status DONE sets completedAt, leaving DONE clears it)",
+        "tags": [
+          "tasks"
+        ]
+      }
+    },
+    "/api/tasks/{id}/archive": {
+      "post": {
+        "operationId": "archiveTask",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "tasks"
+        ]
+      }
+    },
+    "/api/tasks/{id}/complete": {
+      "post": {
+        "operationId": "completeTask",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Mark completed (status DONE, BR-5)",
+        "tags": [
+          "tasks"
+        ]
+      }
+    },
+    "/api/tasks/{id}/restore": {
+      "post": {
+        "operationId": "restoreTask",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "tasks"
+        ]
+      }
+    },
+    "/api/tasks/{id}/tags": {
+      "delete": {
+        "operationId": "removeTaskTag",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The tag to remove",
+            "in": "query",
+            "name": "tag",
+            "required": true,
+            "schema": {
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Remove one tag, matched ignoring case (FR-005). A tag the task doesn't have is a no-op (Q3).",
+        "tags": [
+          "tasks"
+        ]
+      },
+      "post": {
+        "operationId": "addTaskTags",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskTags"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Add tags (FR-001). Trimmed, case-insensitive (BR-T2); a tag already on the task is kept once (Q2). All or nothing: an invalid tag or more than 10 tags in total rejects the whole request and leaves the tags unchanged (BR-T1, BR-T3).",
+        "tags": [
+          "tasks"
+        ]
+      }
+    }
+  }
+}
