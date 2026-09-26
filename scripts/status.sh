@@ -43,7 +43,11 @@ secs = sum(float(r["duration_ms"] or 0) for r in rows) / 1000
 print(f"sessions: {len(rows)}   cost: ${cost:.2f}   active time: {int(secs//3600)}h{int(secs%3600//60):02d}m")
 EOF
 fi
-printf 'commits: %s unpushed\n' "$(git rev-list --count HEAD 2>/dev/null)"
+if git rev-parse -q --verify '@{u}' >/dev/null 2>&1; then
+  printf 'commits: %s unpushed\n' "$(git rev-list --count '@{u}..HEAD')"
+else
+  printf 'commits: %s (no upstream yet)\n' "$(git rev-list --count HEAD 2>/dev/null)"
+fi
 if pgrep -f 'claude -p /' >/dev/null; then
   printf 'running:  %s\n' "$(pgrep -af 'claude -p /' | grep -oE 'claude -p /[a-z-]+ [^ ]*( [^-][^ ]*)?' | head -1)"
 else

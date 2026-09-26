@@ -85,8 +85,9 @@ say "2. orchestrator plan"
 # re-plan only when the set of (loop, story) steps changed since the last plan
 stories_now=$(for l in "$BACK" ${FRONT:+"$FRONT"}; do
   jq -r --arg l "$l" '.phases[] | select(.story_id != null and (.phase|startswith("fix-")|not)) | "\($l):\(.story_id)"' \
-    "loops/$l/state/$FEATURE/phases.json" 2>/dev/null; done | sort -u)
-stories_planned=$(jq -r '.steps[]? | "\(.loop):\(.story_id)"' "loops/orchestrator/state/$FEATURE/order.json" 2>/dev/null | sort -u)
+    "loops/$l/state/$FEATURE/phases.json" 2>/dev/null || true; done | sort -u)
+# (no order.json yet for a new feature: an empty list, not a pipefail exit)
+stories_planned=$( { jq -r '.steps[]? | "\(.loop):\(.story_id)"' "loops/orchestrator/state/$FEATURE/order.json" 2>/dev/null || true; } | sort -u)
 if [[ -n "$stories_planned" && "$stories_now" == "$stories_planned" ]]; then
   say "story order unchanged since the last plan; keeping loops/orchestrator/state/$FEATURE/order.json"
 fi
