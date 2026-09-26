@@ -6,13 +6,7 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **feature:** 001-quickflow
 - **loop:** backend-dev
 - **mode:** dev
-- **stops_at:** US6
+- **stops_at:** end of loop
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260926T172351-320864
-- **runner_nonce:** 02316c79bbb1aa8ba1ef6579
-- **orchestrator_step:** backend-dev:US6
-
-## Current orchestrator step
-- loop: backend-dev
-- story: US6
-- goal: Adjust settings
+- **runner_nonce:** 1d865a5ddca02005da064968
