@@ -1,0 +1,52 @@
+{
+  "url": "/settings",
+  "title": "Settings",
+  "form": true,
+  "name": "",
+  "notif": true,
+  "defaultPage": "Dashboard",
+  "options": [
+    [
+      "DASHBOARD",
+      "Dashboard"
+    ],
+    [
+      "TASKS",
+      "Tasks"
+    ],
+    [
+      "HABITS",
+      "Habits"
+    ],
+    [
+      "LEARNING",
+      "Learning Resources"
+    ],
+    [
+      "PLANS",
+      "Todo Plans"
+    ],
+    [
+      "SETTINGS",
+      "Settings"
+    ]
+  ],
+  "tz": "Africa/Cairo",
+  "tzTag": "SPAN",
+  "tzReadonly": "not an input",
+  "labels": [
+    "Display name",
+    "Plan-start notifications",
+    "Default page"
+  ],
+  "save": "Save",
+  "apiSettings": {
+    "displayName": null,
+    "planStartNotifications": true,
+    "defaultPage": "DASHBOARD"
+  },
+  "appInfo": {
+    "timeZone": "Africa/Cairo",
+    "now": "2026-09-26T11:19:34.124182713+03:00"
+  }
+}

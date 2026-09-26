@@ -181,16 +181,19 @@ edit, remove, plan-start notification
 
 ### Tests for User Story 6 (contract first) ⚠️
 
-- [ ] T040 [US6] Check that the generated `SettingsService` has `getSettings`/`updateSettings` and `Settings` has `displayName`, `planStartNotifications`, `defaultPage` (enum DASHBOARD..SETTINGS); check the Settings section of contracts/ui-contract.md covers AC-US6-1..2; raise a question for anything missing
+- [X] T040 [US6] Check that the generated `SettingsService` has `getSettings`/`updateSettings` and `Settings` has `displayName`, `planStartNotifications`, `defaultPage` (enum DASHBOARD..SETTINGS); check the Settings section of contracts/ui-contract.md covers AC-US6-1..2; raise a question for anything missing
 
 ### Implementation for User Story 6
 
-- [ ] T041 [US6] Implement the Settings page (loads `getSettings()`; display name, plan-start notifications checkbox, default page select with the six labels, save via `updateSettings` with field errors and a notice, read-only time zone from `ClockService`) in frontend/src/app/pages/settings/settings.page.ts (FR-10.2, AC-US6-1, AC-US6-2)
-- [ ] T042 [US6] Add the default-page guard on route `''` (reads `getSettings()`, maps `defaultPage` to its route, research R-8) in frontend/src/app/core/default-page.guard.ts and use it in frontend/src/app/app.routes.ts
+- [X] T041 [US6] Implement the Settings page (loads `getSettings()`; display name, plan-start notifications checkbox, default page select with the six labels, save via `updateSettings` with field errors and a notice, read-only time zone from `ClockService`) in frontend/src/app/pages/settings/settings.page.ts (FR-10.2, AC-US6-1, AC-US6-2)
+- [X] T042 [US6] Add the default-page guard on route `''` (reads `getSettings()`, maps `defaultPage` to its route, research R-8) in frontend/src/app/core/default-page.guard.ts and use it in frontend/src/app/app.routes.ts
 
-The other two effects of the settings are read where they are used, so this phase touches no other story's files:
-the Dashboard greeting reads `getSettings()` on every Dashboard load (T037), and `PlanStartWatcher` reads
-`getSettings()` right before it shows a notice (T035).
+- [X] T046 [US6] Replace the FA-34 stub `displayName()` with `getSettings().displayName` read on every Dashboard load (blank, missing or a failed read → "Hello") in frontend/src/app/pages/dashboard/dashboard.page.ts (FR-10.2, FA-8, FA-34)
+- [X] T047 [US6] Replace the FA-30 stub `notificationsEnabled()` with `getSettings().planStartNotifications` read right before each plan-start notice in frontend/src/app/core/plan-start-watcher.service.ts (FR-10.2, research R-6, FA-30)
+
+The other two effects of the settings are read where they are used: the Dashboard greeting reads `getSettings()` on
+every Dashboard load (T046, replacing the FA-34 stub of T037), and `PlanStartWatcher` reads `getSettings()` right
+before it shows a notice (T047, replacing the FA-30 stub of T035).
 
 **Checkpoint**: all six stories work
 

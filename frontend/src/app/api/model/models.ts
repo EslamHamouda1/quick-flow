@@ -1,5 +1,6 @@
 export * from './appInfo';
 export * from './dashboard';
+export * from './defaultPage';
 export * from './habit';
 export * from './habitCompletion';
 export * from './habitCompletionCreate';
@@ -25,6 +26,7 @@ export * from './planItemUpdate';
 export * from './planSourceType';
 export * from './planStatus';
 export * from './planUpdate';
+export * from './settings';
 export * from './task';
 export * from './taskCounts';
 export * from './taskCreate';

@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, inject, signal, untracked } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, firstValueFrom } from 'rxjs';
 
-import { Dashboard, DashboardService, HabitFrequency, Plan, PlanItem, PlansService, TaskPriority } from '../../api';
+import { Dashboard, DashboardService, HabitFrequency, Plan, PlanItem, PlansService, SettingsService, TaskPriority } from '../../api';
 import { ClockService } from '../../core/clock.service';
 import { formatDate } from '../../core/date-format';
 import { NoticeService } from '../../core/notice.service';
@@ -188,6 +188,7 @@ const FREQUENCY_LABELS = Object.fromEntries(FREQUENCY_OPTIONS.map((o) => [o.valu
 export default class DashboardPage {
   private readonly api = inject(DashboardService);
   private readonly plansApi = inject(PlansService);
+  private readonly settingsApi = inject(SettingsService);
   private readonly clock = inject(ClockService);
   private readonly notice = inject(NoticeService);
   private readonly destroyRef = inject(DestroyRef);
@@ -302,12 +303,14 @@ export default class DashboardPage {
     });
   }
 
-  /**
-   * FA-34: `/api/settings` does not exist before US6, so there is no name and the greeting is "Hello".
-   * Phase-08 replaces this with `getSettings().displayName`, read on every Dashboard load.
-   */
-  private displayName(): Promise<string | null> {
-    return Promise.resolve(null);
+  /** FR-10.2, FA-8: the name from the settings, read on every load; blank, missing or a failed read → "Hello". */
+  private async displayName(): Promise<string | null> {
+    try {
+      const settings = await firstValueFrom(this.settingsApi.getSettings());
+      return settings.displayName?.trim() || null;
+    } catch {
+      return null;
+    }
   }
 
   private requestReload(): void {

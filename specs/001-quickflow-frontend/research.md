@@ -118,6 +118,20 @@ becomes a `## Questions` entry if the check fails.
     `dash-habit-count`, `dash-plans` / `dash-plan-<id>` (with the plan card's `plan-progress`, `plan-rest-time`),
     `dash-learning` with its counts and `dash-milestones`, and the four `quick-add-*` actions; navigation (AC-US5-7)
     is the Shell's `nav-*`: AC-US5-1..7 covered, nothing missing.
+- **Checked at implement (T040, 2026-09-26)**, client regenerated after backend US6:
+  - `SettingsService` (`api/settings.service.ts`, `providedIn: 'root'`): `getSettings()` → `Observable<Settings>`;
+    `updateSettings(settings: Settings)` → `Observable<Settings>`.
+  - models: `Settings { displayName?: string | null; planStartNotifications: boolean; defaultPage: DefaultPage }`,
+    `DefaultPage = {Dashboard: 'DASHBOARD', Tasks: 'TASKS', Habits: 'HABITS', Learning: 'LEARNING', Plans: 'PLANS',
+    Settings: 'SETTINGS'}` (`as const`).
+  - still no `Problem` model: `core/problem.ts` stays.
+  - ui-contract "Settings `/settings` (US6)" has `settings-form`, `settings-display-name`, `settings-notifications`,
+    `settings-default-page`, `settings-save` (AC-US6-2) and `settings-time-zone`; the profile and preferences shown on
+    open (AC-US6-1) are those fields; the save notice is the Shell's `notice`: AC-US6-1..2 covered, nothing missing.
+  - `@angular/router` 22.2.0 route validation (`fesm2022/_router-chunk.mjs`): a route with `canActivate` and
+    `children: []` is valid (it needs one of component, loadComponent, redirectTo, children, loadChildren, and
+    `redirectTo` can't be combined with `canActivate`), so route `''` is `{ canActivate: [defaultPageGuard],
+    children: [] }`.
 
 ## R-3 Time zone handling
 - **Decision**: `ClockService` loads `/api/app-info` at start-up (`provideAppInitializer`), stores `timeZone` and

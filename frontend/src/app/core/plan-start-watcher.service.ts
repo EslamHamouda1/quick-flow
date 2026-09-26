@@ -1,7 +1,7 @@
 import { Injectable, Signal, effect, inject, signal } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, firstValueFrom } from 'rxjs';
 
-import { Plan, PlanStatus, PlansService } from '../api';
+import { Plan, PlanStatus, PlansService, SettingsService } from '../api';
 import { ClockService } from './clock.service';
 import { NoticeService } from './notice.service';
 
@@ -12,6 +12,7 @@ const STORAGE_KEY = 'quickflow.notifiedPlanIds';
 @Injectable({ providedIn: 'root' })
 export class PlanStartWatcher {
   private readonly api = inject(PlansService);
+  private readonly settingsApi = inject(SettingsService);
   private readonly clock = inject(ClockService);
   private readonly notice = inject(NoticeService);
 
@@ -79,12 +80,14 @@ export class PlanStartWatcher {
     });
   }
 
-  /**
-   * FA-30: `/api/settings` does not exist before US6, so the FR-10.2 default (on) applies.
-   * Phase-08 replaces this with `getSettings().planStartNotifications`, read right before each notice.
-   */
-  private notificationsEnabled(): Promise<boolean> {
-    return Promise.resolve(true);
+  /** FR-10.2, FA-40: read right before each notice, so a change on Settings applies at once; a failed read counts as on. */
+  private async notificationsEnabled(): Promise<boolean> {
+    try {
+      const settings = await firstValueFrom(this.settingsApi.getSettings());
+      return settings.planStartNotifications;
+    } catch {
+      return true;
+    }
   }
 
   private isStored(id: number): boolean {

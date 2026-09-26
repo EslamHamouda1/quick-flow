@@ -13,7 +13,8 @@
 | frontend-dev:001-quickflow:phase-05 | 2026-09-24T23:15:42+03:00 | 2026-09-25T23:23:39+03:00 | 24h07m57s | 0h14m37s | 6 | 1 | 208 | 6651670 | 57203 | 5.4725 | 50cfeb4a-229f-4b55-b58d-d91cc14ed0b6 74886349-0f64-42b9-a9ec-d94403a79c9d 5f6c74f7-9d5a-4eba-93d4-0563314465c7 e0cc4391-f2f3-41c1-ba3f-8fbeecb115f0 5708449e-9a3e-4294-90b8-91ec1b212616 2437387a-d507-4172-9849-297f8a104460 | 5708449e-9a3e-4294-90b8-91ec1b212616 | bba7a14 | success |
 | frontend-dev:001-quickflow:phase-06 | 2026-09-25T23:45:48+03:00 | 2026-09-26T00:20:40+03:00 | 0h34m52s | 0h20m42s | 4 | 1 | 296 | 12783030 | 87408 | 7.7423 | 97960b2b-3122-490d-a68e-c2eadaaeec47 f6afa843-1e37-4b9d-b152-8b77ebdab41e c43ec36d-306f-4736-90a1-f3bdb8ba4d24 59f287ff-8bc0-41d8-b4df-a63d0d9d8ef7 | c43ec36d-306f-4736-90a1-f3bdb8ba4d24 | 9deab74 | success |
 | frontend-dev:001-quickflow:phase-07 | 2026-09-26T00:59:44+03:00 | 2026-09-26T02:04:47+03:00 | 1h05m03s | 0h11m43s | 5 | 1 | 222 | 8163421 | 58326 | 4.8927 | f89a227a-e0bb-4bfb-9465-fb5d3b612b4d 5ac81681-c5be-4b1c-a927-263107a56059 f19c51ab-e3b8-4ba1-a0bb-1752eb91d0e1 2d27862c-7d1f-4c4e-b27b-297127b6694d | f19c51ab-e3b8-4ba1-a0bb-1752eb91d0e1 | 525924b | success |
-| **Total** |  |  |  | 1h41m41s | 38 |  | 1594 | 55233787 | 459329 | 37.8006 |  |  |  |  |
+| frontend-dev:001-quickflow:phase-08 | 2026-09-26T11:13:06+03:00 | 2026-09-26T11:27:25+03:00 | 0h14m19s | 0h13m57s | 4 | 1 | 182 | 6160810 | 56230 | 4.3302 | 404e36f0-c7f0-4b08-b7c4-ac083d52ecaa 85131c12-1d53-460b-99b0-116b6f0928cc b4c10ad7-dbf8-480a-a16a-06cd511a2815 e08d8645-82fb-498a-805e-725722a8654e | b4c10ad7-dbf8-480a-a16a-06cd511a2815 |  | success |
+| **Total** |  |  |  | 1h55m39s | 42 |  | 1776 | 61394597 | 515559 | 42.1308 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -109,3 +110,12 @@
 - 2026-09-26T01:05:22+03:00 001-quickflow phase-07: T036–T039 [~] in phase-07.md and tasks.json, [X] in tasks.md; ui-url.md unchanged; npm run build OK (RUNS/phase-07-build.log); status in_progress → ready_for_test
 - 2026-09-26T02:03:47+03:00 test 001-quickflow phase-07 attempt 1: pass (verified_by f19c51ab-e3b8-4ba1-a0bb-1752eb91d0e1)
 - 2026-09-26T02:04:34+03:00 001-quickflow phase-07: close check OK (T036–T039 [X] in tasks.md, verdict pass attempt 1); T036–T039 [~] → [x] in phase-07.md and tasks.json; status passed → done
+- 2026-09-26T11:14:32+03:00 001-quickflow phase-08: review written (OUT/phase-08-review.md; new assumptions FA-38..FA-41, no open questions); added T046 (Dashboard greeting from getSettings, FA-34) and T047 (plan-start notices gated by planStartNotifications, FA-30) to phase-08.md, phases.json task_ids and tasks.json; status planned → awaiting_approval
+- 2026-09-26T11:15:37+03:00 gate 001-quickflow phase-08: approved (auto)
+- 2026-09-26T11:16:10+03:00 001-quickflow phase-08: tasks.md Phase 8 synced with phase-08.md (added T046, T047; Phase 8 note reworded); status approved → in_progress
+- 2026-09-26T11:16:40+03:00 001-quickflow phase-08: generate_client re-run (adds SettingsService, Settings, DefaultPage)
+- 2026-09-26T11:17:00+03:00 001-quickflow phase-08: T040 checked (generated names + ui-contract Settings section, router route form), recorded in research.md R-2; nothing missing
+- 2026-09-26T11:17:10+03:00 001-quickflow phase-08: wrote frontend/src/app/pages/settings/settings.page.ts (T041), frontend/src/app/core/default-page.guard.ts + app.routes.ts (T042), dashboard.page.ts displayName() from getSettings (T046), plan-start-watcher.service.ts notificationsEnabled() from getSettings (T047)
+- 2026-09-26T11:18:00+03:00 001-quickflow phase-08: T040–T042, T046, T047 [~] in phase-08.md and tasks.json, [X] in tasks.md; ui-url.md unchanged; npm run build OK (RUNS/phase-08-build.log); status in_progress → ready_for_test
+- 2026-09-26T11:26:41+03:00 test 001-quickflow phase-08 attempt 1: pass (verified_by b4c10ad7-dbf8-480a-a16a-06cd511a2815)
+- 2026-09-26T11:27:11+03:00 001-quickflow phase-08: close check OK (T040–T042, T046, T047 [X] in tasks.md; verdict pass attempt 1); [~] → [x] in phase-08.md and tasks.json; status passed → done

@@ -1,0 +1,51 @@
+{
+  "C2": {"put": {"status": 200, "body": {"displayName": "Ada", "planStartNotifications": false, "defaultPage": "TASKS"}},
+         "reload": {"url": "/settings", "name": "Ada", "notif": false, "defaultPage": "Tasks"}},
+  "C3": {"notices": ["Settings saved×"],
+         "api": {"displayName": "Grace", "planStartNotifications": true, "defaultPage": "HABITS"},
+         "after_reload": {"name": "Grace", "notif": true, "defaultPage": "Habits"}},
+  "C4": [
+    {"setting": "HABITS (from C3)", "url": "/habits", "title": "Habits"},
+    {"setting": "Dashboard", "apiDefaultPage": "DASHBOARD", "url": "/dashboard", "title": "Dashboard"},
+    {"setting": "Tasks", "apiDefaultPage": "TASKS", "url": "/tasks", "title": "Tasks"},
+    {"setting": "Habits", "apiDefaultPage": "HABITS", "url": "/habits", "title": "Habits"},
+    {"setting": "Learning Resources", "apiDefaultPage": "LEARNING", "url": "/learning", "title": "Learning Resources"},
+    {"setting": "Todo Plans", "apiDefaultPage": "PLANS", "url": "/plans", "title": "Todo Plans"},
+    {"setting": "Settings", "apiDefaultPage": "SETTINGS", "url": "/settings", "title": "Settings"},
+    {"deepLink": "/tasks", "defaultPage": "HABITS", "url": "/tasks", "title": "Tasks"},
+    {"unknown": "/nope", "defaultPage": "HABITS", "url": "/habits", "title": "Habits"}
+  ],
+  "C5": {"named": "Hello, Grace",
+         "apiAfterClear": {"displayName": null, "planStartNotifications": true, "defaultPage": "HABITS"},
+         "cleared": "Hello"},
+  "C6": {
+    "off": {
+      "setup": {"settings": {"displayName": "Grace", "planStartNotifications": false, "defaultPage": "HABITS"},
+                "task": {"status": 201, "id": 1},
+                "plan": {"status": 201, "id": 1, "title": "P-off", "startDateTime": "2026-09-26T11:21:41+03:00", "status": "NOT_STARTED"}},
+      "before": {"now": "2026-09-26T08:20:50.006Z", "notices": [], "plan-started-1": false, "card": "Not Started"},
+      "after": {"now": "2026-09-26T08:22:06.026Z", "notices_seen_200ms_poll": [], "plan-started-1_at": null,
+                "card": "P-off In Progress ... Time left 0:59:35", "api_status": "IN_PROGRESS"}
+    },
+    "on_first_try_stale_storage": {
+      "note": "notifications set on through the Settings form, then P-on (id 2, start 11:23:00+03:00). No notice: localStorage quickflow.notifiedPlanIds was [2,3,5,7,8,1] - ids 2,3,5,7,8 left by earlier test runs on an older test database in the same Playwright profile, 1 = P-off stored in this run",
+      "settings": {"displayName": "Grace", "planStartNotifications": true, "defaultPage": "HABITS"},
+      "plan": {"status": 201, "id": 2, "start": "2026-09-26T11:23:00+03:00"},
+      "after": {"now": "2026-09-26T08:24:25.430Z", "notices_seen": [], "plan-started-2": null, "localStorage": "[2,3,5,7,8,1]"}
+    },
+    "on": {
+      "storage_reset": "quickflow.notifiedPlanIds set to [1,2] (stale ids of the old database removed; 1 and 2 of this run kept)",
+      "settings": {"displayName": "Grace", "planStartNotifications": true, "defaultPage": "HABITS"},
+      "plan": {"status": 201, "id": 3, "title": "P-on2", "start": "2026-09-26T11:25:37+03:00", "status": "NOT_STARTED"},
+      "before": {"now": "2026-09-26T08:24:48.150Z", "notices": [], "plan-started-3": false, "localStorage": "[1,2]"},
+      "after": {"now": "2026-09-26T08:25:43.007Z",
+                "notices_seen": [{"t": "Plan “P-on2” has started×", "at": "2026-09-26T08:25:37.183Z"}],
+                "plan-started-3_at": "2026-09-26T08:25:37.183Z",
+                "card": "P-on2 Started In Progress ... Time left 0:59:54", "localStorage": "[1,2,3]"}
+    }
+  },
+  "C7": {"error-displayName": "size must be between 0 and 100", "notices": [], "inputLength": 101,
+         "api_after": {"displayName": "Grace", "planStartNotifications": true, "defaultPage": "HABITS"},
+         "console": "400 (Bad Request) on PUT /api/settings"},
+  "C8": {"url": "http://localhost:4200/settings", "page-title": "Settings", "nav-settings": "Settings"}
+}
