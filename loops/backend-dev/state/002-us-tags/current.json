@@ -2,5 +2,5 @@
   "feature_dir": "specs/002-us-tags-backend",
   "current_phase": "phase-00",
   "loop_status": "complete",
-  "stop_reason": "until_reached: US1"
+  "stop_reason": "complete"
 }
