@@ -125,3 +125,27 @@
 | 1f736c7 | 2026-09-26T22:23:24+03:00 | approve | scripts: genericity check matches entity names as proper names, skips engine vocabulary and acronyms | bulk approval: user said "push all" in Claude Code (recorded by Claude) |
 | cd42289 | 2026-09-26T22:23:24+03:00 | approve | docs: prompts-sessions.xlsx (headless runs, interactive prompts, milestones, summary, human inputs) | bulk approval: user said "push all" in Claude Code (recorded by Claude) |
 | c312b8d | 2026-09-26T22:47:11+03:00 | approve | docs: design document, AI-assisted draft (labelled as drafted by Claude) | user said "push" in Claude Code (recorded by Claude) |
+| a82d3a0 | 2026-09-27T00:19:02+03:00 | approve | chore(backend-dev): progress | user said "push" in Claude Code (recorded by Claude) |
+| f8b42a1 | 2026-09-27T00:19:02+03:00 | approve | chore(backend-dev): 002-us-tags phase-00 gate decision; commit review for c312b8d | user said "push" in Claude Code (recorded by Claude) |
+| 5517e77 | 2026-09-27T00:19:02+03:00 | approve | backend-dev: 002-us-tags phase-00 plan | user said "push" in Claude Code (recorded by Claude) |
+| 92f3cd2 | 2026-09-27T00:19:02+03:00 | approve | chore(backend-dev): progress | user said "push" in Claude Code (recorded by Claude) |
+| b772ca7 | 2026-09-27T00:19:02+03:00 | approve | frontend-dev: 002-us-tags phase-00 plan | user said "push" in Claude Code (recorded by Claude) |
+| 4f0a831 | 2026-09-27T00:19:02+03:00 | approve | chore(frontend-dev): progress | user said "push" in Claude Code (recorded by Claude) |
+| 91be504 | 2026-09-27T00:19:02+03:00 | approve | engine: orchestrate.sh no longer exits under pipefail when a new feature has no order.json; status.sh counts unpushed against upstream | user said "push" in Claude Code (recorded by Claude) |
+| 0b6cb97 | 2026-09-27T00:19:02+03:00 | approve | chore(backend-dev): progress | user said "push" in Claude Code (recorded by Claude) |
+| da62be8 | 2026-09-27T00:19:02+03:00 | approve | chore(frontend-dev): progress | user said "push" in Claude Code (recorded by Claude) |
+| 840a8b8 | 2026-09-27T00:19:02+03:00 | approve | orchestrator: 002-us-tags plan | user said "push" in Claude Code (recorded by Claude) |
+| e7cfbfd | 2026-09-27T00:19:02+03:00 | approve | chore(orchestrator): progress | user said "push" in Claude Code (recorded by Claude) |
+| dbe139e | 2026-09-27T00:19:02+03:00 | approve | backend-dev: 002-us-tags phase-01 US1 Tag tasks and filter by tag (verified) | user said "push" in Claude Code (recorded by Claude) |
+| caa28ec | 2026-09-27T00:19:02+03:00 | approve | chore(backend-dev): progress | user said "push" in Claude Code (recorded by Claude) |
+| 13ad7c5 | 2026-09-27T00:19:02+03:00 | approve | frontend-dev: 002-us-tags phase-01 US1 Tag tasks and filter by tag (verified) | user said "push" in Claude Code (recorded by Claude) |
+| 86618bf | 2026-09-27T00:19:02+03:00 | approve | chore(frontend-dev): progress | user said "push" in Claude Code (recorded by Claude) |
+| 45ed52e | 2026-09-27T00:19:02+03:00 | approve | backend-dev: 002-us-tags phase-02 Polish & Cross-Cutting Concerns (verified) | user said "push" in Claude Code (recorded by Claude) |
+| caf6871 | 2026-09-27T00:19:02+03:00 | approve | chore(backend-dev): progress | user said "push" in Claude Code (recorded by Claude) |
+| 76bd8e8 | 2026-09-27T00:19:02+03:00 | approve | frontend-dev: 002-us-tags phase-02 Polish & Cross-Cutting Concerns (verified) | user said "push" in Claude Code (recorded by Claude) |
+| b488c6d | 2026-09-27T00:19:02+03:00 | approve | chore(frontend-dev): progress | user said "push" in Claude Code (recorded by Claude) |
+| 31faafa | 2026-09-27T00:19:02+03:00 | approve | testing: 002-us-tags suite plan | user said "push" in Claude Code (recorded by Claude) |
+| 914ca22 | 2026-09-27T00:19:02+03:00 | approve | testing: 002-us-tags suite test-phase-01 (passed) | user said "push" in Claude Code (recorded by Claude) |
+| ac0dd20 | 2026-09-27T00:19:02+03:00 | approve | testing: 002-us-tags suite test-phase-02 (passed) | user said "push" in Claude Code (recorded by Claude) |
+| 318fbaa | 2026-09-27T00:19:02+03:00 | approve | testing: 002-us-tags suite test-phase-regression (passed) | user said "push" in Claude Code (recorded by Claude) |
+| 538b6d5 | 2026-09-27T00:19:02+03:00 | approve | chore(testing): progress | user said "push" in Claude Code (recorded by Claude) |
