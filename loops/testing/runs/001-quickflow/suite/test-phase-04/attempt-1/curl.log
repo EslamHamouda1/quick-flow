@@ -1,0 +1,116 @@
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378318583+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== A1 HTTP 201
+{"id":2,"title":"Clean Code book","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.425788887+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== A1 HTTP 201
+[{"id":2,"title":"Clean Code book","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.425789+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0},{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}]
+== A1 list HTTP 200
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"},{"field":"title","message":"size must be between 1 and 200"}]}
+== A2 empty title HTTP 400
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+== A2 missing title HTTP 400
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"}]}
+== A2 title 201 HTTP 400
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"description","message":"size must be between 0 and 2000"}]}
+== A2 desc 2001 HTTP 400
+
+== A2 title200+desc2000 HTTP 201
+
+== A2 list HTTP 200
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"IN_PROGRESS","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== A3 PUT IN_PROGRESS HTTP 200
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"IN_PROGRESS","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== A3 GET HTTP 200
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"COMPLETED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== A3 PUT COMPLETED HTTP 200
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"COMPLETED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== A3 GET HTTP 200
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== A3 PUT NOT_STARTED HTTP 200
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== A3 GET HTTP 200
+{"detail":"Malformed request body","instance":"/api/learning-cards/1","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must be one of [NOT_STARTED, IN_PROGRESS, COMPLETED]"}]}
+== A3 PUT DONE (invalid) HTTP 400
+{"detail":"Validation failed","instance":"/api/learning-cards/1","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must not be null"}]}
+== A3 PUT missing status HTTP 400
+{"detail":"Validation failed","instance":"/api/learning-cards/1","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"},{"field":"title","message":"must not be blank"}]}
+== A3 PUT empty title HTTP 400
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== A3 GET after invalid HTTP 200
+{"id":1,"cardId":1,"title":"Module 1","done":false,"targetDate":"2026-10-15"}
+== A4 add milestone w/ date HTTP 201
+{"id":2,"cardId":1,"title":"Module 2","done":false,"targetDate":null}
+== A4 add milestone no date HTTP 201
+{"detail":"Validation failed","instance":"/api/learning-cards/1/milestones","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"},{"field":"title","message":"size must be between 1 and 200"}]}
+== A4 add milestone empty title HTTP 400
+{"detail":"Validation failed","instance":"/api/learning-cards/1/milestones","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"}]}
+== A4 add milestone missing title HTTP 400
+{"detail":"Learning card 999 not found","instance":"/api/learning-cards/999/milestones","status":404,"title":"Not Found"}
+== A4 add milestone unknown card 999 HTTP 404
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[{"id":1,"cardId":1,"title":"Module 1","done":false,"targetDate":"2026-10-15"},{"id":2,"cardId":1,"title":"Module 2","done":false,"targetDate":null}],"notes":[],"milestonesDone":0,"milestonesTotal":2}
+== A4 GET card 1 HTTP 200
+{"id":2,"title":"Clean Code book","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.425789+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+== A4 GET card 2 HTTP 200
+{"id":1,"cardId":1,"title":"Module 1","done":true,"targetDate":"2026-10-15"}
+== A5 milestone 1 done HTTP 200
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[{"id":1,"cardId":1,"title":"Module 1","done":true,"targetDate":"2026-10-15"},{"id":2,"cardId":1,"title":"Module 2","done":false,"targetDate":null}],"notes":[],"milestonesDone":1,"milestonesTotal":2}
+== A5 GET card 1 HTTP 200
+{"id":1,"cardId":1,"title":"Module 1","done":false,"targetDate":"2026-10-15"}
+== A5 milestone 1 not done HTTP 200
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[{"id":1,"cardId":1,"title":"Module 1","done":false,"targetDate":"2026-10-15"},{"id":2,"cardId":1,"title":"Module 2","done":false,"targetDate":null}],"notes":[],"milestonesDone":0,"milestonesTotal":2}
+== A5 GET card 1 HTTP 200
+{"detail":"Milestone 1 not found on learning card 2","instance":"/api/learning-cards/2/milestones/1","status":404,"title":"Not Found"}
+== A5 PUT milestone 1 via wrong card 2 HTTP 404
+{"detail":"Milestone 1 not found on learning card 2","instance":"/api/learning-cards/2/milestones/1","status":404,"title":"Not Found"}
+== A5 DELETE milestone 1 via wrong card 2 HTTP 404
+
+== A5 DELETE milestone 2 HTTP 204
+{"detail":"Milestone 2 not found on learning card 1","instance":"/api/learning-cards/1/milestones/2","status":404,"title":"Not Found"}
+== A5 DELETE milestone 2 again HTTP 404
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[{"id":1,"cardId":1,"title":"Module 1","done":false,"targetDate":"2026-10-15"}],"notes":[],"milestonesDone":0,"milestonesTotal":1}
+== A5 GET card 1 HTTP 200
+{"id":1,"cardId":1,"text":"Chapter 3 covers bean scopes","createdAt":"2026-09-26T12:54:01.326128837+03:00"}
+== A6 add note HTTP 201
+{"id":2,"cardId":1,"text":"Second note","createdAt":"2026-09-26T12:54:01.329755434+03:00"}
+== A6 add note 2 HTTP 201
+{"detail":"Validation failed","instance":"/api/learning-cards/1/notes","status":400,"title":"Bad Request","errors":[{"field":"text","message":"must not be blank"},{"field":"text","message":"size must be between 1 and 5000"}]}
+== A6 empty note HTTP 400
+{"detail":"Validation failed","instance":"/api/learning-cards/1/notes","status":400,"title":"Bad Request","errors":[{"field":"text","message":"must not be blank"}]}
+== A6 blank-spaces note HTTP 400
+{"detail":"Validation failed","instance":"/api/learning-cards/1/notes","status":400,"title":"Bad Request","errors":[{"field":"text","message":"must not be blank"}]}
+== A6 missing text HTTP 400
+{"detail":"Validation failed","instance":"/api/learning-cards/1/notes","status":400,"title":"Bad Request","errors":[{"field":"text","message":"size must be between 1 and 5000"}]}
+== A6 note 5001 chars HTTP 400
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[{"id":1,"cardId":1,"title":"Module 1","done":false,"targetDate":"2026-10-15"}],"notes":[{"id":1,"cardId":1,"text":"Chapter 3 covers bean scopes","createdAt":"2026-09-26T12:54:01.326129+03:00"},{"id":2,"cardId":1,"text":"Second note","createdAt":"2026-09-26T12:54:01.329755+03:00"}],"milestonesDone":0,"milestonesTotal":1}
+== A6 GET card 1 HTTP 200
+{"detail":"Note 1 not found on learning card 2","instance":"/api/learning-cards/2/notes/1","status":404,"title":"Not Found"}
+== A6 DELETE note 1 via wrong card 2 HTTP 404
+
+== A6 DELETE note 2 HTTP 204
+{"detail":"Note 2 not found on learning card 1","instance":"/api/learning-cards/1/notes/2","status":404,"title":"Not Found"}
+== A6 DELETE note 2 again HTTP 404
+{"id":1,"title":"Spring Boot course","description":"https://example.com/course","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.378319+03:00","milestones":[{"id":1,"cardId":1,"title":"Module 1","done":false,"targetDate":"2026-10-15"}],"notes":[{"id":1,"cardId":1,"text":"Chapter 3 covers bean scopes","createdAt":"2026-09-26T12:54:01.326129+03:00"}],"milestonesDone":0,"milestonesTotal":1}
+== A6 GET card 1 HTTP 200
+{"now":"2026-09-26T12:54:09.120215932+03:00","dueToday":[],"overdue":[],"completedToday":[],"taskCompletionPercent":0,"taskCounts":{"total":0,"done":0},"habits":[],"habitCounts":{"active":0,"completedToday":0},"activePlans":[],"planCounts":{"notStarted":0,"inProgress":0,"completed":0},"learning":{"notStarted":3,"inProgress":0,"completed":0,"milestonesDone":0,"milestonesTotal":1}}
+== A7 dashboard before HTTP 200
+
+== A7 DELETE card 1 HTTP 204
+{"detail":"Learning card 1 not found","instance":"/api/learning-cards/1","status":404,"title":"Not Found"}
+== A7 GET card 1 HTTP 404
+{"detail":"Learning card 1 not found","instance":"/api/learning-cards/1/milestones/1","status":404,"title":"Not Found"}
+== A7 PUT milestone 1 HTTP 404
+{"detail":"Learning card 1 not found","instance":"/api/learning-cards/1/notes/1","status":404,"title":"Not Found"}
+== A7 DELETE note 1 HTTP 404
+{"detail":"Learning card 1 not found","instance":"/api/learning-cards/1/milestones","status":404,"title":"Not Found"}
+== A7 add milestone to deleted card HTTP 404
+[{"id":3,"title":"tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt","description":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","status":"NOT_STARTED","createdAt":"2026-09-26T12:53:22.537307+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0},{"id":2,"title":"Clean Code book","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T12:53:02.425789+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}]
+== A7 list HTTP 200
+{"now":"2026-09-26T12:54:09.149510192+03:00","dueToday":[],"overdue":[],"completedToday":[],"taskCompletionPercent":0,"taskCounts":{"total":0,"done":0},"habits":[],"habitCounts":{"active":0,"completedToday":0},"activePlans":[],"planCounts":{"notStarted":0,"inProgress":0,"completed":0},"learning":{"notStarted":2,"inProgress":0,"completed":0,"milestonesDone":0,"milestonesTotal":0}}
+== A7 dashboard after HTTP 200
+{"detail":"Learning card 1 not found","instance":"/api/learning-cards/1","status":404,"title":"Not Found"}
+== A7 DELETE card 1 again HTTP 404
+
+== UI setup DELETE card 2 HTTP 204
+
+== UI setup DELETE card 3 HTTP 204
+[]
+== UI setup list HTTP 200

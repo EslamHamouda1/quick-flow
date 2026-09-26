@@ -1,0 +1,21 @@
+{
+  "U1": {"emptyState": "No learning cards yet", "emptyStateAction": "Add Learning Card", "formOpenedFromEmptyAction": true, "add1FormVisible": true, "cancelClosesForm": true},
+  "U2": {"cardTestId": "card-4", "cardStatusShown": "Not Started", "milestoneCount": "0/0", "api": {"id": 4, "title": "Angular signals course", "description": "https://angular.dev/guide/signals", "status": "NOT_STARTED", "createdAt": "2026-09-26T12:54:47.699367+03:00"}},
+  "U3": {"errorTitle": "size must be between 1 and 200", "formOpen": true, "apiCount": 0},
+  "U4": [{"selected": "IN_PROGRESS", "shown": "In Progress", "api": "IN_PROGRESS"}, {"selected": "COMPLETED", "shown": "Completed", "api": "COMPLETED"}, {"selected": "NOT_STARTED", "shown": "Not Started", "api": "NOT_STARTED"}, {"afterReload": "NOT_STARTED"}],
+  "U5": {
+    "added": {"ui": ["milestone-3: Read signals guide / Oct 10, 2026", "milestone-4: Build demo app"], "api": [{"id": 3, "cardId": 4, "targetDate": "2026-10-10"}, {"id": 4, "cardId": 4, "targetDate": null}]},
+    "firstTickViaLocatorCheck": "Playwright locator.check() reported 'Clicking the checkbox did not change its state' right after the click; the API then showed milestone 3 done=true and card-milestone-count 1/2",
+    "toggleOff": {"checked": false, "count": "0/2", "api": [{"id": 3, "done": false}, {"id": 4, "done": false}]},
+    "toggleOn": {"checked": true, "count": "1/2", "api": [{"id": 3, "done": true}, {"id": 4, "done": false}]},
+    "deleteMilestone4": {"rowGone": true, "count": "1/1", "api": [3]},
+    "emptyMilestoneTitle": {"errors": ["error-title: size must be between 1 and 200"], "apiMilestones": 1}
+  },
+  "U6": {
+    "added": {"ui": ["note-3: Signals replace zone.js change detection / Sep 26, 2026, 12:55 PM", "note-4: Second note to remove / Sep 26, 2026, 12:55 PM"], "api": [{"id": 3, "createdAt": "2026-09-26T12:55:53.632741+03:00"}, {"id": 4, "createdAt": "2026-09-26T12:55:54.466279+03:00"}]},
+    "deleteNote4": {"rowGone": true, "api": [3]}
+  },
+  "U7": {"expanded": "Milestones / Read signals guide / Oct 10, 2026 / ... / Notes / Signals replace zone.js change detection / Sep 26, 2026, 12:55 PM", "collapsed": {"detailsCount": 0, "button": "Show details"}, "reexpanded": {"visible": true, "milestone3": true, "note3": true, "button": "Hide details"}},
+  "U8": {"confirmDialog": null, "cardGone": true, "emptyStateShown": true, "apiGetStatus": 404, "apiListIds": []},
+  "U9": {"url": "http://localhost:4200/learning", "navText": "Learning Resources", "pageTitleTag": "H1", "pageTitle": "Learning Resources"}
+}

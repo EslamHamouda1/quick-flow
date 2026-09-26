@@ -1,0 +1,37 @@
+- generic [ref=e3]:
+  - navigation "Main" [ref=e4]:
+    - generic [ref=e5]: QuickFlow
+    - link "Dashboard" [ref=e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=e12]:
+    - status [ref=e36]:
+      - generic [ref=e37]: Learning card created
+      - button "Dismiss" [ref=e38] [cursor=pointer]: ×
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - heading "Learning Resources" [level=1] [ref=e15]
+        - button "Add Learning Card" [ref=e16] [cursor=pointer]
+      - article [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]: Angular signals course
+          - generic [ref=e44]: https://angular.dev/guide/signals
+        - generic [ref=e45]:
+          - 'combobox "Status: Angular signals course" [ref=e46]':
+            - option "Not Started" [selected]
+            - option "In Progress"
+            - option "Completed"
+          - generic [ref=e47]: 0/0
+        - generic [ref=e48]:
+          - button "Show details" [ref=e49] [cursor=pointer]
+          - button "Edit" [ref=e50] [cursor=pointer]
+          - button "Delete" [ref=e51] [cursor=pointer]
