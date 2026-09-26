@@ -1,0 +1,259 @@
+- generic [ref=f2e3]:
+  - navigation "Main" [ref=f2e4]:
+    - generic [ref=f2e5]: QuickFlow
+    - link "Dashboard" [ref=f2e6] [cursor=pointer]:
+      - /url: /dashboard
+    - link "Tasks" [ref=f2e7] [cursor=pointer]:
+      - /url: /tasks
+    - link "Habits" [ref=f2e8] [cursor=pointer]:
+      - /url: /habits
+    - link "Learning Resources" [ref=f2e9] [cursor=pointer]:
+      - /url: /learning
+    - link "Todo Plans" [ref=f2e10] [cursor=pointer]:
+      - /url: /plans
+    - link "Settings" [ref=f2e11] [cursor=pointer]:
+      - /url: /settings
+  - main [ref=f2e12]:
+    - generic [ref=f2e17]:
+      - generic [ref=f2e18]:
+        - heading "Tasks" [level=1] [ref=f2e19]
+        - button "Add Task" [ref=f2e20] [cursor=pointer]
+      - generic [ref=f2e21]:
+        - generic [ref=f2e22]:
+          - text: Search
+          - searchbox "Search" [ref=f2e23]
+        - generic [ref=f2e24]:
+          - text: Status
+          - combobox "Status" [ref=f2e25]:
+            - option "Any" [selected]
+            - option "Todo"
+            - option "In Progress"
+            - option "Done"
+        - generic [ref=f2e26]:
+          - text: Priority
+          - combobox "Priority" [ref=f2e27]:
+            - option "Any" [selected]
+            - option "Low"
+            - option "Medium"
+            - option "High"
+        - generic [ref=f2e28]:
+          - text: Due from
+          - textbox "Due from" [ref=f2e29]
+        - generic [ref=f2e30]:
+          - text: Due to
+          - textbox "Due to" [ref=f2e31]
+        - generic [ref=f2e32]:
+          - checkbox "Archived" [ref=f2e33]
+          - text: Archived
+        - generic [ref=f2e34]:
+          - text: Tag
+          - textbox "Tag" [ref=f2e35]
+        - generic [ref=f2e36]:
+          - text: Sort by
+          - combobox "Sort by" [ref=f2e37]:
+            - option "Creation date" [selected]
+            - option "Due date"
+        - generic [ref=f2e38]:
+          - text: Direction
+          - combobox "Direction" [ref=f2e39]:
+            - option "Ascending"
+            - option "Descending" [selected]
+        - button "Overdue" [ref=f2e40] [cursor=pointer]
+      - list [ref=f2e41]:
+        - listitem [ref=f2e368]:
+          - generic [ref=f2e369]: Task E
+          - generic [ref=f2e370]: Todo
+          - generic [ref=f2e371]: Medium
+          - generic [ref=f2e372]: No due date
+          - generic [ref=f2e373]:
+            - button "Edit" [ref=f2e374] [cursor=pointer]
+            - button "Complete" [ref=f2e375] [cursor=pointer]
+            - button "Archive" [ref=f2e376] [cursor=pointer]
+            - button "Delete" [ref=f2e377] [cursor=pointer]
+          - generic [ref=f2e379]:
+            - textbox "Add tags, comma-separated" [ref=f2e380]
+            - button "Add tag" [ref=f2e381] [cursor=pointer]
+        - listitem [ref=f2e382]:
+          - generic [ref=f2e383]: Task U
+          - generic [ref=f2e384]: Todo
+          - generic [ref=f2e385]: Medium
+          - generic [ref=f2e386]: No due date
+          - generic [ref=f2e387]:
+            - button "Edit" [ref=f2e388] [cursor=pointer]
+            - button "Complete" [ref=f2e389] [cursor=pointer]
+            - button "Archive" [ref=f2e390] [cursor=pointer]
+            - button "Delete" [ref=f2e391] [cursor=pointer]
+          - generic [ref=f2e393]:
+            - textbox "Add tags, comma-separated" [ref=f2e394]
+            - button "Add tag" [ref=f2e395] [cursor=pointer]
+        - listitem [ref=f2e396]:
+          - generic [ref=f2e397]: Task F
+          - generic [ref=f2e398]: Todo
+          - generic [ref=f2e399]: Medium
+          - generic [ref=f2e400]: No due date
+          - generic [ref=f2e401]:
+            - button "Edit" [ref=f2e402] [cursor=pointer]
+            - button "Complete" [ref=f2e403] [cursor=pointer]
+            - button "Archive" [ref=f2e404] [cursor=pointer]
+            - button "Delete" [ref=f2e405] [cursor=pointer]
+          - generic [ref=f2e407]:
+            - textbox "Add tags, comma-separated" [ref=f2e408]
+            - button "Add tag" [ref=f2e409] [cursor=pointer]
+        - listitem [ref=f2e84]:
+          - generic [ref=f2e85]: Task K
+          - generic [ref=f2e86]: Todo
+          - generic [ref=f2e87]: Medium
+          - generic [ref=f2e88]: No due date
+          - generic [ref=f2e89]:
+            - button "Edit" [ref=f2e90] [cursor=pointer]
+            - button "Complete" [ref=f2e91] [cursor=pointer]
+            - button "Archive" [ref=f2e92] [cursor=pointer]
+            - button "Delete" [ref=f2e93] [cursor=pointer]
+          - generic [ref=f2e94]:
+            - generic [ref=f2e256]:
+              - text: work
+              - button "Remove tag work" [ref=f2e257] [cursor=pointer]: ×
+            - generic [ref=f2e95]:
+              - textbox "Add tags, comma-separated" [ref=f2e96]
+              - button "Add tag" [ref=f2e97] [cursor=pointer]
+        - listitem [ref=f2e410]:
+          - generic [ref=f2e411]: Task V
+          - generic [ref=f2e412]: Todo
+          - generic [ref=f2e413]: Medium
+          - generic [ref=f2e414]: No due date
+          - generic [ref=f2e415]:
+            - button "Edit" [ref=f2e416] [cursor=pointer]
+            - button "Complete" [ref=f2e417] [cursor=pointer]
+            - button "Archive" [ref=f2e418] [cursor=pointer]
+            - button "Delete" [ref=f2e419] [cursor=pointer]
+          - generic [ref=f2e420]:
+            - generic [ref=f2e422]:
+              - text: alpha
+              - button "Remove tag alpha" [ref=f2e423] [cursor=pointer]: ×
+            - generic [ref=f2e424]:
+              - textbox "Add tags, comma-separated" [ref=f2e425]: abcdefghijklmnopqrstuvwxyz12345
+              - button "Add tag" [active] [ref=f2e426] [cursor=pointer]
+            - generic [ref=f2e427]: must be at most 30 characters
+        - listitem [ref=f2e429]:
+          - generic [ref=f2e430]: Task R
+          - generic [ref=f2e431]: Todo
+          - generic [ref=f2e432]: Medium
+          - generic [ref=f2e433]: No due date
+          - generic [ref=f2e434]:
+            - button "Edit" [ref=f2e435] [cursor=pointer]
+            - button "Complete" [ref=f2e436] [cursor=pointer]
+            - button "Archive" [ref=f2e437] [cursor=pointer]
+            - button "Delete" [ref=f2e438] [cursor=pointer]
+          - generic [ref=f2e439]:
+            - generic [ref=f2e441]:
+              - text: home
+              - button "Remove tag home" [ref=f2e442] [cursor=pointer]: ×
+            - generic [ref=f2e443]:
+              - textbox "Add tags, comma-separated" [ref=f2e444]
+              - button "Add tag" [ref=f2e445] [cursor=pointer]
+        - listitem [ref=f2e446]:
+          - generic [ref=f2e447]: Task N3
+          - generic [ref=f2e448]: Todo
+          - generic [ref=f2e449]: Medium
+          - generic [ref=f2e450]: No due date
+          - generic [ref=f2e451]:
+            - button "Edit" [ref=f2e452] [cursor=pointer]
+            - button "Complete" [ref=f2e453] [cursor=pointer]
+            - button "Archive" [ref=f2e454] [cursor=pointer]
+            - button "Delete" [ref=f2e455] [cursor=pointer]
+          - generic [ref=f2e456]:
+            - generic [ref=f2e458]:
+              - text: workshop
+              - button "Remove tag workshop" [ref=f2e459] [cursor=pointer]: ×
+            - generic [ref=f2e460]:
+              - textbox "Add tags, comma-separated" [ref=f2e461]
+              - button "Add tag" [ref=f2e462] [cursor=pointer]
+        - listitem [ref=f2e463]:
+          - generic [ref=f2e464]: Task N2
+          - generic [ref=f2e465]: Todo
+          - generic [ref=f2e466]: Medium
+          - generic [ref=f2e467]: No due date
+          - generic [ref=f2e468]:
+            - button "Edit" [ref=f2e469] [cursor=pointer]
+            - button "Complete" [ref=f2e470] [cursor=pointer]
+            - button "Archive" [ref=f2e471] [cursor=pointer]
+            - button "Delete" [ref=f2e472] [cursor=pointer]
+          - generic [ref=f2e474]:
+            - textbox "Add tags, comma-separated" [ref=f2e475]
+            - button "Add tag" [ref=f2e476] [cursor=pointer]
+        - listitem [ref=f2e477]:
+          - generic [ref=f2e478]: Task N1
+          - generic [ref=f2e479]: Todo
+          - generic [ref=f2e480]: Medium
+          - generic [ref=f2e481]: No due date
+          - generic [ref=f2e482]:
+            - button "Edit" [ref=f2e483] [cursor=pointer]
+            - button "Complete" [ref=f2e484] [cursor=pointer]
+            - button "Archive" [ref=f2e485] [cursor=pointer]
+            - button "Delete" [ref=f2e486] [cursor=pointer]
+          - generic [ref=f2e487]:
+            - generic [ref=f2e489]:
+              - text: home
+              - button "Remove tag home" [ref=f2e490] [cursor=pointer]: ×
+            - generic [ref=f2e491]:
+              - textbox "Add tags, comma-separated" [ref=f2e492]
+              - button "Add tag" [ref=f2e493] [cursor=pointer]
+        - listitem [ref=f2e168]:
+          - generic [ref=f2e169]: Task W2
+          - generic [ref=f2e170]: Todo
+          - generic [ref=f2e171]: Medium
+          - generic [ref=f2e172]: No due date
+          - generic [ref=f2e173]:
+            - button "Edit" [ref=f2e174] [cursor=pointer]
+            - button "Complete" [ref=f2e175] [cursor=pointer]
+            - button "Archive" [ref=f2e176] [cursor=pointer]
+            - button "Delete" [ref=f2e177] [cursor=pointer]
+          - generic [ref=f2e178]:
+            - generic [ref=f2e221]:
+              - generic [ref=f2e222]:
+                - text: home
+                - button "Remove tag home" [ref=f2e223] [cursor=pointer]: ×
+              - generic [ref=f2e224]:
+                - text: work
+                - button "Remove tag work" [ref=f2e225] [cursor=pointer]: ×
+            - generic [ref=f2e179]:
+              - textbox "Add tags, comma-separated" [ref=f2e180]
+              - button "Add tag" [ref=f2e181] [cursor=pointer]
+        - listitem [ref=f2e182]:
+          - generic [ref=f2e183]: Task W1
+          - generic [ref=f2e184]: Todo
+          - generic [ref=f2e185]: Medium
+          - generic [ref=f2e186]: No due date
+          - generic [ref=f2e187]:
+            - button "Edit" [ref=f2e188] [cursor=pointer]
+            - button "Complete" [ref=f2e189] [cursor=pointer]
+            - button "Archive" [ref=f2e190] [cursor=pointer]
+            - button "Delete" [ref=f2e191] [cursor=pointer]
+          - generic [ref=f2e192]:
+            - generic [ref=f2e194]:
+              - text: work
+              - button "Remove tag work" [ref=f2e195] [cursor=pointer]: ×
+            - generic [ref=f2e196]:
+              - textbox "Add tags, comma-separated" [ref=f2e197]
+              - button "Add tag" [ref=f2e198] [cursor=pointer]
+        - listitem [ref=f2e199]:
+          - generic [ref=f2e200]: Task A
+          - generic [ref=f2e201]: Todo
+          - generic [ref=f2e202]: Medium
+          - generic [ref=f2e203]: No due date
+          - generic [ref=f2e204]:
+            - button "Edit" [ref=f2e205] [cursor=pointer]
+            - button "Complete" [ref=f2e206] [cursor=pointer]
+            - button "Archive" [ref=f2e207] [cursor=pointer]
+            - button "Delete" [ref=f2e208] [cursor=pointer]
+          - generic [ref=f2e209]:
+            - generic [ref=f2e210]:
+              - generic [ref=f2e211]:
+                - text: urgent
+                - button "Remove tag urgent" [ref=f2e212] [cursor=pointer]: ×
+              - generic [ref=f2e213]:
+                - text: work
+                - button "Remove tag work" [ref=f2e214] [cursor=pointer]: ×
+            - generic [ref=f2e215]:
+              - textbox "Add tags, comma-separated" [ref=f2e216]
+              - button "Add tag" [ref=f2e217] [cursor=pointer]

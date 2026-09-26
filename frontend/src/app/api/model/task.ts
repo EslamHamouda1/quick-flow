@@ -27,9 +27,9 @@ export interface Task {
      */
     overdue: boolean;
     /**
-     * Lower case, alphabetical; empty when the task has no tags
+     * Lower case (Q1), alphabetical; empty when the task has no tags
      */
-    tags: Array<string>;
+    tags: Set<string>;
 }
 export namespace Task {
 }

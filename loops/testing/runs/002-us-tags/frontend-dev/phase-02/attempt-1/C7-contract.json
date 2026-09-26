@@ -1,0 +1,31 @@
+{
+  "filterTag": {
+    "tag": "INPUT",
+    "type": "text",
+    "label": "Tag",
+    "ariaLabel": null,
+    "disabled": false
+  },
+  "row11": {
+    "hasTaskRowTags": true,
+    "tagCount": 0,
+    "inputPlaceholder": "Add tags, comma-separated",
+    "addText": "Add tag",
+    "addTag": "BUTTON"
+  },
+  "row1": {
+    "tagsInsideContainer": 2,
+    "removeButtons": [
+      {
+        "tag": "BUTTON",
+        "text": "×",
+        "aria": "Remove tag urgent"
+      },
+      {
+        "tag": "BUTTON",
+        "text": "×",
+        "aria": "Remove tag work"
+      }
+    ]
+  }
+}

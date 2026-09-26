@@ -4,6 +4,6 @@
   "T003": {"phase": "phase-01", "state": "x"},
   "T004": {"phase": "phase-01", "state": "x"},
   "T005": {"phase": "phase-01", "state": "x"},
-  "T006": {"phase": "phase-02", "state": " "},
-  "T007": {"phase": "phase-02", "state": " "}
+  "T006": {"phase": "phase-02", "state": "x"},
+  "T007": {"phase": "phase-02", "state": "x"}
 }

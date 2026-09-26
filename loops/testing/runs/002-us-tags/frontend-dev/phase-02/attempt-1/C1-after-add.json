@@ -1,0 +1,29 @@
+{
+  "notice": null,
+  "row1": {
+    "tags": [
+      "urgent",
+      "work"
+    ],
+    "removeButtons": [
+      {
+        "text": "×",
+        "aria": "Remove tag urgent"
+      },
+      {
+        "text": "×",
+        "aria": "Remove tag work"
+      }
+    ],
+    "input": "",
+    "error": null
+  },
+  "rowTagsRaw": [
+    "urgent×",
+    "work×"
+  ],
+  "apiTags": [
+    "urgent",
+    "work"
+  ]
+}

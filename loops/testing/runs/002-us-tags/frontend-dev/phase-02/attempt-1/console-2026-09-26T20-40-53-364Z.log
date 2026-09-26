@@ -1,0 +1,3 @@
+[     150ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[    3542ms] [ERROR] Access to fetch at 'http://localhost:8080/api/tasks' from origin 'http://localhost:4200' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:4200/tasks:0
+[    3542ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:8080/api/tasks:0

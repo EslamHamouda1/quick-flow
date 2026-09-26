@@ -6,15 +6,9 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **feature:** 002-us-tags
 - **loop:** frontend-dev
 - **mode:** dev
-- **stops_at:** US1
+- **stops_at:** end of loop
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260926T225858-388446
-- **runner_nonce:** 77a203b5fc0119604072a1e2
-- **orchestrator_step:** frontend-dev:US1
+- **runner_nonce:** 4a6c2564ec4b8b25f8c7b7a4
 - **swagger:** loops/backend-dev/outputs/openapi.json
-- **current_step:** close phase-01
-
-## Current orchestrator step
-- loop: frontend-dev
-- story: US1
-- goal: Tag tasks and filter by tag
+- **current_step:** close phase-02

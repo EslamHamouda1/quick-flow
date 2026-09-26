@@ -1,0 +1,31 @@
+{
+  "notice": null,
+  "listed": [
+    12,
+    11,
+    10,
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ],
+  "rows": {
+    "8": {
+      "inList": true,
+      "tags": [
+        "alpha"
+      ],
+      "input": "abcdefghijklmnopqrstuvwxyz12345",
+      "error": "must be at most 30 characters",
+      "apiTags": [
+        "alpha"
+      ]
+    }
+  },
+  "inputLength": 31
+}
