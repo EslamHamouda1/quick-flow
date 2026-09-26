@@ -1,0 +1,6 @@
+{"note": "API setup via page fetch, 2026-09-26 ~11:53 Africa/Cairo (app-info now 2026-09-26T11:53:29+03:00). A first plan create used sourceType LEARNING_CARD (test mistake) -> 400 'must be one of [TASK, HABIT, LEARNING_RESOURCE]' and a GET /api/plans/undefined -> 400; both produced the 2 console errors seen before C2 (not app errors). Task 6 was deleted before being used, so task 7 was used for the removed item.",
+ "tasks": {"1": "Overdue task, HIGH, due 2026-09-24, overdue=true", "2": "Due today task, due 2026-09-26", "3": "Done task, completed -> DONE", "4": "Archived task, archived=true", "5": "Plan task, due 2026-10-01", "6": "deleted (204)", "7": "Task to remove 2, used in plan 2 then deleted (204)"},
+ "habits": {"1": "Daily habit, completion 2026-09-26 -> 201", "2": "Weekly habit, deactivated -> active=false"},
+ "cards": {"1": "Card one, milestone 1 'Milestone one' target 2026-10-03, note 1 'Note one'"},
+ "plans": {"1": "Past plan, 09:53-10:53, priority 2, item 1 (task 1) -> status COMPLETED, 0%", "2": "Active plan, 10:53-13:53, priority 1, items 2 (task 5), 3 (habit 1, done=true), 4 (card 1), 5 (task 7, sourceRemoved=true after delete) -> IN_PROGRESS, 1/4 = 25%, restSeconds 7199"}
+}

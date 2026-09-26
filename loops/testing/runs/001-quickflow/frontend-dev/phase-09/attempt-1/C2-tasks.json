@@ -1,0 +1,12 @@
+{"note": "/tasks with setup.json data; values are trimmed textContent or '(present)' for inputs; null = not found. First read of the add/edit form ran right after the click, before render (all null, a test timing slip); re-read with waitForSelector in 'addForm'/'editForm' below.",
+ "list": {"task-add": "Add Task", "task-search": "(present)", "filter-status": "AnyTodoIn ProgressDone", "filter-priority": "AnyLowMediumHigh", "filter-due-from": "(present)", "filter-due-to": "(present)", "filter-archived": "(present) INPUT:checkbox", "sort-field": "options [createdAt, dueDate]", "sort-direction": "options [asc, desc]", "task-view-overdue": "Overdue", "task-list": "present", "task-row-1": "Overdue taskTodoHighSep 24, 2026Overdue...", "task-row-2": "Due today task...", "task-row-3": "Done taskDoneLow... (no Complete)", "task-row-5": "Plan task...", "task-edit-1": "Edit", "task-complete-1": "Complete", "task-archive-1": "Archive", "task-delete-1": "Delete"},
+ "row1": {"task-row-title": "Overdue task", "task-row-status": "Todo", "task-row-priority": "High", "task-row-due": "Sep 24, 2026", "task-row-overdue": "Overdue"},
+ "row2_overdueBadge": false,
+ "addForm": {"task-form": "Add Task...", "task-title": "(present)", "task-description": "(present)", "task-priority": "LowMediumHigh", "task-due-date": "(present)", "task-save": "Save", "task-cancel": "Cancel", "task-status": null},
+ "editForm (task 1)": {"task-form": "Edit Task...", "task-title": "value 'Overdue task'", "task-status": "TodoIn ProgressDone", "task-save": "Save", "task-cancel": "Cancel"},
+ "addQuery /tasks?add=1": {"task-form": "Add Task..."},
+ "afterEmptySave": {"error-title": "size must be between 1 and 200", "console": "one [ERROR] 'Failed to load resource: 400' for POST /api/tasks = the intended invalid save"},
+ "filter-archived checked": {"task-row-4": "Archived taskTodoLowNo due dateEditRestoreDelete", "task-restore-4": "Restore"},
+ "task-view-overdue on": ["task-row-1"],
+ "task-complete-2 click": {"notice": "Task completed"}
+}

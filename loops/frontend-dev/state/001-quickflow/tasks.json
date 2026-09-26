@@ -41,9 +41,10 @@
   "T040": {"phase": "phase-08", "state": "x"},
   "T041": {"phase": "phase-08", "state": "x"},
   "T042": {"phase": "phase-08", "state": "x"},
-  "T043": {"phase": "phase-09", "state": " "},
-  "T044": {"phase": "phase-09", "state": " "},
-  "T045": {"phase": "phase-09", "state": " "},
+  "T043": {"phase": "phase-09", "state": "x"},
+  "T044": {"phase": "phase-09", "state": "x"},
+  "T045": {"phase": "phase-09", "state": "x"},
   "T046": {"phase": "phase-08", "state": "x"},
-  "T047": {"phase": "phase-08", "state": "x"}
+  "T047": {"phase": "phase-08", "state": "x"},
+  "T048": {"phase": "phase-polish-1", "state": " "}
 }

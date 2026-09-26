@@ -1,0 +1,8 @@
+{"note": "/habits with setup.json data (habit 1 active daily done today, habit 2 inactive weekly)",
+ "list": {"habit-add": "Add Habit", "habit-list": "present", "habit-card-1": "Daily habit...", "habit-card-2": "Weekly habit...Inactive...", "habit-toggle-1": "(present)", "habit-toggle-2": "(present)", "habit-edit-1": "Edit", "habit-deactivate-1": "Deactivate", "habit-activate-2": "Activate", "habit-delete-1": "Delete", "habit-delete-2": "Delete", "habit-activate-1": null, "habit-deactivate-2": null},
+ "card1": {"habit-frequency-label": "Daily", "habit-period-done": "Done today", "habit-streak": "1", "habit-inactive": null, "toggleChecked": true, "toggleDisabled": false},
+ "card2": {"habit-frequency-label": "Weekly", "habit-period-done": "Not done", "habit-streak": "0", "habit-inactive": "Inactive", "toggleChecked": false, "toggleDisabled": true},
+ "form": {"habit-form": "Add Habit...", "habit-name": "(present)", "habit-description": "(present)", "habit-frequency": "DailyWeekly", "habit-save": "Save", "habit-cancel": "Cancel"},
+ "empty save": {"error-name": "must not be blank"},
+ "notice-error": {"setup": "habit 1 completion removed then re-added through the API (DELETE, POST 201: restored as before); habit 3 'Conflict habit' created; /habits loaded; habit 3 completed through the API (201) so the page is stale; habit-toggle-3 clicked", "notices": [{"text": "Habit 3 is already complete for 2026-09-26", "class": "notice notice-error", "notice-error": "Habit 3 is already complete for 2026-09-26"}]}
+}

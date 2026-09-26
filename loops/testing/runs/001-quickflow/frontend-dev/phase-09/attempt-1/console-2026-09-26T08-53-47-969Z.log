@@ -1,0 +1,15 @@
+[      33ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[   12721ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/tasks:0
+[   23703ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[   43744ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[   43952ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/habits:0
+[   53394ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[   53469ms] [ERROR] Failed to load resource: the server responded with a status of 409 (Conflict) @ http://localhost:4200/api/habits/3/completions:0
+[   66371ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[   66618ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/learning-cards:0
+[   87973ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[   88234ms] [ERROR] Failed to load resource: the server responded with a status of 400 (Bad Request) @ http://localhost:4200/api/plans:0
+[   88378ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[   88506ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[  179645ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336
+[  180621ms] [LOG] Angular is running in development mode. @ http://localhost:4200/@fs/home/eslam/Downloads/TTFolder/quickflow-claude-loops/frontend/.angular/cache/22.2.0/frontend/vite/deps/core-ClpmeKgD.js?v=e3fbd8b7:9336

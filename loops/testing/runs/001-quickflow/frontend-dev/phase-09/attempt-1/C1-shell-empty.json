@@ -1,0 +1,6 @@
+{"note": "fresh DB, localStorage cleared; each route loaded directly; nav = [id, text, href]",
+ "tasks": {"url": "/tasks", "navMain": true, "nav": [["dashboard","Dashboard","/dashboard"],["tasks","Tasks","/tasks"],["habits","Habits","/habits"],["learning","Learning Resources","/learning"],["plans","Todo Plans","/plans"],["settings","Settings","/settings"]], "pageTitle": "Tasks", "pageTitleTag": "H1", "emptyState": "No tasks yetAdd Task", "emptyStateAction": "Add Task"},
+ "habits": {"url": "/habits", "navMain": true, "nav": "same six links and hrefs", "pageTitle": "Habits", "pageTitleTag": "H1", "emptyState": "No habits yetAdd Habit", "emptyStateAction": "Add Habit"},
+ "learning": {"url": "/learning", "navMain": true, "nav": "same six links and hrefs", "pageTitle": "Learning Resources", "pageTitleTag": "H1", "emptyState": "No learning cards yetAdd Learning Card", "emptyStateAction": "Add Learning Card"},
+ "plans": {"url": "/plans", "navMain": true, "nav": "same six links and hrefs", "pageTitle": "Todo Plans", "pageTitleTag": "H1", "emptyState": "No plans yetCreate Plan", "emptyStateAction": "Create Plan"}
+}

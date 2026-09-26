@@ -203,9 +203,9 @@ before it shows a notice (T047, replacing the FA-30 stub of T035).
 
 **Purpose**: contract match, selectors, docs
 
-- [ ] T043 Check every selector of specs/001-quickflow-frontend/contracts/ui-contract.md exists in the templates under frontend/src/app/ and fix the templates (never the contract) where one is missing
-- [ ] T044 [P] Check no component computes a status, overdue flag, streak, progress or dashboard figure (Constitution IV) by reading frontend/src/app/pages/ and move any such logic to the API response it belongs to (raise a question if the API lacks the field)
-- [ ] T045 [P] Update specs/001-quickflow-frontend/quickstart.md if any command, route or path changed during implementation
+- [X] T043 Check every selector of specs/001-quickflow-frontend/contracts/ui-contract.md exists in the templates under frontend/src/app/ and fix the templates (never the contract) where one is missing
+- [X] T044 [P] Check no component computes a status, overdue flag, streak, progress or dashboard figure (Constitution IV) by reading frontend/src/app/pages/ and move any such logic to the API response it belongs to (raise a question if the API lacks the field)
+- [X] T045 [P] Update specs/001-quickflow-frontend/quickstart.md if any command, route or path changed during implementation
 
 ---
 
@@ -244,3 +244,7 @@ Task: "Create the plan card component in frontend/src/app/pages/plans/plan-card.
 ## Notes
 - The generated client is regenerated every implement session; never edit `frontend/src/app/api/`.
 - Assumption-dependent tasks (FA-1 tests, FA-2 notification scope, FA-3..FA-11) follow the assumptions as approved in the phase-00 review.
+
+## Phase 10: Convergence
+
+- [ ] T048 Remove the stale scaffold spec frontend/src/app/app.spec.ts (asserts an `h1` "Hello, frontend" the shell no longer renders; the frontend writes no spec files) per plan: Testing / FA-1 (unrequested)

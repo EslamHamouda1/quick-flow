@@ -1,0 +1,3 @@
+{"note": "fresh load of /settings, then nav clicks in turn (a first try threw 'URL is not defined' in the test script after the first click; page reloaded and re-run). Console errors after the fresh load: C8-console-errors.txt ('Total messages: 3 (Errors: 0, Warnings: 0)').",
+ "moves": [{"clicked": "nav-dashboard", "url": "/dashboard", "pageTitle": "Dashboard"}, {"clicked": "nav-tasks", "url": "/tasks", "pageTitle": "Tasks"}, {"clicked": "nav-habits", "url": "/habits", "pageTitle": "Habits"}, {"clicked": "nav-learning", "url": "/learning", "pageTitle": "Learning Resources"}, {"clicked": "nav-plans", "url": "/plans", "pageTitle": "Todo Plans"}, {"clicked": "nav-settings", "url": "/settings", "pageTitle": "Settings"}]
+}

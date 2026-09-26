@@ -6,15 +6,9 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **feature:** 001-quickflow
 - **loop:** frontend-dev
 - **mode:** dev
-- **stops_at:** US6
+- **stops_at:** end of loop
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260926T111201-195372
-- **runner_nonce:** d46968c8712b0e25f9ce73ea
-- **orchestrator_step:** frontend-dev:US6
+- **runner_nonce:** 697177853b59aa3e4450f3db
 - **swagger:** loops/backend-dev/outputs/openapi.json
-- **current_step:** close phase-08
-
-## Current orchestrator step
-- loop: frontend-dev
-- story: US6
-- goal: Adjust settings
+- **current_step:** close phase-09

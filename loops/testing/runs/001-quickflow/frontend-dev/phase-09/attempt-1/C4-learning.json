@@ -1,0 +1,6 @@
+{"note": "/learning with card 1 (milestone 1, note 1)",
+ "grid": {"card-add": "Add Learning Card", "card-grid": "present", "card-1": "Card one...", "card-title-text": "Card one", "card-status": "select: Not Started / In Progress / Completed", "card-milestone-count": "0/1", "card-expand-1": "Show details", "card-edit-1": "Edit", "card-delete-1": "Delete"},
+ "after card-expand-1": {"card-details-1": "Milestones...", "milestone-title-input-1": "(present)", "milestone-date-input-1": "(present)", "milestone-add-1": "Add milestone", "milestone-1": "Milestone oneOct 3, 2026Remove", "milestone-done-1": "(present)", "milestone-delete-1": "Remove", "note-text-input-1": "(present)", "note-add-1": "Add note", "note-1": "Note oneSep 26, 2026, 11:53 AMRemove", "note-delete-1": "Remove"},
+ "form": {"card-form": "Add Learning Card...", "card-title": "(present)", "card-description": "(present)", "card-save": "Save", "card-cancel": "Cancel"},
+ "empty save": {"error-title": "must not be blank", "console": "400 for POST /api/learning-cards = the intended invalid save"}
+}
