@@ -1,0 +1,43 @@
+{
+  "phases": [
+    {
+      "phase": "phase-00",
+      "title": "Plan",
+      "story_id": null,
+      "layer": "backend",
+      "spec_phase": null,
+      "task_ids": [],
+      "depends_on": [],
+      "attempt": 1,
+      "status": "awaiting_approval",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-01",
+      "title": "US1 Tag tasks and filter by tag",
+      "story_id": "US1",
+      "layer": "backend",
+      "spec_phase": 1,
+      "task_ids": ["T001", "T002", "T003", "T004", "T005", "T006", "T007", "T008", "T009", "T010"],
+      "depends_on": [],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    },
+    {
+      "phase": "phase-02",
+      "title": "Polish & Cross-Cutting Concerns",
+      "story_id": null,
+      "layer": "backend",
+      "spec_phase": 2,
+      "task_ids": ["T011", "T012"],
+      "depends_on": ["phase-01"],
+      "attempt": 1,
+      "status": "planned",
+      "approval": null,
+      "block_reason": null
+    }
+  ]
+}
