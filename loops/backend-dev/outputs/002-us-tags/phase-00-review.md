@@ -41,3 +41,5 @@ Not written in the requirements; built only once approved.
 - A8 (process): the spec-kit shell scripts (`setup-plan.sh`, `setup-tasks.sh`, `check-prerequisites.sh`) were not run in this session, because they persist `.specify/feature.json`, which is outside the backend-dev plan whitelist; their only other effect (copying the plan template into `FEATURE_DIR`) was done by hand. `.specify/feature.json` still points at `specs/001-quickflow-backend`; later sessions must rely on `SPECIFY_FEATURE_DIRECTORY` (exported by the runner).
 
 ## Reviewer notes
+- 2026-09-26T22:47:11+03:00: Q1: tags are always lower case (stored, matched, filtered and shown as lower case). Q2: adding a tag the task already has is a silent no-op (200, task unchanged, counts once toward the 10). Q3: removing a tag the task doesn't have is a silent no-op (200, task unchanged); an unknown task id is still 404.
+

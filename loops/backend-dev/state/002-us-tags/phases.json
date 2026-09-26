@@ -9,8 +9,12 @@
       "task_ids": [],
       "depends_on": [],
       "attempt": 1,
-      "status": "awaiting_approval",
-      "approval": null,
+      "status": "approved",
+      "approval": {
+        "decision": "approve",
+        "at": "2026-09-26T22:47:11+03:00",
+        "notes": "Q1: tags are always lower case (stored, matched, filtered and shown as lower case). Q2: adding a tag the task already has is a silent no-op (200, task unchanged, counts once toward the 10). Q3: removing a tag the task doesn't have is a silent no-op (200, task unchanged); an unknown task id is still 404."
+      },
       "block_reason": null
     },
     {
@@ -19,7 +23,18 @@
       "story_id": "US1",
       "layer": "backend",
       "spec_phase": 1,
-      "task_ids": ["T001", "T002", "T003", "T004", "T005", "T006", "T007", "T008", "T009", "T010"],
+      "task_ids": [
+        "T001",
+        "T002",
+        "T003",
+        "T004",
+        "T005",
+        "T006",
+        "T007",
+        "T008",
+        "T009",
+        "T010"
+      ],
       "depends_on": [],
       "attempt": 1,
       "status": "planned",
@@ -32,8 +47,13 @@
       "story_id": null,
       "layer": "backend",
       "spec_phase": 2,
-      "task_ids": ["T011", "T012"],
-      "depends_on": ["phase-01"],
+      "task_ids": [
+        "T011",
+        "T012"
+      ],
+      "depends_on": [
+        "phase-01"
+      ],
       "attempt": 1,
       "status": "planned",
       "approval": null,

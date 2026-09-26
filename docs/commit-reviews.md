@@ -124,3 +124,4 @@
 | 7c72fd0 | 2026-09-26T22:23:24+03:00 | approve | engine: timeout -k 60 so a session that ignores SIGTERM is killed; orchestrator end state | bulk approval: user said "push all" in Claude Code (recorded by Claude) |
 | 1f736c7 | 2026-09-26T22:23:24+03:00 | approve | scripts: genericity check matches entity names as proper names, skips engine vocabulary and acronyms | bulk approval: user said "push all" in Claude Code (recorded by Claude) |
 | cd42289 | 2026-09-26T22:23:24+03:00 | approve | docs: prompts-sessions.xlsx (headless runs, interactive prompts, milestones, summary, human inputs) | bulk approval: user said "push all" in Claude Code (recorded by Claude) |
+| c312b8d | 2026-09-26T22:47:11+03:00 | approve | docs: design document, AI-assisted draft (labelled as drafted by Claude) | user said "push" in Claude Code (recorded by Claude) |
