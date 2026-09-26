@@ -1,0 +1,103 @@
+# Output of the inline jq validator (loops/testing/outputs/002-us-tags/suite/test-phase-01-schema.jq) over every
+# non-empty body b/NN.json against loops/backend-dev/outputs/openapi.json, schemas from expect.json. 92/92 ok.
+# 01 (swagger itself) is checked in C1; 19 50 52 72 74 76 95 97 98 are 204s with 0-byte bodies.
+02	AppInfo	ok
+03	Task	ok
+04	Problem	ok
+05	[Task]	ok
+06	[Task]	ok
+07	[Task]	ok
+08	Task	ok
+09	Problem	ok
+10	Task	ok
+11	Problem	ok
+12	Problem	ok
+13	Task	ok
+14	Problem	ok
+15	Task	ok
+16	Problem	ok
+17	Task	ok
+18	Problem	ok
+20	Problem	ok
+21	Task	ok
+22	Task	ok
+23	Problem	ok
+24	Problem	ok
+25	[Task]	ok
+26	[Task]	ok
+27	Task	ok
+28	Problem	ok
+29	Problem	ok
+30	Dashboard	ok
+31	Habit	ok
+32	Problem	ok
+33	[Habit]	ok
+34	[Habit]	ok
+35	Habit	ok
+36	Problem	ok
+37	Habit	ok
+38	Problem	ok
+39	Problem	ok
+40	Habit	ok
+41	Problem	ok
+42	Habit	ok
+43	Problem	ok
+44	HabitCompletion	ok
+45	Problem	ok
+46	Problem	ok
+47	Problem	ok
+48	[HabitCompletion]	ok
+49	Problem	ok
+51	Problem	ok
+53	Problem	ok
+54	LearningCard	ok
+55	Problem	ok
+56	[LearningCard]	ok
+57	LearningCard	ok
+58	Problem	ok
+59	LearningCard	ok
+60	Problem	ok
+61	Problem	ok
+62	Milestone	ok
+63	Problem	ok
+64	Problem	ok
+65	Milestone	ok
+66	Problem	ok
+67	Problem	ok
+68	Note	ok
+69	Problem	ok
+70	Problem	ok
+71	LearningCard	ok
+73	Problem	ok
+75	Problem	ok
+77	Problem	ok
+78	Task	ok
+79	Plan	ok
+80	Problem	ok
+81	Problem	ok
+82	Problem	ok
+83	[Plan]	ok
+84	[Plan]	ok
+85	[Plan]	ok
+86	[Plan]	ok
+87	Plan	ok
+88	Problem	ok
+89	Plan	ok
+90	Problem	ok
+91	Problem	ok
+92	Plan	ok
+93	Problem	ok
+94	Problem	ok
+96	Problem	ok
+99	Settings	ok
+100	Settings	ok
+101	Problem	ok
+102	Settings	ok
+# Negative control (neg/n1..n7, planted bodies, same program):
+# n1 Task  $.tags: ["work","Urgent"] not lower case and alphabetical
+# n2 Task  $: missing tags
+# n3 Task  $.tags: 11 items > 10
+# n4 Task  $.tags: items not unique
+# n5 Task  $.tags[0]: abcdefghijabcdefghijabcdefghijx longer than 30
+# n6 [Task] $[1].tags: ["b","a"] not lower case and alphabetical
+# n7 Task  ok (valid control)

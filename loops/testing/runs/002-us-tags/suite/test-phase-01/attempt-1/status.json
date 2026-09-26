@@ -1,0 +1,818 @@
+[
+  {
+    "k": "01",
+    "label": "01 C1 api-docs GET /v3/api-docs",
+    "code": 200,
+    "t": 0.006089,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "02",
+    "label": "02 C2 getAppInfo GET /api/app-info",
+    "code": 200,
+    "t": 0.023531,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "03",
+    "label": "03 C3 createTask POST /api/tasks T",
+    "code": 201,
+    "t": 0.091887,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "04",
+    "label": "04 C3 createTask-invalid POST /api/tasks T 400",
+    "code": 400,
+    "t": 0.017277,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "05",
+    "label": "05 C3 listTasks GET /api/tasks T",
+    "code": 200,
+    "t": 0.057519,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "06",
+    "label": "06 C3 listTasks-filtered GET /api/tasks?q..direction T",
+    "code": 200,
+    "t": 0.013610,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "07",
+    "label": "07 C3 listOverdueTasks GET /api/tasks/overdue T",
+    "code": 200,
+    "t": 0.011697,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "08",
+    "label": "08 C3 getTask GET /api/tasks/1",
+    "code": 200,
+    "t": 0.007671,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "09",
+    "label": "09 C3 getTask-404 GET /api/tasks/999999999 404",
+    "code": 404,
+    "t": 0.003143,
+    "ct": "application/problem+json",
+    "timed": false
+  },
+  {
+    "k": "10",
+    "label": "10 C3 updateTask PUT /api/tasks/1 T",
+    "code": 200,
+    "t": 0.015159,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "11",
+    "label": "11 C3 updateTask-invalid PUT /api/tasks/1 T 400",
+    "code": 400,
+    "t": 0.003529,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "12",
+    "label": "12 C3 updateTask-404 PUT /api/tasks/999999999 T 404",
+    "code": 404,
+    "t": 0.002964,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "13",
+    "label": "13 C3 completeTask POST /api/tasks/1/complete T",
+    "code": 200,
+    "t": 0.003340,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "14",
+    "label": "14 C3 completeTask-404 POST /api/tasks/999999999/complete T 404",
+    "code": 404,
+    "t": 0.001758,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "15",
+    "label": "15 C3 archiveTask POST /api/tasks/1/archive T",
+    "code": 200,
+    "t": 0.002606,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "16",
+    "label": "16 C3 archiveTask-404 POST /api/tasks/999999999/archive T 404",
+    "code": 404,
+    "t": 0.001537,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "17",
+    "label": "17 C3 restoreTask POST /api/tasks/1/restore T",
+    "code": 200,
+    "t": 0.002700,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "18",
+    "label": "18 C3 restoreTask-404 POST /api/tasks/999999999/restore T 404",
+    "code": 404,
+    "t": 0.001522,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "19",
+    "label": "19 C3 deleteTask DELETE /api/tasks/1 T 204",
+    "code": 204,
+    "t": 0.006692,
+    "ct": "",
+    "timed": true
+  },
+  {
+    "k": "20",
+    "label": "20 C3 deleteTask-404 DELETE /api/tasks/1 T 404",
+    "code": 404,
+    "t": 0.001916,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "21",
+    "label": "21 C4 setup-createTask POST /api/tasks",
+    "code": 201,
+    "t": 0.005769,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "22",
+    "label": "22 C4 addTaskTags POST /api/tasks/2/tags T",
+    "code": 200,
+    "t": 0.013051,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "23",
+    "label": "23 C4 addTaskTags-empty POST /api/tasks/2/tags T 400",
+    "code": 400,
+    "t": 0.002826,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "24",
+    "label": "24 C4 addTaskTags-404 POST /api/tasks/999999999/tags T 404",
+    "code": 404,
+    "t": 0.002869,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "25",
+    "label": "25 C4 listTasks-tag GET /api/tasks?tag=work T",
+    "code": 200,
+    "t": 0.014227,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "26",
+    "label": "26 C4 listTasks-tag-unknown GET /api/tasks?tag=nosuchtag T",
+    "code": 200,
+    "t": 0.004129,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "27",
+    "label": "27 C4 removeTaskTag DELETE /api/tasks/2/tags?tag=work T",
+    "code": 200,
+    "t": 0.005388,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "28",
+    "label": "28 C4 removeTaskTag-noTag DELETE /api/tasks/2/tags T 400",
+    "code": 400,
+    "t": 0.002412,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "29",
+    "label": "29 C4 removeTaskTag-404 DELETE /api/tasks/999999999/tags?tag=work T 404",
+    "code": 404,
+    "t": 0.002359,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "30",
+    "label": "30 C8 getDashboard GET /api/dashboard",
+    "code": 200,
+    "t": 0.040604,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "31",
+    "label": "31 C5 createHabit POST /api/habits T",
+    "code": 201,
+    "t": 0.012086,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "32",
+    "label": "32 C5 createHabit-invalid POST /api/habits T 400",
+    "code": 400,
+    "t": 0.002354,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "33",
+    "label": "33 C5 listHabits GET /api/habits T",
+    "code": 200,
+    "t": 0.007048,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "34",
+    "label": "34 C5 listHabits-active GET /api/habits?active=true T",
+    "code": 200,
+    "t": 0.002298,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "35",
+    "label": "35 C5 getHabit GET /api/habits/1",
+    "code": 200,
+    "t": 0.002672,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "36",
+    "label": "36 C5 getHabit-404 GET /api/habits/999999999 404",
+    "code": 404,
+    "t": 0.001591,
+    "ct": "application/problem+json",
+    "timed": false
+  },
+  {
+    "k": "37",
+    "label": "37 C5 updateHabit PUT /api/habits/1 T",
+    "code": 200,
+    "t": 0.005149,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "38",
+    "label": "38 C5 updateHabit-invalid PUT /api/habits/1 T 400",
+    "code": 400,
+    "t": 0.001631,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "39",
+    "label": "39 C5 updateHabit-404 PUT /api/habits/999999999 T 404",
+    "code": 404,
+    "t": 0.002012,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "40",
+    "label": "40 C5 deactivateHabit POST /api/habits/1/deactivate T",
+    "code": 200,
+    "t": 0.003463,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "41",
+    "label": "41 C5 deactivateHabit-404 POST /api/habits/999999999/deactivate T 404",
+    "code": 404,
+    "t": 0.002116,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "42",
+    "label": "42 C5 activateHabit POST /api/habits/1/activate T",
+    "code": 200,
+    "t": 0.003083,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "43",
+    "label": "43 C5 activateHabit-404 POST /api/habits/999999999/activate T 404",
+    "code": 404,
+    "t": 0.001251,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "44",
+    "label": "44 C5 completeHabit POST /api/habits/1/completions T",
+    "code": 201,
+    "t": 0.007952,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "45",
+    "label": "45 C5 completeHabit-future POST /api/habits/1/completions T 400",
+    "code": 400,
+    "t": 0.004123,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "46",
+    "label": "46 C5 completeHabit-404 POST /api/habits/999999999/completions T 404",
+    "code": 404,
+    "t": 0.002926,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "47",
+    "label": "47 C5 completeHabit-409 POST /api/habits/1/completions T 409",
+    "code": 409,
+    "t": 0.004064,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "48",
+    "label": "48 C5 listHabitCompletions GET /api/habits/1/completions",
+    "code": 200,
+    "t": 0.006184,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "49",
+    "label": "49 C5 listHabitCompletions-404 GET /api/habits/999999999/completions 404",
+    "code": 404,
+    "t": 0.001621,
+    "ct": "application/problem+json",
+    "timed": false
+  },
+  {
+    "k": "50",
+    "label": "50 C5 undoHabitCompletion DELETE /api/habits/1/completions/2026-09-26 T 204",
+    "code": 204,
+    "t": 0.007245,
+    "ct": "",
+    "timed": true
+  },
+  {
+    "k": "51",
+    "label": "51 C5 undoHabitCompletion-404 DELETE /api/habits/999999999/completions/2026-09-26 T 404",
+    "code": 404,
+    "t": 0.002305,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "52",
+    "label": "52 C5 deleteHabit DELETE /api/habits/1 T 204",
+    "code": 204,
+    "t": 0.003843,
+    "ct": "",
+    "timed": true
+  },
+  {
+    "k": "53",
+    "label": "53 C5 deleteHabit-404 DELETE /api/habits/1 T 404",
+    "code": 404,
+    "t": 0.001535,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "54",
+    "label": "54 C6 createLearningCard POST /api/learning-cards T",
+    "code": 201,
+    "t": 0.011030,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "55",
+    "label": "55 C6 createLearningCard-invalid POST /api/learning-cards T 400",
+    "code": 400,
+    "t": 0.002135,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "56",
+    "label": "56 C6 listLearningCards GET /api/learning-cards T",
+    "code": 200,
+    "t": 0.006002,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "57",
+    "label": "57 C6 getLearningCard GET /api/learning-cards/1",
+    "code": 200,
+    "t": 0.002619,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "58",
+    "label": "58 C6 getLearningCard-404 GET /api/learning-cards/999999999 404",
+    "code": 404,
+    "t": 0.001552,
+    "ct": "application/problem+json",
+    "timed": false
+  },
+  {
+    "k": "59",
+    "label": "59 C6 updateLearningCard PUT /api/learning-cards/1 T",
+    "code": 200,
+    "t": 0.007210,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "60",
+    "label": "60 C6 updateLearningCard-invalid PUT /api/learning-cards/1 T 400",
+    "code": 400,
+    "t": 0.001854,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "61",
+    "label": "61 C6 updateLearningCard-404 PUT /api/learning-cards/999999999 T 404",
+    "code": 404,
+    "t": 0.002012,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "62",
+    "label": "62 C6 addMilestone POST /api/learning-cards/1/milestones T",
+    "code": 201,
+    "t": 0.007840,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "63",
+    "label": "63 C6 addMilestone-invalid POST /api/learning-cards/1/milestones T 400",
+    "code": 400,
+    "t": 0.001842,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "64",
+    "label": "64 C6 addMilestone-404 POST /api/learning-cards/999999999/milestones T 404",
+    "code": 404,
+    "t": 0.001947,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "65",
+    "label": "65 C6 updateMilestone PUT /api/learning-cards/1/milestones/1 T",
+    "code": 200,
+    "t": 0.012518,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "66",
+    "label": "66 C6 updateMilestone-invalid PUT /api/learning-cards/1/milestones/1 T 400",
+    "code": 400,
+    "t": 0.002310,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "67",
+    "label": "67 C6 updateMilestone-404 PUT /api/learning-cards/1/milestones/999999999 T 404",
+    "code": 404,
+    "t": 0.004558,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "68",
+    "label": "68 C6 addNote POST /api/learning-cards/1/notes T",
+    "code": 201,
+    "t": 0.006969,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "69",
+    "label": "69 C6 addNote-invalid POST /api/learning-cards/1/notes T 400",
+    "code": 400,
+    "t": 0.002086,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "70",
+    "label": "70 C6 addNote-404 POST /api/learning-cards/999999999/notes T 404",
+    "code": 404,
+    "t": 0.002422,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "71",
+    "label": "71 C6 getLearningCard-full GET /api/learning-cards/1",
+    "code": 200,
+    "t": 0.005553,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "72",
+    "label": "72 C6 deleteNote DELETE /api/learning-cards/1/notes/1 T 204",
+    "code": 204,
+    "t": 0.007118,
+    "ct": "",
+    "timed": true
+  },
+  {
+    "k": "73",
+    "label": "73 C6 deleteNote-404 DELETE /api/learning-cards/1/notes/1 T 404",
+    "code": 404,
+    "t": 0.002835,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "74",
+    "label": "74 C6 deleteMilestone DELETE /api/learning-cards/1/milestones/1 T 204",
+    "code": 204,
+    "t": 0.002923,
+    "ct": "",
+    "timed": true
+  },
+  {
+    "k": "75",
+    "label": "75 C6 deleteMilestone-404 DELETE /api/learning-cards/1/milestones/1 T 404",
+    "code": 404,
+    "t": 0.002010,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "76",
+    "label": "76 C6 deleteLearningCard DELETE /api/learning-cards/1 T 204",
+    "code": 204,
+    "t": 0.002408,
+    "ct": "",
+    "timed": true
+  },
+  {
+    "k": "77",
+    "label": "77 C6 deleteLearningCard-404 DELETE /api/learning-cards/1 T 404",
+    "code": 404,
+    "t": 0.001384,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "78",
+    "label": "78 C7 setup-createTask POST /api/tasks",
+    "code": 201,
+    "t": 0.005211,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "79",
+    "label": "79 C7 createPlan POST /api/plans T",
+    "code": 201,
+    "t": 0.032914,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "80",
+    "label": "80 C7 createPlan-noItems POST /api/plans T 400",
+    "code": 400,
+    "t": 0.002539,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "81",
+    "label": "81 C7 createPlan-endBeforeStart POST /api/plans T 400",
+    "code": 400,
+    "t": 0.003080,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "82",
+    "label": "82 C7 createPlan-endEqualsStart POST /api/plans T 400",
+    "code": 400,
+    "t": 0.002533,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "83",
+    "label": "83 C7 listPlans GET /api/plans T",
+    "code": 200,
+    "t": 0.007809,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "84",
+    "label": "84 C7 listPlans-active GET /api/plans?group=active T",
+    "code": 200,
+    "t": 0.004046,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "85",
+    "label": "85 C7 listPlans-completed GET /api/plans?group=completed T",
+    "code": 200,
+    "t": 0.002694,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "86",
+    "label": "86 C7 listPlans-all GET /api/plans?group=all T",
+    "code": 200,
+    "t": 0.002270,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "87",
+    "label": "87 C7 getPlan GET /api/plans/1",
+    "code": 200,
+    "t": 0.002767,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "88",
+    "label": "88 C7 getPlan-404 GET /api/plans/999999999 404",
+    "code": 404,
+    "t": 0.001623,
+    "ct": "application/problem+json",
+    "timed": false
+  },
+  {
+    "k": "89",
+    "label": "89 C7 updatePlan PUT /api/plans/1 T",
+    "code": 200,
+    "t": 0.009440,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "90",
+    "label": "90 C7 updatePlan-invalid PUT /api/plans/1 T 400",
+    "code": 400,
+    "t": 0.002916,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "91",
+    "label": "91 C7 updatePlan-404 PUT /api/plans/999999999 T 404",
+    "code": 404,
+    "t": 0.002911,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "92",
+    "label": "92 C7 setPlanItemDone PUT /api/plans/1/items/1 T",
+    "code": 200,
+    "t": 0.007924,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "93",
+    "label": "93 C7 setPlanItemDone-invalid PUT /api/plans/1/items/1 T 400",
+    "code": 400,
+    "t": 0.002019,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "94",
+    "label": "94 C7 setPlanItemDone-404 PUT /api/plans/1/items/999999999 T 404",
+    "code": 404,
+    "t": 0.002689,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "95",
+    "label": "95 C7 deletePlan DELETE /api/plans/1 T 204",
+    "code": 204,
+    "t": 0.002937,
+    "ct": "",
+    "timed": true
+  },
+  {
+    "k": "96",
+    "label": "96 C7 deletePlan-404 DELETE /api/plans/1 T 404",
+    "code": 404,
+    "t": 0.001535,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "97",
+    "label": "97 C7 cleanup-deleteTask DELETE /api/tasks/3 204",
+    "code": 204,
+    "t": 0.001743,
+    "ct": "",
+    "timed": false
+  },
+  {
+    "k": "98",
+    "label": "98 C8 cleanup-deleteTask DELETE /api/tasks/2 204",
+    "code": 204,
+    "t": 0.002371,
+    "ct": "",
+    "timed": false
+  },
+  {
+    "k": "99",
+    "label": "99 C8 getSettings GET /api/settings",
+    "code": 200,
+    "t": 0.007795,
+    "ct": "application/json",
+    "timed": false
+  },
+  {
+    "k": "100",
+    "label": "100 C8 updateSettings PUT /api/settings T",
+    "code": 200,
+    "t": 0.005225,
+    "ct": "application/json",
+    "timed": true
+  },
+  {
+    "k": "101",
+    "label": "101 C8 updateSettings-invalid PUT /api/settings T 400",
+    "code": 400,
+    "t": 0.002242,
+    "ct": "application/problem+json",
+    "timed": true
+  },
+  {
+    "k": "102",
+    "label": "102 C8 updateSettings-restore PUT /api/settings",
+    "code": 200,
+    "t": 0.002597,
+    "ct": "application/json",
+    "timed": false
+  }
+]

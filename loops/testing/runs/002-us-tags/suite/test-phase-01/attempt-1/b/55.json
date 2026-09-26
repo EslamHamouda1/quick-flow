@@ -1,0 +1,1 @@
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"},{"field":"title","message":"size must be between 1 and 200"}]}

@@ -1,0 +1,102 @@
+01 C1 api-docs GET /v3/api-docs	200	0.006089	application/json
+02 C2 getAppInfo GET /api/app-info	200	0.023531	application/json
+03 C3 createTask POST /api/tasks T	201	0.091887	application/json
+04 C3 createTask-invalid POST /api/tasks T 400	400	0.017277	application/problem+json
+05 C3 listTasks GET /api/tasks T	200	0.057519	application/json
+06 C3 listTasks-filtered GET /api/tasks?q..direction T	200	0.013610	application/json
+07 C3 listOverdueTasks GET /api/tasks/overdue T	200	0.011697	application/json
+08 C3 getTask GET /api/tasks/1	200	0.007671	application/json
+09 C3 getTask-404 GET /api/tasks/999999999 404	404	0.003143	application/problem+json
+10 C3 updateTask PUT /api/tasks/1 T	200	0.015159	application/json
+11 C3 updateTask-invalid PUT /api/tasks/1 T 400	400	0.003529	application/problem+json
+12 C3 updateTask-404 PUT /api/tasks/999999999 T 404	404	0.002964	application/problem+json
+13 C3 completeTask POST /api/tasks/1/complete T	200	0.003340	application/json
+14 C3 completeTask-404 POST /api/tasks/999999999/complete T 404	404	0.001758	application/problem+json
+15 C3 archiveTask POST /api/tasks/1/archive T	200	0.002606	application/json
+16 C3 archiveTask-404 POST /api/tasks/999999999/archive T 404	404	0.001537	application/problem+json
+17 C3 restoreTask POST /api/tasks/1/restore T	200	0.002700	application/json
+18 C3 restoreTask-404 POST /api/tasks/999999999/restore T 404	404	0.001522	application/problem+json
+19 C3 deleteTask DELETE /api/tasks/1 T 204	204	0.006692	
+20 C3 deleteTask-404 DELETE /api/tasks/1 T 404	404	0.001916	application/problem+json
+21 C4 setup-createTask POST /api/tasks	201	0.005769	application/json
+22 C4 addTaskTags POST /api/tasks/2/tags T	200	0.013051	application/json
+23 C4 addTaskTags-empty POST /api/tasks/2/tags T 400	400	0.002826	application/problem+json
+24 C4 addTaskTags-404 POST /api/tasks/999999999/tags T 404	404	0.002869	application/problem+json
+25 C4 listTasks-tag GET /api/tasks?tag=work T	200	0.014227	application/json
+26 C4 listTasks-tag-unknown GET /api/tasks?tag=nosuchtag T	200	0.004129	application/json
+27 C4 removeTaskTag DELETE /api/tasks/2/tags?tag=work T	200	0.005388	application/json
+28 C4 removeTaskTag-noTag DELETE /api/tasks/2/tags T 400	400	0.002412	application/problem+json
+29 C4 removeTaskTag-404 DELETE /api/tasks/999999999/tags?tag=work T 404	404	0.002359	application/problem+json
+30 C8 getDashboard GET /api/dashboard	200	0.040604	application/json
+31 C5 createHabit POST /api/habits T	201	0.012086	application/json
+32 C5 createHabit-invalid POST /api/habits T 400	400	0.002354	application/problem+json
+33 C5 listHabits GET /api/habits T	200	0.007048	application/json
+34 C5 listHabits-active GET /api/habits?active=true T	200	0.002298	application/json
+35 C5 getHabit GET /api/habits/1	200	0.002672	application/json
+36 C5 getHabit-404 GET /api/habits/999999999 404	404	0.001591	application/problem+json
+37 C5 updateHabit PUT /api/habits/1 T	200	0.005149	application/json
+38 C5 updateHabit-invalid PUT /api/habits/1 T 400	400	0.001631	application/problem+json
+39 C5 updateHabit-404 PUT /api/habits/999999999 T 404	404	0.002012	application/problem+json
+40 C5 deactivateHabit POST /api/habits/1/deactivate T	200	0.003463	application/json
+41 C5 deactivateHabit-404 POST /api/habits/999999999/deactivate T 404	404	0.002116	application/problem+json
+42 C5 activateHabit POST /api/habits/1/activate T	200	0.003083	application/json
+43 C5 activateHabit-404 POST /api/habits/999999999/activate T 404	404	0.001251	application/problem+json
+44 C5 completeHabit POST /api/habits/1/completions T	201	0.007952	application/json
+45 C5 completeHabit-future POST /api/habits/1/completions T 400	400	0.004123	application/problem+json
+46 C5 completeHabit-404 POST /api/habits/999999999/completions T 404	404	0.002926	application/problem+json
+47 C5 completeHabit-409 POST /api/habits/1/completions T 409	409	0.004064	application/problem+json
+48 C5 listHabitCompletions GET /api/habits/1/completions	200	0.006184	application/json
+49 C5 listHabitCompletions-404 GET /api/habits/999999999/completions 404	404	0.001621	application/problem+json
+50 C5 undoHabitCompletion DELETE /api/habits/1/completions/2026-09-26 T 204	204	0.007245	
+51 C5 undoHabitCompletion-404 DELETE /api/habits/999999999/completions/2026-09-26 T 404	404	0.002305	application/problem+json
+52 C5 deleteHabit DELETE /api/habits/1 T 204	204	0.003843	
+53 C5 deleteHabit-404 DELETE /api/habits/1 T 404	404	0.001535	application/problem+json
+54 C6 createLearningCard POST /api/learning-cards T	201	0.011030	application/json
+55 C6 createLearningCard-invalid POST /api/learning-cards T 400	400	0.002135	application/problem+json
+56 C6 listLearningCards GET /api/learning-cards T	200	0.006002	application/json
+57 C6 getLearningCard GET /api/learning-cards/1	200	0.002619	application/json
+58 C6 getLearningCard-404 GET /api/learning-cards/999999999 404	404	0.001552	application/problem+json
+59 C6 updateLearningCard PUT /api/learning-cards/1 T	200	0.007210	application/json
+60 C6 updateLearningCard-invalid PUT /api/learning-cards/1 T 400	400	0.001854	application/problem+json
+61 C6 updateLearningCard-404 PUT /api/learning-cards/999999999 T 404	404	0.002012	application/problem+json
+62 C6 addMilestone POST /api/learning-cards/1/milestones T	201	0.007840	application/json
+63 C6 addMilestone-invalid POST /api/learning-cards/1/milestones T 400	400	0.001842	application/problem+json
+64 C6 addMilestone-404 POST /api/learning-cards/999999999/milestones T 404	404	0.001947	application/problem+json
+65 C6 updateMilestone PUT /api/learning-cards/1/milestones/1 T	200	0.012518	application/json
+66 C6 updateMilestone-invalid PUT /api/learning-cards/1/milestones/1 T 400	400	0.002310	application/problem+json
+67 C6 updateMilestone-404 PUT /api/learning-cards/1/milestones/999999999 T 404	404	0.004558	application/problem+json
+68 C6 addNote POST /api/learning-cards/1/notes T	201	0.006969	application/json
+69 C6 addNote-invalid POST /api/learning-cards/1/notes T 400	400	0.002086	application/problem+json
+70 C6 addNote-404 POST /api/learning-cards/999999999/notes T 404	404	0.002422	application/problem+json
+71 C6 getLearningCard-full GET /api/learning-cards/1	200	0.005553	application/json
+72 C6 deleteNote DELETE /api/learning-cards/1/notes/1 T 204	204	0.007118	
+73 C6 deleteNote-404 DELETE /api/learning-cards/1/notes/1 T 404	404	0.002835	application/problem+json
+74 C6 deleteMilestone DELETE /api/learning-cards/1/milestones/1 T 204	204	0.002923	
+75 C6 deleteMilestone-404 DELETE /api/learning-cards/1/milestones/1 T 404	404	0.002010	application/problem+json
+76 C6 deleteLearningCard DELETE /api/learning-cards/1 T 204	204	0.002408	
+77 C6 deleteLearningCard-404 DELETE /api/learning-cards/1 T 404	404	0.001384	application/problem+json
+78 C7 setup-createTask POST /api/tasks	201	0.005211	application/json
+79 C7 createPlan POST /api/plans T	201	0.032914	application/json
+80 C7 createPlan-noItems POST /api/plans T 400	400	0.002539	application/problem+json
+81 C7 createPlan-endBeforeStart POST /api/plans T 400	400	0.003080	application/problem+json
+82 C7 createPlan-endEqualsStart POST /api/plans T 400	400	0.002533	application/problem+json
+83 C7 listPlans GET /api/plans T	200	0.007809	application/json
+84 C7 listPlans-active GET /api/plans?group=active T	200	0.004046	application/json
+85 C7 listPlans-completed GET /api/plans?group=completed T	200	0.002694	application/json
+86 C7 listPlans-all GET /api/plans?group=all T	200	0.002270	application/json
+87 C7 getPlan GET /api/plans/1	200	0.002767	application/json
+88 C7 getPlan-404 GET /api/plans/999999999 404	404	0.001623	application/problem+json
+89 C7 updatePlan PUT /api/plans/1 T	200	0.009440	application/json
+90 C7 updatePlan-invalid PUT /api/plans/1 T 400	400	0.002916	application/problem+json
+91 C7 updatePlan-404 PUT /api/plans/999999999 T 404	404	0.002911	application/problem+json
+92 C7 setPlanItemDone PUT /api/plans/1/items/1 T	200	0.007924	application/json
+93 C7 setPlanItemDone-invalid PUT /api/plans/1/items/1 T 400	400	0.002019	application/problem+json
+94 C7 setPlanItemDone-404 PUT /api/plans/1/items/999999999 T 404	404	0.002689	application/problem+json
+95 C7 deletePlan DELETE /api/plans/1 T 204	204	0.002937	
+96 C7 deletePlan-404 DELETE /api/plans/1 T 404	404	0.001535	application/problem+json
+97 C7 cleanup-deleteTask DELETE /api/tasks/3 204	204	0.001743	
+98 C8 cleanup-deleteTask DELETE /api/tasks/2 204	204	0.002371	
+99 C8 getSettings GET /api/settings	200	0.007795	application/json
+100 C8 updateSettings PUT /api/settings T	200	0.005225	application/json
+101 C8 updateSettings-invalid PUT /api/settings T 400	400	0.002242	application/problem+json
+102 C8 updateSettings-restore PUT /api/settings	200	0.002597	application/json

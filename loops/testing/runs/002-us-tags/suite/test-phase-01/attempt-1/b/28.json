@@ -1,0 +1,1 @@
+{"detail":"Invalid parameter","instance":"/api/tasks/2/tags","status":400,"title":"Bad Request","errors":[{"field":"tag","message":"must not be blank"}]}
