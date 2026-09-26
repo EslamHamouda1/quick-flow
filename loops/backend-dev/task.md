@@ -8,6 +8,5 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **mode:** dev
 - **stops_at:** phase-00
 - **review_gates:** off (--auto-approve)
-- **run_id:** orch-20260926T224717-382863
-- **runner_nonce:** bfa42dea12428bc61a88de91
-- **current_step:** plan_apply phase-00
+- **run_id:** orch-20260926T225858-388446
+- **runner_nonce:** 18c93bbf39e1dafcc9a4b068
