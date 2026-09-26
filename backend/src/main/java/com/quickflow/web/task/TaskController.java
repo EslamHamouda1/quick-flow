@@ -47,7 +47,7 @@ public class TaskController {
 	}
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	@Operation(summary = "List tasks (search, filters, sort; archived excluded by default, BR-4)")
+	@Operation(summary = "List tasks (search, filters incl. tag, sort; archived excluded by default, BR-4)")
 	public List<TaskResponse> listTasks(
 			@Parameter(description = "Case-insensitive substring of the title") @RequestParam(required = false) String q,
 			@RequestParam(required = false) TaskStatus status,
@@ -57,11 +57,14 @@ public class TaskController {
 			@Parameter(description = "Inclusive") @RequestParam(required = false)
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dueTo,
 			@RequestParam(defaultValue = "false") boolean archived,
+			@Parameter(description = "Only tasks that have this tag (whole tag, ignoring case, spaces around it ignored); "
+					+ "blank = no tag filter (FR-004); a value no task has gives an empty list")
+			@RequestParam(required = false) String tag,
 			@Parameter(schema = @Schema(allowableValues = {"createdAt", "dueDate"}, defaultValue = "createdAt"))
 			@RequestParam(defaultValue = "createdAt") String sort,
 			@Parameter(schema = @Schema(allowableValues = {"asc", "desc"}, defaultValue = "desc"))
 			@RequestParam(defaultValue = "desc") String direction) {
-		TaskQuery query = new TaskQuery(q, status, priority, dueFrom, dueTo, archived, TaskSort.fromParam(sort),
+		TaskQuery query = new TaskQuery(q, status, priority, dueFrom, dueTo, archived, tag, TaskSort.fromParam(sort),
 				direction(direction));
 		return responses(taskService.list(query));
 	}
@@ -113,6 +116,22 @@ public class TaskController {
 	@PostMapping(path = "/{id}/restore", produces = MediaType.APPLICATION_JSON_VALUE)
 	public TaskResponse restoreTask(@PathVariable long id) {
 		return response(taskService.restore(id));
+	}
+
+	@PostMapping(path = "/{id}/tags", consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = "Add tags (FR-001). Trimmed, case-insensitive (BR-T2); a tag already on the task is kept once "
+			+ "(Q2). All or nothing: an invalid tag or more than 10 tags in total rejects the whole request and "
+			+ "leaves the tags unchanged (BR-T1, BR-T3).")
+	public TaskResponse addTaskTags(@PathVariable long id, @Valid @RequestBody TaskTagsRequest request) {
+		return response(taskService.addTags(id, request.tags()));
+	}
+
+	@DeleteMapping(path = "/{id}/tags", produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = "Remove one tag, matched ignoring case (FR-005). A tag the task doesn't have is a no-op (Q3).")
+	public TaskResponse removeTaskTag(@PathVariable long id,
+			@Parameter(description = "The tag to remove", schema = @Schema(minLength = 1)) @RequestParam String tag) {
+		return response(taskService.removeTag(id, tag));
 	}
 
 	private static Sort.Direction direction(String value) {

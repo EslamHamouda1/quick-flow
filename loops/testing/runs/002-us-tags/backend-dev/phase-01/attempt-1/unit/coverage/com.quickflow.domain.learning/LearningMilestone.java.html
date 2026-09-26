@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LearningMilestone.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.learning</a> &gt; <span class="el_source">LearningMilestone.java</span></div><h1>LearningMilestone.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.learning;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.quickflow.domain.common.FieldError;
+import com.quickflow.domain.common.ValidationException;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+/** A milestone always belongs to exactly one card (BR-9). */
+@Entity
+@Table(name = &quot;learning_milestone&quot;)
+public class LearningMilestone {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = &quot;learning_card_id&quot;, nullable = false)
+	private LearningCard card;
+
+	@Column(nullable = false, length = LearningCard.TITLE_MAX)
+	private String title;
+
+	@Column(nullable = false)
+	private boolean done;
+
+	/** Optional; a past date is allowed (A-3). */
+	private LocalDate targetDate;
+
+<span class="fc" id="L41">	protected LearningMilestone() {</span>
+<span class="fc" id="L42">	}</span>
+
+	/** A new milestone, not done (FR-06.1). */
+<span class="fc" id="L45">	public LearningMilestone(LearningCard card, String title, LocalDate targetDate) {</span>
+<span class="fc" id="L46">		this.card = card;</span>
+<span class="fc" id="L47">		apply(title, targetDate, false);</span>
+<span class="fc" id="L48">	}</span>
+
+	public void update(String title, LocalDate targetDate, boolean done) {
+<span class="fc" id="L51">		apply(title, targetDate, done);</span>
+<span class="fc" id="L52">	}</span>
+
+	private void apply(String title, LocalDate targetDate, boolean done) {
+<span class="fc" id="L55">		List&lt;FieldError&gt; errors = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L56">		String cleanTitle = LearningCard.checkTitle(title, errors);</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">		if (!errors.isEmpty()) {</span>
+<span class="fc" id="L58">			throw new ValidationException(errors);</span>
+		}
+<span class="fc" id="L60">		this.title = cleanTitle;</span>
+<span class="fc" id="L61">		this.targetDate = targetDate;</span>
+<span class="fc" id="L62">		this.done = done;</span>
+<span class="fc" id="L63">	}</span>
+
+	public Long getId() {
+<span class="fc" id="L66">		return id;</span>
+	}
+
+	public LearningCard getCard() {
+<span class="fc" id="L70">		return card;</span>
+	}
+
+	public Long getCardId() {
+<span class="fc" id="L74">		return card.getId();</span>
+	}
+
+	public String getTitle() {
+<span class="fc" id="L78">		return title;</span>
+	}
+
+	public boolean isDone() {
+<span class="fc" id="L82">		return done;</span>
+	}
+
+	public LocalDate getTargetDate() {
+<span class="fc" id="L86">		return targetDate;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

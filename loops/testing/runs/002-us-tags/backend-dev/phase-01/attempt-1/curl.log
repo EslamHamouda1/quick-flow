@@ -1,0 +1,82 @@
+# phase-01 attempt 1 curl log (backend-dev, 002-us-tags), 2026-09-26 23:08-23:09 +03:00
+# phase-01-verify.sh needed a permission approval in this session, so its calls were run as direct
+# curl commands (curl --next) against http://localhost:8080 with the same requests; responses below
+# are copied verbatim from the curl output ([status time]). Fresh test DB: the first task got id 1.
+
+## setup: POST /api/tasks {"title": ...} x10 -> ids 1..10, all 201, all "tags":[]
+{"id":1,"title":"C1 task",...,"archived":false,"overdue":false,"tags":[]} [201 0.039456s]
+{"id":2,"title":"C2 w1",...,"tags":[]} [201]   {"id":3,"title":"C2 w2",...,"tags":[]} [201]
+{"id":4,"title":"C2 n1",...,"tags":[]} [201]   {"id":5,"title":"C2 n2",...,"tags":[]} [201]
+{"id":6,"title":"C2 n3",...,"tags":[]} [201]   {"id":7,"title":"C3 task",...,"tags":[]} [201]
+{"id":8,"title":"C4 task",...,"tags":[]} [201] {"id":9,"title":"C5 task",...,"tags":[]} [201]
+{"id":10,"title":"C6 task",...,"tags":[]} [201]
+
+## C1
+=== POST /api/tasks/1/tags {"tags":["work","urgent"]}
+{"id":1,"title":"C1 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T23:08:40.862547+03:00","updatedAt":"2026-09-26T23:08:47.012145792+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["urgent","work"]} [200 0.027365s]
+=== GET /api/tasks/1
+{"id":1,"title":"C1 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T23:08:40.862547+03:00","updatedAt":"2026-09-26T23:08:47.012146+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["urgent","work"]} [200]
+=== GET /api/tasks (after the C2 setup below; element for id 1, others listed in C2)
+[...,{"id":1,"title":"C1 task",...,"tags":["urgent","work"]}] [200]
+PASS C1
+
+## C2
+=== POST /api/tasks/2/tags {"tags":["work"]}          -> 200 "tags":["work"]
+=== POST /api/tasks/3/tags {"tags":["home","work"]}   -> 200 "tags":["home","work"]
+=== POST /api/tasks/4/tags {"tags":["home"]}          -> 200 "tags":["home"]
+=== (task 5: no tags)
+=== POST /api/tasks/6/tags {"tags":["workshop"]}      -> 200 "tags":["workshop"]
+=== GET /api/tasks (unfiltered): ids 10,9,8,7,6,5,4,3,2,1; tags 10..7 [], 6 ["workshop"], 5 [], 4 ["home"], 3 ["home","work"], 2 ["work"], 1 ["urgent","work"] [200]
+=== GET /api/tasks?tag=work
+[{"id":3,"title":"C2 w2","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T23:08:40.903259+03:00","updatedAt":"2026-09-26T23:08:47.032036+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["home","work"]},{"id":2,"title":"C2 w1","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T23:08:40.899955+03:00","updatedAt":"2026-09-26T23:08:47.028711+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["work"]},{"id":1,"title":"C1 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T23:08:40.862547+03:00","updatedAt":"2026-09-26T23:08:47.012146+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["urgent","work"]}] [200 0.014608s]
+=== GET /api/tasks?tag=nosuchtag
+[] [200]
+PASS C2 (ids {1,2,3} = the tasks tagged work; 4 home, 5 none, 6 workshop not listed)
+
+## C3
+=== POST /api/tasks/7/tags {"tags":["work","home"]}
+{"id":7,...,"updatedAt":"2026-09-26T23:08:54.687405851+03:00",...,"tags":["home","work"]} [200]
+=== DELETE /api/tasks/7/tags?tag=work
+{"id":7,"title":"C3 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T23:08:40.91234+03:00","updatedAt":"2026-09-26T23:08:54.692071558+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["home"]} [200 0.004180s]
+=== GET /api/tasks/7
+{"id":7,"title":"C3 task",...,"updatedAt":"2026-09-26T23:08:54.692072+03:00",...,"tags":["home"]} [200]
+=== GET /api/tasks?tag=work
+[{"id":3,...,"tags":["home","work"]},{"id":2,...,"tags":["work"]},{"id":1,...,"tags":["urgent","work"]}] [200]
+PASS C3 (7 not listed)
+
+## C4 (31-char tag = "a" x31, 30-char tag = "b" x30; lengths checked with wc -c: 31, 30)
+=== POST /api/tasks/8/tags {"tags":["alpha"]}
+{"id":8,...,"updatedAt":"2026-09-26T23:08:54.701998002+03:00",...,"tags":["alpha"]} [200]
+=== POST /api/tasks/8/tags {"tags":[""]}
+{"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"tag must not be blank"}]} [400]
+=== POST /api/tasks/8/tags {"tags":["   "]}
+{"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"tag must not be blank"}]} [400]
+=== POST /api/tasks/8/tags {"tags":["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]}
+{"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must be at most 30 characters"}]} [400]
+=== POST /api/tasks/8/tags {"tags":["beta","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]}
+{"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must be at most 30 characters"}]} [400]
+=== GET /api/tasks/8
+{"id":8,"title":"C4 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T23:08:40.914259+03:00","updatedAt":"2026-09-26T23:08:54.701998+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["alpha"]} [200]
+=== POST /api/tasks/8/tags {"tags":["bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"]}
+{"id":8,"title":"C4 task",...,"updatedAt":"2026-09-26T23:08:54.717927419+03:00",...,"tags":["alpha","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"]} [200]
+PASS C4
+
+## C5
+=== POST /api/tasks/9/tags {"tags":["work"]}
+{"id":9,...,"updatedAt":"2026-09-26T23:09:05.440676753+03:00",...,"tags":["work"]} [200]
+=== POST /api/tasks/9/tags {"tags":["Work"]}
+{"id":9,"title":"C5 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T23:08:40.91598+03:00","updatedAt":"2026-09-26T23:09:05.440677+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["work"]} [200]
+=== GET /api/tasks/9
+{"id":9,...,"updatedAt":"2026-09-26T23:09:05.440677+03:00",...,"tags":["work"]} [200]
+=== GET /api/tasks?tag=WORK
+[{"id":9,...,"tags":["work"]},{"id":3,...,"tags":["home","work"]},{"id":2,...,"tags":["work"]},{"id":1,...,"tags":["urgent","work"]}] [200]
+PASS C5 (updatedAt unchanged by the "Work" no-op)
+
+## C6
+=== POST /api/tasks/10/tags {"tags":["t01","t02","t03","t04","t05","t06","t07","t08","t09","t10"]}
+{"id":10,...,"updatedAt":"2026-09-26T23:09:05.454303678+03:00",...,"tags":["t01","t02","t03","t04","t05","t06","t07","t08","t09","t10"]} [200]
+=== POST /api/tasks/10/tags {"tags":["t11"]}
+{"detail":"Validation failed","instance":"/api/tasks/10/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must have at most 10 tags"}]} [400]
+=== GET /api/tasks/10
+{"id":10,"title":"C6 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T23:08:40.917745+03:00","updatedAt":"2026-09-26T23:09:05.454304+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["t01","t02","t03","t04","t05","t06","t07","t08","t09","t10"]} [200]
+PASS C6

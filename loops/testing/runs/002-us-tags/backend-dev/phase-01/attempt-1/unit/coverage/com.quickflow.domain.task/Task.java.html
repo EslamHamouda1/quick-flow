@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.task</a> &gt; <span class="el_source">Task.java</span></div><h1>Task.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.task;
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.TreeSet;
+
+import com.quickflow.domain.common.FieldError;
+import com.quickflow.domain.common.ValidationException;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+
+@Entity
+@Table(name = &quot;task&quot;, indexes = {
+		@Index(name = &quot;idx_task_archived_due_date&quot;, columnList = &quot;archived, due_date&quot;),
+		@Index(name = &quot;idx_task_status&quot;, columnList = &quot;status&quot;) })
+public class Task {
+
+	static final int TITLE_MAX = 200;
+
+	static final int DESCRIPTION_MAX = 2000;
+
+	static final int TAG_MAX = 30;
+
+	static final int TAGS_MAX = 10;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(nullable = false, length = TITLE_MAX)
+	private String title;
+
+	@Column(length = DESCRIPTION_MAX)
+	private String description;
+
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private TaskStatus status;
+
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private TaskPriority priority;
+
+	private LocalDate dueDate;
+
+	@Column(nullable = false)
+	private Instant createdAt;
+
+	@Column(nullable = false)
+	private Instant updatedAt;
+
+	private Instant completedAt;
+
+	@Column(nullable = false)
+	private boolean archived;
+
+	/** Trimmed, lower case, unique per task (BR-T1, BR-T2, research R-1, R-2); deleted with the task (BR-T4). */
+<span class="fc" id="L74">	@ElementCollection(fetch = FetchType.EAGER)</span>
+	@CollectionTable(name = &quot;task_tag&quot;, joinColumns = @JoinColumn(name = &quot;task_id&quot;),
+			uniqueConstraints = @UniqueConstraint(columnNames = { &quot;task_id&quot;, &quot;tag&quot; }),
+			indexes = @Index(name = &quot;idx_task_tag_tag&quot;, columnList = &quot;tag&quot;))
+	@Column(name = &quot;tag&quot;, nullable = false, length = TAG_MAX)
+	private Set&lt;String&gt; tags = new TreeSet&lt;&gt;();
+
+<span class="fc" id="L81">	protected Task() {</span>
+<span class="fc" id="L82">	}</span>
+
+	/** A new task; missing status and priority default to TODO and MEDIUM (FR-01.3). */
+	public Task(String title, String description, TaskStatus status, TaskPriority priority, LocalDate dueDate,
+<span class="fc" id="L86">			Instant now) {</span>
+<span class="fc" id="L87">		List&lt;FieldError&gt; errors = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L88">		String cleanTitle = checkTitle(title, errors);</span>
+<span class="fc" id="L89">		String cleanDescription = checkDescription(description, errors);</span>
+<span class="fc" id="L90">		throwIfAny(errors);</span>
+<span class="fc" id="L91">		this.title = cleanTitle;</span>
+<span class="fc" id="L92">		this.description = cleanDescription;</span>
+<span class="fc" id="L93">		this.status = TaskStatus.TODO;</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">		this.priority = priority != null ? priority : TaskPriority.MEDIUM;</span>
+<span class="fc" id="L95">		this.dueDate = dueDate;</span>
+<span class="fc" id="L96">		this.createdAt = now;</span>
+<span class="fc" id="L97">		this.archived = false;</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">		changeStatus(status != null ? status : TaskStatus.TODO, now);</span>
+<span class="fc" id="L99">	}</span>
+
+	/** Replaces the editable fields; never changes {@code archived} (A-3). */
+	public void update(String title, String description, TaskStatus status, TaskPriority priority, LocalDate dueDate,
+			Instant now) {
+<span class="fc" id="L104">		List&lt;FieldError&gt; errors = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L105">		String cleanTitle = checkTitle(title, errors);</span>
+<span class="fc" id="L106">		String cleanDescription = checkDescription(description, errors);</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">		if (status == null) {</span>
+<span class="fc" id="L108">			errors.add(new FieldError(&quot;status&quot;, &quot;must not be null&quot;));</span>
+		}
+<span class="fc bfc" id="L110" title="All 2 branches covered.">		if (priority == null) {</span>
+<span class="fc" id="L111">			errors.add(new FieldError(&quot;priority&quot;, &quot;must not be null&quot;));</span>
+		}
+<span class="fc" id="L113">		throwIfAny(errors);</span>
+<span class="fc" id="L114">		this.title = cleanTitle;</span>
+<span class="fc" id="L115">		this.description = cleanDescription;</span>
+<span class="fc" id="L116">		this.priority = priority;</span>
+<span class="fc" id="L117">		this.dueDate = dueDate;</span>
+<span class="fc" id="L118">		changeStatus(status, now);</span>
+<span class="fc" id="L119">	}</span>
+
+	/** Becoming DONE sets completedAt, leaving DONE clears it (BR-5, FR-01.4). */
+	public void changeStatus(TaskStatus status, Instant now) {
+<span class="fc bfc" id="L123" title="All 2 branches covered.">		if (status == null) {</span>
+<span class="fc" id="L124">			throw new ValidationException(&quot;status&quot;, &quot;must not be null&quot;);</span>
+		}
+<span class="fc bfc" id="L126" title="All 2 branches covered.">		if (status == TaskStatus.DONE) {</span>
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">			if (this.status != TaskStatus.DONE) {</span>
+<span class="fc" id="L128">				completedAt = now;</span>
+			}
+		}
+		else {
+<span class="fc" id="L132">			completedAt = null;</span>
+		}
+<span class="fc" id="L134">		this.status = status;</span>
+<span class="fc" id="L135">		this.updatedAt = now;</span>
+<span class="fc" id="L136">	}</span>
+
+	public void complete(Instant now) {
+<span class="fc" id="L139">		changeStatus(TaskStatus.DONE, now);</span>
+<span class="fc" id="L140">	}</span>
+
+	public void archive(Instant now) {
+<span class="fc" id="L143">		archived = true;</span>
+<span class="fc" id="L144">		updatedAt = now;</span>
+<span class="fc" id="L145">	}</span>
+
+	public void restore(Instant now) {
+<span class="fc" id="L148">		archived = false;</span>
+<span class="fc" id="L149">		updatedAt = now;</span>
+<span class="fc" id="L150">	}</span>
+
+	/**
+	 * Adds tags, all or nothing (FR-001, BR-T1, BR-T3); a tag already on the task is kept once (BR-T2, Q2).
+	 * {@code updatedAt} changes only when the tag set does (R-8).
+	 */
+	public void addTags(List&lt;String&gt; newTags, Instant now) {
+<span class="fc" id="L157">		List&lt;FieldError&gt; errors = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L158">		Set&lt;String&gt; merged = new TreeSet&lt;&gt;(tags);</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">		for (String tag : newTags) {</span>
+<span class="fc" id="L160">			String clean = normalize(tag);</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">			if (clean.isEmpty()) {</span>
+<span class="fc" id="L162">				errors.add(new FieldError(&quot;tags&quot;, &quot;tag must not be blank&quot;));</span>
+			}
+<span class="fc bfc" id="L164" title="All 2 branches covered.">			else if (clean.length() &gt; TAG_MAX) {</span>
+<span class="fc" id="L165">				errors.add(new FieldError(&quot;tags&quot;, &quot;must be at most &quot; + TAG_MAX + &quot; characters&quot;));</span>
+			}
+			else {
+<span class="fc" id="L168">				merged.add(clean);</span>
+			}
+<span class="fc" id="L170">		}</span>
+<span class="fc bfc" id="L171" title="All 4 branches covered.">		if (errors.isEmpty() &amp;&amp; merged.size() &gt; TAGS_MAX) {</span>
+<span class="fc" id="L172">			errors.add(new FieldError(&quot;tags&quot;, &quot;must have at most &quot; + TAGS_MAX + &quot; tags&quot;));</span>
+		}
+<span class="fc" id="L174">		throwIfAny(errors);</span>
+<span class="fc bfc" id="L175" title="All 2 branches covered.">		if (merged.size() != tags.size()) {</span>
+<span class="fc" id="L176">			tags.addAll(merged);</span>
+<span class="fc" id="L177">			updatedAt = now;</span>
+		}
+<span class="fc" id="L179">	}</span>
+
+	/** Removes one tag, ignoring case (FR-005, BR-T2); a tag the task doesn't have is a no-op (Q3). */
+	public void removeTag(String tag, Instant now) {
+<span class="fc" id="L183">		String clean = normalize(tag);</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">		if (clean.isEmpty()) {</span>
+<span class="fc" id="L185">			throw new ValidationException(&quot;tag&quot;, &quot;must not be blank&quot;);</span>
+		}
+<span class="fc bfc" id="L187" title="All 2 branches covered.">		if (tags.remove(clean)) {</span>
+<span class="fc" id="L188">			updatedAt = now;</span>
+		}
+<span class="fc" id="L190">	}</span>
+
+	/** Due before today, not DONE and not archived (FR-01.7). */
+	public boolean isOverdue(LocalDate today) {
+<span class="fc bfc" id="L194" title="All 8 branches covered.">		return dueDate != null &amp;&amp; dueDate.isBefore(today) &amp;&amp; status != TaskStatus.DONE &amp;&amp; !archived;</span>
+	}
+
+	private static String checkTitle(String title, List&lt;FieldError&gt; errors) {
+<span class="pc bpc" id="L198" title="1 of 2 branches missed.">		String trimmed = title == null ? &quot;&quot; : title.trim();</span>
+<span class="fc bfc" id="L199" title="All 2 branches covered.">		if (trimmed.isEmpty()) {</span>
+<span class="fc" id="L200">			errors.add(new FieldError(&quot;title&quot;, &quot;must not be blank&quot;));</span>
+		}
+<span class="fc bfc" id="L202" title="All 2 branches covered.">		else if (trimmed.length() &gt; TITLE_MAX) {</span>
+<span class="fc" id="L203">			errors.add(new FieldError(&quot;title&quot;, &quot;must be at most &quot; + TITLE_MAX + &quot; characters&quot;));</span>
+		}
+<span class="fc" id="L205">		return trimmed;</span>
+	}
+
+	private static String checkDescription(String description, List&lt;FieldError&gt; errors) {
+<span class="pc bpc" id="L209" title="1 of 4 branches missed.">		if (description == null || description.isEmpty()) {</span>
+<span class="fc" id="L210">			return null;</span>
+		}
+<span class="fc bfc" id="L212" title="All 2 branches covered.">		if (description.length() &gt; DESCRIPTION_MAX) {</span>
+<span class="fc" id="L213">			errors.add(new FieldError(&quot;description&quot;, &quot;must be at most &quot; + DESCRIPTION_MAX + &quot; characters&quot;));</span>
+		}
+<span class="fc" id="L215">		return description;</span>
+	}
+
+	private static String normalize(String tag) {
+<span class="fc bfc" id="L219" title="All 2 branches covered.">		return tag == null ? &quot;&quot; : tag.trim().toLowerCase(Locale.ROOT);</span>
+	}
+
+	private static void throwIfAny(List&lt;FieldError&gt; errors) {
+<span class="fc bfc" id="L223" title="All 2 branches covered.">		if (!errors.isEmpty()) {</span>
+<span class="fc" id="L224">			throw new ValidationException(errors);</span>
+		}
+<span class="fc" id="L226">	}</span>
+
+	public Long getId() {
+<span class="fc" id="L229">		return id;</span>
+	}
+
+	public String getTitle() {
+<span class="fc" id="L233">		return title;</span>
+	}
+
+	public String getDescription() {
+<span class="fc" id="L237">		return description;</span>
+	}
+
+	public TaskStatus getStatus() {
+<span class="fc" id="L241">		return status;</span>
+	}
+
+	public TaskPriority getPriority() {
+<span class="fc" id="L245">		return priority;</span>
+	}
+
+	public LocalDate getDueDate() {
+<span class="fc" id="L249">		return dueDate;</span>
+	}
+
+	public Instant getCreatedAt() {
+<span class="fc" id="L253">		return createdAt;</span>
+	}
+
+	public Instant getUpdatedAt() {
+<span class="fc" id="L257">		return updatedAt;</span>
+	}
+
+	public Instant getCompletedAt() {
+<span class="fc" id="L261">		return completedAt;</span>
+	}
+
+	public boolean isArchived() {
+<span class="fc" id="L265">		return archived;</span>
+	}
+
+	/** Alphabetical, unmodifiable (FR-002). */
+	public List&lt;String&gt; getTags() {
+<span class="fc" id="L270">		return List.copyOf(new TreeSet&lt;&gt;(tags));</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

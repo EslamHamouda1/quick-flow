@@ -16,7 +16,8 @@
 | backend-dev:001-quickflow:phase-08 | 2026-09-26T02:04:49+03:00 | 2026-09-26T11:13:04+03:00 | 9h08m15s | 0h09m52s | 5 | 1 | 168 | 5376789 | 51634 | 4.7602 | d138fe9f-8f9b-43f5-99f4-6bae679d717a ea738d99-f508-4787-b1a7-bfe59a12c0a9 758c4006-7be9-4e8c-b10c-93b224242123 313676a5-0ba6-4353-b617-6e7e0e24cadd c38c4bc4-2589-4745-8bef-a8205d075e55 | 758c4006-7be9-4e8c-b10c-93b224242123 | 837f6e8 | success |
 | backend-dev:001-quickflow:phase-09 | 2026-09-26T11:27:27+03:00 | 2026-09-26T11:46:36+03:00 | 0h19m09s | 0h16m49s | 4 | 1 | 284 | 11117579 | 85013 | 6.6305 | 78ba0196-4658-4068-9865-864fb24c71cd fac73a1e-0ba6-4957-a3ad-d167a9a53cf7 b6d18791-6e09-482f-8887-b405f74ff5e5 827608e9-5bdd-45cd-b23d-b67c0a60dada | b6d18791-6e09-482f-8887-b405f74ff5e5 | 3dc0eed | success |
 | backend-dev:002-us-tags:phase-00-plan | 2026-09-26T22:35:07+03:00 | 2026-09-26T22:49:28+03:00 | 0h14m21s | 0h09m06s | 2 | 1 | 112 | 4417927 | 54774 | 3.2994 | 97e97192-f350-4702-8e44-10f417c6cc8a f69fe676-18a1-4449-890c-7a15d47b44f0 |  | 5517e77 | success |
-| **Total** |  |  |  | 2h26m33s | 42 |  | 2032 | 83349291 | 843982 | 69.2457 |  |  |  |  |
+| backend-dev:002-us-tags:phase-01 | 2026-09-26T22:59:36+03:00 | 2026-09-26T23:11:01+03:00 | 0h11m25s | 0h10m51s | 4 | 1 | 164 | 6087352 | 62105 | 5.7026 | ea4043c7-2fe8-407d-a6dc-c09430e9c15e 90173efa-debc-4995-9bae-1df8951608ff 66a2329a-9f3b-49b3-a7b1-0672c7f438a7 9e049abe-9a5a-4419-8743-a09da21170e6 | 66a2329a-9f3b-49b3-a7b1-0672c7f438a7 |  | success |
+| **Total** |  |  |  | 2h37m24s | 46 |  | 2196 | 89436643 | 906087 | 74.9483 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -176,3 +177,15 @@
 - 2026-09-26T22:47:42+03:00 002-us-tags phase-00: plan_apply: wrote reviewer answers Q1 (lower case), Q2 (add existing = no-op), Q3 (remove absent = no-op) into spec.md (3 [NEEDS CLARIFICATION] markers replaced, FR-002/003/005) and requirements.json; renamed review "## Open questions" to "## Answered questions"
 - 2026-09-26T22:47:42+03:00 002-us-tags phase-00: plan_apply: no reviewer edits to phase-01/phase-02 task lists (tasks.md tasks and task_ids unchanged); updated plan.md (Constitution V PASS), research.md and tasks.md notes to say the answers are confirmed
 - 2026-09-26T22:47:42+03:00 002-us-tags phase-00: plan_apply: ticked checklists/requirements.md "No [NEEDS CLARIFICATION] markers remain"; re-analysis: 0 CRITICAL, 0 HIGH; phase-00 approved -> done
+- 2026-09-26T23:01:30+03:00 002-us-tags phase-01: review: wrote outputs/002-us-tags/phase-01-review.md (10 tasks, 6 ACs, files, rule-named unit tests, 7 risks, no new assumptions, no open questions)
+- 2026-09-26T23:01:30+03:00 002-us-tags phase-01: review: planned -> awaiting_approval
+- 2026-09-26T23:01:06+03:00 gate 002-us-tags phase-01: approved (auto)
+- 2026-09-26T23:02:00+03:00 002-us-tags phase-01: implement: tasks.md Phase 1 matches phase-01.md (T001-T010, no sync change); no reviewer notes or questions; no unchecked checklist items; set phase-01 in_progress
+- 2026-09-26T23:03:30+03:00 002-us-tags phase-01: T001-T004 tests written first by 4 parallel subagents (TaskTest +25, TaskServiceTest +4, TaskRepositoryTest +9 with tag arg added to existing TaskQuery calls, TaskControllerTest +10 with tag arg and "tags" in the exact-fields test); TaskTest blank-tag message aligned to T005 wording "tag must not be blank"
+- 2026-09-26T23:04:00+03:00 002-us-tags phase-01: T005 Task.tags (EAGER element collection task_tag, unique task_id+tag, idx_task_tag_tag), TAG_MAX/TAGS_MAX, addTags/removeTag/getTags; T006 TaskQuery.tag + EXISTS subquery in TaskSpecifications; T007 TaskService.addTags/removeTag
+- 2026-09-26T23:04:00+03:00 002-us-tags phase-01: T008 wrote web/task/TaskTagsRequest.java (TaskTags); T009 TaskResponse.tags; T010 TaskController tag param, addTaskTags, removeTaskTag; added MissingServletRequestParameterException handler to ApiExceptionHandler (400 problem, errors[{field: param name}]) as the web-slice test requires the errors[] shape
+- 2026-09-26T23:05:00+03:00 002-us-tags phase-01: L.build and L.test ran: BUILD SUCCESS, 0 failures/errors in all suites (TaskTest 40, TaskServiceTest 16, TaskRepositoryTest 19, TaskControllerTest 23); R-7 checked: the tag-filter repository tests pass, so findAll(Specification) gives a non-null CriteriaQuery; domain/task lines 118/122, bundle 918/943; log runs/002-us-tags/phase-01-build.log
+- 2026-09-26T23:05:30+03:00 002-us-tags phase-01: generated openapi has /api/tasks/{id}/tags, tag query param, TaskTags (required tags, minItems 1), Task.tags required; copied backend/target/openapi.json to loops/backend-dev/outputs/openapi.json
+- 2026-09-26T23:05:44+03:00 002-us-tags phase-01: marked T001-T010 [~] in phase-01.md and tasks.json, [X] in tasks.md; set phase-01 ready_for_test
+- 2026-09-26T23:10:15+03:00 test 002-us-tags phase-01 attempt 1: pass (verified_by 66a2329a-9f3b-49b3-a7b1-0672c7f438a7)
+- 2026-09-26T23:11:00+03:00 002-us-tags phase-01: close check ok (T001-T010 [X] in tasks.md, verdict pass attempt 1); marked T001-T010 [x] in phase-01.md and tasks.json; set phase-01 done

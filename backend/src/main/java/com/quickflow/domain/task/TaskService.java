@@ -68,6 +68,18 @@ public class TaskService {
 		return task;
 	}
 
+	public Task addTags(long id, List<String> tags) {
+		Task task = get(id);
+		task.addTags(tags, now());
+		return task;
+	}
+
+	public Task removeTag(long id, String tag) {
+		Task task = get(id);
+		task.removeTag(tag, now());
+		return task;
+	}
+
 	public void delete(long id) {
 		repository.delete(get(id));
 	}

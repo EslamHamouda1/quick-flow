@@ -26,6 +26,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 import com.quickflow.domain.common.NotFoundException;
 import com.quickflow.domain.common.TimeService;
+import com.quickflow.domain.common.ValidationException;
 import com.quickflow.domain.task.Task;
 import com.quickflow.domain.task.TaskPriority;
 import com.quickflow.domain.task.TaskQuery;
@@ -144,7 +145,7 @@ class TaskControllerTest {
 		var json = result.bodyJson();
 		json.extractingPath("$").asMap()
 			.containsOnlyKeys("id", "title", "description", "status", "priority", "dueDate", "createdAt", "updatedAt",
-					"completedAt", "archived", "overdue");
+					"completedAt", "archived", "overdue", "tags");
 		json.extractingPath("$.description").isNull();
 		json.extractingPath("$.dueDate").isNull();
 		json.extractingPath("$.completedAt").isNull();
@@ -170,7 +171,7 @@ class TaskControllerTest {
 	@Test
 	@DisplayName("US1: GET /api/tasks binds the default query (not archived, createdAt desc)")
 	void listTasksBindsQueryWithDefaults() {
-		TaskQuery expected = new TaskQuery(null, null, null, null, null, false, TaskSort.CREATED_AT,
+		TaskQuery expected = new TaskQuery(null, null, null, null, null, false, null, TaskSort.CREATED_AT,
 				Sort.Direction.DESC);
 		given(this.taskService.list(expected)).willReturn(List.of(task("Write report", null, null, null)));
 
@@ -186,7 +187,7 @@ class TaskControllerTest {
 	@DisplayName("US1: GET /api/tasks binds every query parameter")
 	void listTasksBindsAllParams() {
 		TaskQuery expected = new TaskQuery("rep", TaskStatus.IN_PROGRESS, TaskPriority.HIGH, LocalDate.of(2026, 9, 1),
-				LocalDate.of(2026, 9, 30), true, TaskSort.DUE_DATE, Sort.Direction.ASC);
+				LocalDate.of(2026, 9, 30), true, null, TaskSort.DUE_DATE, Sort.Direction.ASC);
 		given(this.taskService.list(expected)).willReturn(List.of());
 
 		var result = assertThat(this.mvc.get()
@@ -257,6 +258,135 @@ class TaskControllerTest {
 		result.body().isEmpty();
 
 		then(this.taskService).should().delete(7L);
+	}
+
+	@Test
+	@DisplayName("AC-US1-1: POST /api/tasks/{id}/tags adds tags and returns 200 with the task and its tags")
+	void acUs1_1_addTagsReturns200TaskWithTags() {
+		Task tagged = task("Write report", null, null, null);
+		tagged.addTags(List.of("work", "urgent"), NOW);
+		given(this.taskService.addTags(7L, List.of("work", "urgent"))).willReturn(tagged);
+
+		var result = assertThat(this.mvc.post().uri("/api/tasks/7/tags")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content("{\"tags\":[\"work\",\"urgent\"]}"));
+		result.hasStatusOk().hasContentType(MediaType.APPLICATION_JSON);
+		result.bodyJson().extractingPath("$.id").isEqualTo(7);
+		result.bodyJson().extractingPath("$.tags").asArray().containsExactly("urgent", "work");
+
+		then(this.taskService).should().addTags(7L, List.of("work", "urgent"));
+	}
+
+	@Test
+	@DisplayName("AC-US1-4: POST /api/tasks/{id}/tags without tags is rejected with 400 and field tags")
+	void acUs1_4_missingTagsIs400WithTagsField() {
+		var result = assertThat(this.mvc.post().uri("/api/tasks/7/tags")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content("{}"));
+		result.hasStatus(400).hasContentType(MediaType.APPLICATION_PROBLEM_JSON);
+		result.bodyJson().extractingPath("$.errors[0].field").isEqualTo("tags");
+
+		verifyNoInteractions(this.taskService);
+	}
+
+	@Test
+	@DisplayName("AC-US1-4: POST /api/tasks/{id}/tags with an empty list is rejected with 400 and field tags")
+	void acUs1_4_emptyTagsIs400WithTagsField() {
+		var result = assertThat(this.mvc.post().uri("/api/tasks/7/tags")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content("{\"tags\":[]}"));
+		result.hasStatus(400).hasContentType(MediaType.APPLICATION_PROBLEM_JSON);
+		result.bodyJson().extractingPath("$.errors[0].field").isEqualTo("tags");
+
+		verifyNoInteractions(this.taskService);
+	}
+
+	@Test
+	@DisplayName("AC-US1-6: a tag rejected by the service is 400 with field tags")
+	void acUs1_6_serviceValidationIs400WithTagsField() {
+		given(this.taskService.addTags(7L, List.of("  ")))
+			.willThrow(new ValidationException("tags", "must not be blank"));
+
+		var result = assertThat(this.mvc.post().uri("/api/tasks/7/tags")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content("{\"tags\":[\"  \"]}"));
+		result.hasStatus(400).hasContentType(MediaType.APPLICATION_PROBLEM_JSON);
+		result.bodyJson().extractingPath("$.errors[0].field").isEqualTo("tags");
+	}
+
+	@Test
+	@DisplayName("US1: POST /api/tasks/{id}/tags for an unknown id is 404 problem")
+	void addTagsUnknownIs404() {
+		given(this.taskService.addTags(99L, List.of("work"))).willThrow(new NotFoundException("Task 99 not found"));
+
+		var result = assertThat(this.mvc.post().uri("/api/tasks/99/tags")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content("{\"tags\":[\"work\"]}"));
+		result.hasStatus(404).hasContentType(MediaType.APPLICATION_PROBLEM_JSON);
+		result.bodyJson().extractingPath("$.status").isEqualTo(404);
+		result.bodyJson().extractingPath("$.detail").isEqualTo("Task 99 not found");
+	}
+
+	@Test
+	@DisplayName("AC-US1-3: DELETE /api/tasks/{id}/tags?tag=work removes the tag and returns 200 with the task")
+	void acUs1_3_removeTagReturns200Task() {
+		Task tagged = task("Write report", null, null, null);
+		tagged.addTags(List.of("urgent"), NOW);
+		given(this.taskService.removeTag(7L, "work")).willReturn(tagged);
+
+		var result = assertThat(this.mvc.delete().uri("/api/tasks/7/tags?tag=work"));
+		result.hasStatusOk().hasContentType(MediaType.APPLICATION_JSON);
+		result.bodyJson().extractingPath("$.id").isEqualTo(7);
+		result.bodyJson().extractingPath("$.tags").asArray().containsExactly("urgent");
+
+		then(this.taskService).should().removeTag(7L, "work");
+	}
+
+	@Test
+	@DisplayName("US1: DELETE /api/tasks/{id}/tags without tag is rejected with 400 and field tag")
+	void removeTagMissingParamIs400WithTagField() {
+		var result = assertThat(this.mvc.delete().uri("/api/tasks/7/tags"));
+		result.hasStatus(400).hasContentType(MediaType.APPLICATION_PROBLEM_JSON);
+		result.bodyJson().extractingPath("$.errors[0].field").isEqualTo("tag");
+
+		verifyNoInteractions(this.taskService);
+	}
+
+	@Test
+	@DisplayName("US1: DELETE /api/tasks/{id}/tags for an unknown id is 404 problem")
+	void removeTagUnknownIs404() {
+		given(this.taskService.removeTag(99L, "work")).willThrow(new NotFoundException("Task 99 not found"));
+
+		var result = assertThat(this.mvc.delete().uri("/api/tasks/99/tags?tag=work"));
+		result.hasStatus(404).hasContentType(MediaType.APPLICATION_PROBLEM_JSON);
+		result.bodyJson().extractingPath("$.status").isEqualTo(404);
+		result.bodyJson().extractingPath("$.detail").isEqualTo("Task 99 not found");
+	}
+
+	@Test
+	@DisplayName("FR-004: GET /api/tasks?tag=work binds the tag into the query")
+	void fr004_listTasksBindsTag() {
+		TaskQuery expected = new TaskQuery(null, null, null, null, null, false, "work", TaskSort.CREATED_AT,
+				Sort.Direction.DESC);
+		given(this.taskService.list(expected)).willReturn(List.of());
+
+		var result = assertThat(this.mvc.get().uri("/api/tasks?tag=work"));
+		result.hasStatusOk().hasContentType(MediaType.APPLICATION_JSON);
+		result.bodyJson().isEqualTo("[]");
+
+		then(this.taskService).should().list(expected);
+	}
+
+	@Test
+	@DisplayName("FR-002: GET /api/tasks/{id} returns the task tags as an alphabetical array")
+	void fr002_getTaskHasTagsArray() {
+		Task tagged = task("Write report", null, null, null);
+		tagged.addTags(List.of("work", "home"), NOW);
+		given(this.taskService.get(7L)).willReturn(tagged);
+
+		var result = assertThat(this.mvc.get().uri("/api/tasks/7"));
+		result.hasStatusOk().hasContentType(MediaType.APPLICATION_JSON);
+		result.bodyJson().extractingPath("$.tags").asArray().containsExactly("home", "work");
 	}
 
 }

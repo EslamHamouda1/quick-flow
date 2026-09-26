@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Locale;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Expression;
+import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Order;
 import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.Subquery;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -47,11 +50,23 @@ public final class TaskSpecifications {
 				predicates.add(cb.lessThanOrEqualTo(dueDate, query.dueTo()));
 			}
 			predicates.add(cb.equal(root.get("archived"), query.archived()));
+			if (query.tag() != null && !query.tag().isBlank()) {
+				predicates.add(hasTag(query.tag().trim().toLowerCase(Locale.ROOT), root, cq, cb));
+			}
 			if (cq != null) {
 				cq.orderBy(orders(query, root, cb));
 			}
 			return cb.and(predicates.toArray(Predicate[]::new));
 		};
+	}
+
+	/** EXISTS on the task's own tags, so a task is listed once and the order is kept (research R-7). */
+	private static Predicate hasTag(String tag, Root<Task> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+		Subquery<Integer> sub = cq.subquery(Integer.class);
+		Root<Task> same = sub.correlate(root);
+		Join<Task, String> tags = same.join("tags");
+		sub.select(cb.literal(1)).where(cb.equal(tags, tag));
+		return cb.exists(sub);
 	}
 
 	private static List<Order> orders(TaskQuery query, Root<Task> root, CriteriaBuilder cb) {

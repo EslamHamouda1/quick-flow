@@ -149,4 +149,52 @@ class TaskServiceTest {
 		verify(repository).findOverdue(LocalDate.of(2026, 9, 24));
 	}
 
+	@Test
+	@DisplayName("FR-001: addTags adds the tags to the found task and sets updatedAt from the clock")
+	void fr001_addTagsAddsToFoundTask() {
+		Task task = existing(7L);
+		given(repository.findById(7L)).willReturn(Optional.of(task));
+
+		Task result = service.addTags(7L, List.of("work", "urgent"));
+
+		assertThat(result).isSameAs(task);
+		assertThat(result.getTags()).containsExactly("urgent", "work");
+		assertThat(result.getUpdatedAt()).isEqualTo(NOW);
+		assertThat(result.getCreatedAt()).isEqualTo(EARLIER);
+	}
+
+	@Test
+	@DisplayName("FR-005: removeTag removes the tag from the found task and sets updatedAt from the clock")
+	void fr005_removeTagRemovesFromFoundTask() {
+		Task task = existing(7L);
+		task.addTags(List.of("work", "urgent"), EARLIER);
+		given(repository.findById(7L)).willReturn(Optional.of(task));
+
+		Task result = service.removeTag(7L, "work");
+
+		assertThat(result).isSameAs(task);
+		assertThat(result.getTags()).containsExactly("urgent");
+		assertThat(result.getUpdatedAt()).isEqualTo(NOW);
+	}
+
+	@Test
+	@DisplayName("FR-001: addTags on an unknown id throws NotFoundException")
+	void fr001_addTagsUnknownIdNotFound() {
+		given(repository.findById(99L)).willReturn(Optional.empty());
+
+		assertThatThrownBy(() -> service.addTags(99L, List.of("work")))
+				.isInstanceOf(NotFoundException.class)
+				.hasMessage("Task 99 not found");
+	}
+
+	@Test
+	@DisplayName("FR-005: removeTag on an unknown id throws NotFoundException")
+	void fr005_removeTagUnknownIdNotFound() {
+		given(repository.findById(99L)).willReturn(Optional.empty());
+
+		assertThatThrownBy(() -> service.removeTag(99L, "work"))
+				.isInstanceOf(NotFoundException.class)
+				.hasMessage("Task 99 not found");
+	}
+
 }

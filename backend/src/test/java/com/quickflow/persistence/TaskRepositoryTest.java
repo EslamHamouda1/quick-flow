@@ -20,6 +20,8 @@ import com.quickflow.domain.task.TaskSort;
 import com.quickflow.domain.task.TaskSpecifications;
 import com.quickflow.domain.task.TaskStatus;
 
+import jakarta.persistence.EntityManager;
+
 @DataJpaTest
 class TaskRepositoryTest {
 
@@ -27,8 +29,13 @@ class TaskRepositoryTest {
 
 	private static final Instant BASE = Instant.parse("2026-09-20T08:00:00Z");
 
+	private static final Instant NOW = Instant.parse("2026-09-24T09:00:00Z");
+
 	@Autowired
 	private TaskRepository repository;
+
+	@Autowired
+	private EntityManager em;
 
 	private int created;
 
@@ -41,26 +48,48 @@ class TaskRepositoryTest {
 		return task(title, TaskStatus.TODO, TaskPriority.MEDIUM, null);
 	}
 
+	private Task tagged(String title, String... tags) {
+		Task task = task(title);
+		task.addTags(List.of(tags), NOW);
+		return task;
+	}
+
 	private List<Task> saveAll(Task... tasks) {
 		List<Task> saved = repository.saveAll(List.of(tasks));
 		repository.flush();
 		return saved;
 	}
 
+	private void flushAndClear() {
+		em.flush();
+		em.clear();
+	}
+
 	private static TaskQuery defaultQuery() {
-		return new TaskQuery(null, null, null, null, null, false, TaskSort.CREATED_AT, Sort.Direction.DESC);
+		return new TaskQuery(null, null, null, null, null, false, null, TaskSort.CREATED_AT, Sort.Direction.DESC);
 	}
 
 	private static TaskQuery search(String q) {
-		return new TaskQuery(q, null, null, null, null, false, TaskSort.CREATED_AT, Sort.Direction.DESC);
+		return new TaskQuery(q, null, null, null, null, false, null, TaskSort.CREATED_AT, Sort.Direction.DESC);
 	}
 
 	private static TaskQuery sorted(TaskSort sort, Sort.Direction direction) {
-		return new TaskQuery(null, null, null, null, null, false, sort, direction);
+		return new TaskQuery(null, null, null, null, null, false, null, sort, direction);
+	}
+
+	private static TaskQuery byTag(String tag) {
+		return new TaskQuery(null, null, null, null, null, false, tag, TaskSort.CREATED_AT, Sort.Direction.DESC);
 	}
 
 	private List<Task> list(TaskQuery query) {
 		return repository.findAll(TaskSpecifications.matching(query));
+	}
+
+	private long tagRowCount(Long taskId) {
+		Number count = (Number) em.createNativeQuery("select count(*) from task_tag where task_id = ?1")
+				.setParameter(1, taskId)
+				.getSingleResult();
+		return count.longValue();
 	}
 
 	@Test
@@ -82,7 +111,7 @@ class TaskRepositoryTest {
 				task("done high", TaskStatus.DONE, TaskPriority.HIGH, null),
 				task("todo high 2", TaskStatus.TODO, TaskPriority.HIGH, null));
 
-		TaskQuery query = new TaskQuery(null, TaskStatus.TODO, TaskPriority.HIGH, null, null, false,
+		TaskQuery query = new TaskQuery(null, TaskStatus.TODO, TaskPriority.HIGH, null, null, false, null,
 				TaskSort.CREATED_AT, Sort.Direction.DESC);
 
 		assertThat(list(query)).extracting(Task::getTitle).containsExactly("todo high 2", "todo high");
@@ -99,7 +128,7 @@ class TaskRepositoryTest {
 				task("no due", TaskStatus.TODO, TaskPriority.MEDIUM, null));
 
 		TaskQuery query = new TaskQuery(null, null, null, LocalDate.of(2026, 9, 25), LocalDate.of(2026, 9, 30),
-				false, TaskSort.CREATED_AT, Sort.Direction.DESC);
+				false, null, TaskSort.CREATED_AT, Sort.Direction.DESC);
 
 		assertThat(list(query)).extracting(Task::getTitle).containsExactly("to", "inside", "from");
 	}
@@ -159,7 +188,7 @@ class TaskRepositoryTest {
 		archived.archive(BASE.plusSeconds(86_400));
 		saveAll(task("active"), archived);
 
-		TaskQuery query = new TaskQuery(null, null, null, null, null, true, TaskSort.CREATED_AT,
+		TaskQuery query = new TaskQuery(null, null, null, null, null, true, null, TaskSort.CREATED_AT,
 				Sort.Direction.DESC);
 
 		assertThat(list(query)).extracting(Task::getTitle).containsExactly("archived");
@@ -195,6 +224,117 @@ class TaskRepositoryTest {
 		assertThat(list(defaultQuery())).extracting(Task::getTitle).containsExactly("kept");
 		assertThat(repository.findOverdue(TODAY)).isEmpty();
 		assertThat(repository.findById(id)).isEmpty();
+	}
+
+	@Test
+	@DisplayName("FR-008: tags survive flush and clear and reload trimmed, lower case and sorted")
+	void fr008_tagsSurviveReload() {
+		Task task = repository.saveAndFlush(tagged("tagged", " Work ", "home"));
+		Long id = task.getId();
+		flushAndClear();
+
+		Task reloaded = repository.findById(id).orElseThrow();
+
+		assertThat(reloaded.getTags()).containsExactly("home", "work");
+	}
+
+	@Test
+	@DisplayName("AC-US1-2: tag filter lists only tasks with that tag")
+	void acUs1_2_tagFilterListsOnlyTaggedTasks() {
+		saveAll(tagged("work 1", "work"), tagged("home 1", "home"), task("untagged"), tagged("work 2", "work"));
+		flushAndClear();
+
+		assertThat(list(byTag("work"))).extracting(Task::getTitle).containsExactly("work 2", "work 1");
+	}
+
+	@Test
+	@DisplayName("BR-T2: tag filter ignores case and surrounding spaces")
+	void brT2_tagFilterIgnoresCaseAndSpaces() {
+		saveAll(tagged("work", "work"), tagged("home", "home"));
+		flushAndClear();
+
+		assertThat(list(byTag("WORK"))).extracting(Task::getTitle).containsExactly("work");
+		assertThat(list(byTag(" work "))).extracting(Task::getTitle).containsExactly("work");
+	}
+
+	@Test
+	@DisplayName("BR-T2: tag filter matches the whole tag, not a prefix")
+	void brT2_tagFilterMatchesWholeTag() {
+		saveAll(tagged("workshop", "workshop"), tagged("work", "work"));
+		flushAndClear();
+
+		assertThat(list(byTag("work"))).extracting(Task::getTitle).containsExactly("work");
+	}
+
+	@Test
+	@DisplayName("AC-US1-2: a task with several tags is listed once")
+	void acUs1_2_taskWithSeveralTagsListedOnce() {
+		saveAll(tagged("many", "work", "urgent", "home"), tagged("one", "work"));
+		flushAndClear();
+
+		assertThat(list(byTag("work"))).extracting(Task::getTitle).containsExactly("one", "many");
+	}
+
+	@Test
+	@DisplayName("AC-US1-2: tag filter combines with the status filter by AND")
+	void acUs1_2_tagFilterCombinesWithStatus() {
+		Task todoWork = task("todo work", TaskStatus.TODO, TaskPriority.MEDIUM, null);
+		todoWork.addTags(List.of("work"), NOW);
+		Task doneWork = task("done work", TaskStatus.DONE, TaskPriority.MEDIUM, null);
+		doneWork.addTags(List.of("work"), NOW);
+		Task todoHome = task("todo home", TaskStatus.TODO, TaskPriority.MEDIUM, null);
+		todoHome.addTags(List.of("home"), NOW);
+		saveAll(todoWork, doneWork, todoHome);
+		flushAndClear();
+
+		TaskQuery query = new TaskQuery(null, TaskStatus.TODO, null, null, null, false, "work",
+				TaskSort.CREATED_AT, Sort.Direction.DESC);
+
+		assertThat(list(query)).extracting(Task::getTitle).containsExactly("todo work");
+	}
+
+	@Test
+	@DisplayName("FR-004, BR-4: tag filter excludes archived tasks by default")
+	void fr004_tagFilterExcludesArchived() {
+		Task archived = tagged("archived work", "work");
+		archived.archive(NOW);
+		saveAll(tagged("active work", "work"), archived);
+		flushAndClear();
+
+		assertThat(list(byTag("work"))).extracting(Task::getTitle).containsExactly("active work");
+	}
+
+	@Test
+	@DisplayName("AC-US1-3: a removed tag no longer matches")
+	void acUs1_3_removedTagNoLongerMatches() {
+		Task task = repository.saveAndFlush(tagged("was work", "work", "home"));
+		Long id = task.getId();
+		flushAndClear();
+
+		Task reloaded = repository.findById(id).orElseThrow();
+		reloaded.removeTag("work", NOW);
+		repository.saveAndFlush(reloaded);
+		flushAndClear();
+
+		assertThat(list(byTag("work"))).isEmpty();
+		assertThat(list(byTag("home"))).extracting(Task::getTitle).containsExactly("was work");
+	}
+
+	@Test
+	@DisplayName("BR-T4, BR-14: deleting a tagged task removes its tag rows and it is never listed by tag")
+	void brT4_deletingTaggedTaskRemovesTagRows() {
+		Task doomed = repository.saveAndFlush(tagged("doomed", "work", "home"));
+		repository.saveAndFlush(tagged("kept", "work"));
+		Long id = doomed.getId();
+		flushAndClear();
+		assertThat(tagRowCount(id)).isEqualTo(2);
+
+		repository.delete(repository.findById(id).orElseThrow());
+		flushAndClear();
+
+		assertThat(tagRowCount(id)).isZero();
+		assertThat(list(byTag("work"))).extracting(Task::getTitle).containsExactly("kept");
+		assertThat(list(byTag("home"))).isEmpty();
 	}
 
 }
