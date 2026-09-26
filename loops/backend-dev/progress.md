@@ -13,8 +13,8 @@
 | backend-dev:001-quickflow:phase-05 | 2026-09-24T22:38:19+03:00 | 2026-09-24T23:15:41+03:00 | 0h37m22s | 0h14m25s | 4 | 1 | 182 | 7974338 | 78439 | 7.3067 | a1d77c0f-3950-4417-a8d1-950f403b16fb 1adb9098-836c-467b-9bdd-14e7a41e354b d412fe1d-2596-41cf-a795-871768250983 8b33bd6f-fd27-4ebe-82aa-074270cf8075 | d412fe1d-2596-41cf-a795-871768250983 | 633253a | success |
 | backend-dev:001-quickflow:phase-06 | 2026-09-25T23:23:41+03:00 | 2026-09-25T23:45:46+03:00 | 0h22m05s | 0h16m21s | 4 | 1 | 208 | 9748524 | 101225 | 9.4148 | 220bfbb4-b97c-4c47-ae33-5e267e5831c9 0268db9b-e680-466b-8b54-bf34991b01e9 ba0e3b29-4ddc-42ea-a99f-68ae962745ce 19f1e531-117d-42a9-9e46-822fad896843 | ba0e3b29-4ddc-42ea-a99f-68ae962745ce | 126addf | success |
 | backend-dev:001-quickflow:phase-07 | 2026-09-26T00:20:42+03:00 | 2026-09-26T00:59:42+03:00 | 0h39m00s | 0h13m02s | 5 | 1 | 222 | 8702138 | 77442 | 8.1618 | a179dff8-2927-473d-a32e-23057de42010 0d17c0dd-e014-4982-b64e-9718b8775736 d0241dc8-dec3-456b-bf7f-143c67bd0b34 0befc91c-e612-4319-ba25-1c34fae2af70 c0289276-5b57-4a81-a4ad-6ba95b83c3d4 | 0befc91c-e612-4319-ba25-1c34fae2af70 | ac43ef8 | success |
-| backend-dev:001-quickflow:phase-08 | 2026-09-26T02:04:49+03:00 | 2026-09-26T02:14:39+03:00 | 0h09m50s | 0h09m07s | 4 | 1 | 146 | 4916856 | 48274 | 4.2198 | d138fe9f-8f9b-43f5-99f4-6bae679d717a ea738d99-f508-4787-b1a7-bfe59a12c0a9 758c4006-7be9-4e8c-b10c-93b224242123 313676a5-0ba6-4353-b617-6e7e0e24cadd | 758c4006-7be9-4e8c-b10c-93b224242123 |  | error:success |
-| **Total** |  |  |  | 1h59m52s | 35 |  | 1614 | 67353852 | 700835 | 58.7754 |  |  |  |  |
+| backend-dev:001-quickflow:phase-08 | 2026-09-26T02:04:49+03:00 | 2026-09-26T11:13:04+03:00 | 9h08m15s | 0h09m52s | 5 | 1 | 168 | 5376789 | 51634 | 4.7602 | d138fe9f-8f9b-43f5-99f4-6bae679d717a ea738d99-f508-4787-b1a7-bfe59a12c0a9 758c4006-7be9-4e8c-b10c-93b224242123 313676a5-0ba6-4353-b617-6e7e0e24cadd c38c4bc4-2589-4745-8bef-a8205d075e55 | 758c4006-7be9-4e8c-b10c-93b224242123 |  | success |
+| **Total** |  |  |  | 2h00m37s | 36 |  | 1636 | 67813785 | 704195 | 59.3158 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log
@@ -150,3 +150,4 @@
 - 2026-09-26T02:10:00+03:00 001-quickflow phase-08: build + verify ok (0 failures/errors; assigned-id save works in @DataJpaTest), log runs/001-quickflow/phase-08-build.log; copied target/openapi.json to outputs/openapi.json (getSettings/updateSettings, Settings, DefaultPage match contract)
 - 2026-09-26T02:10:12+03:00 001-quickflow phase-08: marked T075-T081 [~] in phase-08.md and tasks.json, [X] in tasks.md; set phase-08 ready_for_test
 - 2026-09-26T02:14:28+03:00 test 001-quickflow phase-08 attempt 1: pass (verified_by 758c4006-7be9-4e8c-b10c-93b224242123)
+- 2026-09-26T11:15:00+03:00 001-quickflow phase-08: close check ok (T075-T081 [X] in tasks.md, verdict pass for attempt 1); marked T075-T081 [x] in phase-08.md and tasks.json; set phase-08 done

@@ -27,9 +27,9 @@
   "T068": {"phase": "phase-07", "state": "x"}, "T069": {"phase": "phase-07", "state": "x"}, "T070": {"phase": "phase-07", "state": "x"},
   "T071": {"phase": "phase-07", "state": "x"}, "T072": {"phase": "phase-07", "state": "x"}, "T073": {"phase": "phase-07", "state": "x"},
   "T074": {"phase": "phase-07", "state": "x"},
-  "T075": {"phase": "phase-08", "state": "~"}, "T076": {"phase": "phase-08", "state": "~"}, "T077": {"phase": "phase-08", "state": "~"},
-  "T078": {"phase": "phase-08", "state": "~"}, "T079": {"phase": "phase-08", "state": "~"}, "T080": {"phase": "phase-08", "state": "~"},
-  "T081": {"phase": "phase-08", "state": "~"},
+  "T075": {"phase": "phase-08", "state": "x"}, "T076": {"phase": "phase-08", "state": "x"}, "T077": {"phase": "phase-08", "state": "x"},
+  "T078": {"phase": "phase-08", "state": "x"}, "T079": {"phase": "phase-08", "state": "x"}, "T080": {"phase": "phase-08", "state": "x"},
+  "T081": {"phase": "phase-08", "state": "x"},
   "T083": {"phase": "phase-09", "state": " "}, "T084": {"phase": "phase-09", "state": " "}, "T085": {"phase": "phase-09", "state": " "},
   "T086": {"phase": "phase-09", "state": " "}, "T087": {"phase": "phase-09", "state": " "}
 }
