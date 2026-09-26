@@ -4,14 +4,10 @@ Written by the runner at the start of every run. Sessions read it first and neve
 
 - **requirements:** examples/single-us/US-tags.md
 - **feature:** 002-us-tags
-- **loop:** frontend-dev
-- **mode:** phase
+- **loop:** testing
+- **mode:** suite
 - **stops_at:** end of loop
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260926T225858-388446
-- **runner_nonce:** 4a6c2564ec4b8b25f8c7b7a4
-- **target_loop:** frontend-dev
-- **phase:** phase-02
-- **dev_attempt:** 1
-- **run_dir:** loops/testing/runs/002-us-tags/frontend-dev/phase-02/attempt-1
-- **unit_result:** loops/testing/runs/002-us-tags/frontend-dev/phase-02/attempt-1/unit/unit-result.json
+- **runner_nonce:** 0b7cb18f944dd65127f72bc1
+- **current_step:** test-phase-00-plan
