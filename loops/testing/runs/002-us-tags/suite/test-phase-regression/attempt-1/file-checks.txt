@@ -1,0 +1,24 @@
+test-phase-regression attempt-1: file and report checks (2026-09-27 ~00:08 +03:00, runner's fresh test DB)
+
+R2 C1: live swagger saved as api-docs.json (GET /v3/api-docs 200). jq extract:
+  listTasks query tag: required false, schema string
+  addTaskTags POST /api/tasks/{id}/tags: path id int64 required; body required $ref TaskTags; 200 -> $ref Task
+  removeTaskTag DELETE /api/tasks/{id}/tags: path id int64 required; query tag required, string minLength 1; 200 -> $ref Task
+  TaskTags: required [tags]; tags array of string, minItems 1, no maxItems
+  Task.required contains tags; Task.tags array, maxItems 10, uniqueItems true, items string minLength 1 maxLength 30
+  -> matches specs/002-us-tags-backend/contracts/openapi.yaml
+
+R2 C2: md5 of jq -S -c output
+  .paths       live 32298e3b87057dc49a7e5037c8b8f11b  copy 32298e3b87057dc49a7e5037c8b8f11b
+  .components  live 643cbf2c745e44884ad9bc99a4c52127  copy 643cbf2c745e44884ad9bc99a4c52127
+  operationIds live 41, copy (loops/backend-dev/outputs/openapi.json) 41
+
+R5 unit: unit/backend/unit-result.json passed 386, failed 0, errors 0, skipped 0, outcome pass;
+  unit/frontend/unit-result.json outcome none (no unit test command configured)
+
+R6 coverage: runner reported coverage_skipped ("no classes in com/quickflow/domain"); summed from
+  unit/backend/coverage/jacoco.csv (LINE_MISSED col 8, LINE_COVERED col 9), PACKAGE startswith com.quickflow.domain:
+  45 classes, covered 715, missed 19 -> 715/734 = 0.9741 >= 0.80
+
+R4 C9: loops/frontend-dev/runs/002-us-tags/phase-02-build.log (1727 bytes, 2026-09-26 23:39):
+  "Application bundle generation complete" x1; "error TS" / "✘ [ERROR]" x0

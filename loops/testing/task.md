@@ -10,5 +10,5 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260926T225858-388446
 - **runner_nonce:** 0b7cb18f944dd65127f72bc1
-- **current_step:** test-phase-02
-- **run_dir:** loops/testing/runs/002-us-tags/suite/test-phase-02/attempt-1
+- **current_step:** test-phase-regression
+- **run_dir:** loops/testing/runs/002-us-tags/suite/test-phase-regression/attempt-1

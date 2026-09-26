@@ -1,0 +1,102 @@
+[]
+=== status 200
+{"id":1,"title":"C1 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.304381744+03:00","updatedAt":"2026-09-27T00:07:57.304381744+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R1 #01 POST /api/tasks {"title":"C1 task"} -> 201
+{"id":1,"title":"C1 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.304382+03:00","updatedAt":"2026-09-27T00:07:57.367871289+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["urgent","work"]}
+=== R1 C1 #02 POST /api/tasks/1/tags ["work","urgent"] -> 200
+{"id":1,"title":"C1 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.304382+03:00","updatedAt":"2026-09-27T00:07:57.367871+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["urgent","work"]}
+=== R1 C1 #03 GET /api/tasks/1 -> 200
+[{"id":1,"title":"C1 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.304382+03:00","updatedAt":"2026-09-27T00:07:57.367871+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["urgent","work"]}]
+=== R1 C1 #04 GET /api/tasks -> 200
+{"id":2,"title":"C2 w1","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.401711117+03:00","updatedAt":"2026-09-27T00:07:57.401711117+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R1 C2 #05 POST /api/tasks C2 w1 -> 201
+{"id":3,"title":"C2 w2","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.407609437+03:00","updatedAt":"2026-09-27T00:07:57.407609437+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R1 C2 #06 POST /api/tasks C2 w2 -> 201
+{"id":4,"title":"C2 n1","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.41285465+03:00","updatedAt":"2026-09-27T00:07:57.41285465+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R1 C2 #07 POST /api/tasks C2 n1 -> 201
+{"id":5,"title":"C2 n2","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.41785343+03:00","updatedAt":"2026-09-27T00:07:57.41785343+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R1 C2 #08 POST /api/tasks C2 n2 -> 201
+{"id":6,"title":"C2 n3","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.422501782+03:00","updatedAt":"2026-09-27T00:07:57.422501782+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R1 C2 #09 POST /api/tasks C2 n3 -> 201
+{"id":2,"title":"C2 w1","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.401711+03:00","updatedAt":"2026-09-27T00:07:57.42955413+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["work"]}
+=== R1 C2 #10 POST /api/tasks/2/tags ["work"] -> 200
+{"id":3,"title":"C2 w2","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.407609+03:00","updatedAt":"2026-09-27T00:07:57.435826933+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["home","work"]}
+=== R1 C2 #11 POST /api/tasks/3/tags ["home","work"] -> 200
+{"id":4,"title":"C2 n1","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.412855+03:00","updatedAt":"2026-09-27T00:07:57.44249534+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["home"]}
+=== R1 C2 #12 POST /api/tasks/4/tags ["home"] -> 200
+{"id":6,"title":"C2 n3","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.422502+03:00","updatedAt":"2026-09-27T00:07:57.448950876+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["workshop"]}
+=== R1 C2 #13 POST /api/tasks/6/tags ["workshop"] -> 200
+[{"id":3,"title":"C2 w2","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.407609+03:00","updatedAt":"2026-09-27T00:07:57.435827+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["home","work"]},{"id":2,"title":"C2 w1","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.401711+03:00","updatedAt":"2026-09-27T00:07:57.429554+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["work"]},{"id":1,"title":"C1 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.304382+03:00","updatedAt":"2026-09-27T00:07:57.367871+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["urgent","work"]}]
+=== R1 C2 #14 GET /api/tasks?tag=work -> 200
+[]
+=== R1 C2 #15 GET /api/tasks?tag=nosuchtag -> 200
+{"id":7,"title":"C3 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.483079196+03:00","updatedAt":"2026-09-27T00:07:57.483079196+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R1 C3 #16 POST /api/tasks C3 task -> 201
+{"id":7,"title":"C3 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.483079+03:00","updatedAt":"2026-09-27T00:07:57.489963879+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["home","work"]}
+=== R1 C3 #17 POST /api/tasks/7/tags ["work","home"] -> 200
+{"id":7,"title":"C3 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.483079+03:00","updatedAt":"2026-09-27T00:07:57.497126775+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["home"]}
+=== R1 C3 #18 DELETE /api/tasks/7/tags?tag=work -> 200
+{"id":7,"title":"C3 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.483079+03:00","updatedAt":"2026-09-27T00:07:57.497127+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["home"]}
+=== R1 C3 #19 GET /api/tasks/7 -> 200
+[{"id":3,"title":"C2 w2","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.407609+03:00","updatedAt":"2026-09-27T00:07:57.435827+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["home","work"]},{"id":2,"title":"C2 w1","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.401711+03:00","updatedAt":"2026-09-27T00:07:57.429554+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["work"]},{"id":1,"title":"C1 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.304382+03:00","updatedAt":"2026-09-27T00:07:57.367871+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["urgent","work"]}]
+=== R1 C3 #20 GET /api/tasks?tag=work -> 200
+{"id":8,"title":"C4 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.514487507+03:00","updatedAt":"2026-09-27T00:07:57.514487507+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R1 C4 #21 POST /api/tasks C4 task -> 201
+{"id":8,"title":"C4 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.514488+03:00","updatedAt":"2026-09-27T00:07:57.520832476+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["alpha"]}
+=== R1 C4 #22 POST /api/tasks/8/tags ["alpha"] -> 200
+{"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"tag must not be blank"}]}
+=== R1 C4 #23 POST /api/tasks/8/tags [""] -> 400
+{"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"tag must not be blank"}]}
+=== R1 C4 #24 POST /api/tasks/8/tags ["   "] -> 400
+{"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must be at most 30 characters"}]}
+=== R1 C4 #25 POST /api/tasks/8/tags [31 x a] -> 400
+{"detail":"Validation failed","instance":"/api/tasks/8/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must be at most 30 characters"}]}
+=== R1 C4 #26 POST /api/tasks/8/tags ["beta", 31 x a] -> 400
+{"id":8,"title":"C4 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.514488+03:00","updatedAt":"2026-09-27T00:07:57.520832+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["alpha"]}
+=== R1 C4 #27 GET /api/tasks/8 -> 200
+{"id":8,"title":"C4 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.514488+03:00","updatedAt":"2026-09-27T00:07:57.5661849+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["alpha","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"]}
+=== R1 C4 #28 POST /api/tasks/8/tags [30 x b] -> 200
+{"id":9,"title":"C5 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.571131212+03:00","updatedAt":"2026-09-27T00:07:57.571131212+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R1 C5 #29 POST /api/tasks C5 task -> 201
+{"id":9,"title":"C5 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.571131+03:00","updatedAt":"2026-09-27T00:07:57.578033688+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["work"]}
+=== R1 C5 #30 POST /api/tasks/9/tags ["work"] -> 200
+{"id":9,"title":"C5 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.571131+03:00","updatedAt":"2026-09-27T00:07:57.578034+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["work"]}
+=== R1 C5 #31 POST /api/tasks/9/tags ["Work"] -> 200
+{"id":9,"title":"C5 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.571131+03:00","updatedAt":"2026-09-27T00:07:57.578034+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["work"]}
+=== R1 C5 #32 GET /api/tasks/9 -> 200
+[{"id":9,"title":"C5 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.571131+03:00","updatedAt":"2026-09-27T00:07:57.578034+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["work"]},{"id":3,"title":"C2 w2","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.407609+03:00","updatedAt":"2026-09-27T00:07:57.435827+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["home","work"]},{"id":2,"title":"C2 w1","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.401711+03:00","updatedAt":"2026-09-27T00:07:57.429554+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["work"]},{"id":1,"title":"C1 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.304382+03:00","updatedAt":"2026-09-27T00:07:57.367871+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["urgent","work"]}]
+=== R1 C5 #33 GET /api/tasks?tag=WORK -> 200
+{"id":10,"title":"C6 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.599352906+03:00","updatedAt":"2026-09-27T00:07:57.599352906+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R1 C6 #34 POST /api/tasks C6 task -> 201
+{"id":10,"title":"C6 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.599353+03:00","updatedAt":"2026-09-27T00:07:57.606152549+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["t01","t02","t03","t04","t05","t06","t07","t08","t09","t10"]}
+=== R1 C6 #35 POST /api/tasks/10/tags t01..t10 -> 200
+{"detail":"Validation failed","instance":"/api/tasks/10/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must have at most 10 tags"}]}
+=== R1 C6 #36 POST /api/tasks/10/tags ["t11"] -> 400
+{"id":10,"title":"C6 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:07:57.599353+03:00","updatedAt":"2026-09-27T00:07:57.606153+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["t01","t02","t03","t04","t05","t06","t07","t08","t09","t10"]}
+=== R1 C6 #37 GET /api/tasks/10 -> 200
+{"id":11,"title":"R2C4 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:08:33.890019109+03:00","updatedAt":"2026-09-27T00:08:33.890019109+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R2 C4 #38 POST /api/tasks R2C4 task -> 201
+{"id":11,"title":"R2C4 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:08:33.890019+03:00","updatedAt":"2026-09-27T00:08:33.894850955+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["keep"]}
+=== R2 C4 #39 POST /api/tasks/11/tags ["keep"] -> 200
+{"detail":"Validation failed","instance":"/api/tasks/11/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must not be empty"}]}
+=== R2 C4 #40 POST /api/tasks/11/tags {"tags":[]} -> 400
+{"detail":"Validation failed","instance":"/api/tasks/11/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must not be empty"}]}
+=== R2 C4 #41 POST /api/tasks/11/tags {"tags":null} -> 400
+{"detail":"Validation failed","instance":"/api/tasks/11/tags","status":400,"title":"Bad Request","errors":[{"field":"tags","message":"must not be empty"}]}
+=== R2 C4 #42 POST /api/tasks/11/tags {} -> 400
+{"id":11,"title":"R2C4 task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:08:33.890019+03:00","updatedAt":"2026-09-27T00:08:33.894851+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["keep"]}
+=== R2 C4 #43 GET /api/tasks/11 -> 200
+{"detail":"Task 99999 not found","instance":"/api/tasks/99999/tags","status":404,"title":"Not Found"}
+=== R2 C4 #44 POST /api/tasks/99999/tags ["x"] -> 404
+{"detail":"Task 99999 not found","instance":"/api/tasks/99999/tags","status":404,"title":"Not Found"}
+=== R2 C4 #45 DELETE /api/tasks/99999/tags?tag=x -> 404
+{"detail":"Invalid parameter","instance":"/api/tasks/11/tags","status":400,"title":"Bad Request","errors":[{"field":"tag","message":"must not be blank"}]}
+=== R2 C4 #46 DELETE /api/tasks/11/tags (no tag) -> 400
+{"timeZone":"Africa/Cairo","now":"2026-09-27T00:08:33.918965324+03:00"}
+=== R2 C4 #47 GET /api/app-info -> 200
+{"id":12,"title":"R2C5 due today","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-27T00:08:33.922184001+03:00","updatedAt":"2026-09-27T00:08:33.922184001+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== R2 C5 #48 POST /api/tasks R2C5 due 2026-09-27 -> 201
+{"id":12,"title":"R2C5 due today","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-27T00:08:33.922184+03:00","updatedAt":"2026-09-27T00:08:33.9270704+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["report","work"]}
+=== R2 C5 #49 POST /api/tasks/12/tags ["report","work"] -> 200
+{"now":"2026-09-27T00:08:33.962684661+03:00","dueToday":[{"id":12,"title":"R2C5 due today","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-27","createdAt":"2026-09-27T00:08:33.922184+03:00","updatedAt":"2026-09-27T00:08:33.92707+03:00","completedAt":null,"archived":false,"overdue":false,"tags":["report","work"]}],"overdue":[],"completedToday":[],"taskCompletionPercent":0,"taskCounts":{"total":12,"done":0},"habits":[],"habitCounts":{"active":0,"completedToday":0},"activePlans":[],"planCounts":{"notStarted":0,"inProgress":0,"completed":0},"learning":{"notStarted":0,"inProgress":0,"completed":0,"milestonesDone":0,"milestonesTotal":0}}
+=== R2 C5 #50 GET /api/dashboard -> 200 at 0.062594s

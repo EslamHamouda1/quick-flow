@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "complete",
   "not_ready": [],
   "test_phases": [
     {
@@ -26,7 +26,7 @@
       "stories": [
         "US1"
       ],
-      "status": "planned",
+      "status": "done",
       "attempt": 1,
       "bugs": []
     }

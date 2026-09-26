@@ -1,0 +1,22 @@
+{"id":13,"title":"UI C1 A","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.849332753+03:00","updatedAt":"2026-09-27T00:09:10.849332753+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #1 POST UI C1 A -> 201
+{"id":14,"title":"UI C2 W1","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.853468853+03:00","updatedAt":"2026-09-27T00:09:10.853468853+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #2 POST UI C2 W1 -> 201
+{"id":15,"title":"UI C2 W2","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.855538391+03:00","updatedAt":"2026-09-27T00:09:10.855538391+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #3 POST UI C2 W2 -> 201
+{"id":16,"title":"UI C2 N1","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.857216132+03:00","updatedAt":"2026-09-27T00:09:10.857216132+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #4 POST UI C2 N1 -> 201
+{"id":17,"title":"UI C2 N2","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.858933859+03:00","updatedAt":"2026-09-27T00:09:10.858933859+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #5 POST UI C2 N2 -> 201
+{"id":18,"title":"UI C2 N3","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.860368153+03:00","updatedAt":"2026-09-27T00:09:10.860368153+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #6 POST UI C2 N3 -> 201
+{"id":19,"title":"UI C3 R","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.861944595+03:00","updatedAt":"2026-09-27T00:09:10.861944595+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #7 POST UI C3 R -> 201
+{"id":20,"title":"UI C4 V","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.863565349+03:00","updatedAt":"2026-09-27T00:09:10.863565349+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #8 POST UI C4 V -> 201
+{"id":21,"title":"UI C5 K","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.865181335+03:00","updatedAt":"2026-09-27T00:09:10.865181335+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #9 POST UI C5 K -> 201
+{"id":22,"title":"UI C6 F","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.866795667+03:00","updatedAt":"2026-09-27T00:09:10.866795667+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #10 POST UI C6 F -> 201
+{"id":23,"title":"UI C8 E","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-27T00:09:10.868391455+03:00","updatedAt":"2026-09-27T00:09:10.868391455+03:00","completedAt":null,"archived":false,"overdue":false,"tags":[]}
+=== setup #11 POST UI C8 E -> 201

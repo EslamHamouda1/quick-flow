@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaskSpecifications.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.task</a> &gt; <span class="el_source">TaskSpecifications.java</span></div><h1>TaskSpecifications.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.task;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Expression;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.Order;
+import jakarta.persistence.criteria.Path;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.Subquery;
+
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+
+/**
+ * Builds the task list query from a {@link TaskQuery}. The order is set here (not through a {@code Sort}) so
+ * null due dates are last in both directions without relying on the provider's null precedence (FR-02.3).
+ */
+public final class TaskSpecifications {
+
+	private static final char ESCAPE = '\\';
+
+	private TaskSpecifications() {
+	}
+
+	public static Specification&lt;Task&gt; matching(TaskQuery query) {
+<span class="fc" id="L33">		return (root, cq, cb) -&gt; {</span>
+<span class="fc" id="L34">			List&lt;Predicate&gt; predicates = new ArrayList&lt;&gt;();</span>
+<span class="pc bpc" id="L35" title="1 of 4 branches missed.">			if (query.q() != null &amp;&amp; !query.q().isBlank()) {</span>
+<span class="fc" id="L36">				String pattern = &quot;%&quot; + escape(query.q().toLowerCase(Locale.ROOT)) + &quot;%&quot;;</span>
+<span class="fc" id="L37">				predicates.add(cb.like(cb.lower(root.get(&quot;title&quot;)), pattern, ESCAPE));</span>
+			}
+<span class="fc bfc" id="L39" title="All 2 branches covered.">			if (query.status() != null) {</span>
+<span class="fc" id="L40">				predicates.add(cb.equal(root.get(&quot;status&quot;), query.status()));</span>
+			}
+<span class="fc bfc" id="L42" title="All 2 branches covered.">			if (query.priority() != null) {</span>
+<span class="fc" id="L43">				predicates.add(cb.equal(root.get(&quot;priority&quot;), query.priority()));</span>
+			}
+<span class="fc" id="L45">			Path&lt;LocalDate&gt; dueDate = root.get(&quot;dueDate&quot;);</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">			if (query.dueFrom() != null) {</span>
+<span class="fc" id="L47">				predicates.add(cb.greaterThanOrEqualTo(dueDate, query.dueFrom()));</span>
+			}
+<span class="fc bfc" id="L49" title="All 2 branches covered.">			if (query.dueTo() != null) {</span>
+<span class="fc" id="L50">				predicates.add(cb.lessThanOrEqualTo(dueDate, query.dueTo()));</span>
+			}
+<span class="fc" id="L52">			predicates.add(cb.equal(root.get(&quot;archived&quot;), query.archived()));</span>
+<span class="pc bpc" id="L53" title="1 of 4 branches missed.">			if (query.tag() != null &amp;&amp; !query.tag().isBlank()) {</span>
+<span class="fc" id="L54">				predicates.add(hasTag(query.tag().trim().toLowerCase(Locale.ROOT), root, cq, cb));</span>
+			}
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">			if (cq != null) {</span>
+<span class="fc" id="L57">				cq.orderBy(orders(query, root, cb));</span>
+			}
+<span class="fc" id="L59">			return cb.and(predicates.toArray(Predicate[]::new));</span>
+		};
+	}
+
+	/** EXISTS on the task's own tags, so a task is listed once and the order is kept (research R-7). */
+	private static Predicate hasTag(String tag, Root&lt;Task&gt; root, CriteriaQuery&lt;?&gt; cq, CriteriaBuilder cb) {
+<span class="fc" id="L65">		Subquery&lt;Integer&gt; sub = cq.subquery(Integer.class);</span>
+<span class="fc" id="L66">		Root&lt;Task&gt; same = sub.correlate(root);</span>
+<span class="fc" id="L67">		Join&lt;Task, String&gt; tags = same.join(&quot;tags&quot;);</span>
+<span class="fc" id="L68">		sub.select(cb.literal(1)).where(cb.equal(tags, tag));</span>
+<span class="fc" id="L69">		return cb.exists(sub);</span>
+	}
+
+	private static List&lt;Order&gt; orders(TaskQuery query, Root&lt;Task&gt; root, CriteriaBuilder cb) {
+<span class="fc bfc" id="L73" title="All 2 branches covered.">		boolean asc = query.direction() != Sort.Direction.DESC;</span>
+<span class="fc" id="L74">		List&lt;Order&gt; orders = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">		if (query.sort() == TaskSort.DUE_DATE) {</span>
+<span class="fc" id="L76">			Expression&lt;Integer&gt; nullsLast = cb.&lt;Integer&gt;selectCase()</span>
+<span class="fc" id="L77">					.when(cb.isNull(root.get(&quot;dueDate&quot;)), 1)</span>
+<span class="fc" id="L78">					.otherwise(0);</span>
+<span class="fc" id="L79">			orders.add(cb.asc(nullsLast));</span>
+<span class="fc" id="L80">			orders.add(order(cb, root.get(&quot;dueDate&quot;), asc));</span>
+<span class="fc" id="L81">		}</span>
+		else {
+<span class="fc" id="L83">			orders.add(order(cb, root.get(&quot;createdAt&quot;), asc));</span>
+		}
+<span class="fc" id="L85">		orders.add(order(cb, root.get(&quot;id&quot;), asc));</span>
+<span class="fc" id="L86">		return orders;</span>
+	}
+
+	private static Order order(CriteriaBuilder cb, Expression&lt;?&gt; expression, boolean asc) {
+<span class="fc bfc" id="L90" title="All 2 branches covered.">		return asc ? cb.asc(expression) : cb.desc(expression);</span>
+	}
+
+	private static String escape(String text) {
+<span class="fc" id="L94">		return text.replace(&quot;\\&quot;, &quot;\\\\&quot;).replace(&quot;%&quot;, &quot;\\%&quot;).replace(&quot;_&quot;, &quot;\\_&quot;);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
