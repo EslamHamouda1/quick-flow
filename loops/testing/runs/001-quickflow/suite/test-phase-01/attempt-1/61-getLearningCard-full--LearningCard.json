@@ -1,0 +1,1 @@
+{"id":1,"title":"Contract card 2","description":null,"status":"IN_PROGRESS","createdAt":"2026-09-26T12:16:42.569968+03:00","milestones":[{"id":1,"cardId":1,"title":"M1b","done":true,"targetDate":null}],"notes":[{"id":1,"cardId":1,"text":"A note","createdAt":"2026-09-26T12:17:03.619782+03:00"}],"milestonesDone":1,"milestonesTotal":1}

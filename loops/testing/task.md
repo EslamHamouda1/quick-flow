@@ -10,4 +10,5 @@ Written by the runner at the start of every run. Sessions read it first and neve
 - **review_gates:** off (--auto-approve)
 - **run_id:** orch-20260926T111201-195372
 - **runner_nonce:** d6b91ab1b8137580d7357994
-- **current_step:** test-phase-00-plan
+- **current_step:** test-phase-01
+- **run_dir:** loops/testing/runs/001-quickflow/suite/test-phase-01/attempt-1

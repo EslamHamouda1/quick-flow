@@ -1,0 +1,851 @@
+==> loops/testing/runs/current/01-apidocs.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 26010
+Date: Sat, 26 Sep 2026 09:15:14 GMT
+
+
+==> loops/testing/runs/current/02-getAppInfo.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 71
+Date: Sat, 26 Sep 2026 09:15:21 GMT
+
+
+==> loops/testing/runs/current/03-createTask.head <==
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 261
+Date: Sat, 26 Sep 2026 09:15:21 GMT
+
+
+==> loops/testing/runs/current/04-createTask-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/05-listTasks.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 257
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/06-listTasks-filtered.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 257
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/07-listOverdueTasks.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 257
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/08-getTask.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 255
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/09-getTask-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/10-updateTask.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 258
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/11-updateTask-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/12-updateTask-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/13-completeTask.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 284
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/14-completeTask-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/15-archiveTask.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 280
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/16-archiveTask-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/17-restoreTask.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 281
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/18-restoreTask-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/19-deleteTask.head <==
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/20-deleteTask-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:15:54 GMT
+
+
+==> loops/testing/runs/current/21-createHabit.head <==
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 205
+Date: Sat, 26 Sep 2026 09:16:08 GMT
+
+
+==> loops/testing/runs/current/22-createHabit-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/23-listHabits.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 204
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/24-listHabits-active.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 204
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/25-getHabit.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 202
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/26-getHabit-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/27-updateHabit.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 204
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/28-updateHabit-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/29-updateHabit-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/30-deactivateHabit.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 205
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/31-deactivateHabit-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/32-activateHabit.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 204
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/33-activateHabit-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/34-completeHabit.head <==
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 100
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/35-completeHabit-future.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/36-completeHabit-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/37-completeHabit-409.head <==
+HTTP/1.1 409 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/38-listHabitCompletions.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 99
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/39-listHabitCompletions-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/40-undoHabitCompletion.head <==
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/41-undoHabitCompletion-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/42-deleteHabit.head <==
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/43-deleteHabit-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:16:37 GMT
+
+
+==> loops/testing/runs/current/44-createLearningCard.head <==
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 189
+Date: Sat, 26 Sep 2026 09:16:42 GMT
+
+
+==> loops/testing/runs/current/45-createLearningCard-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/46-listLearningCards.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 188
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+
+
+==> loops/testing/runs/current/47-getLearningCard.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 186
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+
+
+==> loops/testing/runs/current/48-getLearningCard-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+
+
+==> loops/testing/runs/current/49-updateLearningCard.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 189
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+
+
+==> loops/testing/runs/current/50-updateLearningCard-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/51-updateLearningCard-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+
+
+==> loops/testing/runs/current/52-addMilestone.head <==
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 71
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+
+
+==> loops/testing/runs/current/53-addMilestone-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/54-addMilestone-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+
+
+==> loops/testing/runs/current/55-addNote.head <==
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 85
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+
+
+==> loops/testing/runs/current/56-addNote-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/57-addNote-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:03 GMT
+
+
+==> loops/testing/runs/current/58-updateMilestone.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 63
+Date: Sat, 26 Sep 2026 09:17:19 GMT
+
+
+==> loops/testing/runs/current/59-updateMilestone-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:19 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/60-updateMilestone-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:19 GMT
+
+
+==> loops/testing/runs/current/61-getLearningCard-full.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 334
+Date: Sat, 26 Sep 2026 09:17:19 GMT
+
+
+==> loops/testing/runs/current/62-deleteNote.head <==
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 09:17:19 GMT
+
+
+==> loops/testing/runs/current/63-deleteNote-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:19 GMT
+
+
+==> loops/testing/runs/current/64-deleteMilestone.head <==
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 09:17:19 GMT
+
+
+==> loops/testing/runs/current/65-deleteMilestone-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:19 GMT
+
+
+==> loops/testing/runs/current/66-deleteLearningCard.head <==
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 09:17:19 GMT
+
+
+==> loops/testing/runs/current/67-deleteLearningCard-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:19 GMT
+
+
+==> loops/testing/runs/current/68-setup-createTask.head <==
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 257
+Date: Sat, 26 Sep 2026 09:17:26 GMT
+
+
+==> loops/testing/runs/current/69-createPlan.head <==
+HTTP/1.1 201 
+Content-Type: application/json
+Content-Length: 427
+Date: Sat, 26 Sep 2026 09:17:26 GMT
+
+
+==> loops/testing/runs/current/70-createPlan-noItems.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/71-createPlan-endBeforeStart.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/72-createPlan-endEqualsStart.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/73-listPlans.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 426
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/74-listPlans-active.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 426
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/75-listPlans-completed.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 2
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/76-listPlans-all.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 426
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/77-getPlan.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 424
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/78-getPlan-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/79-updatePlan.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 426
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/80-updatePlan-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/81-updatePlan-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/82-setPlanItemDone.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 427
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/83-setPlanItemDone-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/84-setPlanItemDone-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/85-deletePlan.head <==
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/86-deletePlan-404.head <==
+HTTP/1.1 404 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/87-cleanup-deleteTask.head <==
+HTTP/1.1 204 
+Date: Sat, 26 Sep 2026 09:17:55 GMT
+
+
+==> loops/testing/runs/current/88-getDashboard.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 382
+Date: Sat, 26 Sep 2026 09:18:05 GMT
+
+
+==> loops/testing/runs/current/89-getSettings.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 76
+Date: Sat, 26 Sep 2026 09:18:05 GMT
+
+
+==> loops/testing/runs/current/90-updateSettings.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 79
+Date: Sat, 26 Sep 2026 09:18:05 GMT
+
+
+==> loops/testing/runs/current/91-updateSettings-invalid.head <==
+HTTP/1.1 400 
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Sat, 26 Sep 2026 09:18:05 GMT
+Connection: close
+
+
+==> loops/testing/runs/current/92-updateSettings-restore.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 76
+Date: Sat, 26 Sep 2026 09:18:05 GMT
+
+
+==> loops/testing/runs/current/99-getDashboard-populated.head <==
+HTTP/1.1 200 
+Content-Type: application/json
+Content-Length: 1717
+Date: Sat, 26 Sep 2026 09:18:24 GMT
+
+
+==> loops/testing/runs/current/01-apidocs--none.json <==
+{"openapi":"3.1.0","info":{"title":"QuickFlow API","version":"0.1.0"},"servers":[{"url":"http://localhost:8080","description":"Generated server url"}],"paths":{"/api/tasks/{id}":{"get":{"tags":["tasks"],"operationId":"getTask","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Task"}}}}}},"put":{"tags":["tasks"],"summary":"Replace the editable fields (status DONE sets completedAt, leaving DONE clears it)","operationId":"updateTask","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/TaskUpdate"}}},"required":true},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Task"}}}}}},"delete":{"tags":["tasks"],"summary":"Delete permanently (BR-14)","operationId":"deleteTask","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"204":{"description":"No Content"}}}},"/api/settings":{"get":{"tags":["settings"],"summary":"Current settings (defaults on first read)","operationId":"getSettings","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Settings"}}}}}},"put":{"tags":["settings"],"summary":"Replace the settings","operationId":"updateSettings","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/Settings"}}},"required":true},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Settings"}}}}}}},"/api/plans/{id}":{"get":{"tags":["plans"],"operationId":"getPlan","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Plan"}}}}}},"put":{"tags":["plans"],"summary":"Edit title, estimated duration, start/end and priority order (items are unchanged)","operationId":"updatePlan","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PlanUpdate"}}},"required":true},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Plan"}}}}}},"delete":{"tags":["plans"],"summary":"Delete the plan and its items; referenced sources are unchanged (BR-14)","operationId":"deletePlan","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"204":{"description":"No Content"}}}},"/api/plans/{id}/items/{itemId}":{"put":{"tags":["plans"],"summary":"Mark a plan item done or not done; a TASK item marked done also completes the task; un-ticking and HABIT/LEARNING_RESOURCE items change no source (BR-13, Q1)","operationId":"setPlanItemDone","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}},{"name":"itemId","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PlanItemUpdate"}}},"required":true},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Plan"}}}}}}},"/api/learning-cards/{id}":{"get":{"tags":["learning"],"operationId":"getLearningCard","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/LearningCard"}}}}}},"put":{"tags":["learning"],"operationId":"updateLearningCard","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/LearningCardUpdate"}}},"required":true},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/LearningCard"}}}}}},"delete":{"tags":["learning"],"summary":"Delete the card, its milestones and notes permanently (BR-14)","operationId":"deleteLearningCard","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"204":{"description":"No Content"}}}},"/api/learning-cards/{id}/milestones/{milestoneId}":{"put":{"tags":["learning"],"summary":"Edit title/target date and set done or not done","operationId":"updateMilestone","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}},{"name":"milestoneId","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/MilestoneUpdate"}}},"required":true},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Milestone"}}}}}},"delete":{"tags":["learning"],"operationId":"deleteMilestone","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}},{"name":"milestoneId","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"204":{"description":"No Content"}}}},"/api/habits/{id}":{"get":{"tags":["habits"],"operationId":"getHabit","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Habit"}}}}}},"put":{"tags":["habits"],"operationId":"updateHabit","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/HabitWrite"}}},"required":true},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Habit"}}}}}},"delete":{"tags":["habits"],"summary":"Delete the habit and its completions permanently (BR-14)","operationId":"deleteHabit","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"204":{"description":"No Content"}}}},"/api/tasks":{"get":{"tags":["tasks"],"summary":"List tasks (search, filters, sort; archived excluded by default, BR-4)","operationId":"listTasks","parameters":[{"name":"q","in":"query","description":"Case-insensitive substring of the title","required":false,"schema":{"type":"string"}},{"name":"status","in":"query","required":false,"schema":{"$ref":"#/components/schemas/TaskStatus"}},{"name":"priority","in":"query","required":false,"schema":{"$ref":"#/components/schemas/TaskPriority"}},{"name":"dueFrom","in":"query","description":"Inclusive","required":false,"schema":{"type":"string","format":"date"}},{"name":"dueTo","in":"query","description":"Inclusive","required":false,"schema":{"type":"string","format":"date"}},{"name":"archived","in":"query","required":false,"schema":{"type":"boolean","default":false}},{"name":"sort","in":"query","required":false,"schema":{"type":"string","default":"createdAt","enum":["createdAt","dueDate"]}},{"name":"direction","in":"query","required":false,"schema":{"type":"string","default":"desc","enum":["asc","desc"]}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/Task"}}}}}}},"post":{"tags":["tasks"],"operationId":"createTask","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/TaskCreate"}}},"required":true},"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Task"}}}}}}},"/api/tasks/{id}/restore":{"post":{"tags":["tasks"],"operationId":"restoreTask","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Task"}}}}}}},"/api/tasks/{id}/complete":{"post":{"tags":["tasks"],"summary":"Mark completed (status DONE, BR-5)","operationId":"completeTask","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Task"}}}}}}},"/api/tasks/{id}/archive":{"post":{"tags":["tasks"],"operationId":"archiveTask","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Task"}}}}}}},"/api/plans":{"get":{"tags":["plans"],"summary":"Plans with computed status, progress and rest time","operationId":"listPlans","parameters":[{"name":"group","in":"query","description":"active = NOT_STARTED or IN_PROGRESS (priorityOrder asc, then start asc); completed = COMPLETED (end desc); all = active then completed","required":false,"schema":{"type":"string","default":"all","enum":["active","completed","all"]}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/Plan"}}}}}}},"post":{"tags":["plans"],"operationId":"createPlan","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PlanCreate"}}},"required":true},"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Plan"}}}}}}},"/api/learning-cards":{"get":{"tags":["learning"],"summary":"Cards with their milestones and notes, newest first","operationId":"listLearningCards","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/LearningCard"}}}}}}},"post":{"tags":["learning"],"operationId":"createLearningCard","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/LearningCardCreate"}}},"required":true},"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/LearningCard"}}}}}}},"/api/learning-cards/{id}/notes":{"post":{"tags":["learning"],"operationId":"addNote","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/NoteCreate"}}},"required":true},"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Note"}}}}}}},"/api/learning-cards/{id}/milestones":{"post":{"tags":["learning"],"operationId":"addMilestone","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/MilestoneCreate"}}},"required":true},"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Milestone"}}}}}}},"/api/habits":{"get":{"tags":["habits"],"summary":"Habits with progress, oldest first","operationId":"listHabits","parameters":[{"name":"active","in":"query","description":"Omit for all habits","required":false,"schema":{"type":"boolean"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/Habit"}}}}}}},"post":{"tags":["habits"],"operationId":"createHabit","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/HabitWrite"}}},"required":true},"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Habit"}}}}}}},"/api/habits/{id}/deactivate":{"post":{"tags":["habits"],"operationId":"deactivateHabit","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Habit"}}}}}}},"/api/habits/{id}/completions":{"get":{"tags":["habits"],"summary":"Completions, newest date first","operationId":"listHabitCompletions","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/HabitCompletion"}}}}}}},"post":{"tags":["habits"],"summary":"Record a completion for a date (default today); one per habit and date (BR-7)","operationId":"completeHabit","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/HabitCompletionCreate"}}}},"responses":{"201":{"description":"Created","content":{"application/json":{"schema":{"$ref":"#/components/schemas/HabitCompletion"}}}}}}},"/api/habits/{id}/activate":{"post":{"tags":["habits"],"operationId":"activateHabit","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Habit"}}}}}}},"/api/tasks/overdue":{"get":{"tags":["tasks"],"summary":"Tasks due before today, not Done, not archived (FR-01.7)","operationId":"listOverdueTasks","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/Task"}}}}}}}},"/api/dashboard":{"get":{"tags":["dashboard"],"summary":"Summary computed from current data","operationId":"getDashboard","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Dashboard"}}}}}}},"/api/app-info":{"get":{"tags":["info"],"summary":"App time zone and the server's current time","operationId":"getAppInfo","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"$ref":"#/components/schemas/AppInfo"}}}}}}},"/api/learning-cards/{id}/notes/{noteId}":{"delete":{"tags":["learning"],"operationId":"deleteNote","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}},{"name":"noteId","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}],"responses":{"204":{"description":"No Content"}}}},"/api/habits/{id}/completions/{date}":{"delete":{"tags":["habits"],"operationId":"undoHabitCompletion","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}},{"name":"date","in":"path","required":true,"schema":{"type":"string","format":"date"}}],"responses":{"204":{"description":"No Content"}}}}},"components":{"schemas":{"TaskPriority":{"type":"string","enum":["LOW","MEDIUM","HIGH"]},"TaskStatus":{"type":"string","enum":["TODO","IN_PROGRESS","DONE"]},"TaskUpdate":{"type":"object","properties":{"title":{"type":"string","maxLength":200,"minLength":1},"description":{"type":["string","null"],"maxLength":2000,"minLength":0},"status":{"$ref":"#/components/schemas/TaskStatus"},"priority":{"$ref":"#/components/schemas/TaskPriority"},"dueDate":{"type":["string","null"],"format":"date"}},"required":["priority","status","title"]},"Task":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"title":{"type":"string"},"description":{"type":["string","null"]},"status":{"$ref":"#/components/schemas/TaskStatus"},"priority":{"$ref":"#/components/schemas/TaskPriority"},"dueDate":{"type":["string","null"],"format":"date"},"createdAt":{"type":"string","format":"date-time"},"updatedAt":{"type":"string","format":"date-time"},"completedAt":{"type":["string","null"],"format":"date-time"},"archived":{"type":"boolean"},"overdue":{"type":"boolean","description":"Computed on read (FR-01.7)"}},"required":["archived","createdAt","id","overdue","priority","status","title","updatedAt"]},"DefaultPage":{"type":"string","enum":["DASHBOARD","TASKS","HABITS","LEARNING","PLANS","SETTINGS"]},"Settings":{"type":"object","description":"Profile and preferences of the single user (FR-10.2, Q3)","properties":{"displayName":{"type":["string","null"],"maxLength":100,"minLength":0},"planStartNotifications":{"type":"boolean","default":true},"defaultPage":{"$ref":"#/components/schemas/DefaultPage"}},"required":["defaultPage","planStartNotifications"]},"PlanUpdate":{"type":"object","properties":{"title":{"type":"string","maxLength":200,"minLength":1},"estimatedDurationMinutes":{"type":"integer","format":"int32","maximum":100000,"minimum":1},"startDateTime":{"type":"string","format":"date-time"},"endDateTime":{"type":"string","format":"date-time"},"priorityOrder":{"type":"integer","format":"int32","minimum":1}},"required":["endDateTime","estimatedDurationMinutes","priorityOrder","startDateTime","title"]},"Plan":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"title":{"type":"string"},"items":{"type":"array","items":{"$ref":"#/components/schemas/PlanItem"}},"estimatedDurationMinutes":{"type":"integer","format":"int32"},"startDateTime":{"type":"string","format":"date-time"},"endDateTime":{"type":"string","format":"date-time"},"priorityOrder":{"type":"integer","format":"int32"},"status":{"$ref":"#/components/schemas/PlanStatus","description":"Computed on read (FR-08.4, Q2)"},"createdAt":{"type":"string","format":"date-time"},"doneItems":{"type":"integer","format":"int32"},"totalItems":{"type":"integer","format":"int32"},"progressPercent":{"type":"integer","format":"int32","maximum":100,"minimum":0},"restSeconds":{"type":["integer","null"],"format":"int64","description":"Seconds until endDateTime while start <= now < end, otherwise null (BR-12)"}},"required":["createdAt","doneItems","endDateTime","estimatedDurationMinutes","id","items","priorityOrder","progressPercent","startDateTime","status","title","totalItems"]},"PlanItem":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"sourceType":{"$ref":"#/components/schemas/PlanSourceType"},"sourceId":{"type":"integer","format":"int64"},"sourceTitle":{"type":"string"},"sourceRemoved":{"type":"boolean","description":"The source was deleted (FR-07.6)"},"done":{"type":"boolean"}},"required":["done","id","sourceId","sourceRemoved","sourceTitle","sourceType"]},"PlanSourceType":{"type":"string","enum":["TASK","HABIT","LEARNING_RESOURCE"]},"PlanStatus":{"type":"string","enum":["NOT_STARTED","IN_PROGRESS","COMPLETED"]},"PlanItemUpdate":{"type":"object","properties":{"done":{"type":"boolean"}},"required":["done"]},"LearningCardUpdate":{"type":"object","properties":{"title":{"type":"string","maxLength":200,"minLength":1},"description":{"type":["string","null"],"maxLength":2000,"minLength":0},"status":{"$ref":"#/components/schemas/LearningStatus"}},"required":["status","title"]},"LearningStatus":{"type":"string","enum":["NOT_STARTED","IN_PROGRESS","COMPLETED"]},"LearningCard":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"title":{"type":"string"},"description":{"type":["string","null"]},"status":{"$ref":"#/components/schemas/LearningStatus"},"createdAt":{"type":"string","format":"date-time"},"milestones":{"type":"array","items":{"$ref":"#/components/schemas/Milestone"}},"notes":{"type":"array","items":{"$ref":"#/components/schemas/Note"}},"milestonesDone":{"type":"integer","format":"int32"},"milestonesTotal":{"type":"integer","format":"int32"}},"required":["createdAt","id","milestones","milestonesDone","milestonesTotal","notes","status","title"]},"Milestone":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"cardId":{"type":"integer","format":"int64"},"title":{"type":"string"},"done":{"type":"boolean"},"targetDate":{"type":["string","null"],"format":"date"}},"required":["cardId","done","id","title"]},"Note":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"cardId":{"type":"integer","format":"int64"},"text":{"type":"string"},"createdAt":{"type":"string","format":"date-time"}},"required":["cardId","createdAt","id","text"]},"MilestoneUpdate":{"type":"object","properties":{"title":{"type":"string","maxLength":200,"minLength":1},"targetDate":{"type":["string","null"],"format":"date"},"done":{"type":"boolean"}},"required":["done","title"]},"HabitFrequency":{"type":"string","enum":["DAILY","WEEKLY"]},"HabitWrite":{"type":"object","properties":{"name":{"type":"string","maxLength":150,"minLength":1},"description":{"type":["string","null"],"maxLength":2000,"minLength":0},"frequency":{"$ref":"#/components/schemas/HabitFrequency"}},"required":["frequency","name"]},"Habit":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"name":{"type":"string"},"description":{"type":["string","null"]},"frequency":{"$ref":"#/components/schemas/HabitFrequency"},"createdAt":{"type":"string","format":"date-time"},"active":{"type":"boolean"},"completedToday":{"type":"boolean"},"doneForCurrentPeriod":{"type":"boolean","description":"Today (DAILY) or current Monday-Sunday week (WEEKLY)"},"currentStreak":{"type":"integer","format":"int32","description":"Consecutive periods with a completion","minimum":0}},"required":["active","completedToday","createdAt","currentStreak","doneForCurrentPeriod","frequency","id","name"]},"TaskCreate":{"type":"object","properties":{"title":{"type":"string","maxLength":200,"minLength":1},"description":{"type":["string","null"],"maxLength":2000,"minLength":0},"status":{"$ref":"#/components/schemas/TaskStatus","description":"Default TODO"},"priority":{"$ref":"#/components/schemas/TaskPriority","description":"Default MEDIUM"},"dueDate":{"type":["string","null"],"format":"date"}},"required":["title"]},"PlanCreate":{"type":"object","properties":{"title":{"type":"string","maxLength":200,"minLength":1},"items":{"type":"array","description":"Existing, distinct tasks/habits/learning cards (BR-10)","items":{"$ref":"#/components/schemas/PlanItemRef"},"minItems":1},"estimatedDurationMinutes":{"type":"integer","format":"int32","maximum":100000,"minimum":1},"startDateTime":{"type":"string","format":"date-time"},"endDateTime":{"type":"string","format":"date-time","description":"Must be after startDateTime (BR-11)"},"priorityOrder":{"type":"integer","format":"int32","description":"1 is the highest","minimum":1}},"required":["endDateTime","estimatedDurationMinutes","items","priorityOrder","startDateTime","title"]},"PlanItemRef":{"type":"object","properties":{"sourceType":{"$ref":"#/components/schemas/PlanSourceType"},"sourceId":{"type":"integer","format":"int64"}},"required":["sourceId","sourceType"]},"LearningCardCreate":{"type":"object","properties":{"title":{"type":"string","maxLength":200,"minLength":1},"description":{"type":["string","null"],"maxLength":2000,"minLength":0}},"required":["title"]},"NoteCreate":{"type":"object","properties":{"text":{"type":"string","maxLength":5000,"minLength":1}},"required":["text"]},"MilestoneCreate":{"type":"object","properties":{"title":{"type":"string","maxLength":200,"minLength":1},"targetDate":{"type":["string","null"],"format":"date"}},"required":["title"]},"HabitCompletionCreate":{"type":"object","properties":{"date":{"type":["string","null"],"format":"date","description":"Default today; a future date is rejected"}}},"HabitCompletion":{"type":"object","properties":{"id":{"type":"integer","format":"int64"},"habitId":{"type":"integer","format":"int64"},"completionDate":{"type":"string","format":"date"},"createdAt":{"type":"string","format":"date-time"}},"required":["completionDate","createdAt","habitId","id"]},"Dashboard":{"type":"object","properties":{"now":{"type":"string","format":"date-time"},"dueToday":{"type":"array","items":{"$ref":"#/components/schemas/Task"}},"overdue":{"type":"array","items":{"$ref":"#/components/schemas/Task"}},"completedToday":{"type":"array","items":{"$ref":"#/components/schemas/Task"}},"taskCompletionPercent":{"type":"integer","format":"int32","maximum":100,"minimum":0},"taskCounts":{"$ref":"#/components/schemas/TaskCounts"},"habits":{"type":"array","description":"Active habits","items":{"$ref":"#/components/schemas/Habit"}},"habitCounts":{"$ref":"#/components/schemas/HabitCounts"},"activePlans":{"type":"array","description":"IN_PROGRESS plans by priority","items":{"$ref":"#/components/schemas/Plan"}},"planCounts":{"$ref":"#/components/schemas/PlanCounts"},"learning":{"$ref":"#/components/schemas/LearningSnapshot"}},"required":["activePlans","completedToday","dueToday","habitCounts","habits","learning","now","overdue","planCounts","taskCompletionPercent","taskCounts"]},"HabitCounts":{"type":"object","properties":{"active":{"type":"integer","format":"int32"},"completedToday":{"type":"integer","format":"int32"}},"required":["active","completedToday"]},"LearningSnapshot":{"type":"object","properties":{"notStarted":{"type":"integer","format":"int32"},"inProgress":{"type":"integer","format":"int32"},"completed":{"type":"integer","format":"int32"},"milestonesDone":{"type":"integer","format":"int32"},"milestonesTotal":{"type":"integer","format":"int32"}},"required":["completed","inProgress","milestonesDone","milestonesTotal","notStarted"]},"PlanCounts":{"type":"object","properties":{"notStarted":{"type":"integer","format":"int32"},"inProgress":{"type":"integer","format":"int32"},"completed":{"type":"integer","format":"int32"}},"required":["completed","inProgress","notStarted"]},"TaskCounts":{"type":"object","properties":{"total":{"type":"integer","format":"int32","description":"Non-archived tasks"},"done":{"type":"integer","format":"int32"}},"required":["done","total"]},"AppInfo":{"type":"object","properties":{"timeZone":{"type":"string","examples":["Africa/Cairo"]},"now":{"type":"string","format":"date-time"}},"required":["now","timeZone"]}}}}
+==> loops/testing/runs/current/02-getAppInfo--AppInfo.json <==
+{"timeZone":"Africa/Cairo","now":"2026-09-26T12:15:21.459023416+03:00"}
+==> loops/testing/runs/current/03-createTask--Task.json <==
+{"id":1,"title":"Contract task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-26T12:15:21.536228402+03:00","updatedAt":"2026-09-26T12:15:21.536228402+03:00","completedAt":null,"archived":false,"overdue":true}
+==> loops/testing/runs/current/04-createTask-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/tasks","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"},{"field":"title","message":"size must be between 1 and 200"}]}
+==> loops/testing/runs/current/05-listTasks--ArrTask.json <==
+[{"id":1,"title":"Contract task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-26T12:15:21.536228+03:00","updatedAt":"2026-09-26T12:15:21.536228+03:00","completedAt":null,"archived":false,"overdue":true}]
+==> loops/testing/runs/current/06-listTasks-filtered--ArrTask.json <==
+[{"id":1,"title":"Contract task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-26T12:15:21.536228+03:00","updatedAt":"2026-09-26T12:15:21.536228+03:00","completedAt":null,"archived":false,"overdue":true}]
+==> loops/testing/runs/current/07-listOverdueTasks--ArrTask.json <==
+[{"id":1,"title":"Contract task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-26T12:15:21.536228+03:00","updatedAt":"2026-09-26T12:15:21.536228+03:00","completedAt":null,"archived":false,"overdue":true}]
+==> loops/testing/runs/current/08-getTask--Task.json <==
+{"id":1,"title":"Contract task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-25","createdAt":"2026-09-26T12:15:21.536228+03:00","updatedAt":"2026-09-26T12:15:21.536228+03:00","completedAt":null,"archived":false,"overdue":true}
+==> loops/testing/runs/current/09-getTask-404--Problem.json <==
+{"detail":"Task 999999999 not found","instance":"/api/tasks/999999999","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/10-updateTask--Task.json <==
+{"id":1,"title":"Contract task 2","description":null,"status":"IN_PROGRESS","priority":"HIGH","dueDate":null,"createdAt":"2026-09-26T12:15:21.536228+03:00","updatedAt":"2026-09-26T12:15:54.188453573+03:00","completedAt":null,"archived":false,"overdue":false}
+==> loops/testing/runs/current/11-updateTask-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/tasks/1","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must not be null"}]}
+==> loops/testing/runs/current/12-updateTask-404--Problem.json <==
+{"detail":"Task 999999999 not found","instance":"/api/tasks/999999999","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/13-completeTask--Task.json <==
+{"id":1,"title":"Contract task 2","description":null,"status":"DONE","priority":"HIGH","dueDate":null,"createdAt":"2026-09-26T12:15:21.536228+03:00","updatedAt":"2026-09-26T12:15:54.248903631+03:00","completedAt":"2026-09-26T12:15:54.248903631+03:00","archived":false,"overdue":false}
+==> loops/testing/runs/current/14-completeTask-404--Problem.json <==
+{"detail":"Task 999999999 not found","instance":"/api/tasks/999999999/complete","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/15-archiveTask--Task.json <==
+{"id":1,"title":"Contract task 2","description":null,"status":"DONE","priority":"HIGH","dueDate":null,"createdAt":"2026-09-26T12:15:21.536228+03:00","updatedAt":"2026-09-26T12:15:54.287700187+03:00","completedAt":"2026-09-26T12:15:54.248904+03:00","archived":true,"overdue":false}
+==> loops/testing/runs/current/16-archiveTask-404--Problem.json <==
+{"detail":"Task 999999999 not found","instance":"/api/tasks/999999999/archive","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/17-restoreTask--Task.json <==
+{"id":1,"title":"Contract task 2","description":null,"status":"DONE","priority":"HIGH","dueDate":null,"createdAt":"2026-09-26T12:15:21.536228+03:00","updatedAt":"2026-09-26T12:15:54.324439246+03:00","completedAt":"2026-09-26T12:15:54.248904+03:00","archived":false,"overdue":false}
+==> loops/testing/runs/current/18-restoreTask-404--Problem.json <==
+{"detail":"Task 999999999 not found","instance":"/api/tasks/999999999/restore","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/19-deleteTask--none.json <==
+
+==> loops/testing/runs/current/20-deleteTask-404--Problem.json <==
+{"detail":"Task 1 not found","instance":"/api/tasks/1","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/21-createHabit--Habit.json <==
+{"id":1,"name":"Contract habit","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:16:08.370608073+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+==> loops/testing/runs/current/22-createHabit-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/habits","status":400,"title":"Bad Request","errors":[{"field":"name","message":"must not be blank"},{"field":"name","message":"size must be between 1 and 150"}]}
+==> loops/testing/runs/current/23-listHabits--ArrHabit.json <==
+[{"id":1,"name":"Contract habit","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:16:08.370608+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}]
+==> loops/testing/runs/current/24-listHabits-active--ArrHabit.json <==
+[{"id":1,"name":"Contract habit","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:16:08.370608+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}]
+==> loops/testing/runs/current/25-getHabit--Habit.json <==
+{"id":1,"name":"Contract habit","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:16:08.370608+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+==> loops/testing/runs/current/26-getHabit-404--Problem.json <==
+{"detail":"Habit 999999999 not found","instance":"/api/habits/999999999","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/27-updateHabit--Habit.json <==
+{"id":1,"name":"Contract habit 2","description":"d","frequency":"WEEKLY","createdAt":"2026-09-26T12:16:08.370608+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+==> loops/testing/runs/current/28-updateHabit-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/habits/1","status":400,"title":"Bad Request","errors":[{"field":"frequency","message":"must not be null"}]}
+==> loops/testing/runs/current/29-updateHabit-404--Problem.json <==
+{"detail":"Habit 999999999 not found","instance":"/api/habits/999999999","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/30-deactivateHabit--Habit.json <==
+{"id":1,"name":"Contract habit 2","description":"d","frequency":"WEEKLY","createdAt":"2026-09-26T12:16:08.370608+03:00","active":false,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+==> loops/testing/runs/current/31-deactivateHabit-404--Problem.json <==
+{"detail":"Habit 999999999 not found","instance":"/api/habits/999999999/deactivate","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/32-activateHabit--Habit.json <==
+{"id":1,"name":"Contract habit 2","description":"d","frequency":"WEEKLY","createdAt":"2026-09-26T12:16:08.370608+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+==> loops/testing/runs/current/33-activateHabit-404--Problem.json <==
+{"detail":"Habit 999999999 not found","instance":"/api/habits/999999999/activate","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/34-completeHabit--HabitCompletion.json <==
+{"id":1,"habitId":1,"completionDate":"2026-09-26","createdAt":"2026-09-26T12:16:37.354888781+03:00"}
+==> loops/testing/runs/current/35-completeHabit-future--Problem.json <==
+{"detail":"Validation failed","instance":"/api/habits/1/completions","status":400,"title":"Bad Request","errors":[{"field":"date","message":"must not be in the future"}]}
+==> loops/testing/runs/current/36-completeHabit-404--Problem.json <==
+{"detail":"Habit 999999999 not found","instance":"/api/habits/999999999/completions","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/37-completeHabit-409--Problem.json <==
+{"detail":"Habit 1 is already complete for 2026-09-26","instance":"/api/habits/1/completions","status":409,"title":"Conflict"}
+==> loops/testing/runs/current/38-listHabitCompletions--ArrHabitCompletion.json <==
+[{"id":1,"habitId":1,"completionDate":"2026-09-26","createdAt":"2026-09-26T12:16:37.354889+03:00"}]
+==> loops/testing/runs/current/39-listHabitCompletions-404--Problem.json <==
+{"detail":"Habit 999999999 not found","instance":"/api/habits/999999999/completions","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/40-undoHabitCompletion--none.json <==
+
+==> loops/testing/runs/current/41-undoHabitCompletion-404--Problem.json <==
+{"detail":"Habit 999999999 not found","instance":"/api/habits/999999999/completions/2026-09-26","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/42-deleteHabit--none.json <==
+
+==> loops/testing/runs/current/43-deleteHabit-404--Problem.json <==
+{"detail":"Habit 1 not found","instance":"/api/habits/1","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/44-createLearningCard--LearningCard.json <==
+{"id":1,"title":"Contract card","description":"d","status":"NOT_STARTED","createdAt":"2026-09-26T12:16:42.569968343+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+==> loops/testing/runs/current/45-createLearningCard-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/learning-cards","status":400,"title":"Bad Request","errors":[{"field":"title","message":"must not be blank"},{"field":"title","message":"size must be between 1 and 200"}]}
+==> loops/testing/runs/current/46-listLearningCards--ArrLearningCard.json <==
+[{"id":1,"title":"Contract card","description":"d","status":"NOT_STARTED","createdAt":"2026-09-26T12:16:42.569968+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}]
+==> loops/testing/runs/current/47-getLearningCard--LearningCard.json <==
+{"id":1,"title":"Contract card","description":"d","status":"NOT_STARTED","createdAt":"2026-09-26T12:16:42.569968+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+==> loops/testing/runs/current/48-getLearningCard-404--Problem.json <==
+{"detail":"Learning card 999999999 not found","instance":"/api/learning-cards/999999999","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/49-updateLearningCard--LearningCard.json <==
+{"id":1,"title":"Contract card 2","description":null,"status":"IN_PROGRESS","createdAt":"2026-09-26T12:16:42.569968+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+==> loops/testing/runs/current/50-updateLearningCard-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/learning-cards/1","status":400,"title":"Bad Request","errors":[{"field":"status","message":"must not be null"}]}
+==> loops/testing/runs/current/51-updateLearningCard-404--Problem.json <==
+{"detail":"Learning card 999999999 not found","instance":"/api/learning-cards/999999999","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/52-addMilestone--Milestone.json <==
+{"id":1,"cardId":1,"title":"M1","done":false,"targetDate":"2026-09-27"}
+==> loops/testing/runs/current/53-addMilestone-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/learning-cards/1/milestones","status":400,"title":"Bad Request","errors":[{"field":"title","message":"size must be between 1 and 200"},{"field":"title","message":"must not be blank"}]}
+==> loops/testing/runs/current/54-addMilestone-404--Problem.json <==
+{"detail":"Learning card 999999999 not found","instance":"/api/learning-cards/999999999/milestones","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/55-addNote--Note.json <==
+{"id":1,"cardId":1,"text":"A note","createdAt":"2026-09-26T12:17:03.619781523+03:00"}
+==> loops/testing/runs/current/56-addNote-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/learning-cards/1/notes","status":400,"title":"Bad Request","errors":[{"field":"text","message":"must not be blank"},{"field":"text","message":"size must be between 1 and 5000"}]}
+==> loops/testing/runs/current/57-addNote-404--Problem.json <==
+{"detail":"Learning card 999999999 not found","instance":"/api/learning-cards/999999999/notes","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/58-updateMilestone--Milestone.json <==
+{"id":1,"cardId":1,"title":"M1b","done":true,"targetDate":null}
+==> loops/testing/runs/current/59-updateMilestone-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/learning-cards/1/milestones/1","status":400,"title":"Bad Request","errors":[{"field":"done","message":"must not be null"}]}
+==> loops/testing/runs/current/60-updateMilestone-404--Problem.json <==
+{"detail":"Milestone 999999999 not found on learning card 1","instance":"/api/learning-cards/1/milestones/999999999","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/61-getLearningCard-full--LearningCard.json <==
+{"id":1,"title":"Contract card 2","description":null,"status":"IN_PROGRESS","createdAt":"2026-09-26T12:16:42.569968+03:00","milestones":[{"id":1,"cardId":1,"title":"M1b","done":true,"targetDate":null}],"notes":[{"id":1,"cardId":1,"text":"A note","createdAt":"2026-09-26T12:17:03.619782+03:00"}],"milestonesDone":1,"milestonesTotal":1}
+==> loops/testing/runs/current/62-deleteNote--none.json <==
+
+==> loops/testing/runs/current/63-deleteNote-404--Problem.json <==
+{"detail":"Note 1 not found on learning card 1","instance":"/api/learning-cards/1/notes/1","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/64-deleteMilestone--none.json <==
+
+==> loops/testing/runs/current/65-deleteMilestone-404--Problem.json <==
+{"detail":"Milestone 1 not found on learning card 1","instance":"/api/learning-cards/1/milestones/1","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/66-deleteLearningCard--none.json <==
+
+==> loops/testing/runs/current/67-deleteLearningCard-404--Problem.json <==
+{"detail":"Learning card 1 not found","instance":"/api/learning-cards/1","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/68-setup-createTask--Task.json <==
+{"id":2,"title":"Plan source task","description":null,"status":"TODO","priority":"MEDIUM","dueDate":null,"createdAt":"2026-09-26T12:17:26.810482599+03:00","updatedAt":"2026-09-26T12:17:26.810482599+03:00","completedAt":null,"archived":false,"overdue":false}
+==> loops/testing/runs/current/69-createPlan--Plan.json <==
+{"id":1,"title":"Contract plan","items":[{"id":1,"sourceType":"TASK","sourceId":2,"sourceTitle":"Plan source task","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T13:30:00+03:00","endDateTime":"2026-09-26T14:30:00+03:00","priorityOrder":1,"status":"NOT_STARTED","createdAt":"2026-09-26T12:17:26.875376912+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}
+==> loops/testing/runs/current/70-createPlan-noItems--Problem.json <==
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"items","message":"must not be empty"}]}
+==> loops/testing/runs/current/71-createPlan-endBeforeStart--Problem.json <==
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"endDateTime","message":"must be after startDateTime"}]}
+==> loops/testing/runs/current/72-createPlan-endEqualsStart--Problem.json <==
+{"detail":"Validation failed","instance":"/api/plans","status":400,"title":"Bad Request","errors":[{"field":"endDateTime","message":"must be after startDateTime"}]}
+==> loops/testing/runs/current/73-listPlans--ArrPlan.json <==
+[{"id":1,"title":"Contract plan","items":[{"id":1,"sourceType":"TASK","sourceId":2,"sourceTitle":"Plan source task","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T13:30:00+03:00","endDateTime":"2026-09-26T14:30:00+03:00","priorityOrder":1,"status":"NOT_STARTED","createdAt":"2026-09-26T12:17:26.875377+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}]
+==> loops/testing/runs/current/74-listPlans-active--ArrPlan.json <==
+[{"id":1,"title":"Contract plan","items":[{"id":1,"sourceType":"TASK","sourceId":2,"sourceTitle":"Plan source task","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T13:30:00+03:00","endDateTime":"2026-09-26T14:30:00+03:00","priorityOrder":1,"status":"NOT_STARTED","createdAt":"2026-09-26T12:17:26.875377+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}]
+==> loops/testing/runs/current/75-listPlans-completed--ArrPlan.json <==
+[]
+==> loops/testing/runs/current/76-listPlans-all--ArrPlan.json <==
+[{"id":1,"title":"Contract plan","items":[{"id":1,"sourceType":"TASK","sourceId":2,"sourceTitle":"Plan source task","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T13:30:00+03:00","endDateTime":"2026-09-26T14:30:00+03:00","priorityOrder":1,"status":"NOT_STARTED","createdAt":"2026-09-26T12:17:26.875377+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}]
+==> loops/testing/runs/current/77-getPlan--Plan.json <==
+{"id":1,"title":"Contract plan","items":[{"id":1,"sourceType":"TASK","sourceId":2,"sourceTitle":"Plan source task","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T13:30:00+03:00","endDateTime":"2026-09-26T14:30:00+03:00","priorityOrder":1,"status":"NOT_STARTED","createdAt":"2026-09-26T12:17:26.875377+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}
+==> loops/testing/runs/current/78-getPlan-404--Problem.json <==
+{"detail":"Plan 999999999 not found","instance":"/api/plans/999999999","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/79-updatePlan--Plan.json <==
+{"id":1,"title":"Contract plan 2","items":[{"id":1,"sourceType":"TASK","sourceId":2,"sourceTitle":"Plan source task","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":30,"startDateTime":"2026-09-26T13:30:00+03:00","endDateTime":"2026-09-26T14:30:00+03:00","priorityOrder":2,"status":"NOT_STARTED","createdAt":"2026-09-26T12:17:26.875377+03:00","doneItems":0,"totalItems":1,"progressPercent":0,"restSeconds":null}
+==> loops/testing/runs/current/80-updatePlan-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/plans/1","status":400,"title":"Bad Request","errors":[{"field":"endDateTime","message":"must be after startDateTime"}]}
+==> loops/testing/runs/current/81-updatePlan-404--Problem.json <==
+{"detail":"Plan 999999999 not found","instance":"/api/plans/999999999","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/82-setPlanItemDone--Plan.json <==
+{"id":1,"title":"Contract plan 2","items":[{"id":1,"sourceType":"TASK","sourceId":2,"sourceTitle":"Plan source task","sourceRemoved":false,"done":true}],"estimatedDurationMinutes":30,"startDateTime":"2026-09-26T13:30:00+03:00","endDateTime":"2026-09-26T14:30:00+03:00","priorityOrder":2,"status":"NOT_STARTED","createdAt":"2026-09-26T12:17:26.875377+03:00","doneItems":1,"totalItems":1,"progressPercent":100,"restSeconds":null}
+==> loops/testing/runs/current/83-setPlanItemDone-invalid--Problem.json <==
+{"detail":"Validation failed","instance":"/api/plans/1/items/1","status":400,"title":"Bad Request","errors":[{"field":"done","message":"must not be null"}]}
+==> loops/testing/runs/current/84-setPlanItemDone-404--Problem.json <==
+{"detail":"Plan item 999999999 not found on plan 1","instance":"/api/plans/1/items/999999999","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/85-deletePlan--none.json <==
+
+==> loops/testing/runs/current/86-deletePlan-404--Problem.json <==
+{"detail":"Plan 1 not found","instance":"/api/plans/1","status":404,"title":"Not Found"}
+==> loops/testing/runs/current/87-cleanup-deleteTask--none.json <==
+
+==> loops/testing/runs/current/88-getDashboard--Dashboard.json <==
+{"now":"2026-09-26T12:18:05.330265836+03:00","dueToday":[],"overdue":[],"completedToday":[],"taskCompletionPercent":0,"taskCounts":{"total":0,"done":0},"habits":[],"habitCounts":{"active":0,"completedToday":0},"activePlans":[],"planCounts":{"notStarted":0,"inProgress":0,"completed":0},"learning":{"notStarted":0,"inProgress":0,"completed":0,"milestonesDone":0,"milestonesTotal":0}}
+==> loops/testing/runs/current/89-getSettings--Settings.json <==
+{"displayName":null,"planStartNotifications":true,"defaultPage":"DASHBOARD"}
+==> loops/testing/runs/current/90-updateSettings--Settings.json <==
+{"displayName":"Contract","planStartNotifications":false,"defaultPage":"TASKS"}
+==> loops/testing/runs/current/91-updateSettings-invalid--Problem.json <==
+{"detail":"Malformed request body","instance":"/api/settings","status":400,"title":"Bad Request","errors":[{"field":"defaultPage","message":"must be one of [DASHBOARD, TASKS, HABITS, LEARNING, PLANS, SETTINGS]"}]}
+==> loops/testing/runs/current/92-updateSettings-restore--Settings.json <==
+{"displayName":null,"planStartNotifications":true,"defaultPage":"DASHBOARD"}
+==> loops/testing/runs/current/93-setup-taskToday--Task.json <==
+{"id":3,"title":"Due today","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-26","createdAt":"2026-09-26T12:18:16.886933432+03:00","updatedAt":"2026-09-26T12:18:16.886933432+03:00","completedAt":null,"archived":false,"overdue":false}
+==> loops/testing/runs/current/94-setup-taskOverdue--Task.json <==
+{"id":4,"title":"Overdue","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-20","createdAt":"2026-09-26T12:18:16.930705303+03:00","updatedAt":"2026-09-26T12:18:16.930705303+03:00","completedAt":null,"archived":false,"overdue":true}
+==> loops/testing/runs/current/95-setup-habit--Habit.json <==
+{"id":2,"name":"Dash habit","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:18:16.948954851+03:00","active":true,"completedToday":false,"doneForCurrentPeriod":false,"currentStreak":0}
+==> loops/testing/runs/current/96-setup-card--LearningCard.json <==
+{"id":2,"title":"Dash card","description":null,"status":"NOT_STARTED","createdAt":"2026-09-26T12:18:16.967998055+03:00","milestones":[],"notes":[],"milestonesDone":0,"milestonesTotal":0}
+==> loops/testing/runs/current/97-setup-plan--Plan.json <==
+{"id":2,"title":"Running plan","items":[{"id":2,"sourceType":"TASK","sourceId":3,"sourceTitle":"Due today","sourceRemoved":false,"done":false},{"id":3,"sourceType":"HABIT","sourceId":2,"sourceTitle":"Dash habit","sourceRemoved":false,"done":false},{"id":4,"sourceType":"LEARNING_RESOURCE","sourceId":2,"sourceTitle":"Dash card","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T12:00:00+03:00","endDateTime":"2026-09-26T23:00:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T12:18:24.15951367+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":38495}
+==> loops/testing/runs/current/98-setup-completeHabit--HabitCompletion.json <==
+{"id":2,"habitId":2,"completionDate":"2026-09-26","createdAt":"2026-09-26T12:18:24.206402324+03:00"}
+==> loops/testing/runs/current/99-getDashboard-populated--Dashboard.json <==
+{"now":"2026-09-26T12:18:24.228511265+03:00","dueToday":[{"id":3,"title":"Due today","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-26","createdAt":"2026-09-26T12:18:16.886933+03:00","updatedAt":"2026-09-26T12:18:16.886933+03:00","completedAt":null,"archived":false,"overdue":false}],"overdue":[{"id":4,"title":"Overdue","description":null,"status":"TODO","priority":"MEDIUM","dueDate":"2026-09-20","createdAt":"2026-09-26T12:18:16.930705+03:00","updatedAt":"2026-09-26T12:18:16.930705+03:00","completedAt":null,"archived":false,"overdue":true}],"completedToday":[],"taskCompletionPercent":0,"taskCounts":{"total":2,"done":0},"habits":[{"id":2,"name":"Dash habit","description":null,"frequency":"DAILY","createdAt":"2026-09-26T12:18:16.948955+03:00","active":true,"completedToday":true,"doneForCurrentPeriod":true,"currentStreak":1}],"habitCounts":{"active":1,"completedToday":1},"activePlans":[{"id":2,"title":"Running plan","items":[{"id":2,"sourceType":"TASK","sourceId":3,"sourceTitle":"Due today","sourceRemoved":false,"done":false},{"id":3,"sourceType":"HABIT","sourceId":2,"sourceTitle":"Dash habit","sourceRemoved":false,"done":false},{"id":4,"sourceType":"LEARNING_RESOURCE","sourceId":2,"sourceTitle":"Dash card","sourceRemoved":false,"done":false}],"estimatedDurationMinutes":60,"startDateTime":"2026-09-26T12:00:00+03:00","endDateTime":"2026-09-26T23:00:00+03:00","priorityOrder":1,"status":"IN_PROGRESS","createdAt":"2026-09-26T12:18:24.159514+03:00","doneItems":0,"totalItems":3,"progressPercent":0,"restSeconds":38495}],"planCounts":{"notStarted":0,"inProgress":1,"completed":0},"learning":{"notStarted":1,"inProgress":0,"completed":0,"milestonesDone":0,"milestonesTotal":0}}
+==> loops/testing/runs/current/zz-negative-control--Task.json <==
+{"id":1.5,"title":"x","status":"NOPE","priority":"LOW","dueDate":"26-09-2026","createdAt":"2026-09-26T12:00:00","updatedAt":"2026-09-26T12:00:00+03:00","archived":"no","foo":1}

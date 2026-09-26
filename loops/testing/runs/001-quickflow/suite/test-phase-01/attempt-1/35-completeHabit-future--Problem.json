@@ -1,0 +1,1 @@
+{"detail":"Validation failed","instance":"/api/habits/1/completions","status":400,"title":"Bad Request","errors":[{"field":"date","message":"must not be in the future"}]}
