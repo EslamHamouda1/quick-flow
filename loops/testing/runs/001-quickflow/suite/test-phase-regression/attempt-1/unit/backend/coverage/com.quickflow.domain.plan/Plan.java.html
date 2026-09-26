@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Plan.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.domain.plan</a> &gt; <span class="el_source">Plan.java</span></div><h1>Plan.java</h1><pre class="source lang-java linenums">package com.quickflow.domain.plan;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import com.quickflow.domain.common.FieldError;
+import com.quickflow.domain.common.ValidationException;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
+import jakarta.persistence.Table;
+
+/** A Todo Plan; its status, progress and rest time are computed on read ({@link PlanStatusPolicy}). */
+@Entity
+@Table(name = &quot;plan&quot;)
+public class Plan {
+
+	static final int TITLE_MAX = 200;
+
+	static final int DURATION_MIN = 1;
+
+	static final int DURATION_MAX = 100_000;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(nullable = false, length = TITLE_MAX)
+	private String title;
+
+	@Column(nullable = false)
+	private int estimatedDurationMinutes;
+
+	@Column(nullable = false)
+	private Instant startDateTime;
+
+	@Column(nullable = false)
+	private Instant endDateTime;
+
+	/** 1 is the highest; not unique (FR-07.1). */
+	@Column(nullable = false)
+	private int priorityOrder;
+
+	@Column(nullable = false)
+	private Instant createdAt;
+
+	/** Removed together with the plan (BR-14); in the order given on create (A-9). */
+<span class="fc" id="L58">	@OneToMany(mappedBy = &quot;plan&quot;, cascade = CascadeType.ALL, orphanRemoval = true)</span>
+	@OrderBy(&quot;id&quot;)
+	private List&lt;PlanItem&gt; items = new ArrayList&lt;&gt;();
+
+<span class="fc" id="L62">	protected Plan() {</span>
+<span class="fc" id="L63">	}</span>
+
+	/** A new plan with one not-done item per distinct source (FR-07.1, FR-07.2, BR-10, BR-11). */
+	public Plan(String title, int estimatedDurationMinutes, Instant startDateTime, Instant endDateTime,
+<span class="fc" id="L67">			int priorityOrder, List&lt;PlanItemRef&gt; items, Instant now) {</span>
+<span class="fc" id="L68">		List&lt;FieldError&gt; errors = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L69">		String cleanTitle = checkFields(title, estimatedDurationMinutes, startDateTime, endDateTime, priorityOrder,</span>
+				errors);
+<span class="fc" id="L71">		checkItems(items, errors);</span>
+<span class="fc" id="L72">		throwIfAny(errors);</span>
+<span class="fc" id="L73">		assign(cleanTitle, estimatedDurationMinutes, startDateTime, endDateTime, priorityOrder);</span>
+<span class="fc" id="L74">		this.createdAt = now;</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">		for (PlanItemRef ref : items) {</span>
+<span class="fc" id="L76">			this.items.add(new PlanItem(this, ref.sourceType(), ref.sourceId()));</span>
+<span class="fc" id="L77">		}</span>
+<span class="fc" id="L78">	}</span>
+
+	/** Replaces the editable fields; never changes items, their flags or {@code createdAt} (FR-07.3, A-6). */
+	public void update(String title, int estimatedDurationMinutes, Instant startDateTime, Instant endDateTime,
+			int priorityOrder) {
+<span class="fc" id="L83">		List&lt;FieldError&gt; errors = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L84">		String cleanTitle = checkFields(title, estimatedDurationMinutes, startDateTime, endDateTime, priorityOrder,</span>
+				errors);
+<span class="fc" id="L86">		throwIfAny(errors);</span>
+<span class="fc" id="L87">		assign(cleanTitle, estimatedDurationMinutes, startDateTime, endDateTime, priorityOrder);</span>
+<span class="fc" id="L88">	}</span>
+
+	public Optional&lt;PlanItem&gt; findItem(long itemId) {
+<span class="pc bpc" id="L91" title="1 of 4 branches missed.">		return items.stream().filter(item -&gt; item.getId() != null &amp;&amp; item.getId() == itemId).findFirst();</span>
+	}
+
+	public int doneItems() {
+<span class="fc" id="L95">		return (int) items.stream().filter(PlanItem::isDone).count();</span>
+	}
+
+	public int totalItems() {
+<span class="fc" id="L99">		return items.size();</span>
+	}
+
+	private void assign(String title, int estimatedDurationMinutes, Instant startDateTime, Instant endDateTime,
+			int priorityOrder) {
+<span class="fc" id="L104">		this.title = title;</span>
+<span class="fc" id="L105">		this.estimatedDurationMinutes = estimatedDurationMinutes;</span>
+<span class="fc" id="L106">		this.startDateTime = startDateTime;</span>
+<span class="fc" id="L107">		this.endDateTime = endDateTime;</span>
+<span class="fc" id="L108">		this.priorityOrder = priorityOrder;</span>
+<span class="fc" id="L109">	}</span>
+
+	/** Returns the trimmed title (A-1). */
+	private static String checkFields(String title, int estimatedDurationMinutes, Instant startDateTime,
+			Instant endDateTime, int priorityOrder, List&lt;FieldError&gt; errors) {
+<span class="fc bfc" id="L114" title="All 2 branches covered.">		String trimmed = title == null ? &quot;&quot; : title.trim();</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">		if (trimmed.isEmpty()) {</span>
+<span class="fc" id="L116">			errors.add(new FieldError(&quot;title&quot;, &quot;must not be blank&quot;));</span>
+		}
+<span class="fc bfc" id="L118" title="All 2 branches covered.">		else if (trimmed.length() &gt; TITLE_MAX) {</span>
+<span class="fc" id="L119">			errors.add(new FieldError(&quot;title&quot;, &quot;must be at most &quot; + TITLE_MAX + &quot; characters&quot;));</span>
+		}
+<span class="fc bfc" id="L121" title="All 4 branches covered.">		if (estimatedDurationMinutes &lt; DURATION_MIN || estimatedDurationMinutes &gt; DURATION_MAX) {</span>
+<span class="fc" id="L122">			errors.add(new FieldError(&quot;estimatedDurationMinutes&quot;,</span>
+					&quot;must be between &quot; + DURATION_MIN + &quot; and &quot; + DURATION_MAX));
+		}
+<span class="pc bpc" id="L125" title="1 of 2 branches missed.">		if (startDateTime == null) {</span>
+<span class="nc" id="L126">			errors.add(new FieldError(&quot;startDateTime&quot;, &quot;must not be null&quot;));</span>
+		}
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">		if (endDateTime == null) {</span>
+<span class="nc" id="L129">			errors.add(new FieldError(&quot;endDateTime&quot;, &quot;must not be null&quot;));</span>
+		}
+<span class="pc bpc" id="L131" title="1 of 4 branches missed.">		else if (startDateTime != null &amp;&amp; !endDateTime.isAfter(startDateTime)) {</span>
+<span class="fc" id="L132">			errors.add(new FieldError(&quot;endDateTime&quot;, &quot;must be after startDateTime&quot;));</span>
+		}
+<span class="fc bfc" id="L134" title="All 2 branches covered.">		if (priorityOrder &lt; 1) {</span>
+<span class="fc" id="L135">			errors.add(new FieldError(&quot;priorityOrder&quot;, &quot;must be at least 1&quot;));</span>
+		}
+<span class="fc" id="L137">		return trimmed;</span>
+	}
+
+	/** At least one item (BR-10), each complete, no (type, id) twice (FR-07.2, A-3). */
+	private static void checkItems(List&lt;PlanItemRef&gt; items, List&lt;FieldError&gt; errors) {
+<span class="fc bfc" id="L142" title="All 4 branches covered.">		if (items == null || items.isEmpty()) {</span>
+<span class="fc" id="L143">			errors.add(new FieldError(&quot;items&quot;, &quot;must contain at least one item&quot;));</span>
+<span class="fc" id="L144">			return;</span>
+		}
+<span class="fc" id="L146">		Set&lt;PlanItemRef&gt; seen = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">		for (int i = 0; i &lt; items.size(); i++) {</span>
+<span class="fc" id="L148">			PlanItemRef ref = items.get(i);</span>
+<span class="pc bpc" id="L149" title="2 of 4 branches missed.">			if (ref == null || ref.sourceType() == null) {</span>
+<span class="nc" id="L150">				errors.add(new FieldError(&quot;items[&quot; + i + &quot;].sourceType&quot;, &quot;must not be null&quot;));</span>
+			}
+<span class="pc bpc" id="L152" title="2 of 4 branches missed.">			if (ref == null || ref.sourceId() == null) {</span>
+<span class="nc" id="L153">				errors.add(new FieldError(&quot;items[&quot; + i + &quot;].sourceId&quot;, &quot;must not be null&quot;));</span>
+			}
+<span class="pc bpc" id="L155" title="3 of 8 branches missed.">			if (ref != null &amp;&amp; ref.sourceType() != null &amp;&amp; ref.sourceId() != null &amp;&amp; !seen.add(ref)) {</span>
+<span class="fc" id="L156">				errors.add(new FieldError(&quot;items[&quot; + i + &quot;]&quot;, &quot;must not repeat a selected item&quot;));</span>
+			}
+		}
+<span class="fc" id="L159">	}</span>
+
+	private static void throwIfAny(List&lt;FieldError&gt; errors) {
+<span class="fc bfc" id="L162" title="All 2 branches covered.">		if (!errors.isEmpty()) {</span>
+<span class="fc" id="L163">			throw new ValidationException(errors);</span>
+		}
+<span class="fc" id="L165">	}</span>
+
+	public Long getId() {
+<span class="fc" id="L168">		return id;</span>
+	}
+
+	public String getTitle() {
+<span class="fc" id="L172">		return title;</span>
+	}
+
+	public int getEstimatedDurationMinutes() {
+<span class="fc" id="L176">		return estimatedDurationMinutes;</span>
+	}
+
+	public Instant getStartDateTime() {
+<span class="fc" id="L180">		return startDateTime;</span>
+	}
+
+	public Instant getEndDateTime() {
+<span class="fc" id="L184">		return endDateTime;</span>
+	}
+
+	public int getPriorityOrder() {
+<span class="fc" id="L188">		return priorityOrder;</span>
+	}
+
+	public Instant getCreatedAt() {
+<span class="fc" id="L192">		return createdAt;</span>
+	}
+
+	public List&lt;PlanItem&gt; getItems() {
+<span class="fc" id="L196">		return Collections.unmodifiableList(items);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

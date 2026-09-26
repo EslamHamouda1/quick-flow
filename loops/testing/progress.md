@@ -32,8 +32,9 @@
 | testing:001-quickflow:suite:test-phase-05 | 2026-09-26T12:57:59+03:00 | 2026-09-26T13:15:59+03:00 | 0h18m00s | 0h09m24s | 1 | 1 | 108 | 4921383 | 39623 | 2.6323 | ea3d4e37-5580-4d4c-908c-6eada39b0a29 |  | 849e7b0 | success |
 | testing:001-quickflow:suite:test-phase-06 | 2026-09-26T13:16:07+03:00 | 2026-09-26T13:23:07+03:00 | 0h07m00s | 0h06m57s | 1 | 1 | 70 | 2656067 | 28465 | 1.7447 | 15f09895-e692-4488-beb9-5f4976032d4f |  | 7f17a1c | success |
 | testing:001-quickflow:suite:test-phase-07 | 2026-09-26T13:23:15+03:00 | 2026-09-26T14:00:50+03:00 | 0h37m35s | 0h10m36s | 1 | 1 | 96 | 3279415 | 27987 | 1.8491 | f0462109-b51b-44b4-a3ec-b97010de82df |  | bb6999a | success |
-| testing:001-quickflow:suite:test-phase-E2E | 2026-09-26T14:00:56+03:00 | 2026-09-26T15:03:49+03:00 | 1h02m53s | 0h00m00s | 1 | 1 | 0 | 0 | 0 | 0.0000 |  |  |  | error:crash |
-| **Total** |  |  |  | 2h46m07s | 30 |  | 2246 | 88423451 | 802112 | 51.7882 |  |  |  |  |
+| testing:001-quickflow:suite:test-phase-E2E | 2026-09-26T14:00:56+03:00 | 2026-09-26T15:03:49+03:00 | 1h02m53s | 0h00m00s | 1 | 1 | 0 | 0 | 0 | 0.0000 |  |  | 16d22f1 | error:crash |
+| testing:001-quickflow:suite:test-phase-regression | 2026-09-26T15:04:14+03:00 | 2026-09-26T15:12:20+03:00 | 0h08m06s | 0h08m03s | 1 | 1 | 102 | 5391522 | 48188 | 3.3314 | 359157aa-6f1b-42bf-8354-8542d44d9889 |  |  | error:success |
+| **Total** |  |  |  | 2h54m10s | 31 |  | 2348 | 93814973 | 850300 | 55.1196 |  |  |  |  |
 <!-- milestones:end -->
 
 ## Action log

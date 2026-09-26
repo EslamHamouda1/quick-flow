@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SettingsController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">quickflow</a> &gt; <a href="index.source.html" class="el_package">com.quickflow.web.settings</a> &gt; <span class="el_source">SettingsController.java</span></div><h1>SettingsController.java</h1><pre class="source lang-java linenums">package com.quickflow.web.settings;
+
+import com.quickflow.domain.settings.SettingsService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(&quot;/api/settings&quot;)
+@Tag(name = &quot;settings&quot;)
+public class SettingsController {
+
+	private final SettingsService settingsService;
+
+<span class="fc" id="L22">	public SettingsController(SettingsService settingsService) {</span>
+<span class="fc" id="L23">		this.settingsService = settingsService;</span>
+<span class="fc" id="L24">	}</span>
+
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = &quot;Current settings (defaults on first read)&quot;)
+	public SettingsDto getSettings() {
+<span class="fc" id="L29">		return SettingsDto.from(settingsService.get());</span>
+	}
+
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = &quot;Replace the settings&quot;)
+	public SettingsDto updateSettings(@Valid @RequestBody SettingsDto request) {
+<span class="fc" id="L35">		return SettingsDto.from(</span>
+<span class="fc" id="L36">				settingsService.update(request.displayName(), request.planStartNotifications(), request.defaultPage()));</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
