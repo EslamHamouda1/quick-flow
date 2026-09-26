@@ -1,4 +1,4 @@
 {
-  "stop_reason": "usage_limit (rerun after the reset)",
-  "loop_status": "stopped"
+  "stop_reason": "complete",
+  "loop_status": "complete"
 }
